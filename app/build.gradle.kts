@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 
 }
 
@@ -36,6 +37,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.navigation3.runtime)
+    implementation(libs.androidx.compose.material.icons.core)
+    implementation(libs.navigation3.ui)
     ksp(libs.androidx.room.compiler)
 
     implementation(platform(libs.androidx.compose.bom))
