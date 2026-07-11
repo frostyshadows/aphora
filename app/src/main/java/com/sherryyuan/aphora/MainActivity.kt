@@ -16,6 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.sherryyuan.aphora.savedQuotes.QuoteDetailCardPreview
+import com.sherryyuan.aphora.savedQuotes.SavedQuotesContainer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,10 +38,7 @@ fun AphoraApp() {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Greeting(
-            name = "Android",
-            modifier = Modifier.padding(innerPadding)
-        )
+        SavedQuotesContainer(modifier = Modifier.padding(innerPadding))
     }
 }
 
@@ -50,20 +49,4 @@ enum class AppDestinations(
     HOME("Home", R.drawable.ic_home),
     FAVORITES("Favorites", R.drawable.ic_favorite),
     PROFILE("Profile", R.drawable.ic_account_box),
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AphoraTheme {
-        Greeting("Android")
-    }
 }

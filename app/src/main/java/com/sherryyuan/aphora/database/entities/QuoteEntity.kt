@@ -1,5 +1,6 @@
 package com.sherryyuan.aphora.database.entities
 
+import androidx.annotation.IntRange
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,6 +9,7 @@ class QuoteEntity(
     @PrimaryKey(autoGenerate = true) val quoteId: Long = 0,
     val text: String,
     val notes: String,
+    @IntRange(1, 5) val rating: Int,
     val visibility: Visibility,
     val timestampAdded: Long = System.currentTimeMillis(),
     val timestampLastEdited: Long = System.currentTimeMillis(),

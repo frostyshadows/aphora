@@ -8,9 +8,9 @@ class SourceEntity(
     @PrimaryKey(autoGenerate = true) val sourceId: Long = 0,
     val author: String,
     val work: String?,
-    val type: SourceType,
+    val category: SourceCategory,
 )
 
-enum class SourceType {
+enum class SourceCategory {
     BOOK, MOVIE, POEM, TV, SONG, STORY, ARTICLE, OTHER,
 }
