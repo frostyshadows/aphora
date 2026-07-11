@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class SourceEntity(
+data class SourceEntity(
     @PrimaryKey(autoGenerate = true) val sourceId: Long = 0,
     val author: String,
     val work: String?,

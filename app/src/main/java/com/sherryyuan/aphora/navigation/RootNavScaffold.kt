@@ -46,19 +46,21 @@ fun AphoraRootNav() {
     }
     val currentBackStack = backStacks[currentKey] ?: mutableListOf()
 
+    fun resetBottomTab(tabNavKey: BottomBarNavKey) {
+        if (currentKey == tabNavKey) {
+            val stack = backStacks[tabNavKey]
+            stack?.subList(1, stack.size)?.clear()
+        }
+        currentKey = tabNavKey
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(title = { Text("Aphora") })
         },
         bottomBar = {
             BottomAppBar {
-                IconButton(onClick = {
-                    if (currentKey == BottomBarNavKey.SavedQuotes) {
-                        val stack = backStacks[BottomBarNavKey.SavedQuotes]
-                        stack?.subList(1, stack.size)?.clear()
-                    }
-                    currentKey = BottomBarNavKey.SavedQuotes
-                }) {
+                IconButton(onClick = { resetBottomTab(BottomBarNavKey.SavedQuotes) }) {
                     Icon(
                         painterResource(BottomBarNavKey.SavedQuotes.iconRes),
                         contentDescription = BottomBarNavKey.SavedQuotes.label,
@@ -82,13 +84,7 @@ fun AphoraRootNav() {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
                 Spacer(Modifier.weight(1f))
-                IconButton(onClick = {
-                    if (currentKey == BottomBarNavKey.Explore) {
-                        val stack = backStacks[BottomBarNavKey.Explore]
-                        stack?.subList(1, stack.size)?.clear()
-                    }
-                    currentKey = BottomBarNavKey.Explore
-                }) {
+                IconButton(onClick = { resetBottomTab(BottomBarNavKey.Explore) }) {
                     Icon(
                         painterResource(BottomBarNavKey.Explore.iconRes),
                         contentDescription = BottomBarNavKey.Explore.label,

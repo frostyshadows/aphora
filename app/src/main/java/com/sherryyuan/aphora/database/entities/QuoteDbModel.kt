@@ -11,11 +11,11 @@ data class QuoteDbModel(
         entityColumn = "sourceId",
         associateBy = Junction(QuoteSourceCrossRef::class)
     )
-    val source: SourceEntity,
+    val source: SourceEntity? = null,
     @Relation(
         parentColumn = "quoteId",
         entityColumn = "tagId",
         associateBy = Junction(QuoteTagCrossRef::class)
     )
-    val tags: List<TagEntity>,
+    val tags: List<TagEntity> = emptyList(),
 )

@@ -13,12 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 
 @Composable
-fun QuoteDetailCard(model: QuoteViewModel) {
+fun QuoteDetailCard(model: QuoteUiModel) {
     Card(shape = RoundedCornerShape(topEnd = 24f, bottomStart = 24f)) {
         Column {
             Text(model.text)
 
-            model.notes?.let {
+            model.note?.let {
                 HorizontalDivider(modifier = Modifier.fillMaxWidth())
                 Text(it)
                 HorizontalDivider(modifier = Modifier.fillMaxWidth())
@@ -29,7 +29,7 @@ fun QuoteDetailCard(model: QuoteViewModel) {
 
 @Preview
 @Composable
-fun QuoteDetailCardPreview(modifier: Modifier = Modifier) {
+fun QuoteDetailCardPreview() {
     Box(modifier = Modifier.fillMaxWidth()) {
         QuoteDetailCard(createQuoteViewModel())
     }
