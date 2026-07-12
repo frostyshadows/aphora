@@ -2,10 +2,16 @@ package com.sherryyuan.aphora.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// Light Palette
+val CreamBackground = Color(0xFFF7F3EB)
+val OffWhiteSurface = Color(0xFFFFFDF9)
+val DarkCharcoal = Color(0xFF2E2924)
+val TaupeSecondary = Color(0xFF8A7E73)
+val NavyAccent = Color(0xFF23395B)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Dark Palette (Generated)
+val DarkGreyBackground = Color(0xFF1C1B19)
+val MutedBlackSurface = Color(0xFF242220)
+val SoftCreamText = Color(0xFFE6E1DC)
+val LightTaupe = Color(0xFFB8ADA3)
+val LightNavyAccent = Color(0xFFA3B8D7)
