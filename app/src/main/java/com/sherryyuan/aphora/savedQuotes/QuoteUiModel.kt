@@ -18,6 +18,6 @@ data class QuoteUiModel(
     data class Source(
         val author: String,
         val work: String?,
-        val category: SourceCategory,
+        val category: SourceCategory?,
     )
 }

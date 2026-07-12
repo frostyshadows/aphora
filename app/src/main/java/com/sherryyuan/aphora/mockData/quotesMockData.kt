@@ -11,7 +11,7 @@ fun createQuoteViewModel(
     tags: List<String> = listOf("Description"),
     rating: Int = 4,
     sourceAuthor: String = "Kazuo Ishiguro",
-    sourceWork: String = "Never Let Me Go,",
+    sourceWork: String = "Never Let Me Go",
     sourceCategory: SourceCategory = SourceCategory.BOOK,
     visibility: Visibility = Visibility.PUBLIC,
     dateAdded: String = "2023-01-01",
