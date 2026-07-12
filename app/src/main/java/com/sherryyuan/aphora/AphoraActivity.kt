@@ -43,7 +43,7 @@ class AphoraActivity : ComponentActivity() {
     }
 
     private suspend fun addDummyData() {
-        val mockQuote1 = createQuoteViewModel(text = "The only way to do great work is to love what you do.")
+        val mockQuote1 = createQuoteViewModel()
         val mockQuote2 = createQuoteViewModel(text = "Believe you can and you're halfway there.")
 
         val quoteId1 = quoteDao.insertQuote(
