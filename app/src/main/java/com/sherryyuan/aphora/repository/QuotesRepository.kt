@@ -10,4 +10,12 @@ class QuotesRepository @Inject constructor(private val quoteDao: QuoteDao) {
     fun getQuotes(): Flow<List<QuoteDbModel>> {
         return quoteDao.getAll()
     }
+
+    suspend fun getQuoteById(id: Long): QuoteDbModel? {
+        return quoteDao.getQuoteById(id)
+    }
+
+    fun saveQuote() {
+        // quoteDao.insertQuote()
+    }
 }
