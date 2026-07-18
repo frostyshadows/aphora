@@ -10,7 +10,7 @@ fun QuoteDbModel.toUiModel(): QuoteUiModel {
     return QuoteUiModel(
         quoteId = quote.quoteId,
         text = quote.text,
-        note = quote.note,
+        userNote = quote.userNote,
         source = source?.toUiModel(),
         tags = tags.map { it.slug },
         rating = quote.rating,
