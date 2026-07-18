@@ -19,7 +19,7 @@ fun createQuoteViewModel(
 ): QuoteUiModel = QuoteUiModel(
     quoteId = quoteId,
     text = text,
-    note = note,
+    userNote = note,
     source = QuoteUiModel.Source(sourceAuthor, sourceWork, sourceCategory),
     tags = tags,
     rating = rating,

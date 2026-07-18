@@ -4,7 +4,7 @@ import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object SavedQuotes : NavKey
+data object SavedQuotesKey : NavKey
 
 @Serializable
-object AddQuoteNavKey : NavKey
+data class AddEditQuoteKey(val quoteId: Long? = null) : NavKey

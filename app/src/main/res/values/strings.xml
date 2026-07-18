@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Aphora</string>
+    <string name = "add_edit_quote_aphorism_new_gem_title">New gem</string>
+    <string name = "add_edit_quote_aphorism_edit_gem_title">Edit gem</string>
+    <string name = "add_edit_quote_aphorism_label">Gem</string>
+    <string name = "add_edit_quote_aphorism_placeholder">Shiny sentence, quote, passage, aphorism</string>
+    <string name = "add_edit_quote_notes_label">Your notes</string>
+    <string name = "add_edit_quote_notes_placeholder">Your notes</string>
+    <string name = "add_edit_quote_save_button">Save</string>
+    <string name = "add_edit_quote_rating_low">Like it</string>
+    <string name = "add_edit_quote_rating_high">Life-changing</string>
 </resources>
