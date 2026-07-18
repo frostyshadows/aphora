@@ -49,7 +49,7 @@ class AphoraActivity : ComponentActivity() {
         val quoteId1 = quoteDao.insertQuote(
             QuoteEntity(
                 text = mockQuote1.text,
-                note = mockQuote1.note ?: "",
+                userNote = mockQuote1.userNote ?: "",
                 rating = mockQuote1.rating,
                 visibility = mockQuote1.visibility
             )
@@ -66,7 +66,7 @@ class AphoraActivity : ComponentActivity() {
         quoteDao.insertQuote(
             QuoteEntity(
                 text = mockQuote2.text,
-                note = mockQuote2.note ?: "",
+                userNote = mockQuote2.userNote ?: "",
                 rating = mockQuote2.rating,
                 visibility = mockQuote2.visibility
             )

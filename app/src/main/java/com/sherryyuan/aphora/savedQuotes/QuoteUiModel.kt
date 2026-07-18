@@ -7,7 +7,7 @@ import com.sherryyuan.aphora.database.entities.Visibility
 data class QuoteUiModel(
     val quoteId: Long,
     val text: String,
-    val note: String?,
+    val userNote: String?,
     val source: Source?,
     val tags: List<String>,
     @IntRange(1, 5) val rating: Int,

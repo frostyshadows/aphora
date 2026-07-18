@@ -17,6 +17,9 @@ interface QuoteDao {
     @Query(value = "SELECT * FROM QuoteEntity")
     fun getAll(): Flow<List<QuoteDbModel>>
 
+    @Query(value = "SELECT * FROM QuoteEntity WHERE quoteId= :id")
+    suspend fun getQuoteById(id: Long): QuoteDbModel?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuote(quote: QuoteEntity): Long
 
@@ -24,7 +27,7 @@ interface QuoteDao {
     suspend fun insertQuoteSourceCrossRef(crossRef: QuoteSourceCrossRef)
 
     // TODO: handle updating source and tags
-    @Query(value = "UPDATE QuoteEntity SET text= :text, note = :note, visibility = :visibility WHERE quoteId = :quoteId")
+    @Query(value = "UPDATE QuoteEntity SET text= :text, userNote = :note, visibility = :visibility WHERE quoteId = :quoteId")
     suspend fun updateQuote(quoteId: Long, text: String, note: String, visibility: Visibility)
 
     @Delete

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class QuoteEntity(
     @PrimaryKey(autoGenerate = true) val quoteId: Long = 0,
     val text: String,
-    val note: String?,
+    val userNote: String?,
     @IntRange(1, 5) val rating: Int,
     val visibility: Visibility,
     val timestampAdded: Long = System.currentTimeMillis(),
