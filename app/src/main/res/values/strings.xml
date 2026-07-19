@@ -9,4 +9,8 @@
     <string name = "add_edit_quote_save_button">Save</string>
     <string name = "add_edit_quote_rating_low">Like it</string>
     <string name = "add_edit_quote_rating_high">Life-changing</string>
+    <string name = "add_edit_quote_source_section_title">Source</string>
+    <string name = "add_edit_quote_source_author">Author</string>
+    <string name = "add_edit_quote_source_work">Work</string>
+    <string name = "add_edit_quote_source_category">Category: </string>
 </resources>
