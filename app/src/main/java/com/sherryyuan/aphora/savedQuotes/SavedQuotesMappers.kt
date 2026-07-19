@@ -12,9 +12,8 @@ fun QuoteDbModel.toUiModel(): QuoteUiModel {
         text = quote.text,
         userNote = quote.userNote,
         source = source?.toUiModel(),
-        tags = tags.map { it.slug },
+        tags = tags.map { it.label },
         rating = quote.rating,
-        visibility = quote.visibility,
         dateAdded = quote.timestampAdded.toFormattedDate(),
         dateEdited = quote.timestampLastEdited.toFormattedDate(),
     )
