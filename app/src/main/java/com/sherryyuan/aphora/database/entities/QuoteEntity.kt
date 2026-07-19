@@ -6,27 +6,22 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class QuoteEntity(
-    @PrimaryKey(autoGenerate = true) val quoteId: Long = 0,
+    @PrimaryKey(autoGenerate = true) val quoteId: Int = 0,
     val text: String,
     val userNote: String?,
     @IntRange(1, 5) val rating: Int,
-    val visibility: Visibility,
     val timestampAdded: Long = System.currentTimeMillis(),
     val timestampLastEdited: Long = System.currentTimeMillis(),
 )
 
-enum class Visibility {
-    PRIVATE, FRIENDS, PUBLIC,
-}
-
 @Entity(primaryKeys = ["quoteId", "sourceId"])
 data class QuoteSourceCrossRef(
-    val quoteId: Long,
-    val sourceId: Long,
+    val quoteId: Int,
+    val sourceId: Int,
 )
 
 @Entity(primaryKeys = ["quoteId", "tagId"])
 data class QuoteTagCrossRef(
-    val quoteId: Long,
-    val tagId: Long,
+    val quoteId: Int,
+    val tagId: Int,
 )

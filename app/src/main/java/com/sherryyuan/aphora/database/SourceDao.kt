@@ -9,5 +9,5 @@ import com.sherryyuan.aphora.database.entities.SourceEntity
 interface SourceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSource(source: SourceEntity): Long
+    suspend fun insertSource(source: SourceEntity): Int
 }

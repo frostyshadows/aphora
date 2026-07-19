@@ -1,11 +1,10 @@
 package com.sherryyuan.aphora.mockData
 
 import com.sherryyuan.aphora.database.entities.SourceCategory
-import com.sherryyuan.aphora.database.entities.Visibility
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 
 fun createQuoteViewModel(
-    quoteId: Long = 1,
+    quoteId: Int = 1,
     text: String = "Memories, even your most precious ones, fade surprisingly quickly. But I don’t go along with that. The memories I value most, I don’t ever see them fading.",
     note: String? = "Cool quote",
     tags: List<String> = listOf("Description"),
@@ -13,7 +12,6 @@ fun createQuoteViewModel(
     sourceAuthor: String = "Kazuo Ishiguro",
     sourceWork: String = "Never Let Me Go",
     sourceCategory: SourceCategory = SourceCategory.BOOK,
-    visibility: Visibility = Visibility.PUBLIC,
     dateAdded: String = "2023-01-01",
     dateEdited: String = "2023-01-01",
 ): QuoteUiModel = QuoteUiModel(
@@ -23,7 +21,6 @@ fun createQuoteViewModel(
     source = QuoteUiModel.Source(sourceAuthor, sourceWork, sourceCategory),
     tags = tags,
     rating = rating,
-    visibility = visibility,
     dateAdded = dateAdded,
     dateEdited = dateEdited,
 )

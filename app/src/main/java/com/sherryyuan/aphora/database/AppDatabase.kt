@@ -23,4 +23,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun quoteDao(): QuoteDao
 
     abstract fun sourceDao(): SourceDao
+
+    abstract fun tagDao(): TagDao
 }

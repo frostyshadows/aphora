@@ -7,13 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
 import com.sherryyuan.aphora.database.QuoteDao
 import com.sherryyuan.aphora.database.SourceDao
-import com.sherryyuan.aphora.database.entities.QuoteEntity
+import com.sherryyuan.aphora.database.TagDao
 import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
-import com.sherryyuan.aphora.database.entities.SourceCategory
-import com.sherryyuan.aphora.database.entities.SourceEntity
-import com.sherryyuan.aphora.mockData.createQuoteViewModel
+import com.sherryyuan.aphora.database.entities.QuoteTagCrossRef
 import com.sherryyuan.aphora.navigation.AphoraRootNav
+import com.sherryyuan.aphora.onboarding.DEFAULT_QUOTE_BUNDLES
+import com.sherryyuan.aphora.onboarding.DEFAULT_TAGS
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
+import com.sherryyuan.aphora.utils.isFirstInstall
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,12 +28,17 @@ class AphoraActivity : ComponentActivity() {
     @Inject
     lateinit var sourceDao: SourceDao
 
+    @Inject
+    lateinit var tagDao: TagDao
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        lifecycleScope.launch {
-            // addDummyData()
+        if (isFirstInstall(this)) {
+            lifecycleScope.launch {
+                seedDefaultData()
+            }
         }
 
         setContent {
@@ -42,34 +48,17 @@ class AphoraActivity : ComponentActivity() {
         }
     }
 
-    private suspend fun addDummyData() {
-        val mockQuote1 = createQuoteViewModel()
-        val mockQuote2 = createQuoteViewModel(text = "Believe you can and you're halfway there.")
-
-        val quoteId1 = quoteDao.insertQuote(
-            QuoteEntity(
-                text = mockQuote1.text,
-                userNote = mockQuote1.userNote ?: "",
-                rating = mockQuote1.rating,
-                visibility = mockQuote1.visibility
-            )
-        )
-        val sourceId = sourceDao.insertSource(
-            SourceEntity(
-                author = "Steve Jobs",
-                work = "Stanford Commencement Speech",
-                category = SourceCategory.OTHER
-            )
-        )
-        quoteDao.insertQuoteSourceCrossRef(QuoteSourceCrossRef(quoteId1, sourceId))
-
-        quoteDao.insertQuote(
-            QuoteEntity(
-                text = mockQuote2.text,
-                userNote = mockQuote2.userNote ?: "",
-                rating = mockQuote2.rating,
-                visibility = mockQuote2.visibility
-            )
-        )
+    private suspend fun seedDefaultData() {
+        val tagIdMap = DEFAULT_TAGS.associate { it.label to tagDao.insertEntity(it) }
+        DEFAULT_QUOTE_BUNDLES.forEach { bundle ->
+            val quoteId = quoteDao.insertQuote(bundle.quote)
+            val sourceId = sourceDao.insertSource(bundle.source)
+            quoteDao.insertQuoteSourceCrossRef(QuoteSourceCrossRef(quoteId, sourceId))
+            bundle.tags
+                .mapNotNull { tagIdMap[it] }
+                .forEach { tagId ->
+                    quoteDao.insertQuoteTagCrossRef(QuoteTagCrossRef(quoteId, tagId))
+                }
+        }
     }
 }
