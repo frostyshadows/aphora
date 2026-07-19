@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -39,6 +40,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.LikeIconRed
@@ -51,15 +53,18 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
 
     val quoteTextFieldState = rememberTextFieldState(viewState.existingQuote?.text.orEmpty())
     val noteTextFieldState = rememberTextFieldState(viewState.existingQuote?.userNote.orEmpty())
-    var rating by remember {
+    var rating: Int by remember {
         mutableIntStateOf(viewState.existingQuote?.rating ?: 1)
+    }
+    var source: QuoteUiModel.Source? by remember {
+        mutableStateOf(viewState.existingQuote?.source)
     }
 
     Scaffold(
         modifier = Modifier.pointerInput(Unit) {
-            detectTapGestures(onTap = {
-                focusManager.clearFocus()
-            })
+            detectTapGestures(
+                onTap = { focusManager.clearFocus() }
+            )
         },
         topBar = {
             TopAppBar(
@@ -91,6 +96,11 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                         onRatingUpdate = { updatedRating -> rating = updatedRating }
                     )
                     VerticalSpacer(height = 8.dp)
+                    QuoteSourceEditor(
+                        source = source,
+                        onSourceUpdated = { source = it }
+                    )
+                    VerticalSpacer()
                     NotesInputField(noteTextFieldState)
                 }
             }
@@ -109,7 +119,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
 }
 
 @Composable
-fun QuoteInputField(textFieldState: TextFieldState, modifier: Modifier = Modifier) {
+private fun QuoteInputField(textFieldState: TextFieldState, modifier: Modifier = Modifier) {
     OutlinedTextField(
         modifier = modifier
             .fillMaxWidth()
@@ -122,7 +132,7 @@ fun QuoteInputField(textFieldState: TextFieldState, modifier: Modifier = Modifie
 }
 
 @Composable
-fun RatingHearts(
+private fun RatingHearts(
     modifier: Modifier = Modifier,
     rating: Int,
     onRatingUpdate: (Int) -> Unit
@@ -166,7 +176,7 @@ fun RatingHearts(
 }
 
 @Composable
-fun NotesInputField(textFieldState: TextFieldState, modifier: Modifier = Modifier) {
+private fun NotesInputField(textFieldState: TextFieldState, modifier: Modifier = Modifier) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
         state = textFieldState,
