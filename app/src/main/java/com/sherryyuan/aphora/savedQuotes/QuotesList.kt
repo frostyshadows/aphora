@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.theme.Typography
@@ -38,6 +39,8 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
             Text(
                 text = model.text,
                 style = Typography.titleLarge,
+                maxLines = 5,
+                overflow = TextOverflow.Ellipsis,
             )
 
             model.source?.let {

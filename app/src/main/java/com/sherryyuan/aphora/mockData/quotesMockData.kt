@@ -1,10 +1,11 @@
 package com.sherryyuan.aphora.mockData
 
 import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 
 fun createQuoteViewModel(
-    quoteId: Int = 1,
+    quoteId: Long = 1,
     text: String = "Memories, even your most precious ones, fade surprisingly quickly. But I don’t go along with that. The memories I value most, I don’t ever see them fading.",
     note: String? = "Cool quote",
     tags: List<String> = listOf("Description"),
@@ -19,7 +20,7 @@ fun createQuoteViewModel(
     text = text,
     userNote = note,
     source = QuoteUiModel.Source(sourceAuthor, sourceWork, sourceCategory),
-    tags = tags,
+    tags = tags.map { TagEntity(label = it) },
     rating = rating,
     dateAdded = dateAdded,
     dateEdited = dateEdited,

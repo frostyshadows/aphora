@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class SourceEntity(
-    @PrimaryKey(autoGenerate = true) val sourceId: Int = 0,
+    @PrimaryKey(autoGenerate = true) val sourceId: Long = 0,
     val author: String,
     val work: String?,
     val category: SourceCategory,
