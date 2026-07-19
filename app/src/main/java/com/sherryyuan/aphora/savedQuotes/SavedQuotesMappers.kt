@@ -12,7 +12,7 @@ fun QuoteDbModel.toUiModel(): QuoteUiModel {
         text = quote.text,
         userNote = quote.userNote,
         source = source?.toUiModel(),
-        tags = tags.map { it.label },
+        tags = tags,
         rating = quote.rating,
         dateAdded = quote.timestampAdded.toFormattedDate(),
         dateEdited = quote.timestampLastEdited.toFormattedDate(),

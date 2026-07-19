@@ -21,7 +21,7 @@ interface QuoteDao {
     suspend fun getQuoteById(id: Long): QuoteDbModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertQuote(quote: QuoteEntity): Int
+    suspend fun insertQuote(quote: QuoteEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuoteSourceCrossRef(crossRef: QuoteSourceCrossRef)

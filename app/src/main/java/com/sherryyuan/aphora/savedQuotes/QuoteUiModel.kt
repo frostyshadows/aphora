@@ -2,13 +2,14 @@ package com.sherryyuan.aphora.savedQuotes
 
 import androidx.annotation.IntRange
 import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.TagEntity
 
 data class QuoteUiModel(
-    val quoteId: Int,
+    val quoteId: Long,
     val text: String,
     val userNote: String?,
     val source: Source?,
-    val tags: List<String>,
+    val tags: List<TagEntity>,
     @IntRange(1, 5) val rating: Int,
     val dateAdded: String,
     val dateEdited: String,

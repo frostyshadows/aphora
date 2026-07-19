@@ -14,5 +14,5 @@ interface TagDao {
     fun getAll(): Flow<List<TagEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEntity(source: TagEntity): Int
+    suspend fun insertEntity(source: TagEntity): Long
 }

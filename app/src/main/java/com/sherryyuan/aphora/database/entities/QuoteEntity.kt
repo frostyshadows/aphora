@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class QuoteEntity(
-    @PrimaryKey(autoGenerate = true) val quoteId: Int = 0,
+    @PrimaryKey(autoGenerate = true) val quoteId: Long = 0,
     val text: String,
     val userNote: String?,
     @IntRange(1, 5) val rating: Int,
@@ -16,12 +16,12 @@ data class QuoteEntity(
 
 @Entity(primaryKeys = ["quoteId", "sourceId"])
 data class QuoteSourceCrossRef(
-    val quoteId: Int,
-    val sourceId: Int,
+    val quoteId: Long,
+    val sourceId: Long,
 )
 
 @Entity(primaryKeys = ["quoteId", "tagId"])
 data class QuoteTagCrossRef(
-    val quoteId: Int,
-    val tagId: Int,
+    val quoteId: Long,
+    val tagId: Long,
 )

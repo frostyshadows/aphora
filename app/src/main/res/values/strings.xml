@@ -13,4 +13,5 @@
     <string name = "add_edit_quote_source_author">Author</string>
     <string name = "add_edit_quote_source_work">Work</string>
     <string name = "add_edit_quote_source_category">Category: </string>
+    <string name = "add_edit_quote_tags_section_title">Tags</string>
 </resources>
