@@ -34,4 +34,10 @@ object DatabaseModule {
     fun provideSourceDao(database: AppDatabase): SourceDao {
         return database.sourceDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideTagDao(database: AppDatabase): TagDao {
+        return database.tagDao()
+    }
 }

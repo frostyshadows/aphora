@@ -1,7 +1,7 @@
 package com.sherryyuan.aphora.mockData
 
 import com.sherryyuan.aphora.database.entities.SourceCategory
-import com.sherryyuan.aphora.database.entities.Visibility
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 
 fun createQuoteViewModel(
@@ -13,7 +13,6 @@ fun createQuoteViewModel(
     sourceAuthor: String = "Kazuo Ishiguro",
     sourceWork: String = "Never Let Me Go",
     sourceCategory: SourceCategory = SourceCategory.BOOK,
-    visibility: Visibility = Visibility.PUBLIC,
     dateAdded: String = "2023-01-01",
     dateEdited: String = "2023-01-01",
 ): QuoteUiModel = QuoteUiModel(
@@ -21,9 +20,8 @@ fun createQuoteViewModel(
     text = text,
     userNote = note,
     source = QuoteUiModel.Source(sourceAuthor, sourceWork, sourceCategory),
-    tags = tags,
+    tags = tags.map { TagEntity(label = it) },
     rating = rating,
-    visibility = visibility,
     dateAdded = dateAdded,
     dateEdited = dateEdited,
 )
