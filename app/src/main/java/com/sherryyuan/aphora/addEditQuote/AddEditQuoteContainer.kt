@@ -7,13 +7,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +44,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
@@ -59,13 +64,18 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
     var source: QuoteUiModel.Source? by remember {
         mutableStateOf(viewState.existingQuote?.source)
     }
+    var selectedTags: List<TagEntity> by remember {
+        mutableStateOf(viewState.existingQuote?.tags ?: emptyList())
+    }
 
     Scaffold(
-        modifier = Modifier.pointerInput(Unit) {
-            detectTapGestures(
-                onTap = { focusManager.clearFocus() }
-            )
-        },
+        modifier = Modifier
+            .imePadding()
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onTap = { focusManager.clearFocus() }
+                )
+            },
         topBar = {
             TopAppBar(
                 title = {
@@ -76,17 +86,19 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                 )
             )
         },
-    ) { innerPadding ->
+    ) { contentPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(contentPadding)
+                .consumeWindowInsets(contentPadding)
                 .padding(horizontal = 24.dp)
         ) {
             AphoraCard(modifier = Modifier.weight(1f)) {
                 Column(
                     modifier = Modifier
                         .padding(20.dp)
-                        .fillMaxSize(),
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     QuoteInputField(quoteTextFieldState)
@@ -99,6 +111,29 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                     QuoteSourceEditor(
                         source = source,
                         onSourceUpdated = { source = it }
+                    )
+                    VerticalSpacer()
+                    TagsSelector(
+                        selectedTags = selectedTags,
+                        allTags = viewState.allTags,
+                        onTagSelected = { tag ->
+                            // TODO revisit
+                            if (!selectedTags.contains(tag)) {
+                                selectedTags = selectedTags + tag
+                            }
+                        },
+                        onAddNewTagClicked = { label ->
+                            // TODO revisit
+                            // Here we might want to create a temporary TagEntity or notify ViewModel
+                            // For now, let's just create a mock TagEntity if it doesn't exist
+                            if (selectedTags.none { it.label.equals(label, ignoreCase = true) }) {
+                                selectedTags = selectedTags + TagEntity(label = label)
+                            }
+                        },
+                        onTagUnselected = { tag ->
+                            // TODO revisit
+                            selectedTags = selectedTags - tag
+                        },
                     )
                     VerticalSpacer()
                     NotesInputField(noteTextFieldState)

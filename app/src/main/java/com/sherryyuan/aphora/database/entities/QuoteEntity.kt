@@ -10,14 +10,9 @@ data class QuoteEntity(
     val text: String,
     val userNote: String?,
     @IntRange(1, 5) val rating: Int,
-    val visibility: Visibility,
     val timestampAdded: Long = System.currentTimeMillis(),
     val timestampLastEdited: Long = System.currentTimeMillis(),
 )
-
-enum class Visibility {
-    PRIVATE, FRIENDS, PUBLIC,
-}
 
 @Entity(primaryKeys = ["quoteId", "sourceId"])
 data class QuoteSourceCrossRef(

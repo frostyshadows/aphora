@@ -18,3 +18,12 @@ val LightNavyAccent = Color(0xFFA3B8D7)
 
 // Accent colors
 val LikeIconRed = Color(0xFFE63946)
+
+// Tag Colors
+val TagPastelRed = Color(0xFFFFB3BA)
+val TagPastelOrange = Color(0xFFFFDFBA)
+val TagPastelYellow = Color(0xFFFFFFBA)
+val TagPastelGreen = Color(0xFFBAFFC9)
+val TagPastelBlue = Color(0xFFBAE1FF)
+val TagPastelPurple = Color(0xFFD4BAFF)
+val TagPastelPink = Color(0xFFFFBAFF)
