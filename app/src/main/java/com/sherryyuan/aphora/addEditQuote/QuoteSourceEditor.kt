@@ -1,15 +1,20 @@
 package com.sherryyuan.aphora.addEditQuote
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
@@ -91,7 +96,11 @@ fun QuoteSourceEditor(
                         SourceCategory.ARTICLE -> R.drawable.icon_book // TODO
                         SourceCategory.OTHER -> R.drawable.icon_book // TODO
                     }
-                    Icon(painterResource(categoryIconRes), contentDescription = category.name)
+                    Icon(
+                        modifier = Modifier.size(16.dp),
+                        painter = painterResource(categoryIconRes),
+                        contentDescription = category.name,
+                    )
                 }
                 source?.work?.let { Text(it) }
             }
@@ -186,31 +195,59 @@ private fun CategoryDropdownMenu(
     onCategorySelected: (SourceCategory) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val focusManager = LocalFocusManager.current
     var expanded by remember { mutableStateOf(false) }
 
-    Box(modifier = modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { expanded = !expanded }) {
-            Text(stringResource(R.string.add_edit_quote_source_category))
-            Text(selectedCategory?.name.orEmpty())
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            SourceCategory.entries.forEach { category ->
-                DropdownMenuItem(
-                    text = {
-                        Text(text = category.name.lowercase().replaceFirstChar { it.uppercase() })
-                    },
-                    onClick = {
-                        onCategorySelected(category)
-                        expanded = false
-                    }
+    Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            modifier = Modifier.padding(end = 4.dp),
+            text = stringResource(R.string.add_edit_quote_source_category)
+        )
+        Box(
+            modifier = modifier.clickable {
+                focusManager.clearFocus()
+                expanded = !expanded
+            }) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    // match OutlinedTextField's height and border style
+                    .heightIn(min = 56.dp)
+                    .border(
+                        width = if (expanded) 2.dp else 1.dp,
+                        color = if (expanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(start = 8.dp, end = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+
+            ) {
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = selectedCategory?.name.orEmpty(),
                 )
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = "Dropdown",
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+            ) {
+                SourceCategory.entries.forEach { category ->
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = category.name.lowercase()
+                                    .replaceFirstChar { it.uppercase() })
+                        },
+                        onClick = {
+                            onCategorySelected(category)
+                            expanded = false
+                        }
+                    )
+                }
             }
         }
     }
