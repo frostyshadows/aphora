@@ -3,6 +3,7 @@ package com.sherryyuan.aphora.addEditQuote
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -57,7 +59,6 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
     val focusManager = LocalFocusManager.current
 
     val quoteTextFieldState = rememberTextFieldState(viewState.existingQuote?.text.orEmpty())
-    val noteTextFieldState = rememberTextFieldState(viewState.existingQuote?.userNote.orEmpty())
     var rating: Int by remember {
         mutableIntStateOf(viewState.existingQuote?.rating ?: 1)
     }
@@ -67,6 +68,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
     var selectedTags: List<TagEntity> by remember {
         mutableStateOf(viewState.existingQuote?.tags ?: emptyList())
     }
+    val noteTextFieldState = rememberTextFieldState(viewState.existingQuote?.userNote.orEmpty())
 
     Scaffold(
         modifier = Modifier
@@ -110,28 +112,25 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                     VerticalSpacer(height = 8.dp)
                     QuoteSourceEditor(
                         source = source,
-                        onSourceUpdated = { source = it }
+                        allAuthors = viewState.allAuthors,
+                        allSources = viewState.allSources,
+                        onSourceUpdated = { source = it },
                     )
                     VerticalSpacer()
                     TagsSelector(
                         selectedTags = selectedTags,
                         allTags = viewState.allTags,
                         onTagSelected = { tag ->
-                            // TODO revisit
                             if (!selectedTags.contains(tag)) {
                                 selectedTags = selectedTags + tag
                             }
                         },
-                        onAddNewTagClicked = { label ->
-                            // TODO revisit
-                            // Here we might want to create a temporary TagEntity or notify ViewModel
-                            // For now, let's just create a mock TagEntity if it doesn't exist
+                        onAddNewTagClicked = { label, color ->
                             if (selectedTags.none { it.label.equals(label, ignoreCase = true) }) {
-                                selectedTags = selectedTags + TagEntity(label = label)
+                                viewModel.addNewTag(label, color)
                             }
                         },
                         onTagUnselected = { tag ->
-                            // TODO revisit
                             selectedTags = selectedTags - tag
                         },
                     )
@@ -144,7 +143,11 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     viewModel.saveQuote(
-                        text = quoteTextFieldState.text.toString(),
+                        quoteText = quoteTextFieldState.text.toString(),
+                        rating = rating,
+                        source = source,
+                        tags = selectedTags,
+                        noteText = noteTextFieldState.text.toString(),
                     )
                 }) {
                 Text(stringResource(R.string.add_edit_quote_save_button))
@@ -172,6 +175,7 @@ private fun RatingHearts(
     rating: Int,
     onRatingUpdate: (Int) -> Unit
 ) {
+    val focusManager = LocalFocusManager.current
     Column(
         modifier = modifier.padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -186,9 +190,17 @@ private fun RatingHearts(
                     contentDescription = null,
                     modifier = Modifier
                         .size(40.dp)
-                        .clickable {
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = ripple(
+                                color = Color.Red,
+                                bounded = false,
+                            ),
+                        ){
+                            focusManager.clearFocus()
                             onRatingUpdate(i)
-                        },
+                        }
+                            ,
                     colorFilter = ColorFilter.tint(
                         if (i <= rating) LikeIconRed else Color.Gray.copy(alpha = 0.3f)
                     )

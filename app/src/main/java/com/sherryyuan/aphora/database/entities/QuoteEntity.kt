@@ -10,8 +10,8 @@ data class QuoteEntity(
     val text: String,
     val userNote: String?,
     @IntRange(1, 5) val rating: Int,
-    val timestampAdded: Long = System.currentTimeMillis(),
-    val timestampLastEdited: Long = System.currentTimeMillis(),
+    val timestampAdded: Long,
+    val timestampLastEdited: Long,
 )
 
 @Entity(primaryKeys = ["quoteId", "sourceId"])
