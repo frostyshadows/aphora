@@ -1,11 +1,16 @@
 package com.sherryyuan.aphora.addEditQuote
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.navigation.AddEditQuoteKey
+import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
+import com.sherryyuan.aphora.repository.SourcesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
+import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.savedQuotes.toUiModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -17,23 +22,45 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 @HiltViewModel(assistedFactory = AddEditQuoteViewModel.Factory::class)
 class AddEditQuoteViewModel @AssistedInject constructor(
     private val quotesRepository: QuotesRepository,
+    private val sourcesRepository: SourcesRepository,
     private val tagsRepository: TagsRepository,
+    private val navigator: Navigator,
     @Assisted private val navKey: AddEditQuoteKey,
 ) : ViewModel() {
-
     private val currentQuoteId: MutableStateFlow<Long?> = MutableStateFlow(navKey.quoteId)
 
     val state: StateFlow<AddEditQuoteViewState> = createAddEditQuoteState()
 
-    fun saveQuote(text: String) {
-        quotesRepository.saveQuote()
+    fun saveQuote(
+        quoteText: String,
+        rating: Int,
+        source: QuoteUiModel.Source?,
+        tags: List<TagEntity>,
+        noteText: String?,
+    ) {
+        viewModelScope.launch {
+            val sourceId = source?.let {
+                sourcesRepository.saveSource(source)
+            }
+            quotesRepository.saveQuote(
+                existingQuoteId = currentQuoteId.value,
+                quoteText = quoteText,
+                rating = rating,
+                sourceId = sourceId,
+                tagIds = tags.map { it.tagId },
+                noteText = noteText,
+            )
+        }
+        navigator.goBack()
     }
 
-    fun addTagSelection(tagId: String) {
+    fun addNewTag(label: String, color: Color) = viewModelScope.launch {
+        tagsRepository.saveTag(label, color)
     }
 
     private fun createAddEditQuoteState(): StateFlow<AddEditQuoteViewState> {
@@ -41,8 +68,15 @@ class AddEditQuoteViewModel @AssistedInject constructor(
             .map { quoteId ->
                 quoteId?.let { quotesRepository.getQuoteById(it) }
             }
+        val authorsFlow = sourcesRepository.getAllAuthors()
         val tagsFlow = tagsRepository.getTags()
-        return combine(quoteFlow, tagsFlow) { quote, tags ->
+        val sourcesFlow = sourcesRepository.getAllSources()
+        return combine(
+            quoteFlow,
+            tagsFlow,
+            authorsFlow,
+            sourcesFlow
+        ) { quote, tags, authors, sources ->
             val topBarTitle = if (quote == null) {
                 R.string.add_edit_quote_aphorism_new_gem_title
             } else {
@@ -51,6 +85,8 @@ class AddEditQuoteViewModel @AssistedInject constructor(
             AddEditQuoteViewState(
                 topBarTitleRes = topBarTitle,
                 existingQuote = quote?.toUiModel(),
+                allSources = sources,
+                allAuthors = authors,
                 allTags = tags,
             )
         }.stateIn(

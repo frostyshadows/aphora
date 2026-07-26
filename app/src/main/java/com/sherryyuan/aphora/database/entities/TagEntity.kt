@@ -15,7 +15,7 @@ import com.sherryyuan.aphora.ui.theme.TagPastelYellow
 data class TagEntity(
     @PrimaryKey(autoGenerate = true) val tagId: Long = 0,
     val label: String,
-    val color: Color = DefaultTagColors[(tagId % DefaultTagColors.size).toInt()],
+    val color: Color,
 )
 
 val DefaultTagColors = listOf(

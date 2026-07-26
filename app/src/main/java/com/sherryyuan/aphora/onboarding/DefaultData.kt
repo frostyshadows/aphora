@@ -41,6 +41,8 @@ val DEFAULT_QUOTE_BUNDLES = listOf(
                     "aggressively forward.",
             userNote = null,
             rating = 1,
+            timestampAdded = System.currentTimeMillis(),
+            timestampLastEdited = System.currentTimeMillis(),
         ),
         source = SourceEntity(
             author = "F. Scott Fitzgerald",

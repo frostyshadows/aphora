@@ -1,15 +1,21 @@
 package com.sherryyuan.aphora.addEditQuote
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
@@ -21,6 +27,8 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,8 +41,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 
@@ -42,6 +52,8 @@ import com.sherryyuan.aphora.ui.common.VerticalSpacer
 @Composable
 fun QuoteSourceEditor(
     source: QuoteUiModel.Source?,
+    allSources: List<SourceEntity>,
+    allAuthors: List<String>,
     onSourceUpdated: (QuoteUiModel.Source) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -91,7 +103,11 @@ fun QuoteSourceEditor(
                         SourceCategory.ARTICLE -> R.drawable.icon_book // TODO
                         SourceCategory.OTHER -> R.drawable.icon_book // TODO
                     }
-                    Icon(painterResource(categoryIconRes), contentDescription = category.name)
+                    Icon(
+                        modifier = Modifier.size(16.dp),
+                        painter = painterResource(categoryIconRes),
+                        contentDescription = category.name,
+                    )
                 }
                 source?.work?.let { Text(it) }
             }
@@ -105,6 +121,8 @@ fun QuoteSourceEditor(
         ) {
             SourceEditorSheetContent(
                 source = source,
+                allAuthors = allAuthors,
+                allSources = allSources,
                 onSaveSource = {
                     onSourceUpdated(it)
                     showSourceEditorSheet = false
@@ -117,6 +135,8 @@ fun QuoteSourceEditor(
 @Composable
 private fun SourceEditorSheetContent(
     source: QuoteUiModel.Source?,
+    allSources: List<SourceEntity>,
+    allAuthors: List<String>,
     onSaveSource: (QuoteUiModel.Source) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -127,6 +147,46 @@ private fun SourceEditorSheetContent(
     var category: SourceCategory? by remember {
         mutableStateOf(source?.category)
     }
+
+    val filteredAuthors by remember {
+        derivedStateOf {
+            val query = authorTextFieldState.text
+            if (query.length >= 3) {
+                allAuthors.filter { it.contains(query, ignoreCase = true) }
+            } else {
+                emptyList()
+            }
+        }
+    }
+
+    var showAuthorDropdown by remember { mutableStateOf(false) }
+
+    val filteredWorks by remember {
+        derivedStateOf {
+            val authorQuery = authorTextFieldState.text.toString()
+            val workQuery = workTextFieldState.text
+            if (workQuery.length >= 2) {
+                allSources
+                    .filter { it.author.equals(authorQuery, ignoreCase = true) }
+                    .mapNotNull { it.work }
+                    .filter { it.contains(workQuery, ignoreCase = true) }
+                    .distinct()
+            } else {
+                emptyList()
+            }
+        }
+    }
+
+    var showWorkDropdown by remember { mutableStateOf(false) }
+
+    LaunchedEffect(filteredAuthors) {
+        showAuthorDropdown = filteredAuthors.isNotEmpty()
+    }
+
+    LaunchedEffect(filteredWorks) {
+        showWorkDropdown = filteredWorks.isNotEmpty()
+    }
+
     Column(
         modifier
             .fillMaxWidth()
@@ -144,17 +204,51 @@ private fun SourceEditorSheetContent(
             style = MaterialTheme.typography.titleLarge,
         )
         VerticalSpacer()
-        OutlinedTextField(
-            modifier = modifier.fillMaxWidth(),
-            state = authorTextFieldState,
-            label = { Text(stringResource(R.string.add_edit_quote_source_author)) },
-        )
+        Box {
+            OutlinedTextField(
+                modifier = modifier.fillMaxWidth(),
+                state = authorTextFieldState,
+                label = { Text(stringResource(R.string.add_edit_quote_source_author)) },
+            )
+            DropdownMenu(
+                expanded = showAuthorDropdown,
+                onDismissRequest = { showAuthorDropdown = false },
+                properties = PopupProperties(focusable = false)
+            ) {
+                filteredAuthors.forEach { author ->
+                    DropdownMenuItem(
+                        text = { Text(author) },
+                        onClick = {
+                            authorTextFieldState.setTextAndPlaceCursorAtEnd(author)
+                            showAuthorDropdown = false
+                        }
+                    )
+                }
+            }
+        }
         VerticalSpacer()
-        OutlinedTextField(
-            modifier = modifier.fillMaxWidth(),
-            state = workTextFieldState,
-            label = { Text(stringResource(R.string.add_edit_quote_source_work)) },
-        )
+        Box {
+            OutlinedTextField(
+                modifier = modifier.fillMaxWidth(),
+                state = workTextFieldState,
+                label = { Text(stringResource(R.string.add_edit_quote_source_work)) },
+            )
+            DropdownMenu(
+                expanded = showWorkDropdown,
+                onDismissRequest = { showWorkDropdown = false },
+                properties = PopupProperties(focusable = false)
+            ) {
+                filteredWorks.forEach { work ->
+                    DropdownMenuItem(
+                        text = { Text(work) },
+                        onClick = {
+                            workTextFieldState.setTextAndPlaceCursorAtEnd(work)
+                            showWorkDropdown = false
+                        }
+                    )
+                }
+            }
+        }
         VerticalSpacer()
         CategoryDropdownMenu(
             selectedCategory = category,
@@ -186,31 +280,59 @@ private fun CategoryDropdownMenu(
     onCategorySelected: (SourceCategory) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val focusManager = LocalFocusManager.current
     var expanded by remember { mutableStateOf(false) }
 
-    Box(modifier = modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { expanded = !expanded }) {
-            Text(stringResource(R.string.add_edit_quote_source_category))
-            Text(selectedCategory?.name.orEmpty())
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            SourceCategory.entries.forEach { category ->
-                DropdownMenuItem(
-                    text = {
-                        Text(text = category.name.lowercase().replaceFirstChar { it.uppercase() })
-                    },
-                    onClick = {
-                        onCategorySelected(category)
-                        expanded = false
-                    }
+    Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            modifier = Modifier.padding(end = 4.dp),
+            text = stringResource(R.string.add_edit_quote_source_category)
+        )
+        Box(
+            modifier = modifier.clickable {
+                focusManager.clearFocus()
+                expanded = !expanded
+            }) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    // match OutlinedTextField's height and border style
+                    .heightIn(min = 56.dp)
+                    .border(
+                        width = if (expanded) 2.dp else 1.dp,
+                        color = if (expanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(start = 8.dp, end = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+
+            ) {
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = selectedCategory?.name.orEmpty(),
                 )
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = "Dropdown",
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+            ) {
+                SourceCategory.entries.forEach { category ->
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = category.name.lowercase()
+                                    .replaceFirstChar { it.uppercase() })
+                        },
+                        onClick = {
+                            onCategorySelected(category)
+                            expanded = false
+                        }
+                    )
+                }
             }
         }
     }
