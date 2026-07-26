@@ -12,19 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.metadata
-import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteContainer
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteViewModel
 import com.sherryyuan.aphora.savedQuotes.SavedQuotesContainer
 
 @Composable
-fun AphoraRootNav() {
-    val currentBackStack = rememberNavBackStack(SavedQuotesKey)
+fun AphoraRootNav(navigator: Navigator) {
+    val currentBackStack = navigator.backStack
     NavDisplay(
         modifier = Modifier.background(MaterialTheme.colorScheme.background),
         backStack = currentBackStack,
-        onBack = { currentBackStack.removeLastOrNull() },
+        onBack = { navigator.goBack() },
         entryProvider = entryProvider {
             entry<SavedQuotesKey> {
                 SavedQuotesContainer(onAddNoteClick = {
