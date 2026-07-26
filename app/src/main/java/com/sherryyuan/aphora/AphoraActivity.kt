@@ -11,6 +11,7 @@ import com.sherryyuan.aphora.database.TagDao
 import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
 import com.sherryyuan.aphora.database.entities.QuoteTagCrossRef
 import com.sherryyuan.aphora.navigation.AphoraRootNav
+import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.onboarding.DEFAULT_QUOTE_BUNDLES
 import com.sherryyuan.aphora.onboarding.DEFAULT_TAGS
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
@@ -21,6 +22,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class AphoraActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigator: Navigator
 
     @Inject
     lateinit var quoteDao: QuoteDao
@@ -43,7 +47,7 @@ class AphoraActivity : ComponentActivity() {
 
         setContent {
             AphoraTheme {
-                AphoraRootNav()
+                AphoraRootNav(navigator)
             }
         }
     }

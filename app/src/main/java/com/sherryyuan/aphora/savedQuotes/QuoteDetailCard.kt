@@ -32,8 +32,12 @@ fun QuoteDetailCard(model: QuoteUiModel) {
     Card(
         shape = RoundedCornerShape(topEnd = 24.dp, bottomStart = 24.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth() // TODO figure out this width
+                .padding(20.dp)
         ) {
-        Column(modifier = Modifier.padding(20.dp)) {
             Text(
                 text = model.text,
                 style = Typography.titleLarge,

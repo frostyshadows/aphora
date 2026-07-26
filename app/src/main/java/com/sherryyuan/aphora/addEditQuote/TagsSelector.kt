@@ -53,7 +53,7 @@ fun TagsSelector(
     selectedTags: List<TagEntity>,
     allTags: List<TagEntity>,
     onTagSelected: (TagEntity) -> Unit,
-    onAddNewTagClicked: (String) -> Unit,
+    onAddNewTagClicked: (String, Color) -> Unit,
     onTagUnselected: (TagEntity) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -155,7 +155,7 @@ fun TagsSelector(
                             text = inputText,
                             tagColor = randomNewTagColor,
                             onClick = {
-                                onAddNewTagClicked(inputText)
+                                onAddNewTagClicked(inputText, randomNewTagColor)
                                 inputTextFieldState.clearText()
                                 showDropdown = false
                             }
