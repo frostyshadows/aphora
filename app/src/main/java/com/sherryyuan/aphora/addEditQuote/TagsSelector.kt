@@ -9,8 +9,9 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.clearText
@@ -101,25 +102,36 @@ fun TagsSelector(
         )
 
         FlowRow(
-            modifier = modifier.border(width = 1.dp, color = MaterialTheme.colorScheme.onSurface),
+            modifier = modifier
+                .border(
+                    width = if (showDropdown) 2.dp else 1.dp,
+                    color = if (showDropdown) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                    shape = RoundedCornerShape(4.dp)
+                ),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             selectedTags.forEach { item ->
                 key(item.tagId) {
-                    SelectedTagChip(item, onRemoveClick = { onTagUnselected(item) })
+                    SelectedTagChip(
+                        modifier = Modifier.chipHeight(),
+                        tag = item,
+                        onRemoveClick = { onTagUnselected(item) },
+                    )
                 }
             }
 
             Box(
                 modifier = Modifier
                     .height(54.dp)
-                    .widthIn(min = 80.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
                     .weight(1f),
                 contentAlignment = Alignment.CenterStart
             ) {
                 BasicTextField(
                     state = inputTextFieldState,
                     modifier = Modifier
+                        .fillMaxWidth()
                         .focusRequester(focusRequester)
                         .onFocusChanged {
                             isFocused = it.isFocused
@@ -132,13 +144,17 @@ fun TagsSelector(
                 )
 
                 DropdownMenu(
+                    modifier = Modifier.wrapContentWidth(),
+                    containerColor = MaterialTheme.colorScheme.surface,
                     expanded = showDropdown,
                     properties = PopupProperties(focusable = false),
                     onDismissRequest = { /*  */ },
                 ) {
                     filteredTags.forEach { tag ->
                         InputChip(
-                            modifier = Modifier.chipHeight(),
+                            modifier = Modifier
+                                .chipHeight()
+                                .padding(horizontal = 8.dp),
                             selected = false,
                             enabled = true,
                             onClick = {
@@ -152,6 +168,9 @@ fun TagsSelector(
                     }
                     if (inputText.isNotBlank()) {
                         NewTagChip(
+                            modifier = Modifier
+                                .chipHeight()
+                                .padding(horizontal = 8.dp),
                             text = inputText,
                             tagColor = randomNewTagColor,
                             onClick = {
@@ -169,11 +188,12 @@ fun TagsSelector(
 
 @Composable
 private fun SelectedTagChip(
+    modifier: Modifier = Modifier,
     tag: TagEntity,
     onRemoveClick: () -> Unit
 ) {
     InputChip(
-        modifier = Modifier.chipHeight(),
+        modifier = modifier,
         selected = true,
         enabled = false,
         onClick = {},
@@ -195,12 +215,13 @@ private fun SelectedTagChip(
 
 @Composable
 private fun NewTagChip(
+    modifier: Modifier = Modifier,
     text: String,
     tagColor: Color,
     onClick: () -> Unit,
 ) {
     InputChip(
-        modifier = Modifier.chipHeight(),
+        modifier = modifier.chipHeight(),
         selected = false,
         enabled = true,
         onClick = onClick,
