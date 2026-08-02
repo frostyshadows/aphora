@@ -21,6 +21,8 @@ import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -31,6 +33,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -69,6 +72,11 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
         mutableStateOf(viewState.existingQuote?.tags ?: emptyList())
     }
     val noteTextFieldState = rememberTextFieldState(viewState.existingQuote?.userNote.orEmpty())
+    val savedEnabled = remember {
+        derivedStateOf {
+            quoteTextFieldState.text.isNotBlank()
+        }
+    }
 
     Scaffold(
         modifier = Modifier
@@ -80,6 +88,16 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
             },
         topBar = {
             TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { viewModel.navigateBack() }) {
+                        Icon(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(R.drawable.icon_arrow_left),
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            contentDescription = stringResource(R.string.label_back),
+                        )
+                    }
+                },
                 title = {
                     viewState.topBarTitleRes?.let { Text(stringResource(it)) }
                 },
@@ -141,6 +159,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
             VerticalSpacer()
             Button(
                 modifier = Modifier.fillMaxWidth(),
+                enabled = savedEnabled.value,
                 onClick = {
                     viewModel.saveQuote(
                         quoteText = quoteTextFieldState.text.toString(),

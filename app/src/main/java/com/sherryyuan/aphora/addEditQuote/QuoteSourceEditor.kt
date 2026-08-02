@@ -79,7 +79,7 @@ fun QuoteSourceEditor(
                             .padding(start = 8.dp)
                             .size(16.dp),
                         painter = painterResource(R.drawable.icon_pencil),
-                        contentDescription = "Edit"
+                        contentDescription = stringResource(R.string.label_edit)
                     )
                 }
             } else {
@@ -103,10 +103,20 @@ fun QuoteSourceEditor(
                         SourceCategory.ARTICLE -> R.drawable.icon_book // TODO
                         SourceCategory.OTHER -> R.drawable.icon_book // TODO
                     }
+                    val categoryNameRes = when (category) {
+                        SourceCategory.BOOK -> R.string.category_book
+                        SourceCategory.MOVIE -> R.string.category_movie
+                        SourceCategory.POEM -> R.string.category_poem
+                        SourceCategory.TV -> R.string.category_tv
+                        SourceCategory.SONG -> R.string.category_song
+                        SourceCategory.STORY -> R.string.category_story
+                        SourceCategory.ARTICLE -> R.string.category_article
+                        SourceCategory.OTHER -> R.string.category_other
+                    }
                     Icon(
                         modifier = Modifier.size(16.dp),
                         painter = painterResource(categoryIconRes),
-                        contentDescription = category.name,
+                        contentDescription = stringResource(categoryNameRes),
                     )
                 }
                 source?.work?.let { Text(it) }
@@ -313,7 +323,7 @@ private fun CategoryDropdownMenu(
                 )
                 Icon(
                     imageVector = Icons.Filled.ArrowDropDown,
-                    contentDescription = "Dropdown",
+                    contentDescription = stringResource(R.string.cd_dropdown),
                 )
             }
             DropdownMenu(
