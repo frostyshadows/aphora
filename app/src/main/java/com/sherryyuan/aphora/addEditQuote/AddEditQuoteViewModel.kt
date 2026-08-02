@@ -63,6 +63,10 @@ class AddEditQuoteViewModel @AssistedInject constructor(
         tagsRepository.saveTag(label, color)
     }
 
+    fun navigateBack() {
+        navigator.goBack()
+    }
+
     private fun createAddEditQuoteState(): StateFlow<AddEditQuoteViewState> {
         val quoteFlow = currentQuoteId
             .map { quoteId ->

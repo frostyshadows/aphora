@@ -19,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.sherryyuan.aphora.R
@@ -33,12 +34,12 @@ fun SavedQuotesContainer(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Aphora") },
+                title = { Text(stringResource(R.string.app_name)) },
                 actions = {
                     IconButton(onClick = { /* do something */ }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
-                            contentDescription = "Shuffle"
+                            contentDescription = stringResource(R.string.cd_shuffle)
                         )
                     }
                 },
@@ -51,12 +52,13 @@ fun SavedQuotesContainer(
             FloatingActionButton(
                 modifier = Modifier.size(56.dp),
                 onClick = onAddNoteClick,
-                containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
             ) {
                 Icon(
                     modifier = Modifier.size(24.dp),
                     painter = painterResource(R.drawable.icon_pencil),
-                    contentDescription = "Add"
+                    contentDescription = stringResource(R.string.cd_add_quote)
                 )
             }
         },
