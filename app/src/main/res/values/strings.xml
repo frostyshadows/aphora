@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Aphora</string>
+
+    <!-- Common strings -->
+    <string name="label_back">Back</string>
+    <string name="label_edit">Edit</string>
+
+    <!-- Main saved quotes screen -->
+    <string name="cd_shuffle">Shuffle</string>
+    <string name="cd_add_quote">Add quote</string>
+
+    <!-- Add/edit quote screen -->
     <string name = "add_edit_quote_aphorism_new_gem_title">New gem</string>
     <string name = "add_edit_quote_aphorism_edit_gem_title">Edit gem</string>
     <string name = "add_edit_quote_aphorism_label">Gem</string>
@@ -14,4 +24,15 @@
     <string name = "add_edit_quote_source_work">Work</string>
     <string name = "add_edit_quote_source_category">Category: </string>
     <string name = "add_edit_quote_tags_section_title">Tags</string>
+    <string name="cd_dropdown">Dropdown</string>
+
+    <!-- Quote source categories -->
+    <string name="category_book">Book</string>
+    <string name="category_movie">Movie</string>
+    <string name="category_poem">Poem</string>
+    <string name="category_tv">TV</string>
+    <string name="category_song">Song</string>
+    <string name="category_story">Story</string>
+    <string name="category_article">Article</string>
+    <string name="category_other">Other</string>
 </resources>
