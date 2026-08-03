@@ -1,68 +1,37 @@
 package com.sherryyuan.aphora.savedQuotes
 
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.BottomAppBarDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.sherryyuan.aphora.R
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SavedQuotesContainer(
-    onAddNoteClick: () -> Unit,
     viewModel: SavedQuotesViewModel = hiltViewModel<SavedQuotesViewModel>(),
 ) {
-    val viewState by viewModel.state.collectAsState()
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
-                actions = {
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = stringResource(R.string.cd_shuffle)
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                )
-            )
-        },
-        floatingActionButton = {
-            FloatingActionButton(
-                modifier = Modifier.size(56.dp),
-                onClick = onAddNoteClick,
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary,
-            ) {
-                Icon(
-                    modifier = Modifier.size(24.dp),
-                    painter = painterResource(R.drawable.icon_pencil),
-                    contentDescription = stringResource(R.string.cd_add_quote)
-                )
-            }
-        },
-    ) { innerPadding ->
-        QuotesList(modifier = Modifier.padding(innerPadding), quotes = viewState.quotes)
+    val viewState by viewModel.state.collectAsStateWithLifecycle()
+    BackHandler(enabled = viewState is SavedQuotesViewState.QuoteDetail) {
+        // If we're on a detail view, return to list view instead of exiting app
+        viewModel.toggleToList()
+    }
+    when (val state = viewState) {
+        is SavedQuotesViewState.QuotesList -> QuotesList(
+            quotes = state.quotes,
+            onRandomQuoteClick = { viewModel.showRandomQuote() },
+            onQuoteRowClick = { index -> viewModel.toggleToDetail(index) },
+            onAddQuoteClick = { viewModel.addNewQuote() },
+        )
+
+        is SavedQuotesViewState.QuoteDetail -> QuoteDetailPager(
+            quotes = state.quotes,
+            currentIndex = state.currentIndex,
+            onBackClick = { viewModel.toggleToList() },
+            onSwipeToIndex = { viewModel.swipedToIndex(it) },
+            onGoToPreviousClick = { viewModel.goToPreviousQuote() },
+            onGoToNextClick = { viewModel.goToNextQuote() },
+            onRandomQuoteClick = { viewModel.showRandomQuote() },
+            onEditQuoteClick = { viewModel.editCurrentQuote() }
+        )
     }
 }

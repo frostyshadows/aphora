@@ -5,9 +5,13 @@
     <string name="label_back">Back</string>
     <string name="label_edit">Edit</string>
 
-    <!-- Main saved quotes screen -->
+    <!-- Saved quotes list screen -->
     <string name="cd_shuffle">Shuffle</string>
     <string name="cd_add_quote">Add quote</string>
+
+    <!-- Quote detail screen -->
+    <string name="cd_previous">Previous</string>
+    <string name="cd_next">Next</string>
 
     <!-- Add/edit quote screen -->
     <string name = "add_edit_quote_aphorism_new_gem_title">New gem</string>
