@@ -1,5 +1,12 @@
 package com.sherryyuan.aphora.savedQuotes
 
-data class SavedQuotesViewState(
-    val quotes: List <QuoteUiModel>
-)
+sealed interface SavedQuotesViewState {
+
+    data class QuotesList(
+        val quotes: List<QuoteUiModel>
+    ) : SavedQuotesViewState
+
+    data class QuoteDetail(
+        val currentQuote: QuoteUiModel,
+    ) : SavedQuotesViewState
+}
