@@ -22,7 +22,8 @@ class SavedQuotesViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val savedQuotesFlow = quotesRepository.getQuotes()
-    private val viewTypeFlow: MutableStateFlow<QuotesViewType> = MutableStateFlow(QuotesViewType.QUOTES_LIST)
+    private val viewTypeFlow: MutableStateFlow<QuotesViewType> =
+        MutableStateFlow(QuotesViewType.QUOTES_LIST)
     private val currentIndexFlow: MutableStateFlow<Int> = MutableStateFlow(0)
 
     val state: StateFlow<SavedQuotesViewState> = createSavedQuotesState()
@@ -51,6 +52,15 @@ class SavedQuotesViewModel @Inject constructor(
         navigator.goTo(AddEditQuoteKey())
     }
 
+    fun editCurrentQuote() {
+        viewModelScope.launch {
+            val quotes = savedQuotesFlow.first()
+            val currentIndex = currentIndexFlow.first()
+            val currentQuoteId = quotes[currentIndex].quote.quoteId
+            navigator.goTo(AddEditQuoteKey(currentQuoteId))
+        }
+    }
+
     fun goToPreviousQuote() {
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
             viewModelScope.launch {
@@ -63,7 +73,14 @@ class SavedQuotesViewModel @Inject constructor(
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
             viewModelScope.launch {
                 currentIndexFlow.emit((currentIndexFlow.value + 1).coerceAtMost(savedQuotesFlow.first().lastIndex))
-                viewTypeFlow.emit(QuotesViewType.QUOTE_DETAIL)
+            }
+        }
+    }
+
+    fun swipedToIndex(index: Int) {
+        if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
+            viewModelScope.launch {
+                currentIndexFlow.emit(index)
             }
         }
     }
@@ -74,17 +91,20 @@ class SavedQuotesViewModel @Inject constructor(
             viewTypeFlow,
             currentIndexFlow,
 
-        ) { quotes, viewType, currentIndex ->
-                val quotesUiModels = quotes.map { it.toUiModel() }
-                when (viewType) {
-                    QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(quotes = quotesUiModels)
-                    QuotesViewType.QUOTE_DETAIL -> SavedQuotesViewState.QuoteDetail(currentQuote = quotesUiModels[currentIndex])
-                }
-            }.stateIn(
-                viewModelScope,
-                SharingStarted.Eagerly,
-                SavedQuotesViewState.QuotesList(quotes = emptyList()),
-            )
+            ) { quotes, viewType, currentIndex ->
+            val quotesUiModels = quotes.map { it.toUiModel() }
+            when (viewType) {
+                QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(quotes = quotesUiModels)
+                QuotesViewType.QUOTE_DETAIL -> SavedQuotesViewState.QuoteDetail(
+                    quotes = quotesUiModels,
+                    currentIndex = currentIndex
+                )
+            }
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.Eagerly,
+            SavedQuotesViewState.QuotesList(quotes = emptyList()),
+        )
     }
 }
 

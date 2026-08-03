@@ -35,7 +35,7 @@ fun QuoteDetailCard(model: QuoteUiModel) {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth() // TODO figure out this width
+                .fillMaxWidth()
                 .padding(20.dp)
         ) {
             Text(
