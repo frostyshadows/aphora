@@ -26,11 +26,7 @@ fun AphoraRootNav(navigator: Navigator) {
         onBack = { navigator.goBack() },
         entryProvider = entryProvider {
             entry<SavedQuotesKey> {
-                SavedQuotesContainer(onAddNoteClick = {
-                    if (currentBackStack.last() != AddEditQuoteKey) {
-                        currentBackStack.add(AddEditQuoteKey())
-                    }
-                })
+                SavedQuotesContainer()
             }
             entry<AddEditQuoteKey>(
                 metadata = metadata {
