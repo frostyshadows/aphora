@@ -32,6 +32,11 @@
     <string name = "add_edit_quote_tags_section_title">Tags</string>
     <string name="cd_dropdown">Dropdown</string>
 
+    <string name="delete_quote_dialog_title">Delete gem</string>
+    <string name="delete_quote_dialog_message">Are you sure you want to delete this gem? This action cannot be undone.</string>
+    <string name="delete_quote_dialog_confirm">Delete</string>
+    <string name="delete_quote_dialog_cancel">Cancel</string>
+
     <!-- Quote source categories -->
     <string name="category_book">Book</string>
     <string name="category_movie">Movie</string>

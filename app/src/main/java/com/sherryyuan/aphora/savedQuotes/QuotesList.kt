@@ -77,7 +77,7 @@ fun QuotesList(
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding),
-            contentPadding = PaddingValues(24.dp),
+            contentPadding = PaddingValues(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 80.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             itemsIndexed(
