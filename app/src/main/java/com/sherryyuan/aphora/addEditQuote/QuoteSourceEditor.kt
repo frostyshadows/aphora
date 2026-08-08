@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
@@ -39,6 +40,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
@@ -93,30 +95,10 @@ fun QuoteSourceEditor(
             }
             Row {
                 source?.category?.let { category ->
-                    val categoryIconRes = when (category) {
-                        SourceCategory.BOOK -> R.drawable.icon_book
-                        SourceCategory.MOVIE -> R.drawable.icon_movie
-                        SourceCategory.POEM -> R.drawable.icon_book // TODO
-                        SourceCategory.TV -> R.drawable.icon_movie
-                        SourceCategory.SONG -> R.drawable.icon_music
-                        SourceCategory.STORY -> R.drawable.icon_book // TODO
-                        SourceCategory.ARTICLE -> R.drawable.icon_book // TODO
-                        SourceCategory.OTHER -> R.drawable.icon_book // TODO
-                    }
-                    val categoryNameRes = when (category) {
-                        SourceCategory.BOOK -> R.string.category_book
-                        SourceCategory.MOVIE -> R.string.category_movie
-                        SourceCategory.POEM -> R.string.category_poem
-                        SourceCategory.TV -> R.string.category_tv
-                        SourceCategory.SONG -> R.string.category_song
-                        SourceCategory.STORY -> R.string.category_story
-                        SourceCategory.ARTICLE -> R.string.category_article
-                        SourceCategory.OTHER -> R.string.category_other
-                    }
                     Icon(
                         modifier = Modifier.size(16.dp),
-                        painter = painterResource(categoryIconRes),
-                        contentDescription = stringResource(categoryNameRes),
+                        painter = painterResource(category.iconRes),
+                        contentDescription = stringResource(category.stringRes),
                     )
                 }
                 source?.work?.let { Text(it) }
@@ -219,6 +201,7 @@ private fun SourceEditorSheetContent(
                 modifier = modifier.fillMaxWidth(),
                 state = authorTextFieldState,
                 label = { Text(stringResource(R.string.add_edit_quote_source_author)) },
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
                 expanded = showAuthorDropdown,
@@ -242,6 +225,7 @@ private fun SourceEditorSheetContent(
                 modifier = modifier.fillMaxWidth(),
                 state = workTextFieldState,
                 label = { Text(stringResource(R.string.add_edit_quote_source_work)) },
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
                 expanded = showWorkDropdown,
@@ -333,9 +317,7 @@ private fun CategoryDropdownMenu(
                 SourceCategory.entries.forEach { category ->
                     DropdownMenuItem(
                         text = {
-                            Text(
-                                text = category.name.lowercase()
-                                    .replaceFirstChar { it.uppercase() })
+                            Text(text = stringResource(category.stringRes))
                         },
                         onClick = {
                             onCategorySelected(category)

@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,6 +46,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sherryyuan.aphora.R
@@ -61,18 +62,23 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
     val viewState by viewModel.state.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
 
-    val quoteTextFieldState = rememberTextFieldState(viewState.existingQuote?.text.orEmpty())
-    var rating: Int by remember {
-        mutableIntStateOf(viewState.existingQuote?.rating ?: 1)
+    val existingQuote = viewState.existingQuote
+    val quoteTextFieldState = remember(existingQuote) {
+        TextFieldState(existingQuote?.text.orEmpty())
     }
-    var source: QuoteUiModel.Source? by remember {
-        mutableStateOf(viewState.existingQuote?.source)
+    var rating: Int by remember(existingQuote) {
+        mutableIntStateOf(existingQuote?.rating ?: 1)
     }
-    var selectedTags: List<TagEntity> by remember {
-        mutableStateOf(viewState.existingQuote?.tags ?: emptyList())
+    var source: QuoteUiModel.Source? by remember(existingQuote) {
+        mutableStateOf(existingQuote?.source)
     }
-    val noteTextFieldState = rememberTextFieldState(viewState.existingQuote?.userNote.orEmpty())
-    val savedEnabled = remember {
+    var selectedTags: List<TagEntity> by remember(existingQuote) {
+        mutableStateOf(existingQuote?.tags ?: emptyList())
+    }
+    val noteTextFieldState = remember(existingQuote) {
+        TextFieldState(existingQuote?.userNote.orEmpty())
+    }
+    val savedEnabled = remember(existingQuote) {
         derivedStateOf {
             quoteTextFieldState.text.isNotBlank()
         }
@@ -185,6 +191,7 @@ private fun QuoteInputField(textFieldState: TextFieldState, modifier: Modifier =
         label = { Text(stringResource(R.string.add_edit_quote_aphorism_label)) },
         labelPosition = TextFieldLabelPosition.Attached(alwaysMinimize = true),
         placeholder = { Text(stringResource(R.string.add_edit_quote_aphorism_placeholder)) },
+        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
     )
 }
 
@@ -248,5 +255,6 @@ private fun NotesInputField(textFieldState: TextFieldState, modifier: Modifier =
         state = textFieldState,
         label = { Text(stringResource(R.string.add_edit_quote_notes_label)) },
         placeholder = { Text(stringResource(R.string.add_edit_quote_notes_placeholder)) },
+        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
     )
 }
