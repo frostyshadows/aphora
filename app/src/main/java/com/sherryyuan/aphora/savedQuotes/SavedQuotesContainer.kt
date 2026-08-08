@@ -27,11 +27,12 @@ fun SavedQuotesContainer(
             quotes = state.quotes,
             currentIndex = state.currentIndex,
             onBackClick = { viewModel.toggleToList() },
-            onSwipeToIndex = { viewModel.swipedToIndex(it) },
+            onSwipeToQuote = { viewModel.quoteFocused(it) },
             onGoToPreviousClick = { viewModel.goToPreviousQuote() },
             onGoToNextClick = { viewModel.goToNextQuote() },
             onRandomQuoteClick = { viewModel.showRandomQuote() },
-            onEditQuoteClick = { viewModel.editCurrentQuote() }
+            onEditQuoteClick = { viewModel.editCurrentQuote() },
+            onDeleteQuoteClick = { viewModel.deleteCurrentQuote() }
         )
     }
 }

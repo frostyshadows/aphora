@@ -4,8 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -26,10 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -104,14 +105,19 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
             )
 
             model.source?.let {
-                Spacer(modifier = Modifier.height(12.dp))
+                VerticalSpacer()
                 HorizontalDivider(
                     modifier = Modifier
                         .width(80.dp)
-                        .align(Alignment.CenterHorizontally)
+                        .align(Alignment.CenterHorizontally),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
                 )
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(modifier = Modifier.align(Alignment.End), text = it.author.uppercase())
+                VerticalSpacer(12.dp)
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = it.author.uppercase(),
+                    textAlign = TextAlign.End,
+                )
             }
         }
     }

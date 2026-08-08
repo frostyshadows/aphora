@@ -1,5 +1,6 @@
 package com.sherryyuan.aphora.ui.common
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,12 +16,18 @@ import androidx.compose.ui.unit.dp
 fun AphoraCard(
     modifier: Modifier = Modifier,
     cornerRadius: Dp = 24.dp,
+    showBorder: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(topEnd = cornerRadius, bottomStart = cornerRadius),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = if (showBorder) {
+            BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary)
+        } else {
+            null
+        },
         content = content,
     )
 }

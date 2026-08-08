@@ -57,4 +57,8 @@ class QuotesRepository @Inject constructor(private val quoteDao: QuoteDao) {
             quoteDao.insertQuoteTagCrossRef(QuoteTagCrossRef(quoteId, tagId))
         }
     }
+
+    suspend fun deleteQuote(quoteId: Long) {
+        quoteDao.deleteQuote(quoteId)
+    }
 }

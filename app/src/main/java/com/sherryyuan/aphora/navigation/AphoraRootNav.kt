@@ -7,11 +7,13 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.metadata
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteContainer
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteViewModel
@@ -24,6 +26,10 @@ fun AphoraRootNav(navigator: Navigator) {
         modifier = Modifier.background(MaterialTheme.colorScheme.background),
         backStack = currentBackStack,
         onBack = { navigator.goBack() },
+        entryDecorators = listOf(
+            rememberSaveableStateHolderNavEntryDecorator(),
+            rememberViewModelStoreNavEntryDecorator(),
+        ),
         entryProvider = entryProvider {
             entry<SavedQuotesKey> {
                 SavedQuotesContainer()
@@ -31,12 +37,12 @@ fun AphoraRootNav(navigator: Navigator) {
             entry<AddEditQuoteKey>(
                 metadata = metadata {
                     put(NavDisplay.TransitionKey) {
-                        slideInVertically(
-                            initialOffsetY = { it },
-                        ) togetherWith ExitTransition.KeepUntilTransitionsFinished
+                        slideInVertically(initialOffsetY = { it }) togetherWith
+                                ExitTransition.KeepUntilTransitionsFinished
                     }
                     put(NavDisplay.PopTransitionKey) {
-                        EnterTransition.None togetherWith slideOutVertically(targetOffsetY = { -it })
+                        EnterTransition.None togetherWith
+                                slideOutVertically(targetOffsetY = { it })
                     }
                 }
             ) { navKey ->

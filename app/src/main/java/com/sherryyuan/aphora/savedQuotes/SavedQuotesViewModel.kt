@@ -18,33 +18,36 @@ import javax.inject.Inject
 @HiltViewModel
 class SavedQuotesViewModel @Inject constructor(
     private val navigator: Navigator,
-    quotesRepository: QuotesRepository,
+    private val quotesRepository: QuotesRepository,
 ) : ViewModel() {
 
     private val savedQuotesFlow = quotesRepository.getQuotes()
     private val viewTypeFlow: MutableStateFlow<QuotesViewType> =
         MutableStateFlow(QuotesViewType.QUOTES_LIST)
-    private val currentIndexFlow: MutableStateFlow<Int> = MutableStateFlow(0)
+    private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
 
     val state: StateFlow<SavedQuotesViewState> = createSavedQuotesState()
 
     fun toggleToDetail(index: Int) {
         viewModelScope.launch {
-            viewTypeFlow.emit(QuotesViewType.QUOTE_DETAIL)
-            currentIndexFlow.emit(index)
+            val quotes = savedQuotesFlow.first()
+            currentQuoteIdFlow.value = quotes.getOrNull(index)?.quote?.quoteId
+            viewTypeFlow.value = QuotesViewType.QUOTE_DETAIL
         }
     }
 
     fun toggleToList() {
-        viewModelScope.launch {
-            viewTypeFlow.emit(QuotesViewType.QUOTES_LIST)
-        }
+        viewTypeFlow.value = QuotesViewType.QUOTES_LIST
     }
 
     fun showRandomQuote() {
         viewModelScope.launch {
-            currentIndexFlow.emit(savedQuotesFlow.first().indices.random())
-            viewTypeFlow.emit(QuotesViewType.QUOTE_DETAIL)
+            val quotes = savedQuotesFlow.first()
+            if (quotes.isNotEmpty()) {
+                val randomIndex = quotes.indices.random()
+                currentQuoteIdFlow.value = quotes[randomIndex].quote.quoteId
+                viewTypeFlow.value = QuotesViewType.QUOTE_DETAIL
+            }
         }
     }
 
@@ -53,18 +56,28 @@ class SavedQuotesViewModel @Inject constructor(
     }
 
     fun editCurrentQuote() {
-        viewModelScope.launch {
-            val quotes = savedQuotesFlow.first()
-            val currentIndex = currentIndexFlow.first()
-            val currentQuoteId = quotes[currentIndex].quote.quoteId
-            navigator.goTo(AddEditQuoteKey(currentQuoteId))
+        currentQuoteIdFlow.value?.let { quoteId ->
+            navigator.goTo(AddEditQuoteKey(quoteId))
+        }
+    }
+
+    fun deleteCurrentQuote() {
+        currentQuoteIdFlow.value?.let { quoteId ->
+            viewModelScope.launch {
+                quotesRepository.deleteQuote(quoteId)
+            }
         }
     }
 
     fun goToPreviousQuote() {
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
             viewModelScope.launch {
-                currentIndexFlow.emit((currentIndexFlow.value - 1).coerceAtLeast(0))
+                val quotes = savedQuotesFlow.first()
+                val currentId = currentQuoteIdFlow.value
+                val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
+                if (currentIndex > 0) {
+                    currentQuoteIdFlow.value = quotes[currentIndex - 1].quote.quoteId
+                }
             }
         }
     }
@@ -72,16 +85,19 @@ class SavedQuotesViewModel @Inject constructor(
     fun goToNextQuote() {
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
             viewModelScope.launch {
-                currentIndexFlow.emit((currentIndexFlow.value + 1).coerceAtMost(savedQuotesFlow.first().lastIndex))
+                val quotes = savedQuotesFlow.first()
+                val currentId = currentQuoteIdFlow.value
+                val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
+                if (currentIndex >= 0 && currentIndex < quotes.lastIndex) {
+                    currentQuoteIdFlow.value = quotes[currentIndex + 1].quote.quoteId
+                }
             }
         }
     }
 
-    fun swipedToIndex(index: Int) {
+    fun quoteFocused(quoteId: Long) {
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
-            viewModelScope.launch {
-                currentIndexFlow.emit(index)
-            }
+            currentQuoteIdFlow.value = quoteId
         }
     }
 
@@ -89,16 +105,19 @@ class SavedQuotesViewModel @Inject constructor(
         return combine(
             savedQuotesFlow,
             viewTypeFlow,
-            currentIndexFlow,
-
-            ) { quotes, viewType, currentIndex ->
+            currentQuoteIdFlow,
+        ) { quotes, viewType, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
                 QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(quotes = quotesUiModels)
-                QuotesViewType.QUOTE_DETAIL -> SavedQuotesViewState.QuoteDetail(
-                    quotes = quotesUiModels,
-                    currentIndex = currentIndex
-                )
+                QuotesViewType.QUOTE_DETAIL -> {
+                    val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
+                        .coerceAtLeast(0)
+                    SavedQuotesViewState.QuoteDetail(
+                        quotes = quotesUiModels,
+                        currentIndex = currentIndex
+                    )
+                }
             }
         }.stateIn(
             viewModelScope,
