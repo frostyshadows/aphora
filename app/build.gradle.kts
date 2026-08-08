@@ -45,6 +45,7 @@ dependencies {
 
     implementation(libs.navigation3.runtime)
     implementation(libs.androidx.compose.material.icons.core)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.navigation3.ui)
 
     implementation(platform(libs.androidx.compose.bom))
@@ -56,6 +57,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     implementation(libs.dagger.hilt.android)

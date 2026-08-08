@@ -20,14 +20,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
-import kotlin.compareTo
-import kotlin.text.compareTo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,9 +34,10 @@ fun QuoteDetailPager(
     onBackClick: () -> Unit,
     onGoToPreviousClick: () -> Unit,
     onGoToNextClick: () -> Unit,
-    onSwipeToIndex: (Int) -> Unit,
+    onSwipeToQuote: (Long) -> Unit,
     onRandomQuoteClick: () -> Unit,
     onEditQuoteClick: () -> Unit,
+    onDeleteQuoteClick: () -> Unit,
 ) {
     val pagerState = rememberPagerState(initialPage = currentIndex, pageCount = { quotes.size })
     LaunchedEffect(currentIndex) {
@@ -47,14 +45,8 @@ fun QuoteDetailPager(
             pagerState.animateScrollToPage(currentIndex)
         }
     }
-    LaunchedEffect(pagerState) {
-        // Report swipes back to view model, once settled
-        snapshotFlow { pagerState.currentPage }
-            .collect { page ->
-                if (page != currentIndex) {
-                    onSwipeToIndex(page)
-                }
-            }
+    LaunchedEffect(pagerState.settledPage) {
+        onSwipeToQuote(quotes[pagerState.settledPage].quoteId)
     }
     Scaffold(
         topBar = {
@@ -67,6 +59,16 @@ fun QuoteDetailPager(
                             painter = painterResource(R.drawable.icon_arrow_left),
                             tint = MaterialTheme.colorScheme.onBackground,
                             contentDescription = stringResource(R.string.label_back),
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onRandomQuoteClick) {
+                        Icon(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(R.drawable.icon_shuffle),
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            contentDescription = stringResource(R.string.cd_shuffle)
                         )
                     }
                 },
@@ -93,8 +95,14 @@ fun QuoteDetailPager(
                 .consumeWindowInsets(contentPadding)
                 .padding(horizontal = 24.dp),
             state = pagerState,
+            key = { index -> quotes[index].quoteId }
         ) { page ->
-            QuoteDetailCard(quotes[page])
+            QuoteDetailCard(
+                model = quotes[page],
+                onEditQuoteClick = onEditQuoteClick,
+                onDeleteQuoteClick = onDeleteQuoteClick,
+                onShareQuoteClick = { /** TODO **/ },
+            )
         }
     }
 }

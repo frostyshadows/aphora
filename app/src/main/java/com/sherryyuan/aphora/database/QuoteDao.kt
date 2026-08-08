@@ -1,7 +1,6 @@
 package com.sherryyuan.aphora.database
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -17,8 +16,8 @@ interface QuoteDao {
     @Query(value = "SELECT * FROM QuoteEntity")
     fun getAll(): Flow<List<QuoteDbModel>>
 
-    @Query(value = "SELECT * FROM QuoteEntity WHERE quoteId= :id")
-    suspend fun getQuoteById(id: Long): QuoteDbModel?
+    @Query(value = "SELECT * FROM QuoteEntity WHERE quoteId = :quoteId")
+    suspend fun getQuoteById(quoteId: Long): QuoteDbModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertQuote(quote: QuoteEntity): Long
@@ -33,6 +32,6 @@ interface QuoteDao {
     @Query(value = "UPDATE QuoteEntity SET text= :text, userNote = :note WHERE quoteId = :quoteId")
     suspend fun updateQuote(quoteId: Long, text: String, note: String)
 
-    @Delete
-    suspend fun deleteQuote(quote: QuoteEntity)
+    @Query("DELETE FROM QuoteEntity WHERE quoteId = :quoteId")
+    suspend fun deleteQuote(quoteId: Long): Int
 }

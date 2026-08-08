@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -110,12 +111,12 @@ fun TagsSelector(
                 ),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            selectedTags.forEach { item ->
-                key(item.tagId) {
+            selectedTags.forEach { tag ->
+                key(tag.tagId) {
                     SelectedTagChip(
                         modifier = Modifier.chipHeight(),
-                        tag = item,
-                        onRemoveClick = { onTagUnselected(item) },
+                        tag = tag,
+                        onRemoveClick = { onTagUnselected(tag) },
                     )
                 }
             }
@@ -197,8 +198,12 @@ private fun SelectedTagChip(
         selected = true,
         enabled = false,
         onClick = {},
-        label = { Text(tag.label) },
-        colors = InputChipDefaults.inputChipColors(disabledContainerColor = tag.color),
+        label = { Text(text = tag.label,) },
+        colors = InputChipDefaults.inputChipColors(
+            labelColor = MaterialTheme.colorScheme.onSurface,
+            trailingIconColor = MaterialTheme.colorScheme.onSurface,
+            disabledSelectedContainerColor = tag.color,
+        ),
         trailingIcon = {
             Icon(
                 modifier = Modifier
