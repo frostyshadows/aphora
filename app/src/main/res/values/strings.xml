@@ -14,13 +14,14 @@
     <string name="cd_previous">Previous</string>
     <string name="cd_next">Next</string>
     <string name="cd_share">Share</string>
+    <string name = "quote_tags_section_title">Tags</string>
+    <string name = "quote_notes_section_title">Your notes</string>
 
     <!-- Add/edit quote screen -->
     <string name = "add_edit_quote_aphorism_new_gem_title">New gem</string>
     <string name = "add_edit_quote_aphorism_edit_gem_title">Edit gem</string>
     <string name = "add_edit_quote_aphorism_label">Gem</string>
     <string name = "add_edit_quote_aphorism_placeholder">Shiny sentence, quote, passage, aphorism</string>
-    <string name = "add_edit_quote_notes_label">Your notes</string>
     <string name = "add_edit_quote_notes_placeholder">Your notes</string>
     <string name = "add_edit_quote_save_button">Save</string>
     <string name = "add_edit_quote_rating_low">Like it</string>
@@ -29,7 +30,6 @@
     <string name = "add_edit_quote_source_author">Author</string>
     <string name = "add_edit_quote_source_work">Work</string>
     <string name = "add_edit_quote_source_category">Category: </string>
-    <string name = "add_edit_quote_tags_section_title">Tags</string>
     <string name="cd_dropdown">Dropdown</string>
 
     <string name="delete_quote_dialog_title">Delete gem</string>

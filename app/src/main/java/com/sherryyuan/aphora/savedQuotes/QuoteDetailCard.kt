@@ -12,12 +12,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -43,6 +41,7 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
@@ -92,12 +91,7 @@ fun QuoteDetailCard(
 
                 model.source?.let {
                     VerticalSpacer()
-                    HorizontalDivider(
-                        modifier = Modifier
-                            .width(80.dp)
-                            .align(Alignment.CenterHorizontally),
-                        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
-                    )
+                    SectionDivider()
                     VerticalSpacer(16.dp)
                     QuoteSource(
                         modifier = Modifier
@@ -107,10 +101,21 @@ fun QuoteDetailCard(
                     )
                 }
                 if (model.tags.isNotEmpty()) {
-                    VerticalSpacer(32.dp)
+                    VerticalSpacer()
+                    SectionDivider()
+                    VerticalSpacer()
                     QuoteTags(
                         modifier = Modifier.padding(horizontal = 20.dp),
                         tags = model.tags,
+                    )
+                }
+                if (!model.userNote.isNullOrBlank()) {
+                    VerticalSpacer()
+                    SectionDivider()
+                    VerticalSpacer()
+                    QuoteNotes(
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        note = model.userNote,
                     )
                 }
                 VerticalSpacer()
@@ -221,23 +226,50 @@ private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifie
 
 @Composable
 private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
-    FlowRow(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        tags.forEach { tag ->
-            key(tag.tagId) {
-                Text(
-                    modifier = Modifier
-                        .background(color = tag.color, shape = RoundedCornerShape(50))
-                        .padding(horizontal = 8.dp, vertical = 6.dp),
-                    text = tag.label,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    style = Typography.labelMedium,
-                )
+    Column(modifier = modifier) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            text = stringResource(R.string.quote_tags_section_title).uppercase(),
+            style = Typography.labelLarge,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            tags.forEach { tag ->
+                key(tag.tagId) {
+                    Text(
+                        modifier = Modifier
+                            .background(color = tag.color, shape = RoundedCornerShape(50))
+                            .padding(horizontal = 8.dp, vertical = 6.dp),
+                        text = tag.label,
+                        style = Typography.labelMedium,
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun QuoteNotes(note: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 12.dp),
+            text = stringResource(R.string.quote_notes_section_title).uppercase(),
+            style = Typography.labelLarge,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Text(
+            text = note,
+            style = Typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
     }
 }
 
