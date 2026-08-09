@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Typography
 
@@ -106,12 +107,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
 
             model.source?.let {
                 VerticalSpacer()
-                HorizontalDivider(
-                    modifier = Modifier
-                        .width(80.dp)
-                        .align(Alignment.CenterHorizontally),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
-                )
+                SectionDivider()
                 VerticalSpacer(12.dp)
                 Text(
                     modifier = Modifier.fillMaxWidth(),
