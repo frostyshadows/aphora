@@ -2,8 +2,11 @@ package com.sherryyuan.aphora.savedQuotes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -20,6 +23,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -92,17 +96,27 @@ fun QuoteDetailPager(
         HorizontalPager(
             modifier = Modifier
                 .padding(contentPadding)
-                .consumeWindowInsets(contentPadding)
-                .padding(horizontal = 24.dp),
+                .consumeWindowInsets(contentPadding),
             state = pagerState,
-            key = { index -> quotes[index].quoteId }
+            key = { index -> quotes[index].quoteId },
+            contentPadding = PaddingValues(horizontal = 20.dp),
+            pageSpacing = 40.dp,
         ) { page ->
-            QuoteDetailCard(
-                model = quotes[page],
-                onEditQuoteClick = onEditQuoteClick,
-                onDeleteQuoteClick = onDeleteQuoteClick,
-                onShareQuoteClick = { /** TODO **/ },
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 20.dp),
+                contentAlignment = TopCenter,
+            ) {
+                QuoteDetailCard(
+                    model = quotes[page],
+                    onEditQuoteClick = onEditQuoteClick,
+                    onDeleteQuoteClick = {
+                        onDeleteQuoteClick()
+                    },
+                    onShareQuoteClick = { /** TODO **/ },
+                )
+            }
         }
     }
 }

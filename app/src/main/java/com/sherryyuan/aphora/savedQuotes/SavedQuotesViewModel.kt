@@ -63,6 +63,7 @@ class SavedQuotesViewModel @Inject constructor(
 
     fun deleteCurrentQuote() {
         currentQuoteIdFlow.value?.let { quoteId ->
+            viewTypeFlow.value = QuotesViewType.QUOTES_LIST
             viewModelScope.launch {
                 quotesRepository.deleteQuote(quoteId)
             }
