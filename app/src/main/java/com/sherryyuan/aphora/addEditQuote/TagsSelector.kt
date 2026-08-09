@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -99,7 +98,7 @@ fun TagsSelector(
     Column {
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = stringResource(R.string.add_edit_quote_tags_section_title)
+            text = stringResource(R.string.quote_tags_section_title)
         )
 
         FlowRow(

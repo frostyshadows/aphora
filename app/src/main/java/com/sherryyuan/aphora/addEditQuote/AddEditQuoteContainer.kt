@@ -253,7 +253,7 @@ private fun NotesInputField(textFieldState: TextFieldState, modifier: Modifier =
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
         state = textFieldState,
-        label = { Text(stringResource(R.string.add_edit_quote_notes_label)) },
+        label = { Text(stringResource(R.string.quote_notes_section_title)) },
         placeholder = { Text(stringResource(R.string.add_edit_quote_notes_placeholder)) },
         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
     )
