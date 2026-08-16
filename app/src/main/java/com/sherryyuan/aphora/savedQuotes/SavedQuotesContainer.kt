@@ -1,10 +1,15 @@
 package com.sherryyuan.aphora.savedQuotes
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.sherryyuan.aphora.database.entities.SortOption
+import com.sherryyuan.aphora.savedQuotes.SavedQuotesViewState.SearchState
 
 @Composable
 fun SavedQuotesContainer(
@@ -16,12 +21,32 @@ fun SavedQuotesContainer(
         viewModel.toggleToList()
     }
     when (val state = viewState) {
-        is SavedQuotesViewState.QuotesList -> QuotesList(
-            quotes = state.quotes,
-            onRandomQuoteClick = { viewModel.showRandomQuote() },
-            onQuoteRowClick = { index -> viewModel.toggleToDetail(index) },
-            onAddQuoteClick = { viewModel.addNewQuote() },
-        )
+        is SavedQuotesViewState.QuotesList ->
+            Box(modifier = Modifier.fillMaxWidth()) {
+                BackHandler(enabled = state.searchState !is SearchState.NotFocused) {
+                    viewModel.exitSearch()
+                }
+                QuotesList(
+                    viewState = state,
+                    onRandomQuoteClick = { viewModel.showRandomQuote() },
+                    onQuoteRowClick = { index -> viewModel.toggleToDetail(index) },
+                    onAddQuoteClick = { viewModel.addNewQuote() },
+                    onSearchClick = { viewModel.searchClick() },
+                    onSortClick = { viewModel.sortClick() },
+                )
+                when (val searchState = state.searchState) {
+                    is SearchState.SortSheet -> SortBottomSheet(
+                        selectedSortOption = searchState.selectedSortOption
+                            ?: SortOption.MOST_RECENT_UPDATED,
+                        onDismiss = { viewModel.exitSearch() },
+                        onOptionSelected = { viewModel.selectSortOption(it) }
+                    )
+
+                    is SearchState.FilterSheet -> TODO()
+
+                    else -> Unit
+                }
+            }
 
         is SavedQuotesViewState.QuoteDetail -> QuoteDetailPager(
             quotes = state.quotes,

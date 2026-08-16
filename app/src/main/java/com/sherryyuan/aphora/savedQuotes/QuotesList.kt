@@ -1,27 +1,29 @@
 package com.sherryyuan.aphora.savedQuotes
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -37,29 +39,51 @@ import com.sherryyuan.aphora.ui.theme.Typography
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuotesList(
-    quotes: List<QuoteUiModel>,
+    viewState: SavedQuotesViewState.QuotesList,
     onRandomQuoteClick: () -> Unit,
     onQuoteRowClick: (Int) -> Unit,
     onAddQuoteClick: () -> Unit,
+    onSearchClick: () -> Unit,
+    onSortClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
-                actions = {
-                    IconButton(onClick = onRandomQuoteClick) {
-                        Icon(
-                            modifier = Modifier.size(24.dp),
-                            painter = painterResource(R.drawable.icon_shuffle),
-                            tint = MaterialTheme.colorScheme.onBackground,
-                            contentDescription = stringResource(R.string.cd_shuffle)
+            val isSearchFocused =
+                viewState.searchState !is SavedQuotesViewState.SearchState.NotFocused
+            Crossfade(
+                modifier = Modifier.animateContentSize(),
+                targetState = isSearchFocused,
+                label = "Search"
+            ) { searchFocused ->
+                if (!searchFocused) {
+                    TopAppBar(
+                        title = { Text(stringResource(R.string.app_name)) },
+                        actions = {
+                            IconButton(onClick = onSearchClick) {
+                                Icon(
+                                    modifier = Modifier.size(24.dp),
+                                    painter = painterResource(R.drawable.icon_search),
+                                    tint = MaterialTheme.colorScheme.onBackground,
+                                    contentDescription = stringResource(R.string.label_search)
+                                )
+                            }
+                            IconButton(onClick = onRandomQuoteClick) {
+                                Icon(
+                                    modifier = Modifier.size(24.dp),
+                                    painter = painterResource(R.drawable.icon_shuffle),
+                                    tint = MaterialTheme.colorScheme.onBackground,
+                                    contentDescription = stringResource(R.string.cd_shuffle)
+                                )
+                            }
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.background,
                         )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                )
-            )
+                    )
+                } else {
+                    SearchBar(onSortClick = onSortClick)
+                }
+            }
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -82,7 +106,7 @@ fun QuotesList(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             itemsIndexed(
-                items = quotes,
+                items = viewState.quotes,
                 key = { _, quote -> quote.quoteId },
             ) { index, quote ->
                 QuoteRow(
@@ -115,6 +139,51 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                     textAlign = TextAlign.End,
                 )
             }
+        }
+    }
+}
+
+// TODO: Update this
+@Composable
+fun SearchBar(
+    modifier: Modifier = Modifier,
+    onSortClick: () -> Unit,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .windowInsetsPadding(TopAppBarDefaults.windowInsets),
+    ) {
+        TextField(
+            modifier = Modifier.weight(1f),
+//                            .layout { measurable, constraints ->
+//                                val placeable = measurable.measure(constraints)
+//                                val height = placeable.height * (1 - scrollBehavior.state.collapsedFraction)
+//                                layout(placeable.width, height.roundToInt()) {
+//                                    placeable.place(0, 0)
+//                                }
+//                            }
+            value = "test",
+            placeholder = { Text(stringResource(R.string.label_search)) },
+            onValueChange = { },
+            leadingIcon = {
+//                            IconButton(Icons.AutoMirrored.Filled.ArrowBack) {
+//                                isSearch = !isSearch
+//                            }
+            },
+//                        trailingIcon = if (value.isNotBlank()) {
+//   //                          { IconButton(Icons.Filled.Close) { value = "" } }
+//                        } else {
+//                            null
+//                        }
+        )
+        IconButton(onClick = onSortClick) {
+            Icon(
+                modifier = Modifier.size(24.dp),
+                painter = painterResource(R.drawable.icon_sort),
+                tint = MaterialTheme.colorScheme.onBackground,
+                contentDescription = null // TODO
+            )
         }
     }
 }

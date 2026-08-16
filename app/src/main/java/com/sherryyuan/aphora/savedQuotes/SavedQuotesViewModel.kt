@@ -2,6 +2,7 @@ package com.sherryyuan.aphora.savedQuotes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sherryyuan.aphora.database.entities.SortOption
 import com.sherryyuan.aphora.navigation.AddEditQuoteKey
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
@@ -24,7 +25,11 @@ class SavedQuotesViewModel @Inject constructor(
     private val savedQuotesFlow = quotesRepository.getQuotes()
     private val viewTypeFlow: MutableStateFlow<QuotesViewType> =
         MutableStateFlow(QuotesViewType.QUOTES_LIST)
+    private val searchStateFlow: MutableStateFlow<SavedQuotesViewState.SearchState> =
+        MutableStateFlow(SavedQuotesViewState.SearchState.NotFocused(0))
     private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
+
+    private val searchQuery: MutableStateFlow<String> = MutableStateFlow("")
 
     val state: StateFlow<SavedQuotesViewState> = createSavedQuotesState()
 
@@ -70,6 +75,29 @@ class SavedQuotesViewModel @Inject constructor(
         }
     }
 
+    fun exitSearch() {
+        searchStateFlow.value = SavedQuotesViewState.SearchState.NotFocused(0)
+    }
+
+    fun searchClick() {
+        searchStateFlow.value = SavedQuotesViewState.SearchState.QueryInput(0)
+    }
+
+    fun sortClick() {
+        viewModelScope.launch {
+            val sortOption = quotesRepository.getSortSelection().first()
+            searchStateFlow.value =
+                SavedQuotesViewState.SearchState.SortSheet(0, sortOption)
+        }
+    }
+
+    fun selectSortOption(sortOption: SortOption) {
+        viewModelScope.launch {
+            quotesRepository.updateSortSelection(sortOption)
+            searchStateFlow.value = SavedQuotesViewState.SearchState.NotFocused(0)
+        }
+    }
+
     fun goToPreviousQuote() {
         if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
             viewModelScope.launch {
@@ -106,11 +134,16 @@ class SavedQuotesViewModel @Inject constructor(
         return combine(
             savedQuotesFlow,
             viewTypeFlow,
+            searchStateFlow,
             currentQuoteIdFlow,
-        ) { quotes, viewType, currentId ->
+        ) { quotes, viewType, searchState, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
-                QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(quotes = quotesUiModels)
+                QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(
+                    quotes = quotesUiModels,
+                    searchState = searchState,
+                )
+
                 QuotesViewType.QUOTE_DETAIL -> {
                     val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
                         .coerceAtLeast(0)
@@ -123,7 +156,10 @@ class SavedQuotesViewModel @Inject constructor(
         }.stateIn(
             viewModelScope,
             SharingStarted.Eagerly,
-            SavedQuotesViewState.QuotesList(quotes = emptyList()),
+            SavedQuotesViewState.QuotesList(
+                quotes = emptyList(),
+                searchState = SavedQuotesViewState.SearchState.NotFocused(0),
+            ),
         )
     }
 }
