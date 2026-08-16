@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import com.sherryyuan.aphora.database.entities.QuoteEntity
 import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
 import com.sherryyuan.aphora.database.entities.QuoteTagCrossRef
+import com.sherryyuan.aphora.database.entities.SortSelectionEntity
 import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.database.entities.TagEntity
 
@@ -16,6 +17,7 @@ import com.sherryyuan.aphora.database.entities.TagEntity
         TagEntity::class,
         QuoteSourceCrossRef::class,
         QuoteTagCrossRef::class,
+        SortSelectionEntity::class,
     ],
     version = 1,
 )
@@ -27,4 +29,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun sourceDao(): SourceDao
 
     abstract fun tagDao(): TagDao
+
+    abstract fun sortSelectionDao(): SortSelectionDao
 }
