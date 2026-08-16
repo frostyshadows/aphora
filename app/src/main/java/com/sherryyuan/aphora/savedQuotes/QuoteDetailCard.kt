@@ -176,7 +176,7 @@ fun QuoteDetailCard(
                             tint = DestructiveRed
                         )
                         Text(
-                            text = stringResource(R.string.delete_quote_dialog_confirm),
+                            text = stringResource(R.string.label_delete),
                             color = DestructiveRed
                         )
                     }
@@ -186,7 +186,7 @@ fun QuoteDetailCard(
                 TextButton(
                     onClick = { showDeleteDialog = false }
                 ) {
-                    Text(stringResource(R.string.delete_quote_dialog_cancel))
+                    Text(stringResource(R.string.label_cancel))
                 }
             }
         )

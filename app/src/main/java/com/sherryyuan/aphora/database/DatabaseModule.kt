@@ -40,4 +40,11 @@ object DatabaseModule {
     fun provideTagDao(database: AppDatabase): TagDao {
         return database.tagDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideSortSelectionDao(database: AppDatabase): SortSelectionDao {
+        return database.sortSelectionDao()
+    }
+
 }
