@@ -8,6 +8,7 @@ sealed interface SavedQuotesViewState {
     data class QuotesList(
         val quotes: List<QuoteUiModel>,
         val searchState: SearchState,
+        val searchQuery: String,
     ) : SavedQuotesViewState
 
     data class QuoteDetail(
