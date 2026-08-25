@@ -168,7 +168,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun QuotesSearchBar(
+private fun QuotesSearchBar(
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit,
     onFilterClick: () -> Unit,
@@ -185,7 +185,7 @@ fun QuotesSearchBar(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .shadow(elevation = 3.dp, shape = RoundedCornerShape(50)),
+                .shadow(elevation = 2.dp, shape = RoundedCornerShape(50)),
             value = searchQuery,
             placeholder = { Text(stringResource(R.string.label_search)) },
             onValueChange = {
