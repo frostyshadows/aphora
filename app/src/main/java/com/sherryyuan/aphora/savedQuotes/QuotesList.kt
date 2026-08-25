@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -21,10 +22,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -44,12 +49,16 @@ fun QuotesList(
     onQuoteRowClick: (Int) -> Unit,
     onAddQuoteClick: () -> Unit,
     onSearchClick: () -> Unit,
+    onSearchQueryChange: (String) -> Unit,
+    onFilterClick: () -> Unit,
+    onCloseSearchClick: () -> Unit,
     onSortClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
             val isSearchFocused =
-                viewState.searchState !is SavedQuotesViewState.SearchState.NotFocused
+                viewState.searchState is SavedQuotesViewState.SearchState.QueryInput ||
+                        viewState.searchState is SavedQuotesViewState.SearchState.FilterSheet
             Crossfade(
                 modifier = Modifier.animateContentSize(),
                 targetState = isSearchFocused,
@@ -67,6 +76,14 @@ fun QuotesList(
                                     contentDescription = stringResource(R.string.label_search)
                                 )
                             }
+                            IconButton(onClick = onSortClick) {
+                                Icon(
+                                    modifier = Modifier.size(24.dp),
+                                    painter = painterResource(R.drawable.icon_sort),
+                                    tint = MaterialTheme.colorScheme.onBackground,
+                                    contentDescription = stringResource(R.string.cd_sort)
+                                )
+                            }
                             IconButton(onClick = onRandomQuoteClick) {
                                 Icon(
                                     modifier = Modifier.size(24.dp),
@@ -81,7 +98,12 @@ fun QuotesList(
                         )
                     )
                 } else {
-                    SearchBar(onSortClick = onSortClick)
+                    QuotesSearchBar(
+                        searchQuery = viewState.searchQuery,
+                        onSearchQueryChange = onSearchQueryChange,
+                        onFilterClick = onFilterClick,
+                        onCloseSearchClick = onCloseSearchClick,
+                    )
                 }
             }
         },
@@ -110,7 +132,9 @@ fun QuotesList(
                 key = { _, quote -> quote.quoteId },
             ) { index, quote ->
                 QuoteRow(
-                    modifier = Modifier.clickable { onQuoteRowClick(index) },
+                    modifier = Modifier
+                        .animateItem()
+                        .clickable { onQuoteRowClick(index) },
                     model = quote,
                 )
             }
@@ -143,47 +167,59 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
     }
 }
 
-// TODO: Update this
 @Composable
-fun SearchBar(
+fun QuotesSearchBar(
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit,
+    onFilterClick: () -> Unit,
+    onCloseSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onSortClick: () -> Unit,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .windowInsetsPadding(TopAppBarDefaults.windowInsets),
+            .windowInsetsPadding(TopAppBarDefaults.windowInsets)
+            .padding(horizontal = 20.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         TextField(
-            modifier = Modifier.weight(1f),
-//                            .layout { measurable, constraints ->
-//                                val placeable = measurable.measure(constraints)
-//                                val height = placeable.height * (1 - scrollBehavior.state.collapsedFraction)
-//                                layout(placeable.width, height.roundToInt()) {
-//                                    placeable.place(0, 0)
-//                                }
-//                            }
-            value = "test",
+            modifier = Modifier
+                .fillMaxWidth()
+                .shadow(elevation = 3.dp, shape = RoundedCornerShape(50)),
+            value = searchQuery,
             placeholder = { Text(stringResource(R.string.label_search)) },
-            onValueChange = { },
-            leadingIcon = {
-//                            IconButton(Icons.AutoMirrored.Filled.ArrowBack) {
-//                                isSearch = !isSearch
-//                            }
+            onValueChange = {
+                onSearchQueryChange(it)
             },
-//                        trailingIcon = if (value.isNotBlank()) {
-//   //                          { IconButton(Icons.Filled.Close) { value = "" } }
-//                        } else {
-//                            null
-//                        }
+            leadingIcon = {
+                IconButton(onClick = onCloseSearchClick) {
+                    Icon(
+                        modifier = Modifier.size(16.dp),
+                        painter = painterResource(R.drawable.icon_close),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        contentDescription = stringResource(R.string.label_close)
+                    )
+                }
+            },
+            trailingIcon = {
+                IconButton(onClick = onFilterClick) {
+                    Icon(
+                        modifier = Modifier.size(18.dp),
+                        painter = painterResource(R.drawable.icon_filter),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        contentDescription = stringResource(R.string.label_filter)
+                    )
+                }
+            },
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                disabledContainerColor = MaterialTheme.colorScheme.surface,
+                errorContainerColor = MaterialTheme.colorScheme.surface,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(50),
         )
-        IconButton(onClick = onSortClick) {
-            Icon(
-                modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.icon_sort),
-                tint = MaterialTheme.colorScheme.onBackground,
-                contentDescription = null // TODO
-            )
-        }
     }
 }

@@ -25,11 +25,13 @@ class SavedQuotesViewModel @Inject constructor(
     private val savedQuotesFlow = quotesRepository.getQuotes()
     private val viewTypeFlow: MutableStateFlow<QuotesViewType> =
         MutableStateFlow(QuotesViewType.QUOTES_LIST)
+
     private val searchStateFlow: MutableStateFlow<SavedQuotesViewState.SearchState> =
         MutableStateFlow(SavedQuotesViewState.SearchState.NotFocused(0))
+    private val searchQueryFlow: MutableStateFlow<String> = MutableStateFlow("")
+
     private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
 
-    private val searchQuery: MutableStateFlow<String> = MutableStateFlow("")
 
     val state: StateFlow<SavedQuotesViewState> = createSavedQuotesState()
 
@@ -75,12 +77,21 @@ class SavedQuotesViewModel @Inject constructor(
         }
     }
 
+    fun goToSearch() {
+        searchStateFlow.value = SavedQuotesViewState.SearchState.QueryInput(0)
+    }
+
+    fun updateSearchQuery(query: String) {
+        searchQueryFlow.value = query
+    }
+
     fun exitSearch() {
+        searchQueryFlow.value = ""
         searchStateFlow.value = SavedQuotesViewState.SearchState.NotFocused(0)
     }
 
-    fun searchClick() {
-        searchStateFlow.value = SavedQuotesViewState.SearchState.QueryInput(0)
+    fun filterClick() {
+        searchStateFlow.value = SavedQuotesViewState.SearchState.FilterSheet(0, tagOptions = emptyList())
     }
 
     fun sortClick() {
@@ -135,14 +146,26 @@ class SavedQuotesViewModel @Inject constructor(
             savedQuotesFlow,
             viewTypeFlow,
             searchStateFlow,
+            searchQueryFlow,
             currentQuoteIdFlow,
-        ) { quotes, viewType, searchState, currentId ->
+        ) { quotes, viewType, searchState, searchQuery, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
-                QuotesViewType.QUOTES_LIST -> SavedQuotesViewState.QuotesList(
-                    quotes = quotesUiModels,
-                    searchState = searchState,
-                )
+                QuotesViewType.QUOTES_LIST -> {
+                    val filteredQuotes = quotesUiModels.filter { quote ->
+                        val textMatchesQuery = quote.text.matchesQuery(searchQuery)
+                        val noteMatchesQuery = quote.userNote?.matchesQuery(searchQuery) == true
+                        val sourceMatchesQuery =
+                            quote.source?.author?.matchesQuery(searchQuery) == true ||
+                                    quote.source?.work?.matchesQuery(searchQuery) == true
+                        textMatchesQuery || noteMatchesQuery || sourceMatchesQuery
+                    }
+                    SavedQuotesViewState.QuotesList(
+                        quotes = filteredQuotes,
+                        searchState = searchState,
+                        searchQuery = searchQuery,
+                    )
+                }
 
                 QuotesViewType.QUOTE_DETAIL -> {
                     val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
@@ -159,9 +182,13 @@ class SavedQuotesViewModel @Inject constructor(
             SavedQuotesViewState.QuotesList(
                 quotes = emptyList(),
                 searchState = SavedQuotesViewState.SearchState.NotFocused(0),
+                searchQuery = "",
             ),
         )
     }
+
+    private fun String.matchesQuery(query: String): Boolean =
+        this.contains(query, ignoreCase = true)
 }
 
 private enum class QuotesViewType {

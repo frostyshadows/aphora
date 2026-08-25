@@ -31,7 +31,10 @@ fun SavedQuotesContainer(
                     onRandomQuoteClick = { viewModel.showRandomQuote() },
                     onQuoteRowClick = { index -> viewModel.toggleToDetail(index) },
                     onAddQuoteClick = { viewModel.addNewQuote() },
-                    onSearchClick = { viewModel.searchClick() },
+                    onSearchClick = { viewModel.goToSearch() },
+                    onSearchQueryChange = { viewModel.updateSearchQuery(it) },
+                    onFilterClick = { viewModel.filterClick() },
+                    onCloseSearchClick = { viewModel.exitSearch() },
                     onSortClick = { viewModel.sortClick() },
                 )
                 when (val searchState = state.searchState) {
@@ -42,7 +45,9 @@ fun SavedQuotesContainer(
                         onOptionSelected = { viewModel.selectSortOption(it) }
                     )
 
-                    is SearchState.FilterSheet -> TODO()
+                    is SearchState.FilterSheet -> FilterBottomSheet(
+                        onDismiss = { viewModel.goToSearch() },
+                    )
 
                     else -> Unit
                 }

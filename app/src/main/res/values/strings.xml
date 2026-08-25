@@ -7,12 +7,15 @@
     <string name="label_confirm">Confirm</string>
     <string name="label_delete">Delete</string>
     <string name="label_cancel">Cancel</string>
+    <string name="label_close">Close</string>
 
     <!-- Saved quotes list screen -->
     <string name="label_search">Search</string>
     <string name="cd_shuffle">Shuffle</string>
+    <string name="cd_sort">Sort</string>
     <string name="cd_add_quote">Add quote</string>
     <string name="sort_by_sheet_title">Sort by</string>
+    <string name="label_filter">Filter</string>
 
     <!-- Quote detail screen -->
     <string name="cd_previous">Previous</string>
