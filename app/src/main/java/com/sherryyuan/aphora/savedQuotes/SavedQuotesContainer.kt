@@ -9,7 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sherryyuan.aphora.database.entities.SortOption
+import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.SavedQuotesViewState.SearchState
+import kotlin.String
+import kotlin.collections.List
 
 @Composable
 fun SavedQuotesContainer(
@@ -47,6 +51,15 @@ fun SavedQuotesContainer(
 
                     is SearchState.FilterSheet -> FilterBottomSheet(
                         onDismiss = { viewModel.goToSearch() },
+                        onFiltersApply = { a, w, t, c, r ->
+                            viewModel.applyFilters(
+                                authors = a,
+                                works = w,
+                                tags = t,
+                                categories = c,
+                                ratings = r,
+                            )
+                        }
                     )
 
                     else -> Unit

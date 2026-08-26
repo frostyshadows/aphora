@@ -3,6 +3,8 @@ package com.sherryyuan.aphora.savedQuotes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.database.entities.SortOption
+import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.navigation.AddEditQuoteKey
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
@@ -29,6 +31,12 @@ class SavedQuotesViewModel @Inject constructor(
     private val searchStateFlow: MutableStateFlow<SavedQuotesViewState.SearchState> =
         MutableStateFlow(SavedQuotesViewState.SearchState.NotFocused(0))
     private val searchQueryFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val filterAuthorsFlow: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
+    private val filterWorksFlow: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
+    private val filterTagsFlow: MutableStateFlow<List<TagEntity>> = MutableStateFlow(emptyList())
+    private val filterCategoriesFlow: MutableStateFlow<List<SourceCategory>> =
+        MutableStateFlow(emptyList())
+    private val filterRatingsFlow: MutableStateFlow<List<Int>> = MutableStateFlow(emptyList())
 
     private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
 
@@ -91,7 +99,22 @@ class SavedQuotesViewModel @Inject constructor(
     }
 
     fun filterClick() {
-        searchStateFlow.value = SavedQuotesViewState.SearchState.FilterSheet(0, tagOptions = emptyList())
+        searchStateFlow.value =
+            SavedQuotesViewState.SearchState.FilterSheet(0, tagOptions = emptyList())
+    }
+
+    fun applyFilters(
+        authors: List<String>,
+        works: List<String>,
+        tags: List<TagEntity>,
+        categories: List<SourceCategory>,
+        ratings: List<Int>
+    ) {
+        filterAuthorsFlow.value = authors
+        filterWorksFlow.value = works
+        filterTagsFlow.value = tags
+        filterCategoriesFlow.value = categories
+        filterRatingsFlow.value = ratings
     }
 
     fun sortClick() {

@@ -98,9 +98,9 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                     IconButton(onClick = { viewModel.navigateBack() }) {
                         Icon(
                             modifier = Modifier.size(24.dp),
-                            painter = painterResource(R.drawable.icon_arrow_left),
+                            painter = painterResource(R.drawable.icon_close),
                             tint = MaterialTheme.colorScheme.onBackground,
-                            contentDescription = stringResource(R.string.label_back),
+                            contentDescription = stringResource(R.string.label_close),
                         )
                     }
                 },
@@ -151,7 +151,9 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                         },
                         onAddNewTagClicked = { label, color ->
                             if (selectedTags.none { it.label.equals(label, ignoreCase = true) }) {
-                                viewModel.addNewTag(label, color)
+                                val tag = TagEntity(label = label, color = color)
+                                viewModel.addNewTag(tag)
+                                selectedTags = selectedTags + tag
                             }
                         },
                         onTagUnselected = { tag ->
@@ -222,11 +224,10 @@ private fun RatingHearts(
                                 color = Color.Red,
                                 bounded = false,
                             ),
-                        ){
+                        ) {
                             focusManager.clearFocus()
                             onRatingUpdate(i)
-                        }
-                            ,
+                        },
                     colorFilter = ColorFilter.tint(
                         if (i <= rating) LikeIconRed else Color.Gray.copy(alpha = 0.3f)
                     )

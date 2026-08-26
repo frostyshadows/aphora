@@ -200,7 +200,7 @@ private fun SourceEditorSheetContent(
             OutlinedTextField(
                 modifier = modifier.fillMaxWidth(),
                 state = authorTextFieldState,
-                label = { Text(stringResource(R.string.add_edit_quote_source_author)) },
+                label = { Text(stringResource(R.string.label_author)) },
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
@@ -251,7 +251,7 @@ private fun SourceEditorSheetContent(
         VerticalSpacer()
         Button(
             modifier = Modifier.fillMaxWidth(),
-            enabled = authorTextFieldState.text.isNotBlank(),
+            enabled = authorTextFieldState.text.isNotBlank() || workTextFieldState.text.isNotBlank(),
             onClick = {
                 onSaveSource(
                     QuoteUiModel.Source(

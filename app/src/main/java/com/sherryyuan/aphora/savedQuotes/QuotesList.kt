@@ -153,15 +153,23 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                 overflow = TextOverflow.Ellipsis,
             )
 
-            model.source?.let {
+            model.source?.let { source ->
                 VerticalSpacer()
                 SectionDivider()
                 VerticalSpacer(12.dp)
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = it.author.uppercase(),
-                    textAlign = TextAlign.End,
-                )
+                source.author?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it.uppercase(),
+                        textAlign = TextAlign.End,
+                    )
+                } ?: source.work?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it.uppercase(),
+                        textAlign = TextAlign.End,
+                    )
+                }
             }
         }
     }
