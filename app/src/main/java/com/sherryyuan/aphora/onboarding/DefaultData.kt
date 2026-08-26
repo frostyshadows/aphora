@@ -32,23 +32,55 @@ val DEFAULT_TAGS = listOf(
 val DEFAULT_QUOTE_BUNDLES = listOf(
     DefaultQuoteBundle(
         quote = QuoteEntity(
-            text = "The front was broken by a line of French windows, glowing now with reflected gold, " +
-                    "and wide open to the warm windy afternoon, and Tom Buchanan in riding clothes " +
-                    "was standing with his legs apart on the front porch. He had changed since his " +
-                    "New Haven years. Now he was a sturdy, straw haired man of thirty with a " +
-                    "rather hard mouth and a supercilious manner. Two shining, arrogant eyes had " +
-                    "established dominance over his face and gave him the appearance of always leaning " +
-                    "aggressively forward.",
-            userNote = null,
-            rating = 1,
+            text = "I'm responsible for my own happiness? I can't even be responsible for my own breakfast!",
+            userNote = "BoJack talking to Diane in S1E1",
+            rating = 5,
             timestampAdded = System.currentTimeMillis(),
             timestampLastEdited = System.currentTimeMillis(),
         ),
         source = SourceEntity(
-            author = "F. Scott Fitzgerald",
-            work = "The Great Gatsby",
+            author = "Raphael Bob-Waksberg",
+            work = "BoJack Horseman",
+            category = SourceCategory.TV,
+        ),
+        tags = listOf("dialogue", "humor"),
+    ),
+    DefaultQuoteBundle(
+        quote = QuoteEntity(
+            text = "One day I went with Sibylla to Tesco’s. A brilliant white light beat " +
+                    "pitilessly down, like the fierce desert sun at midday on the French " +
+                    "Foreign Legion; the glittering floor dazzled the eye with the cruel desert " +
+                    "glare. We walked slowly through the cereals. Vast boxes of cornflakes and " +
+                    "bran flakes rose on either side; as we reached the muesli a cart turned " +
+                    "the corner and turned into the aisle, propelled by a fat woman and " +
+                    "followed by three fat children. One was crying into a fat fist, and two " +
+                    "were arguing about Frosties and Breakfast Boulders, and the woman was " +
+                    "smiling.",
+            userNote = "Of course Helen DeWitt can make Tesco interesting",
+            rating = 4,
+            timestampAdded = System.currentTimeMillis(),
+            timestampLastEdited = System.currentTimeMillis(),
+        ),
+        source = SourceEntity(
+            author = "Helen Dewitt",
+            work = "The Last Samurai",
             category = SourceCategory.BOOK,
         ),
-        tags = listOf("character description"),
+        tags = listOf("setting"),
+    ),
+    DefaultQuoteBundle(
+        quote = QuoteEntity(
+            text = "What kind of magpie keeps this notebook?",
+            userNote = "Didion's metaphor for collecting pretty shiny phrases in her notebook",
+            rating = 3,
+            timestampAdded = System.currentTimeMillis(),
+            timestampLastEdited = System.currentTimeMillis(),
+        ),
+        source = SourceEntity(
+            author = "Joan Didion",
+            work = "Slouching Towards Bethlehem",
+            category = SourceCategory.BOOK,
+        ),
+        tags = listOf("metaphor"),
     )
 )

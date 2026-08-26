@@ -92,7 +92,7 @@ fun QuoteDetailCard(
                 model.source?.let {
                     VerticalSpacer()
                     SectionDivider()
-                    VerticalSpacer(16.dp)
+                    VerticalSpacer(32.dp)
                     QuoteSource(
                         modifier = Modifier
                             .align(Alignment.End)
@@ -100,22 +100,25 @@ fun QuoteDetailCard(
                         model = it,
                     )
                 }
-                if (model.tags.isNotEmpty()) {
+
+                if (!model.userNote.isNullOrBlank() || model.tags.isNotEmpty()) {
                     VerticalSpacer()
                     SectionDivider()
-                    VerticalSpacer()
-                    QuoteTags(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        tags = model.tags,
-                    )
+                    VerticalSpacer(32.dp)
                 }
                 if (!model.userNote.isNullOrBlank()) {
-                    VerticalSpacer()
-                    SectionDivider()
-                    VerticalSpacer()
                     QuoteNotes(
                         modifier = Modifier.padding(horizontal = 20.dp),
                         note = model.userNote,
+                    )
+                }
+                if (!model.userNote.isNullOrBlank() && model.tags.isNotEmpty()) {
+                    VerticalSpacer(32.dp)
+                }
+                if (model.tags.isNotEmpty()) {
+                    QuoteTags(
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        tags = model.tags,
                     )
                 }
                 VerticalSpacer()
@@ -197,22 +200,24 @@ fun QuoteDetailCard(
 @Composable
 private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(end = 24.dp)) {
-        Text(
-            text = model.author.uppercase(),
-            style = Typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        model.work?.let { work ->
-            Spacer(modifier = Modifier.height(8.dp))
+        model.author?.let { author ->
             Row(verticalAlignment = Alignment.CenterVertically) {
-                model.category?.let { category ->
-                    Icon(
-                        modifier = Modifier
-                            .padding(end = 4.dp)
-                            .size(16.dp),
-                        painter = painterResource(category.iconRes),
-                        contentDescription = stringResource(category.stringRes),
-                    )
+                QuoteSourceIcon(model)
+                Text(
+                    text = author.uppercase(),
+                    style = Typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                )
+            }
+
+        }
+        if (!model.author.isNullOrBlank() && !model.work.isNullOrBlank()) {
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+        model.work?.let { work ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (model.author.isNullOrBlank()) {
+                    QuoteSourceIcon(model)
                 }
                 Text(
                     text = work,
@@ -221,6 +226,19 @@ private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifie
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun QuoteSourceIcon(model: QuoteUiModel.Source) {
+    model.category?.let { category ->
+        Icon(
+            modifier = Modifier
+                .padding(end = 4.dp)
+                .size(16.dp),
+            painter = painterResource(category.iconRes),
+            contentDescription = stringResource(category.stringRes),
+        )
     }
 }
 

@@ -34,7 +34,7 @@
     <string name="add_edit_quote_rating_low">Like it</string>
     <string name="add_edit_quote_rating_high">Life-changing</string>
     <string name="add_edit_quote_source_section_title">Source</string>
-    <string name="add_edit_quote_source_author">Author</string>
+    <string name="label_author">Author</string>
     <string name="add_edit_quote_source_work">Work</string>
     <string name="add_edit_quote_source_category">Category: </string>
     <string name="cd_dropdown">Dropdown</string>
@@ -52,10 +52,14 @@
     <string name="category_article">Article</string>
     <string name="category_other">Other</string>
 
-    <!-- Sort Options -->
+    <!-- Sort sheet -->
     <string name="sort_option_most_liked">Most liked</string>
     <string name="sort_option_least_liked">Least liked</string>
     <string name="sort_option_earliest_added">Earliest added</string>
     <string name="sort_option_most_recent_added">Most recent added</string>
     <string name="sort_option_most_recent_updated">Most recent updated</string>
+
+    <!-- Filter sheet -->
+    <string name="label_clear">Clear</string>
+    <string name="label_apply">Apply</string>
 </resources>
