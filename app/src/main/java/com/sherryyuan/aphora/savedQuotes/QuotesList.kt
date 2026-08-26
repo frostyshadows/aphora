@@ -153,22 +153,30 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                 overflow = TextOverflow.Ellipsis,
             )
 
-            model.source?.let {
+            model.source?.let { source ->
                 VerticalSpacer()
                 SectionDivider()
                 VerticalSpacer(12.dp)
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = it.author.uppercase(),
-                    textAlign = TextAlign.End,
-                )
+                source.author?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it.uppercase(),
+                        textAlign = TextAlign.End,
+                    )
+                } ?: source.work?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it.uppercase(),
+                        textAlign = TextAlign.End,
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-fun QuotesSearchBar(
+private fun QuotesSearchBar(
     searchQuery: String,
     onSearchQueryChange: (String) -> Unit,
     onFilterClick: () -> Unit,
@@ -185,7 +193,7 @@ fun QuotesSearchBar(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .shadow(elevation = 3.dp, shape = RoundedCornerShape(50)),
+                .shadow(elevation = 2.dp, shape = RoundedCornerShape(50)),
             value = searchQuery,
             placeholder = { Text(stringResource(R.string.label_search)) },
             onValueChange = {

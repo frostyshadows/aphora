@@ -14,11 +14,7 @@ class TagsRepository @Inject constructor(private val tagDao: TagDao) {
         return tagDao.getAll()
     }
 
-    suspend fun saveTag(
-        label: String,
-        color: Color,
-    ): Long {
-        val newTag = TagEntity(label = label, color = color)
-        return tagDao.insertEntity(newTag)
+    suspend fun saveTag(tag: TagEntity): Long {
+        return tagDao.insertEntity(tag)
     }
 }

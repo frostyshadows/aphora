@@ -58,7 +58,7 @@ fun TagsSelector(
     onTagUnselected: (TagEntity) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val randomNewTagColor = remember {
+    var randomNewTagColor = remember {
         DefaultTagColors[DefaultTagColors.indices.random()]
     }
     val focusRequester = remember {
@@ -175,6 +175,8 @@ fun TagsSelector(
                             tagColor = randomNewTagColor,
                             onClick = {
                                 onAddNewTagClicked(inputText, randomNewTagColor)
+                                randomNewTagColor =
+                                    DefaultTagColors[DefaultTagColors.indices.random()]
                                 inputTextFieldState.clearText()
                                 showDropdown = false
                             }
@@ -197,7 +199,7 @@ private fun SelectedTagChip(
         selected = true,
         enabled = false,
         onClick = {},
-        label = { Text(text = tag.label,) },
+        label = { Text(text = tag.label) },
         colors = InputChipDefaults.inputChipColors(
             labelColor = MaterialTheme.colorScheme.onSurface,
             trailingIconColor = MaterialTheme.colorScheme.onSurface,
