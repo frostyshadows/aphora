@@ -10,7 +10,7 @@ import com.sherryyuan.aphora.R
 @Entity
 data class SourceEntity(
     @PrimaryKey(autoGenerate = true) val sourceId: Long = 0,
-    val author: String,
+    val author: String?,
     val work: String?,
     val category: SourceCategory,
 )
@@ -21,10 +21,10 @@ enum class SourceCategory(
 ) {
     BOOK(R.drawable.icon_book, R.string.category_book),
     MOVIE(R.drawable.icon_movie, R.string.category_movie),
-    POEM(R.drawable.icon_book, R.string.category_poem), // TODO
     TV(R.drawable.icon_tv, R.string.category_tv),
     SONG(R.drawable.icon_music, R.string.category_song),
-    STORY(R.drawable.icon_book, R.string.category_story), // TODO
+    POEM(R.drawable.icon_book, R.string.category_poem), // TODO
+    SHORT_STORY(R.drawable.icon_book, R.string.category_story), // TODO
     ARTICLE(R.drawable.icon_article, R.string.category_article),
     OTHER(R.drawable.icon_book, R.string.category_other), // TODO
 }
