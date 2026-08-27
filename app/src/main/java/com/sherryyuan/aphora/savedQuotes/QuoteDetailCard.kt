@@ -41,11 +41,11 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.RatingHeart
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
-import com.sherryyuan.aphora.ui.theme.LikeIconRed
 import com.sherryyuan.aphora.ui.theme.Typography
 
 @Composable
@@ -287,26 +287,6 @@ private fun QuoteNotes(note: String, modifier: Modifier = Modifier) {
             text = note,
             style = Typography.bodyMedium,
             color = MaterialTheme.colorScheme.onBackground,
-        )
-    }
-}
-
-@Composable
-private fun RatingHeart(rating: Int, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center,
-    ) {
-        Image(
-            modifier = Modifier.size(32.dp),
-            painter = painterResource(R.drawable.icon_heart),
-            contentDescription = null,
-            colorFilter = ColorFilter.tint(LikeIconRed),
-        )
-        Text(
-            text = rating.toString(),
-            style = Typography.labelLarge,
-            color = Color.White,
         )
     }
 }
