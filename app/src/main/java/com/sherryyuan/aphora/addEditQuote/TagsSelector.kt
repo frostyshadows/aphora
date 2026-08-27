@@ -27,7 +27,6 @@ import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -72,7 +71,7 @@ fun TagsSelector(
     val inputTextFieldState = rememberTextFieldState("")
     val inputText = inputTextFieldState.text.trim().toString()
 
-    var showDropdown by remember {
+    var dismissedForSelection by remember {
         mutableStateOf(false)
     }
 
@@ -86,14 +85,8 @@ fun TagsSelector(
         }
     }
 
-    LaunchedEffect(inputText, filteredTags) {
-        if (isFocused && (inputText.isNotBlank() || filteredTags.isNotEmpty())) {
-            showDropdown = true
-        }
-        if (filteredTags.isEmpty() && inputText.isBlank()) {
-            showDropdown = false
-        }
-    }
+    val showDropdown = isFocused &&
+            (inputText.isNotBlank() || (filteredTags.isNotEmpty() && !dismissedForSelection))
 
     Column {
         Text(
@@ -135,8 +128,9 @@ fun TagsSelector(
                         .focusRequester(focusRequester)
                         .onFocusChanged {
                             isFocused = it.isFocused
-                            showDropdown =
-                                it.isFocused && (inputText.isNotBlank() || filteredTags.isNotEmpty())
+                            if (it.isFocused) {
+                                dismissedForSelection = false
+                            }
                         },
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Done
@@ -160,7 +154,7 @@ fun TagsSelector(
                             onClick = {
                                 onTagSelected(tag)
                                 inputTextFieldState.clearText()
-                                showDropdown = false
+                                dismissedForSelection = true
                             },
                             label = { Text(tag.label) },
                             colors = InputChipDefaults.inputChipColors(containerColor = tag.color),
@@ -178,7 +172,7 @@ fun TagsSelector(
                                 randomNewTagColor =
                                     DefaultTagColors[DefaultTagColors.indices.random()]
                                 inputTextFieldState.clearText()
-                                showDropdown = false
+                                dismissedForSelection = true
                             }
                         )
                     }

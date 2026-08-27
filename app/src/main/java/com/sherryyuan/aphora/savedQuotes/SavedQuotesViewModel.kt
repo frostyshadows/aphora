@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import com.sherryyuan.aphora.utils.combine
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,7 +37,7 @@ class SavedQuotesViewModel @Inject constructor(
     private val filterTagsFlow: MutableStateFlow<List<TagEntity>> = MutableStateFlow(emptyList())
     private val filterCategoriesFlow: MutableStateFlow<List<SourceCategory>> =
         MutableStateFlow(emptyList())
-    private val filterRatingsFlow: MutableStateFlow<List<Int>> = MutableStateFlow(emptyList())
+    private val filterMinRatingFlow: MutableStateFlow<Int> = MutableStateFlow(1)
 
     private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
 
@@ -108,13 +109,14 @@ class SavedQuotesViewModel @Inject constructor(
         works: List<String>,
         tags: List<TagEntity>,
         categories: List<SourceCategory>,
-        ratings: List<Int>
+        minRating: Int
     ) {
         filterAuthorsFlow.value = authors
         filterWorksFlow.value = works
         filterTagsFlow.value = tags
         filterCategoriesFlow.value = categories
-        filterRatingsFlow.value = ratings
+        filterMinRatingFlow.value = minRating
+        searchStateFlow.value = SavedQuotesViewState.SearchState.QueryInput(0)
     }
 
     fun sortClick() {
@@ -170,19 +172,15 @@ class SavedQuotesViewModel @Inject constructor(
             viewTypeFlow,
             searchStateFlow,
             searchQueryFlow,
+            filterMinRatingFlow,
             currentQuoteIdFlow,
-        ) { quotes, viewType, searchState, searchQuery, currentId ->
+        ) { quotes, viewType, searchState, searchQuery, minRating, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
                 QuotesViewType.QUOTES_LIST -> {
-                    val filteredQuotes = quotesUiModels.filter { quote ->
-                        val textMatchesQuery = quote.text.matchesQuery(searchQuery)
-                        val noteMatchesQuery = quote.userNote?.matchesQuery(searchQuery) == true
-                        val sourceMatchesQuery =
-                            quote.source?.author?.matchesQuery(searchQuery) == true ||
-                                    quote.source?.work?.matchesQuery(searchQuery) == true
-                        textMatchesQuery || noteMatchesQuery || sourceMatchesQuery
-                    }
+                    val filteredQuotes = quotesUiModels
+                        .filterSearchQuery(searchQuery)
+                        .filterMinRating(minRating)
                     SavedQuotesViewState.QuotesList(
                         quotes = filteredQuotes,
                         searchState = searchState,
@@ -208,6 +206,21 @@ class SavedQuotesViewModel @Inject constructor(
                 searchQuery = "",
             ),
         )
+    }
+
+    private fun List<QuoteUiModel>.filterSearchQuery(query: String): List<QuoteUiModel> {
+        return filter { quote ->
+            val textMatchesQuery = quote.text.matchesQuery(query)
+            val noteMatchesQuery = quote.userNote?.matchesQuery(query) == true
+            val sourceMatchesQuery =
+                quote.source?.author?.matchesQuery(query) == true ||
+                        quote.source?.work?.matchesQuery(query) == true
+            textMatchesQuery || noteMatchesQuery || sourceMatchesQuery
+        }
+    }
+
+    private fun List<QuoteUiModel>.filterMinRating(rating: Int): List<QuoteUiModel> {
+        return filter { quote -> quote.rating >= rating }
     }
 
     private fun String.matchesQuery(query: String): Boolean =

@@ -60,6 +60,7 @@
     <string name="sort_option_most_recent_updated">Most recent updated</string>
 
     <!-- Filter sheet -->
+    <string name="rating_and_up">&amp; up</string>
     <string name="label_clear">Clear</string>
     <string name="label_apply">Apply</string>
 </resources>
