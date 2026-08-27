@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.RatingHeart
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Typography
@@ -153,22 +154,30 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                 overflow = TextOverflow.Ellipsis,
             )
 
-            model.source?.let { source ->
-                VerticalSpacer()
-                SectionDivider()
-                VerticalSpacer(12.dp)
-                source.author?.let {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = it.uppercase(),
-                        textAlign = TextAlign.End,
-                    )
-                } ?: source.work?.let {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = it.uppercase(),
-                        textAlign = TextAlign.End,
-                    )
+            Row(
+                verticalAlignment = Alignment.Bottom,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                RatingHeart(rating = model.rating)
+                model.source?.let { source ->
+                    Column {
+                        VerticalSpacer()
+                        SectionDivider()
+                        VerticalSpacer(12.dp)
+                        source.author?.let {
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = it.uppercase(),
+                                textAlign = TextAlign.End,
+                            )
+                        } ?: source.work?.let {
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = it.uppercase(),
+                                textAlign = TextAlign.End,
+                            )
+                        }
+                    }
                 }
             }
         }

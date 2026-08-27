@@ -57,7 +57,7 @@ fun SavedQuotesContainer(
                                 works = w,
                                 tags = t,
                                 categories = c,
-                                ratings = r,
+                                minRating = r,
                             )
                         }
                     )

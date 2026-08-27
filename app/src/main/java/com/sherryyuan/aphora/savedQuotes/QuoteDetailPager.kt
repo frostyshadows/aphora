@@ -1,10 +1,13 @@
 package com.sherryyuan.aphora.savedQuotes
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -86,9 +89,9 @@ fun QuoteDetailPager(
                 modifier = Modifier
                     .navigationBarsPadding()
                     .padding(bottom = 24.dp),
-                previousEnabled = currentIndex > 0,
+                previousVisible = currentIndex > 0,
                 onGoToPreviousClick = onGoToPreviousClick,
-                nextEnabled = currentIndex < quotes.lastIndex,
+                nextVisible = currentIndex < quotes.lastIndex,
                 onGoToNextClick = onGoToNextClick,
             )
         }
@@ -123,8 +126,8 @@ fun QuoteDetailPager(
 
 @Composable
 private fun QuoteDetailBottomBar(
-    previousEnabled: Boolean,
-    nextEnabled: Boolean,
+    previousVisible: Boolean,
+    nextVisible: Boolean,
     onGoToPreviousClick: () -> Unit,
     onGoToNextClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -133,43 +136,41 @@ private fun QuoteDetailBottomBar(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 24.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        IconButton(
-            modifier = Modifier
-                .background(
-                    color = MaterialTheme.colorScheme.primary.copy(
-                        alpha = if (previousEnabled) 1f else 0.5f
+        AnimatedVisibility(visible = previousVisible, enter = fadeIn(), exit = fadeOut()) {
+            IconButton(
+                modifier = Modifier
+                    .background(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = CircleShape,
                     ),
-                    shape = CircleShape,
-                ),
-            enabled = previousEnabled,
-            onClick = onGoToPreviousClick,
-        ) {
-            Icon(
-                modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.icon_caret_left),
-                tint = MaterialTheme.colorScheme.onPrimary,
-                contentDescription = stringResource(R.string.cd_previous),
-            )
+                onClick = onGoToPreviousClick,
+            ) {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    painter = painterResource(R.drawable.icon_caret_left),
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    contentDescription = stringResource(R.string.cd_previous),
+                )
+            }
         }
-        IconButton(
-            modifier = Modifier
-                .background(
-                    color = MaterialTheme.colorScheme.primary.copy(
-                        alpha = if (nextEnabled) 1f else 0.5f
+        Spacer(modifier = Modifier.weight(1f))
+        AnimatedVisibility(visible = nextVisible, enter = fadeIn(), exit = fadeOut()) {
+            IconButton(
+                modifier = Modifier
+                    .background(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = CircleShape,
                     ),
-                    shape = CircleShape,
-                ),
-            enabled = nextEnabled,
-            onClick = onGoToNextClick,
-        ) {
-            Icon(
-                modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.icon_caret_right),
-                tint = MaterialTheme.colorScheme.onPrimary,
-                contentDescription = stringResource(R.string.cd_next),
-            )
+                onClick = onGoToNextClick,
+            ) {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    painter = painterResource(R.drawable.icon_caret_right),
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    contentDescription = stringResource(R.string.cd_next),
+                )
+            }
         }
     }
 }
