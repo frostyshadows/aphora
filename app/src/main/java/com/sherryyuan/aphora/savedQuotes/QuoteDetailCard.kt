@@ -41,7 +41,7 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
-import com.sherryyuan.aphora.ui.common.RatingHeart
+import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
@@ -101,10 +101,17 @@ fun QuoteDetailCard(
                     )
                 }
 
+                VerticalSpacer()
+                RatingDiamondsRow(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(horizontal = 20.dp),
+                    diamondSize = 30.dp,
+                    rating = model.rating,
+                )
+
                 if (!model.userNote.isNullOrBlank() || model.tags.isNotEmpty()) {
                     VerticalSpacer()
-                    SectionDivider()
-                    VerticalSpacer(32.dp)
                 }
                 if (!model.userNote.isNullOrBlank()) {
                     QuoteNotes(
@@ -122,12 +129,6 @@ fun QuoteDetailCard(
                     )
                 }
                 VerticalSpacer()
-                RatingHeart(
-                    modifier = Modifier
-                        .align(alignment = Alignment.End)
-                        .padding(horizontal = 20.dp),
-                    rating = model.rating,
-                )
                 VerticalSpacer(64.dp)
             }
             if (showGradient) {

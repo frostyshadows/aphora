@@ -17,7 +17,8 @@ val LightTaupe = Color(0xFFB8ADA3)
 val LightNavyAccent = Color(0xFFA3B8D7)
 
 // Accent colors
-val LikeIconRed = Color(0xFFE63946)
+val GemstoneBlue = Color(0xFFB2D7EC)
+val DisabledBlue = Color(0xFFDCE4E8)
 val DestructiveRed = Color(0xFFD62828)
 
 // Tag Colors
