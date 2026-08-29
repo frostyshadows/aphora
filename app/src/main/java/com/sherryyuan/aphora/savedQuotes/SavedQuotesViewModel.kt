@@ -8,15 +8,14 @@ import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.navigation.AddEditQuoteKey
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
+import com.sherryyuan.aphora.utils.combine
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import com.sherryyuan.aphora.utils.combine
 import javax.inject.Inject
 
 @HiltViewModel
@@ -101,7 +100,12 @@ class SavedQuotesViewModel @Inject constructor(
 
     fun filterClick() {
         searchStateFlow.value =
-            SavedQuotesViewState.SearchState.FilterSheet(0, tagOptions = emptyList())
+            SavedQuotesViewState.SearchState.FilterSheet(
+                0,
+                selectedCategories = filterCategoriesFlow.value,
+                tagOptions = emptyList(),
+                selectedMinRating = filterMinRatingFlow.value,
+            )
     }
 
     fun applyFilters(
@@ -172,17 +176,24 @@ class SavedQuotesViewModel @Inject constructor(
             viewTypeFlow,
             searchStateFlow,
             searchQueryFlow,
+            filterCategoriesFlow,
             filterMinRatingFlow,
             currentQuoteIdFlow,
-        ) { quotes, viewType, searchState, searchQuery, minRating, currentId ->
+        ) { quotes, viewType, searchState, searchQuery, categories, minRating, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
                 QuotesViewType.QUOTES_LIST -> {
-                    val filteredQuotes = quotesUiModels
-                        .filterSearchQuery(searchQuery)
-                        .filterMinRating(minRating)
+                    val displayedQuotes =
+                        if (searchState is SavedQuotesViewState.SearchState.QueryInput || searchState is SavedQuotesViewState.SearchState.FilterSheet) {
+                            quotesUiModels
+                                .filterSearchQuery(searchQuery)
+                                .filterCategories(categories)
+                                .filterMinRating(minRating)
+                        } else {
+                            quotesUiModels
+                        }
                     SavedQuotesViewState.QuotesList(
-                        quotes = filteredQuotes,
+                        quotes = displayedQuotes,
                         searchState = searchState,
                         searchQuery = searchQuery,
                     )
@@ -217,6 +228,13 @@ class SavedQuotesViewModel @Inject constructor(
                         quote.source?.work?.matchesQuery(query) == true
             textMatchesQuery || noteMatchesQuery || sourceMatchesQuery
         }
+    }
+
+    private fun List<QuoteUiModel>.filterCategories(
+        categories: List<SourceCategory>,
+    ): List<QuoteUiModel> {
+        if (categories.isEmpty()) return this
+        return filter { quote -> quote.source?.category in categories }
     }
 
     private fun List<QuoteUiModel>.filterMinRating(rating: Int): List<QuoteUiModel> {
