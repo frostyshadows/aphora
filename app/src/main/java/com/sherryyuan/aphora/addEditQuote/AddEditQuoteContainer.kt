@@ -1,10 +1,6 @@
 package com.sherryyuan.aphora.addEditQuote
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -40,8 +35,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -53,8 +46,8 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
-import com.sherryyuan.aphora.ui.theme.LikeIconRed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -129,7 +122,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                 ) {
                     QuoteInputField(quoteTextFieldState)
                     VerticalSpacer()
-                    RatingHearts(
+                    RatingDiamonds(
                         rating = rating,
                         onRatingUpdate = { updatedRating -> rating = updatedRating }
                     )
@@ -198,7 +191,7 @@ private fun QuoteInputField(textFieldState: TextFieldState, modifier: Modifier =
 }
 
 @Composable
-private fun RatingHearts(
+private fun RatingDiamonds(
     modifier: Modifier = Modifier,
     rating: Int,
     onRatingUpdate: (Int) -> Unit
@@ -206,46 +199,28 @@ private fun RatingHearts(
     val focusManager = LocalFocusManager.current
     Column(
         modifier = modifier.padding(horizontal = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            for (i in 1..5) {
-                Image(
-                    painter = painterResource(R.drawable.icon_heart),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = ripple(
-                                color = Color.Red,
-                                bounded = false,
-                            ),
-                        ) {
-                            focusManager.clearFocus()
-                            onRatingUpdate(i)
-                        },
-                    colorFilter = ColorFilter.tint(
-                        if (i <= rating) LikeIconRed else Color.Gray.copy(alpha = 0.3f)
-                    )
-                )
-            }
-        }
-        VerticalSpacer(8.dp)
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Text(
-                text = stringResource(R.string.add_edit_quote_rating_low),
-                style = MaterialTheme.typography.labelSmall
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = stringResource(R.string.add_edit_quote_rating_high),
-                style = MaterialTheme.typography.labelSmall
-            )
-        }
+        RatingDiamondsRow(
+            rating = rating,
+            diamondSize = 40.dp,
+            onRatingClick = {
+                focusManager.clearFocus()
+                onRatingUpdate(it)
+            },
+        )
+    }
+    VerticalSpacer(8.dp)
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = stringResource(R.string.add_edit_quote_rating_low),
+            style = MaterialTheme.typography.labelSmall
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text = stringResource(R.string.add_edit_quote_rating_high),
+            style = MaterialTheme.typography.labelSmall
+        )
     }
 }
 

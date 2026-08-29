@@ -37,7 +37,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.ui.common.AphoraCard
-import com.sherryyuan.aphora.ui.common.RatingHeart
+import com.sherryyuan.aphora.ui.common.RatingDiamondSingle
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Typography
@@ -158,7 +158,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                RatingHeart(rating = model.rating)
+                RatingDiamondSingle(rating = model.rating)
                 model.source?.let { source ->
                     Column {
                         VerticalSpacer()
