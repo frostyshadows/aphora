@@ -60,7 +60,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
         TextFieldState(existingQuote?.text.orEmpty())
     }
     var rating: Int by remember(existingQuote) {
-        mutableIntStateOf(existingQuote?.rating ?: 1)
+        mutableIntStateOf(existingQuote?.rating ?: 3)
     }
     var source: QuoteUiModel.Source? by remember(existingQuote) {
         mutableStateOf(existingQuote?.source)
