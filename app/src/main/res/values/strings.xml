@@ -51,6 +51,7 @@
     <string name="category_story">Story</string>
     <string name="category_article">Article</string>
     <string name="category_other">Other</string>
+    <string name="category_all">All</string>
 
     <!-- Sort sheet -->
     <string name="sort_option_most_liked">Most liked</string>
@@ -60,6 +61,7 @@
     <string name="sort_option_most_recent_updated">Most recent updated</string>
 
     <!-- Filter sheet -->
+    <string name="categories_header">Categories</string>
     <string name="header_rating_collapsed">Rating: </string>
     <string name="header_rating_expanded">Rating</string>
     <string name="rating_and_up">&amp; up</string>
