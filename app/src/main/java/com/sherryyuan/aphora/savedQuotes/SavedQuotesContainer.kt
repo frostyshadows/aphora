@@ -46,6 +46,8 @@ fun SavedQuotesContainer(
                     )
 
                     is SearchState.FilterSheet -> FilterBottomSheet(
+                        selectedCategories = searchState.selectedCategories,
+                        selectedMinRating = searchState.selectedMinRating,
                         onDismiss = { viewModel.goToSearch() },
                         onFiltersApply = { a, w, t, c, r ->
                             viewModel.applyFilters(

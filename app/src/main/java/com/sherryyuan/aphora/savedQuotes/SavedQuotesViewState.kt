@@ -1,6 +1,7 @@
 package com.sherryyuan.aphora.savedQuotes
 
 import com.sherryyuan.aphora.database.entities.SortOption
+import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.TagEntity
 
 sealed interface SavedQuotesViewState {
@@ -27,7 +28,9 @@ sealed interface SavedQuotesViewState {
 
         data class FilterSheet(
             override val activeFiltersCount: Int,
+            val selectedCategories: List<SourceCategory>,
             val tagOptions: List<TagEntity>,
+            val selectedMinRating: Int,
         ) : SearchState
 
         data class SortSheet(

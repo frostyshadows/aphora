@@ -3,7 +3,9 @@ package com.sherryyuan.aphora.savedQuotes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +15,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.InputChip
+import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.RadioButton
@@ -25,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,10 +39,13 @@ import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
+import com.sherryyuan.aphora.ui.theme.NavyAccent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterBottomSheet(
+    selectedCategories: List<SourceCategory>,
+    selectedMinRating: Int,
     onDismiss: () -> Unit,
     onFiltersApply: (
         authors: List<String>,
@@ -54,8 +62,8 @@ fun FilterBottomSheet(
     var filterWorks: List<String> by remember {
         mutableStateOf(emptyList())
     }
-    var filterCategories: List<SourceCategory> by remember {
-        mutableStateOf(emptyList())
+    var filterCategories: List<SourceCategory> by remember(selectedCategories) {
+        mutableStateOf(selectedCategories)
     }
     var filterTags: List<TagEntity> by remember {
         mutableStateOf(emptyList())
@@ -63,8 +71,8 @@ fun FilterBottomSheet(
     var ratingFilterExpanded: Boolean by remember {
         mutableStateOf(false)
     }
-    var filterMinRating: Int by remember {
-        mutableIntStateOf(1)
+    var filterMinRating: Int by remember(selectedMinRating) {
+        mutableIntStateOf(selectedMinRating)
     }
     ModalBottomSheet(
         modifier = modifier,
@@ -79,6 +87,14 @@ fun FilterBottomSheet(
                 textAlign = TextAlign.Center,
             )
             VerticalSpacer()
+            CategoriesFilter(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                selectedCategories = filterCategories,
+                updateCategories = { filterCategories = it },
+            )
+            VerticalSpacer()
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.label_author))
             }
@@ -89,7 +105,7 @@ fun FilterBottomSheet(
                 isExpanded = ratingFilterExpanded,
                 selectedMinRating = filterMinRating,
                 onCollapseToggle = { ratingFilterExpanded = !ratingFilterExpanded },
-                onRatingSelected = { filterMinRating = it },
+                updateRating = { filterMinRating = it },
             )
             Row(
                 modifier = Modifier
@@ -136,11 +152,74 @@ fun FilterBottomSheet(
 }
 
 @Composable
+private fun CategoriesFilter(
+    selectedCategories: List<SourceCategory>,
+    updateCategories: (List<SourceCategory>) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isAllSelected = selectedCategories.size == SourceCategory.entries.size
+    Column(modifier) {
+        Text(stringResource(R.string.categories_header))
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            InputChip(
+                selected = isAllSelected,
+                enabled = true,
+                onClick = {
+                    if (isAllSelected) {
+                        updateCategories(emptyList())
+                    } else {
+                        updateCategories(SourceCategory.entries)
+                    }
+                },
+                label = { Text(stringResource(R.string.category_all)) },
+                colors = InputChipDefaults.inputChipColors(
+                    containerColor = Color.Transparent,
+                    labelColor = MaterialTheme.colorScheme.onSurface,
+                    selectedContainerColor = NavyAccent,
+                    selectedLabelColor = Color.White,
+                ),
+                border = InputChipDefaults.inputChipBorder(
+                    enabled = true,
+                    selected = isAllSelected,
+                    borderColor = MaterialTheme.colorScheme.onSurface,
+                ),
+            )
+            SourceCategory.entries.forEach { category ->
+                val isSelected = category in selectedCategories
+                InputChip(
+                    selected = isSelected,
+                    enabled = true,
+                    onClick = {
+                        if (isSelected) {
+                            updateCategories(selectedCategories - category)
+                        } else {
+                            updateCategories(selectedCategories + category)
+                        }
+                    },
+                    label = { Text(stringResource(category.stringRes)) },
+                    colors = InputChipDefaults.inputChipColors(
+                        containerColor = Color.Transparent,
+                        labelColor = MaterialTheme.colorScheme.onSurface,
+                        selectedContainerColor = NavyAccent,
+                        selectedLabelColor = Color.White,
+                    ),
+                    border = InputChipDefaults.inputChipBorder(
+                        enabled = true,
+                        selected = isSelected,
+                        borderColor = MaterialTheme.colorScheme.onSurface,
+                    ),
+                )
+            }
+        }
+    }
+}
+
+@Composable
 private fun RatingsFilter(
     isExpanded: Boolean,
     selectedMinRating: Int,
     onCollapseToggle: () -> Unit,
-    onRatingSelected: (Int) -> Unit,
+    updateRating: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -197,7 +276,7 @@ private fun RatingsFilter(
                         RadioButton(
                             modifier = Modifier.size(32.dp),
                             selected = i == selectedMinRating,
-                            onClick = { onRatingSelected(i) }
+                            onClick = { updateRating(i) }
                         )
                         RatingDiamondsRow(rating = i, diamondSize = 20.dp, horizontalSpacing = 4.dp)
                         Spacer(modifier = Modifier.width(12.dp))
