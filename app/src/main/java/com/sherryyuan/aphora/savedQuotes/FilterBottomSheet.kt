@@ -40,6 +40,7 @@ import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.NavyAccent
+import com.sherryyuan.aphora.ui.theme.Spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -90,7 +91,7 @@ fun FilterBottomSheet(
             CategoriesFilter(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = Spacing.ScreenMargin),
                 selectedCategories = filterCategories,
                 updateCategories = { filterCategories = it },
             )
@@ -101,7 +102,7 @@ fun FilterBottomSheet(
             RatingsFilter(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = Spacing.ScreenMargin),
                 isExpanded = ratingFilterExpanded,
                 selectedMinRating = filterMinRating,
                 onCollapseToggle = { ratingFilterExpanded = !ratingFilterExpanded },
@@ -110,7 +111,7 @@ fun FilterBottomSheet(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp)
+                    .padding(Spacing.ScreenMargin)
             ) {
                 Button(
                     modifier = Modifier.weight(1f),

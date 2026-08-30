@@ -23,6 +23,7 @@
     <string name="cd_share">Share</string>
     <string name="quote_tags_section_title">Tags</string>
     <string name="quote_notes_section_title">Your notes</string>
+    <string name="quote_last_updated">Last updated %s</string>
 
     <!-- Add/edit quote screen -->
     <string name="add_edit_quote_aphorism_new_gem_title">New gem</string>
