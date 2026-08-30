@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
@@ -129,6 +130,15 @@ fun QuoteDetailCard(
                     )
                 }
                 VerticalSpacer()
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = stringResource(R.string.quote_last_updated, model.dateEdited),
+                    style = Typography.bodyMedium,
+                    fontStyle = FontStyle.Italic,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                VerticalSpacer(8.dp)
+                // Add extra space for ActionsRow
                 VerticalSpacer(64.dp)
             }
             if (showGradient) {

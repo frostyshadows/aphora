@@ -10,18 +10,6 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = LightNavyAccent,
-    onPrimary = NavyAccent,
-    secondary = LightTaupe,
-    onSecondary = DarkCharcoal,
-    background = DarkGreyBackground,
-    onBackground = SoftCreamText,
-    surface = MutedBlackSurface,
-    surfaceVariant = MutedBlackSurface,
-    onSurface = SoftCreamText
-)
-
 private val LightColorScheme = lightColorScheme(
     primary = NavyAccent,
     onPrimary = OffWhiteSurface,
@@ -32,13 +20,27 @@ private val LightColorScheme = lightColorScheme(
     surface = OffWhiteSurface,
     surfaceVariant = OffWhiteSurface,
     onSurface = DarkCharcoal,
+    onSurfaceVariant = SubtleCharcoal,
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary = LightNavyAccent,
+    onPrimary = NavyAccent,
+    secondary = LightTaupe,
+    onSecondary = DarkCharcoal,
+    background = DarkGreyBackground,
+    onBackground = SoftCreamText,
+    surface = MutedBlackSurface,
+    surfaceVariant = MutedBlackSurface,
+    onSurface = SoftCreamText,
+    onSurfaceVariant = LightTaupe,
 )
 
 @Composable
 fun AphoraTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = false, // Default to false to prefer your custom palette
+    // Prefer custom palette over dynamic color
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

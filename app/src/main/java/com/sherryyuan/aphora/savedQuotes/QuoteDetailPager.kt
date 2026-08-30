@@ -32,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.ui.theme.Spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,7 +103,7 @@ fun QuoteDetailPager(
                 .consumeWindowInsets(contentPadding),
             state = pagerState,
             key = { index -> quotes[index].quoteId },
-            contentPadding = PaddingValues(horizontal = 20.dp),
+            contentPadding = PaddingValues(horizontal = Spacing.ScreenMargin),
             pageSpacing = 40.dp,
         ) { page ->
             Box(
