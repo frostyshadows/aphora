@@ -55,7 +55,7 @@ import com.sherryyuan.aphora.ui.common.VerticalSpacer
 fun QuoteSourceEditor(
     source: QuoteUiModel.Source?,
     allSources: List<SourceEntity>,
-    allAuthors: List<String>,
+    allWriters: List<String>,
     onSourceUpdated: (QuoteUiModel.Source) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -90,7 +90,7 @@ fun QuoteSourceEditor(
                     text = stringResource(R.string.add_edit_quote_source_section_title)
                 )
             }
-            source?.author?.let {
+            source?.writer?.let {
                 Text(it)
             }
             Row {
@@ -113,7 +113,7 @@ fun QuoteSourceEditor(
         ) {
             SourceEditorSheetContent(
                 source = source,
-                allAuthors = allAuthors,
+                allWriters = allWriters,
                 allSources = allSources,
                 onSaveSource = {
                     onSourceUpdated(it)
@@ -128,38 +128,38 @@ fun QuoteSourceEditor(
 private fun SourceEditorSheetContent(
     source: QuoteUiModel.Source?,
     allSources: List<SourceEntity>,
-    allAuthors: List<String>,
+    allWriters: List<String>,
     onSaveSource: (QuoteUiModel.Source) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val focusManager = LocalFocusManager.current
 
-    val authorTextFieldState = rememberTextFieldState(source?.author.orEmpty())
+    val writerTextFieldState = rememberTextFieldState(source?.writer.orEmpty())
     val workTextFieldState = rememberTextFieldState(source?.work.orEmpty())
     var category: SourceCategory? by remember {
         mutableStateOf(source?.category)
     }
 
-    val filteredAuthors by remember {
+    val filteredWriters by remember {
         derivedStateOf {
-            val query = authorTextFieldState.text
+            val query = writerTextFieldState.text
             if (query.length >= 3) {
-                allAuthors.filter { it.contains(query, ignoreCase = true) }
+                allWriters.filter { it.contains(query, ignoreCase = true) }
             } else {
                 emptyList()
             }
         }
     }
 
-    var showAuthorDropdown by remember { mutableStateOf(false) }
+    var showWriterDropdown by remember { mutableStateOf(false) }
 
     val filteredWorks by remember {
         derivedStateOf {
-            val authorQuery = authorTextFieldState.text.toString()
+            val writerQuery = writerTextFieldState.text.toString()
             val workQuery = workTextFieldState.text
             if (workQuery.length >= 2) {
                 allSources
-                    .filter { it.author.equals(authorQuery, ignoreCase = true) }
+                    .filter { it.writer.equals(writerQuery, ignoreCase = true) }
                     .mapNotNull { it.work }
                     .filter { it.contains(workQuery, ignoreCase = true) }
                     .distinct()
@@ -171,8 +171,8 @@ private fun SourceEditorSheetContent(
 
     var showWorkDropdown by remember { mutableStateOf(false) }
 
-    LaunchedEffect(filteredAuthors) {
-        showAuthorDropdown = filteredAuthors.isNotEmpty()
+    LaunchedEffect(filteredWriters) {
+        showWriterDropdown = filteredWriters.isNotEmpty()
     }
 
     LaunchedEffect(filteredWorks) {
@@ -199,21 +199,21 @@ private fun SourceEditorSheetContent(
         Box {
             OutlinedTextField(
                 modifier = modifier.fillMaxWidth(),
-                state = authorTextFieldState,
-                label = { Text(stringResource(R.string.label_author)) },
+                state = writerTextFieldState,
+                label = { Text(stringResource(R.string.label_writer)) },
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
-                expanded = showAuthorDropdown,
-                onDismissRequest = { showAuthorDropdown = false },
+                expanded = showWriterDropdown,
+                onDismissRequest = { showWriterDropdown = false },
                 properties = PopupProperties(focusable = false)
             ) {
-                filteredAuthors.forEach { author ->
+                filteredWriters.forEach { writer ->
                     DropdownMenuItem(
-                        text = { Text(author) },
+                        text = { Text(writer) },
                         onClick = {
-                            authorTextFieldState.setTextAndPlaceCursorAtEnd(author)
-                            showAuthorDropdown = false
+                            writerTextFieldState.setTextAndPlaceCursorAtEnd(writer)
+                            showWriterDropdown = false
                         }
                     )
                 }
@@ -251,11 +251,11 @@ private fun SourceEditorSheetContent(
         VerticalSpacer()
         Button(
             modifier = Modifier.fillMaxWidth(),
-            enabled = authorTextFieldState.text.isNotBlank() || workTextFieldState.text.isNotBlank(),
+            enabled = writerTextFieldState.text.isNotBlank() || workTextFieldState.text.isNotBlank(),
             onClick = {
                 onSaveSource(
                     QuoteUiModel.Source(
-                        author = authorTextFieldState.text.toString(),
+                        writer = writerTextFieldState.text.toString(),
                         work = workTextFieldState.text.toString(),
                         category = category ?: SourceCategory.OTHER
                     )

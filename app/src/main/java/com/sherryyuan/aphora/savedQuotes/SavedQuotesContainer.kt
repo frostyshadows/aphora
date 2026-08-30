@@ -47,15 +47,20 @@ fun SavedQuotesContainer(
 
                     is SearchState.FilterSheet -> FilterBottomSheet(
                         selectedCategories = searchState.selectedCategories,
+                        selectedWriters = searchState.selectedWriters,
+                        selectedWorks = searchState.selectedWorks,
+                        allSources = searchState.allSources,
+                        selectedTags = searchState.selectedTags,
+                        allTags = searchState.tagOptions,
                         selectedMinRating = searchState.selectedMinRating,
                         onDismiss = { viewModel.goToSearch() },
-                        onFiltersApply = { a, w, t, c, r ->
+                        onFiltersApply = { writers, works, tags, categories, rating ->
                             viewModel.applyFilters(
-                                authors = a,
-                                works = w,
-                                tags = t,
-                                categories = c,
-                                minRating = r,
+                                writers = writers,
+                                works = works,
+                                tags = tags,
+                                categories = categories,
+                                minRating = rating,
                             )
                         }
                     )

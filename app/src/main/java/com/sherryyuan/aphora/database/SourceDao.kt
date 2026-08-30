@@ -13,8 +13,8 @@ interface SourceDao {
     @Query("SELECT * FROM SourceEntity")
     fun getAllSources(): Flow<List<SourceEntity>>
 
-    @Query("SELECT DISTINCT author FROM SourceEntity")
-    fun getAllAuthors(): Flow<List<String>>
+    @Query("SELECT DISTINCT writer FROM SourceEntity")
+    fun getAllWriters(): Flow<List<String>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSource(source: SourceEntity): Long

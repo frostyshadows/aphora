@@ -2,6 +2,7 @@ package com.sherryyuan.aphora.savedQuotes
 
 import com.sherryyuan.aphora.database.entities.SortOption
 import com.sherryyuan.aphora.database.entities.SourceCategory
+import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.database.entities.TagEntity
 
 sealed interface SavedQuotesViewState {
@@ -19,27 +20,31 @@ sealed interface SavedQuotesViewState {
 
     sealed interface SearchState {
 
-        // TODO: Revisit activeFiltersCount
-        val activeFiltersCount: Int
+        val hasActiveFilters: Boolean
 
         data class QueryInput(
-            override val activeFiltersCount: Int,
+            override val hasActiveFilters: Boolean,
         ) : SearchState
 
         data class FilterSheet(
-            override val activeFiltersCount: Int,
+            override val hasActiveFilters: Boolean,
             val selectedCategories: List<SourceCategory>,
+            val selectedWriters: List<String>,
+            val selectedWorks: List<String>,
+            val allSources: List<SourceEntity>,
+            val selectedTags: List<TagEntity>,
             val tagOptions: List<TagEntity>,
             val selectedMinRating: Int,
         ) : SearchState
 
         data class SortSheet(
-            override val activeFiltersCount: Int,
             val selectedSortOption: SortOption?,
-        ) : SearchState
+        ) : SearchState {
+            override val hasActiveFilters = false
+        }
 
-        data class NotFocused(
-            override val activeFiltersCount: Int,
-        ) : SearchState
+        data object NotFocused : SearchState {
+            override val hasActiveFilters = false
+        }
     }
 }

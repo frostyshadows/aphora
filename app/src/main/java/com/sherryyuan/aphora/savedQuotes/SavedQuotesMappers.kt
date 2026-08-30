@@ -21,7 +21,7 @@ fun QuoteDbModel.toUiModel(): QuoteUiModel {
 
 fun SourceEntity.toUiModel(): QuoteUiModel.Source {
     return QuoteUiModel.Source(
-        author = author,
+        writer = writer,
         work = work,
         category = category
     )
