@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 val CreamBackground = Color(0xFFF7F3EB)
 val OffWhiteSurface = Color(0xFFFFFDF9)
 val DarkCharcoal = Color(0xFF2E2924)
+val SubtleCharcoal = Color(0xFF525050)
 val TaupeSecondary = Color(0xFF8A7E73)
 val NavyAccent = Color(0xFF23395B)
 

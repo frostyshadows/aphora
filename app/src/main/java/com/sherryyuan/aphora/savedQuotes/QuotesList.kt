@@ -40,6 +40,7 @@ import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.common.RatingDiamondSingle
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
+import com.sherryyuan.aphora.ui.theme.Spacing
 import com.sherryyuan.aphora.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -125,7 +126,12 @@ fun QuotesList(
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding),
-            contentPadding = PaddingValues(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 80.dp),
+            contentPadding = PaddingValues(
+                top = Spacing.ScreenMargin,
+                start = Spacing.ScreenMargin,
+                end = Spacing.ScreenMargin,
+                bottom = 80.dp,
+            ),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             itemsIndexed(
@@ -196,7 +202,7 @@ private fun QuotesSearchBar(
         modifier = modifier
             .fillMaxWidth()
             .windowInsetsPadding(TopAppBarDefaults.windowInsets)
-            .padding(horizontal = 20.dp, vertical = 4.dp),
+            .padding(horizontal = Spacing.ScreenMargin, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         TextField(
