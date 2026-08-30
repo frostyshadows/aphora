@@ -91,7 +91,7 @@ fun TagsSelector(
     Column {
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = stringResource(R.string.quote_tags_section_title)
+            text = stringResource(R.string.quote_tags_section_title),
         )
 
         FlowRow(
