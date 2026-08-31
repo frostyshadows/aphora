@@ -10,7 +10,7 @@ import com.sherryyuan.aphora.R
 @Entity
 data class SourceEntity(
     @PrimaryKey(autoGenerate = true) val sourceId: Long = 0,
-    val author: String?,
+    val writer: String?,
     val work: String?,
     val category: SourceCategory,
 )

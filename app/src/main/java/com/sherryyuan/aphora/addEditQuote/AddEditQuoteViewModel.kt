@@ -72,15 +72,15 @@ class AddEditQuoteViewModel @AssistedInject constructor(
             .map { quoteId ->
                 quoteId?.let { quotesRepository.getQuoteById(it) }
             }
-        val authorsFlow = sourcesRepository.getAllAuthors()
+        val writersFlow = sourcesRepository.getAllWriters()
         val tagsFlow = tagsRepository.getTags()
         val sourcesFlow = sourcesRepository.getAllSources()
         return combine(
             quoteFlow,
             tagsFlow,
-            authorsFlow,
+            writersFlow,
             sourcesFlow
-        ) { quote, tags, authors, sources ->
+        ) { quote, tags, writers, sources ->
             val topBarTitle = if (quote == null) {
                 R.string.add_edit_quote_aphorism_new_gem_title
             } else {
@@ -90,7 +90,7 @@ class AddEditQuoteViewModel @AssistedInject constructor(
                 topBarTitleRes = topBarTitle,
                 existingQuote = quote?.toUiModel(),
                 allSources = sources,
-                allAuthors = authors,
+                allWriters = writers,
                 allTags = tags,
             )
         }.stateIn(

@@ -14,8 +14,8 @@ class SourcesRepository @Inject constructor(private val sourceDao: SourceDao) {
         return sourceDao.getAllSources()
     }
 
-    fun getAllAuthors(): Flow<List<String>> {
-        return sourceDao.getAllAuthors()
+    fun getAllWriters(): Flow<List<String>> {
+        return sourceDao.getAllWriters()
     }
 
     suspend fun saveSource(
@@ -23,7 +23,7 @@ class SourcesRepository @Inject constructor(private val sourceDao: SourceDao) {
     ): Long {
         val allSources = sourceDao.getAllSources().first()
         val existingSource = allSources.firstOrNull { existingSource ->
-            source.author.equals(existingSource.author, ignoreCase = true) &&
+            source.writer.equals(existingSource.writer, ignoreCase = true) &&
                     source.work.equals(existingSource.work, ignoreCase = true) &&
                     source.category == existingSource.category
         }
@@ -31,7 +31,7 @@ class SourcesRepository @Inject constructor(private val sourceDao: SourceDao) {
             existingSource.sourceId
         } else {
             val newSource = SourceEntity(
-                author = source.author,
+                writer = source.writer,
                 work = source.work,
                 category = source.category ?: SourceCategory.OTHER,
             )
