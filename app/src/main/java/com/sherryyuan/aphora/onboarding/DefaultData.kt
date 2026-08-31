@@ -39,7 +39,7 @@ val DEFAULT_QUOTE_BUNDLES = listOf(
             timestampLastEdited = System.currentTimeMillis(),
         ),
         source = SourceEntity(
-            author = "Raphael Bob-Waksberg",
+            writer = "Raphael Bob-Waksberg",
             work = "BoJack Horseman",
             category = SourceCategory.TV,
         ),
@@ -62,7 +62,7 @@ val DEFAULT_QUOTE_BUNDLES = listOf(
             timestampLastEdited = System.currentTimeMillis(),
         ),
         source = SourceEntity(
-            author = "Helen Dewitt",
+            writer = "Helen Dewitt",
             work = "The Last Samurai",
             category = SourceCategory.BOOK,
         ),
@@ -77,7 +77,7 @@ val DEFAULT_QUOTE_BUNDLES = listOf(
             timestampLastEdited = System.currentTimeMillis(),
         ),
         source = SourceEntity(
-            author = "Joan Didion",
+            writer = "Joan Didion",
             work = "Slouching Towards Bethlehem",
             category = SourceCategory.BOOK,
         ),

@@ -211,23 +211,23 @@ fun QuoteDetailCard(
 @Composable
 private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(end = 24.dp)) {
-        model.author?.let { author ->
+        model.writer?.let { writer ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 QuoteSourceIcon(model)
                 Text(
-                    text = author.uppercase(),
+                    text = writer.uppercase(),
                     style = Typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
             }
 
         }
-        if (!model.author.isNullOrBlank() && !model.work.isNullOrBlank()) {
+        if (!model.writer.isNullOrBlank() && !model.work.isNullOrBlank()) {
             Spacer(modifier = Modifier.height(8.dp))
         }
         model.work?.let { work ->
             Row(verticalAlignment = Alignment.CenterVertically) {
-                if (model.author.isNullOrBlank()) {
+                if (model.writer.isNullOrBlank()) {
                     QuoteSourceIcon(model)
                 }
                 Text(

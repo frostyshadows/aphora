@@ -102,6 +102,7 @@ fun QuotesList(
                 } else {
                     QuotesSearchBar(
                         searchQuery = viewState.searchQuery,
+                        hasActiveFilters = viewState.searchState.hasActiveFilters,
                         onSearchQueryChange = onSearchQueryChange,
                         onFilterClick = onFilterClick,
                         onCloseSearchClick = onCloseSearchClick,
@@ -170,7 +171,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                         VerticalSpacer()
                         SectionDivider()
                         VerticalSpacer(12.dp)
-                        source.author?.let {
+                        source.writer?.let {
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = it.uppercase(),
@@ -193,6 +194,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
 @Composable
 private fun QuotesSearchBar(
     searchQuery: String,
+    hasActiveFilters: Boolean,
     onSearchQueryChange: (String) -> Unit,
     onFilterClick: () -> Unit,
     onCloseSearchClick: () -> Unit,
@@ -225,12 +227,17 @@ private fun QuotesSearchBar(
                 }
             },
             trailingIcon = {
+                val filterDrawable = if (hasActiveFilters) {
+                    R.drawable.icon_filter_filled
+                } else {
+                    R.drawable.icon_filter
+                }
                 IconButton(onClick = onFilterClick) {
                     Icon(
                         modifier = Modifier.size(18.dp),
-                        painter = painterResource(R.drawable.icon_filter),
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        contentDescription = stringResource(R.string.label_filter)
+                        painter = painterResource(filterDrawable),
+                        tint = MaterialTheme.colorScheme.primary,
+                        contentDescription = stringResource(R.string.label_filter),
                     )
                 }
             },

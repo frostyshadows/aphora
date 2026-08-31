@@ -15,7 +15,7 @@ data class QuoteUiModel(
     val dateEdited: String,
 ) {
     data class Source(
-        val author: String?,
+        val writer: String?,
         val work: String?,
         val category: SourceCategory?,
     )

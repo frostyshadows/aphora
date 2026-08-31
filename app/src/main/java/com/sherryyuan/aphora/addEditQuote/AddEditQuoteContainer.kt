@@ -129,7 +129,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                     VerticalSpacer(height = 8.dp)
                     QuoteSourceEditor(
                         source = source,
-                        allAuthors = viewState.allAuthors,
+                        allWriters = viewState.allWriters,
                         allSources = viewState.allSources,
                         onSourceUpdated = { source = it },
                     )
