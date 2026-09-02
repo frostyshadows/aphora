@@ -24,7 +24,7 @@ fun RatingDiamondSingle(rating: Int, modifier: Modifier = Modifier) {
     ) {
         Image(
             modifier = Modifier.size(32.dp),
-            painter = painterResource(R.drawable.illo_diamond),
+            painter = painterResource(R.drawable.img_diamond),
             contentDescription = null,
             colorFilter = ColorFilter.tint(GemstoneBlue),
         )

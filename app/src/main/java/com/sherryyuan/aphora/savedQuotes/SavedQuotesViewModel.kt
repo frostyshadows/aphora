@@ -229,6 +229,7 @@ class SavedQuotesViewModel @Inject constructor(
                         quotes = displayedQuotes,
                         searchState = searchState,
                         searchQuery = searchQuery,
+                        showEmptyState = searchState is SavedQuotesViewState.SearchState.NotFocused && displayedQuotes.isEmpty(),
                     )
                 }
 
@@ -249,6 +250,7 @@ class SavedQuotesViewModel @Inject constructor(
                 quotes = emptyList(),
                 searchState = SavedQuotesViewState.SearchState.NotFocused,
                 searchQuery = "",
+                showEmptyState = false,
             ),
         )
     }

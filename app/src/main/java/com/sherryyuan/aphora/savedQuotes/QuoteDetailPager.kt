@@ -76,7 +76,7 @@ fun QuoteDetailPager(
                             modifier = Modifier.size(24.dp),
                             painter = painterResource(R.drawable.icon_shuffle),
                             tint = MaterialTheme.colorScheme.onBackground,
-                            contentDescription = stringResource(R.string.cd_shuffle)
+                            contentDescription = stringResource(R.string.cd_random)
                         )
                     }
                 },
