@@ -11,6 +11,7 @@ sealed interface SavedQuotesViewState {
         val quotes: List<QuoteUiModel>,
         val searchState: SearchState,
         val searchQuery: String,
+        val showEmptyState: Boolean,
     ) : SavedQuotesViewState
 
     data class QuoteDetail(

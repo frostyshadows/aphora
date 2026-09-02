@@ -11,11 +11,12 @@
 
     <!-- Saved quotes list screen -->
     <string name="label_search">Search</string>
-    <string name="cd_shuffle">Shuffle</string>
+    <string name="cd_random">Random</string>
     <string name="cd_sort">Sort</string>
     <string name="cd_add_quote">Add quote</string>
     <string name="sort_by_sheet_title">Sort by</string>
     <string name="label_filter">Filter</string>
+    <string name="empty_state_instructions">Collect your first shiny writing snippet. \nMake magpie happy.</string>
 
     <!-- Quote detail screen -->
     <string name="cd_previous">Previous</string>
