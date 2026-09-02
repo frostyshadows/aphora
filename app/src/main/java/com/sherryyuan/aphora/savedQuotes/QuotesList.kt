@@ -2,11 +2,13 @@ package com.sherryyuan.aphora.savedQuotes
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -78,21 +80,25 @@ fun QuotesList(
                                     contentDescription = stringResource(R.string.label_search)
                                 )
                             }
-                            IconButton(onClick = onSortClick) {
-                                Icon(
-                                    modifier = Modifier.size(24.dp),
-                                    painter = painterResource(R.drawable.icon_sort),
-                                    tint = MaterialTheme.colorScheme.onBackground,
-                                    contentDescription = stringResource(R.string.cd_sort)
-                                )
+                            if (!viewState.showEmptyState) {
+                                IconButton(onClick = onSortClick) {
+                                    Icon(
+                                        modifier = Modifier.size(24.dp),
+                                        painter = painterResource(R.drawable.icon_sort),
+                                        tint = MaterialTheme.colorScheme.onBackground,
+                                        contentDescription = stringResource(R.string.cd_sort)
+                                    )
+                                }
                             }
-                            IconButton(onClick = onRandomQuoteClick) {
-                                Icon(
-                                    modifier = Modifier.size(24.dp),
-                                    painter = painterResource(R.drawable.icon_shuffle),
-                                    tint = MaterialTheme.colorScheme.onBackground,
-                                    contentDescription = stringResource(R.string.cd_shuffle)
-                                )
+                            if (!viewState.showEmptyState) {
+                                IconButton(onClick = onRandomQuoteClick) {
+                                    Icon(
+                                        modifier = Modifier.size(24.dp),
+                                        painter = painterResource(R.drawable.icon_shuffle),
+                                        tint = MaterialTheme.colorScheme.onBackground,
+                                        contentDescription = stringResource(R.string.cd_random)
+                                    )
+                                }
                             }
                         },
                         colors = TopAppBarDefaults.topAppBarColors(
@@ -118,33 +124,56 @@ fun QuotesList(
                 contentColor = MaterialTheme.colorScheme.onPrimary,
             ) {
                 Icon(
-                    modifier = Modifier.size(24.dp),
-                    painter = painterResource(R.drawable.icon_pencil),
+                    modifier = Modifier.size(32.dp),
+                    painter = painterResource(R.drawable.icon_feather_pen),
                     contentDescription = stringResource(R.string.cd_add_quote)
                 )
             }
         },
     ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier.padding(innerPadding),
-            contentPadding = PaddingValues(
-                top = Spacing.ScreenMargin,
-                start = Spacing.ScreenMargin,
-                end = Spacing.ScreenMargin,
-                bottom = 80.dp,
-            ),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            itemsIndexed(
-                items = viewState.quotes,
-                key = { _, quote -> quote.quoteId },
-            ) { index, quote ->
-                QuoteRow(
-                    modifier = Modifier
-                        .animateItem()
-                        .clickable { onQuoteRowClick(index) },
-                    model = quote,
+        if (viewState.showEmptyState) {
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Image(
+                    modifier = Modifier.fillMaxWidth(0.66f),
+                    painter = painterResource(R.drawable.img_sad_magpie),
+                    contentDescription = null,
                 )
+                VerticalSpacer()
+                Text(
+                    modifier = Modifier.padding(horizontal = Spacing.ScreenMargin),
+                    text = stringResource(R.string.empty_state_instructions),
+                    textAlign = TextAlign.Center,
+                )
+                VerticalSpacer(80.dp)
+            }
+        } else {
+            LazyColumn(
+                modifier = Modifier.padding(innerPadding),
+                contentPadding = PaddingValues(
+                    top = Spacing.ScreenMargin,
+                    start = Spacing.ScreenMargin,
+                    end = Spacing.ScreenMargin,
+                    bottom = 80.dp,
+                ),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                itemsIndexed(
+                    items = viewState.quotes,
+                    key = { _, quote -> quote.quoteId },
+                ) { index, quote ->
+                    QuoteRow(
+                        modifier = Modifier
+                            .animateItem()
+                            .clickable { onQuoteRowClick(index) },
+                        model = quote,
+                    )
+                }
             }
         }
     }
