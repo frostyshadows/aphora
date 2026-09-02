@@ -47,7 +47,7 @@ fun RatingDiamondsRow(
                             }
                         } ?: Modifier
                     ),
-                painter = painterResource(R.drawable.illo_diamond),
+                painter = painterResource(R.drawable.img_diamond),
                 colorFilter = if (i > rating) {
                     ColorFilter.tint(DisabledBlue)
                 } else {

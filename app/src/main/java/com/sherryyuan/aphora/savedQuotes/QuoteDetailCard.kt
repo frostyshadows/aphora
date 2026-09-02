@@ -78,7 +78,7 @@ fun QuoteDetailCard(
                     modifier = Modifier
                         .padding(horizontal = 20.dp)
                         .size(32.dp),
-                    painter = painterResource(R.drawable.image_quote_start),
+                    painter = painterResource(R.drawable.img_quote_start),
                     contentDescription = null,
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
