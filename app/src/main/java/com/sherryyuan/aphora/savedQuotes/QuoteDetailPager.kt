@@ -39,6 +39,7 @@ import com.sherryyuan.aphora.ui.theme.Spacing
 fun QuoteDetailPager(
     quotes: List<QuoteUiModel>,
     currentIndex: Int,
+    pagingEnabled: Boolean,
     onBackClick: () -> Unit,
     onGoToPreviousClick: () -> Unit,
     onGoToNextClick: () -> Unit,
@@ -90,9 +91,9 @@ fun QuoteDetailPager(
                 modifier = Modifier
                     .navigationBarsPadding()
                     .padding(bottom = 24.dp),
-                previousVisible = currentIndex > 0,
+                previousVisible = pagingEnabled && currentIndex > 0,
                 onGoToPreviousClick = onGoToPreviousClick,
-                nextVisible = currentIndex < quotes.lastIndex,
+                nextVisible = pagingEnabled && currentIndex < quotes.lastIndex,
                 onGoToNextClick = onGoToNextClick,
             )
         }
@@ -105,6 +106,7 @@ fun QuoteDetailPager(
             key = { index -> quotes[index].quoteId },
             contentPadding = PaddingValues(horizontal = Spacing.ScreenMargin),
             pageSpacing = 40.dp,
+            userScrollEnabled = pagingEnabled,
         ) { page ->
             Box(
                 modifier = Modifier

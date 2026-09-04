@@ -72,6 +72,7 @@ fun SavedQuotesContainer(
         is SavedQuotesViewState.QuoteDetail -> QuoteDetailPager(
             quotes = state.quotes,
             currentIndex = state.currentIndex,
+            pagingEnabled = !state.openedViaShuffle,
             onBackClick = { viewModel.toggleToList() },
             onSwipeToQuote = { viewModel.quoteFocused(it) },
             onGoToPreviousClick = { viewModel.goToPreviousQuote() },
