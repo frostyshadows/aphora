@@ -17,6 +17,7 @@ sealed interface SavedQuotesViewState {
     data class QuoteDetail(
         val quotes: List<QuoteUiModel>,
         val currentIndex: Int,
+        val openedViaShuffle: Boolean,
     ) : SavedQuotesViewState
 
     sealed interface SearchState {

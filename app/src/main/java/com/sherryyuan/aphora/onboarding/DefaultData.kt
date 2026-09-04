@@ -27,6 +27,7 @@ val DEFAULT_TAGS = listOf(
     TagEntity(label = "exposition", color = TagPastelPurple),
     TagEntity(label = "world-building", color = TagPastelPink),
     TagEntity(label = "humor", color = TagPastelRed),
+    TagEntity(label = "metaphor", color = TagPastelBlue),
 )
 
 val DEFAULT_QUOTE_BUNDLES = listOf(

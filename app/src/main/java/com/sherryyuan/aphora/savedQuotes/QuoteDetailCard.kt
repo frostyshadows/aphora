@@ -38,6 +38,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sherryyuan.aphora.ui.theme.forTagBackground
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
@@ -272,7 +273,7 @@ private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
                 key(tag.tagId) {
                     Text(
                         modifier = Modifier
-                            .background(color = tag.color, shape = RoundedCornerShape(50))
+                            .background(color = tag.color.forTagBackground(), shape = RoundedCornerShape(50))
                             .padding(horizontal = 8.dp, vertical = 6.dp),
                         text = tag.label,
                         style = Typography.labelMedium,

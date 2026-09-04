@@ -162,6 +162,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 enabled = savedEnabled.value,
                 onClick = {
+                    focusManager.clearFocus()
                     viewModel.saveQuote(
                         quoteText = quoteTextFieldState.text.toString(),
                         rating = rating,
