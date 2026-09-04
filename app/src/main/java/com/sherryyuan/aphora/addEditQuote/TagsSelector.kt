@@ -40,13 +40,16 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.DefaultTagColors
 import com.sherryyuan.aphora.database.entities.TagEntity
+import com.sherryyuan.aphora.ui.theme.forTagBackground
 
 @Composable
 fun TagsSelector(
@@ -135,6 +138,8 @@ fun TagsSelector(
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Done
                     ),
+                    textStyle = TextStyle(color = MaterialTheme.colorScheme.onSurface),
+                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                 )
 
                 DropdownMenu(
@@ -157,10 +162,12 @@ fun TagsSelector(
                                 dismissedForSelection = true
                             },
                             label = { Text(tag.label) },
-                            colors = InputChipDefaults.inputChipColors(containerColor = tag.color),
+                            colors = InputChipDefaults.inputChipColors(containerColor = tag.color.forTagBackground()),
                         )
                     }
-                    if (inputText.isNotBlank()) {
+                    if (inputText.isNotBlank() &&
+                        allTags.none { it.label.equals(inputText, ignoreCase = true) }
+                    ) {
                         NewTagChip(
                             modifier = Modifier
                                 .chipHeight()
@@ -197,7 +204,7 @@ private fun SelectedTagChip(
         colors = InputChipDefaults.inputChipColors(
             labelColor = MaterialTheme.colorScheme.onSurface,
             trailingIconColor = MaterialTheme.colorScheme.onSurface,
-            disabledSelectedContainerColor = tag.color,
+            disabledSelectedContainerColor = tag.color.forTagBackground(),
         ),
         trailingIcon = {
             Icon(
@@ -226,7 +233,7 @@ private fun NewTagChip(
         enabled = true,
         onClick = onClick,
         label = { Text(text) },
-        colors = InputChipDefaults.inputChipColors(containerColor = tagColor),
+        colors = InputChipDefaults.inputChipColors(containerColor = tagColor.forTagBackground()),
         trailingIcon = {
             Icon(
                 modifier = Modifier.clip(CircleShape),

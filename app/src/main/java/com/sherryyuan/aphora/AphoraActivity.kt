@@ -16,6 +16,7 @@ import com.sherryyuan.aphora.onboarding.DEFAULT_QUOTE_BUNDLES
 import com.sherryyuan.aphora.onboarding.DEFAULT_TAGS
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.utils.isFirstInstall
+import com.sherryyuan.aphora.utils.markFirstInstallComplete
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -42,6 +43,7 @@ class AphoraActivity : ComponentActivity() {
         if (isFirstInstall(this)) {
             lifecycleScope.launch {
                 seedDefaultData()
+                markFirstInstallComplete(this@AphoraActivity)
             }
         }
 

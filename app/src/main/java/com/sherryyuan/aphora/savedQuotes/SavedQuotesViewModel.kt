@@ -30,7 +30,7 @@ class SavedQuotesViewModel @Inject constructor(
 
     private val savedQuotesFlow = quotesRepository.getQuotes()
     private val viewTypeFlow: MutableStateFlow<QuotesViewType> =
-        MutableStateFlow(QuotesViewType.QUOTES_LIST)
+        MutableStateFlow(QuotesViewType.QuotesList)
 
     private val searchStateFlow: MutableStateFlow<SavedQuotesViewState.SearchState> =
         MutableStateFlow(SavedQuotesViewState.SearchState.NotFocused)
@@ -51,12 +51,12 @@ class SavedQuotesViewModel @Inject constructor(
         viewModelScope.launch {
             val quotes = savedQuotesFlow.first()
             currentQuoteIdFlow.value = quotes.getOrNull(index)?.quote?.quoteId
-            viewTypeFlow.value = QuotesViewType.QUOTE_DETAIL
+            viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = false)
         }
     }
 
     fun toggleToList() {
-        viewTypeFlow.value = QuotesViewType.QUOTES_LIST
+        viewTypeFlow.value = QuotesViewType.QuotesList
     }
 
     fun showRandomQuote() {
@@ -65,7 +65,7 @@ class SavedQuotesViewModel @Inject constructor(
             if (quotes.isNotEmpty()) {
                 val randomIndex = quotes.indices.random()
                 currentQuoteIdFlow.value = quotes[randomIndex].quote.quoteId
-                viewTypeFlow.value = QuotesViewType.QUOTE_DETAIL
+                viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = true)
             }
         }
     }
@@ -82,7 +82,7 @@ class SavedQuotesViewModel @Inject constructor(
 
     fun deleteCurrentQuote() {
         currentQuoteIdFlow.value?.let { quoteId ->
-            viewTypeFlow.value = QuotesViewType.QUOTES_LIST
+            viewTypeFlow.value = QuotesViewType.QuotesList
             viewModelScope.launch {
                 quotesRepository.deleteQuote(quoteId)
             }
@@ -158,7 +158,7 @@ class SavedQuotesViewModel @Inject constructor(
                 filterMinRatingFlow.value > 1
 
     fun goToPreviousQuote() {
-        if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
+        if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
             viewModelScope.launch {
                 val quotes = savedQuotesFlow.first()
                 val currentId = currentQuoteIdFlow.value
@@ -171,7 +171,7 @@ class SavedQuotesViewModel @Inject constructor(
     }
 
     fun goToNextQuote() {
-        if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
+        if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
             viewModelScope.launch {
                 val quotes = savedQuotesFlow.first()
                 val currentId = currentQuoteIdFlow.value
@@ -184,7 +184,7 @@ class SavedQuotesViewModel @Inject constructor(
     }
 
     fun quoteFocused(quoteId: Long) {
-        if (viewTypeFlow.value == QuotesViewType.QUOTE_DETAIL) {
+        if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
             currentQuoteIdFlow.value = quoteId
         }
     }
@@ -204,7 +204,7 @@ class SavedQuotesViewModel @Inject constructor(
         ) { quotes, viewType, searchState, searchQuery, categories, writers, works, tags, minRating, currentId ->
             val quotesUiModels = quotes.map { it.toUiModel() }
             when (viewType) {
-                QuotesViewType.QUOTES_LIST -> {
+                QuotesViewType.QuotesList -> {
                     val displayedQuotes =
                         if (searchState is SavedQuotesViewState.SearchState.QueryInput || searchState is SavedQuotesViewState.SearchState.FilterSheet) {
                             quotesUiModels.filter { quote ->
@@ -233,13 +233,14 @@ class SavedQuotesViewModel @Inject constructor(
                     )
                 }
 
-                QuotesViewType.QUOTE_DETAIL -> {
+                is QuotesViewType.QuoteDetail -> {
                     // TODO: Make this only show filtered quotes
                     val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
                         .coerceAtLeast(0)
                     SavedQuotesViewState.QuoteDetail(
                         quotes = quotesUiModels,
-                        currentIndex = currentIndex
+                        currentIndex = currentIndex,
+                        openedViaShuffle = viewType.openedViaShuffle,
                     )
                 }
             }
@@ -265,7 +266,7 @@ class SavedQuotesViewModel @Inject constructor(
     }
 }
 
-private enum class QuotesViewType {
-    QUOTES_LIST,
-    QUOTE_DETAIL,
+private sealed interface QuotesViewType {
+    data object QuotesList : QuotesViewType
+    data class QuoteDetail(val openedViaShuffle: Boolean) : QuotesViewType
 }

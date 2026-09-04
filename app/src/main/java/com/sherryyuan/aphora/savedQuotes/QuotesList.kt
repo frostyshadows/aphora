@@ -80,7 +80,7 @@ fun QuotesList(
                                     contentDescription = stringResource(R.string.label_search)
                                 )
                             }
-                            if (!viewState.showEmptyState) {
+                            if (viewState.quotes.isNotEmpty()) {
                                 IconButton(onClick = onSortClick) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
@@ -90,7 +90,7 @@ fun QuotesList(
                                     )
                                 }
                             }
-                            if (!viewState.showEmptyState) {
+                            if (viewState.quotes.isNotEmpty()) {
                                 IconButton(onClick = onRandomQuoteClick) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
@@ -261,11 +261,16 @@ private fun QuotesSearchBar(
                 } else {
                     R.drawable.icon_filter
                 }
+                val filterTint = if (hasActiveFilters) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.onBackground
+                }
                 IconButton(onClick = onFilterClick) {
                     Icon(
                         modifier = Modifier.size(18.dp),
                         painter = painterResource(filterDrawable),
-                        tint = MaterialTheme.colorScheme.primary,
+                        tint = filterTint,
                         contentDescription = stringResource(R.string.label_filter),
                     )
                 }
