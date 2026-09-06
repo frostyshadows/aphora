@@ -1,6 +1,5 @@
 package com.sherryyuan.aphora.addEditQuote
 
-import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.R

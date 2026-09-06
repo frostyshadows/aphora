@@ -23,8 +23,8 @@ enum class SourceCategory(
     MOVIE(R.drawable.icon_movie, R.string.category_movie),
     TV(R.drawable.icon_tv, R.string.category_tv),
     SONG(R.drawable.icon_music, R.string.category_song),
-    POEM(R.drawable.icon_book, R.string.category_poem), // TODO
-    SHORT_STORY(R.drawable.icon_book, R.string.category_story), // TODO
+    POEM(R.drawable.icon_poem, R.string.category_poem),
+    SHORT_STORY(R.drawable.icon_story, R.string.category_story),
     ARTICLE(R.drawable.icon_article, R.string.category_article),
-    OTHER(R.drawable.icon_book, R.string.category_other), // TODO
+    OTHER(R.drawable.icon_other, R.string.category_other),
 }

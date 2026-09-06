@@ -20,7 +20,7 @@ import com.sherryyuan.aphora.addEditQuote.AddEditQuoteViewModel
 import com.sherryyuan.aphora.savedQuotes.SavedQuotesContainer
 
 @Composable
-fun AphoraRootNav(navigator: Navigator) {
+fun AphoraRootNav(navigator: Navigator, onQuoteSaved: () -> Unit) {
     val currentBackStack = navigator.backStack
     NavDisplay(
         modifier = Modifier.background(MaterialTheme.colorScheme.background),
@@ -51,7 +51,7 @@ fun AphoraRootNav(navigator: Navigator) {
                         factory.create(navKey)
                     }
                 )
-                AddEditQuoteContainer(viewModel)
+                AddEditQuoteContainer(viewModel, onQuoteSaved = onQuoteSaved)
             }
         }
     )
