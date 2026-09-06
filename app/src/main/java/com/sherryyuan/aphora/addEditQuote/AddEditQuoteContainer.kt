@@ -27,6 +27,7 @@ import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -51,7 +52,7 @@ import com.sherryyuan.aphora.ui.common.VerticalSpacer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
+fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel, onQuoteSaved: () -> Unit) {
     val viewState by viewModel.state.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
 
@@ -170,6 +171,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel) {
                         tags = selectedTags,
                         noteText = noteTextFieldState.text.toString(),
                     )
+                    onQuoteSaved()
                 }) {
                 Text(stringResource(R.string.add_edit_quote_save_button))
             }
