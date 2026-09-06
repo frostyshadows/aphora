@@ -30,7 +30,9 @@ fun SavedQuotesContainer(
                     viewState = state,
                     onRandomQuoteClick = { viewModel.showRandomQuote() },
                     onQuoteRowClick = { index -> viewModel.toggleToDetail(index) },
-                    onAddQuoteClick = { viewModel.addNewQuote() },
+                    onAddQuoteClick = {
+                        viewModel.addNewQuote()
+                                      },
                     onSearchClick = { viewModel.goToSearch() },
                     onSearchQueryChange = { viewModel.updateSearchQuery(it) },
                     onFilterClick = { viewModel.filterClick() },

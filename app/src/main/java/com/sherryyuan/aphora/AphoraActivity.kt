@@ -5,6 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
+import com.google.android.ump.ConsentInformation
+import com.google.android.ump.ConsentRequestParameters
+import com.google.android.ump.UserMessagingPlatform
 import com.sherryyuan.aphora.database.QuoteDao
 import com.sherryyuan.aphora.database.SourceDao
 import com.sherryyuan.aphora.database.TagDao
@@ -14,6 +17,7 @@ import com.sherryyuan.aphora.navigation.AphoraRootNav
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.onboarding.DEFAULT_QUOTE_BUNDLES
 import com.sherryyuan.aphora.onboarding.DEFAULT_TAGS
+import com.sherryyuan.aphora.ads.AdsRepository
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.utils.isFirstInstall
 import com.sherryyuan.aphora.utils.markFirstInstallComplete
@@ -28,6 +32,12 @@ class AphoraActivity : ComponentActivity() {
     lateinit var navigator: Navigator
 
     @Inject
+    lateinit var adsRepository: AdsRepository
+
+    @Inject
+    lateinit var analytics: Analytics
+
+    @Inject
     lateinit var quoteDao: QuoteDao
 
     @Inject
@@ -36,9 +46,36 @@ class AphoraActivity : ComponentActivity() {
     @Inject
     lateinit var tagDao: TagDao
 
+    private lateinit var consentInformation: ConsentInformation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        consentInformation = UserMessagingPlatform.getConsentInformation(this)
+        consentInformation.requestConsentInfoUpdate(
+            this,
+            ConsentRequestParameters.Builder().build(),
+            {
+                UserMessagingPlatform.loadAndShowConsentFormIfRequired(this) { formError ->
+                    if (formError != null) {
+                        analytics.logEvent(
+                            name = Analytics.EVENT_CONSENT_FORM_ERROR,
+                            params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to formError.message),
+                        )
+                    }
+                    if (consentInformation.canRequestAds()) {
+                        adsRepository.refreshInterstitial()
+                    }
+                }
+            },
+            { requestConsentError ->
+                analytics.logEvent(
+                    name = Analytics.EVENT_CONSENT_INFO_UPDATE_ERROR,
+                    params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to requestConsentError.message),
+                )
+            },
+        )
 
         if (isFirstInstall(this)) {
             lifecycleScope.launch {
@@ -49,7 +86,14 @@ class AphoraActivity : ComponentActivity() {
 
         setContent {
             AphoraTheme {
-                AphoraRootNav(navigator)
+                AphoraRootNav(
+                    navigator = navigator,
+                    onQuoteSaved = {
+                        if (consentInformation.canRequestAds()) {
+                            adsRepository.maybeShowInterstitial()
+                        }
+                    }
+                )
             }
         }
     }
