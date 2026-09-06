@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "277690252151",
+    "project_id": "aphora-1b26f",
+    "storage_bucket": "aphora-1b26f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277690252151:android:9b8b2e6ec11b40a1ec7f72",
+        "android_client_info": {
+          "package_name": "com.sherryyuan.aphora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcSFbmOwdqwfTet-U6md7-LWxpw5hZwMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

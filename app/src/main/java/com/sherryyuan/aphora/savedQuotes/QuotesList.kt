@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.common.RatingDiamondSingle
 import com.sherryyuan.aphora.ui.common.SectionDivider
@@ -196,17 +197,23 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
             ) {
                 RatingDiamondSingle(rating = model.rating)
                 model.source?.let { source ->
+                    val displayedSource = if (
+                        source.category in setOf(
+                            SourceCategory.BOOK,
+                            SourceCategory.SONG,
+                            SourceCategory.POEM,
+                            SourceCategory.SHORT_STORY,
+                        )
+                    ) {
+                        source.writer ?: source.work
+                    } else {
+                        source.work ?: source.writer
+                    }
                     Column {
                         VerticalSpacer()
                         SectionDivider()
                         VerticalSpacer(12.dp)
-                        source.writer?.let {
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = it.uppercase(),
-                                textAlign = TextAlign.End,
-                            )
-                        } ?: source.work?.let {
+                        displayedSource?.let {
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = it.uppercase(),

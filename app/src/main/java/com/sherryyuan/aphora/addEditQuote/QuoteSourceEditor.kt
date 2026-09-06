@@ -7,6 +7,7 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -301,10 +302,12 @@ private fun CategoryDropdownMenu(
                 verticalAlignment = Alignment.CenterVertically
 
             ) {
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = selectedCategory?.name.orEmpty(),
-                )
+                selectedCategory?.let {
+                    Text(
+                        modifier = Modifier.weight(1f),
+                        text = stringResource(it.stringRes),
+                    )
+                } ?: Spacer(modifier = Modifier.weight(1f))
                 Icon(
                     imageVector = Icons.Filled.ArrowDropDown,
                     contentDescription = stringResource(R.string.cd_dropdown),
