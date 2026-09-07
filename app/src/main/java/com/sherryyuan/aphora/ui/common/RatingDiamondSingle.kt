@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.ui.theme.GemstoneBlue
 import com.sherryyuan.aphora.ui.theme.NavyAccent
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @Composable
 fun RatingDiamondSingle(rating: Int, modifier: Modifier = Modifier) {
@@ -31,7 +31,7 @@ fun RatingDiamondSingle(rating: Int, modifier: Modifier = Modifier) {
         Text(
             modifier = Modifier.padding(bottom = 4.dp),
             text = rating.toString(),
-            style = Typography.labelLarge,
+            style = MaterialTheme.typography.labelLarge,
             color = NavyAccent,
         )
     }

@@ -52,7 +52,6 @@ import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
 import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
