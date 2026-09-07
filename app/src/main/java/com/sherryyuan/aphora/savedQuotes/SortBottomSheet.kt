@@ -8,7 +8,6 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SortOption
+import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
 
@@ -33,15 +33,12 @@ fun SortBottomSheet(
     selectedSortOption: SortOption,
     onOptionSelected: (SortOption) -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     var currentSelectedOption by remember(selectedSortOption) {
         mutableStateOf(selectedSortOption)
     }
 
-    ModalBottomSheet(
-        modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.surface,
+    AphoraBottomSheet(
         onDismissRequest = onDismiss,
     ) {
         Column {
@@ -78,7 +75,6 @@ fun SortBottomSheet(
                     .padding(horizontal = Spacing.ScreenMargin),
                 onClick = { onOptionSelected(currentSelectedOption) },
             ) { Text(stringResource(R.string.label_confirm)) }
-            VerticalSpacer()
         }
     }
 }
