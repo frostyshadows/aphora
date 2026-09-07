@@ -38,7 +38,7 @@ fun <T> ScrollableSelectionList(
         ) {
             items.forEach { item -> itemContent(item) }
         }
-        if (scrollState.maxValue > 0 && scrollState.isScrollInProgress) {
+        if (scrollState.maxValue > 0) {
             ScrollIndicator(
                 scrollState = scrollState,
                 modifier = Modifier
