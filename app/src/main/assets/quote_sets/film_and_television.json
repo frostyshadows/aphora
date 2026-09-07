@@ -1,0 +1,633 @@
+{
+  "id": "film_and_television",
+  "title": "Film & Television",
+  "description": "Fifty lines of dialogue from films and series, sourced from Wikiquote.",
+  "quoteCount": 50,
+  "tags": [
+    "character description",
+    "dialogue",
+    "humor",
+    "interiority",
+    "metaphor",
+    "world-building"
+  ],
+  "attribution": {
+    "source": "Wikiquote (en.wikiquote.org)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Quote text and attributions come from Wikiquote's sourced sections and are used under CC BY-SA 4.0. Redistribution must preserve this attribution and license."
+  },
+  "quotes": [
+    {
+      "text": "Of all the gin joints in all the towns in all the world, she walks into mine.",
+      "note": "Nine words that turn coincidence into fate.",
+      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
+      "work": "Casablanca",
+      "year": 1942,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "Here's looking at you, kid.",
+      "note": "A toast reused across the film until it becomes a farewell.",
+      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
+      "work": "Casablanca",
+      "year": 1942,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I stick my neck out for nobody.",
+      "note": "A stated rule the whole plot exists to break.",
+      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
+      "work": "Casablanca",
+      "year": 1942,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character description"
+      ]
+    },
+    {
+      "text": "Round up the usual suspects.",
+      "note": "A line that closes a plot hole by refusing to look at it.",
+      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
+      "work": "Casablanca",
+      "year": 1942,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Renault"
+    },
+    {
+      "text": "I'm gonna make him an offer he can't refuse.",
+      "note": "Menace delivered entirely through understatement.",
+      "writer": "Mario Puzo and Francis Ford Coppola",
+      "work": "The Godfather",
+      "year": 1972,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Vito"
+    },
+    {
+      "text": "Leave the gun. Take the Cannoli.",
+      "note": "Two imperatives, and the second one does all the characterisation.",
+      "writer": "Mario Puzo and Francis Ford Coppola",
+      "work": "The Godfather",
+      "year": 1972,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "If the headline is big enough, it makes the news big enough.",
+      "note": "A newspaperman's ethics stated as a production rule.",
+      "writer": "Herman J. Mankiewicz and Orson Welles",
+      "work": "Citizen Kane",
+      "year": 1941,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I don't think there's one word that can describe a man's life.",
+      "note": "The film's own thesis, spoken by a minor character.",
+      "writer": "Herman J. Mankiewicz and Orson Welles",
+      "work": "Citizen Kane",
+      "year": 1941,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I am big. It's the pictures that got small.",
+      "note": "Self-delusion and accurate criticism in the same breath.",
+      "writer": "Billy Wilder and Charles Brackett",
+      "work": "Sunset Boulevard",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character description"
+      ],
+      "speaker": "Norma Desmond"
+    },
+    {
+      "text": "We didn't need dialogue. We had faces!",
+      "note": "An argument for silent film, made in dialogue.",
+      "writer": "Billy Wilder and Charles Brackett",
+      "work": "Sunset Boulevard",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "Well, nobody's perfect!",
+      "note": "The most casual possible response to a revelation. Perfect last line.",
+      "writer": "Billy Wilder and I. A. L. Diamond",
+      "work": "Some Like It Hot",
+      "year": 1959,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Osgood"
+    },
+    {
+      "text": "Fasten your seatbelts, it's going to be a bumpy night.",
+      "note": "A warning issued by someone who intends to cause the turbulence.",
+      "writer": "Joseph L. Mankiewicz",
+      "work": "All About Eve",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "So many people know me. I wish I did. I wish someone would tell me about me.",
+      "note": "Fame described as a form of self-estrangement.",
+      "writer": "Joseph L. Mankiewicz",
+      "work": "All About Eve",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ]
+    },
+    {
+      "text": "I want you to get up right now and go to the window, open it, and stick your head out, and yell: I'M AS MAD AS HELL, AND I'M NOT GOING TO TAKE THIS ANYMORE!",
+      "note": "A line that escaped the film and became a political slogan.",
+      "writer": "Paddy Chayefsky",
+      "work": "Network",
+      "year": 1976,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "Forget it, Jake. It's Chinatown.",
+      "note": "Consolation and verdict at once. The place explains the crime.",
+      "writer": "Robert Towne",
+      "work": "Chinatown",
+      "year": 1974,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Lawrence Walsh"
+    },
+    {
+      "text": "You're dumber than you think I think you are.",
+      "note": "An insult that requires a moment of arithmetic.",
+      "writer": "Robert Towne",
+      "work": "Chinatown",
+      "year": 1974,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "I love the smell of napalm in the morning.",
+      "note": "Horror rendered as connoisseurship.",
+      "writer": "John Milius and Francis Ford Coppola",
+      "work": "Apocalypse Now",
+      "year": 1979,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character description"
+      ]
+    },
+    {
+      "text": "I've seen things you people wouldn't believe. Attack ships on fire off shoulder of Orion. I watched c-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost in time, like tears in rain. Time to die.",
+      "note": "Improvised on set, and the best-known lines in the film.",
+      "writer": "Hampton Fancher and David Peoples",
+      "work": "Blade Runner",
+      "year": 1982,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Quite an experience to live in fear, isn't it? That's what it is to be a slave.",
+      "note": "The antagonist explaining his own condition to his hunter.",
+      "writer": "Hampton Fancher and David Peoples",
+      "work": "Blade Runner",
+      "year": 1982,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I'm sorry, Dave. I'm afraid I can't do that.",
+      "note": "Politeness as the delivery mechanism for menace.",
+      "writer": "Stanley Kubrick and Arthur C. Clarke",
+      "work": "2001: A Space Odyssey",
+      "year": 1968,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "HAL"
+    },
+    {
+      "text": "By the way, do you mind if I ask you a personal question?",
+      "note": "A machine performing social nicety, which is the whole horror.",
+      "writer": "Stanley Kubrick and Arthur C. Clarke",
+      "work": "2001: A Space Odyssey",
+      "year": 1968,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "HAL"
+    },
+    {
+      "text": "Hello, my name is Inigo Montoya. You killed my father. Prepare to die.",
+      "note": "A formula repeated so often it becomes incantation.",
+      "writer": "William Goldman",
+      "work": "The Princess Bride",
+      "year": 1987,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character description"
+      ],
+      "speaker": "Inigo"
+    },
+    {
+      "text": "You keep using that word. I do not think it means what you think it means. My God, he's climbing.",
+      "note": "A running joke about the precision of language.",
+      "writer": "William Goldman",
+      "work": "The Princess Bride",
+      "year": 1987,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Inigo"
+    },
+    {
+      "text": "I always think everything could be a trap...which is why I'm still alive.",
+      "note": "Paranoia offered as a survival strategy.",
+      "writer": "William Goldman",
+      "work": "The Princess Bride",
+      "year": 1987,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "What would you do if you were stuck in one place, and every day was exactly the same, and nothing that you did mattered?",
+      "note": "The premise stated as an idle question before it becomes literal.",
+      "writer": "Danny Rubin and Harold Ramis",
+      "work": "Groundhog Day",
+      "year": 1993,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Phil"
+    },
+    {
+      "text": "Mind if I sit down? I'm carrying quite a load here.",
+      "note": "A pregnant detective's deadpan. Character in one aside.",
+      "writer": "Joel and Ethan Coen",
+      "work": "Fargo",
+      "year": 1996,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "There's more to life than a little money, you know.",
+      "note": "The film's moral, delivered without emphasis.",
+      "writer": "Joel and Ethan Coen",
+      "work": "Fargo",
+      "year": 1996,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "Yeah, man, it really tied the room together.",
+      "note": "An absurd grievance treated with total seriousness.",
+      "writer": "Joel and Ethan Coen",
+      "work": "The Big Lebowski",
+      "year": 1998,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "The Dude"
+    },
+    {
+      "text": "Yeah, well, the Dude abides.",
+      "note": "Two words that function as an entire philosophy.",
+      "writer": "Joel and Ethan Coen",
+      "work": "The Big Lebowski",
+      "year": 1998,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character description"
+      ],
+      "speaker": "The Dude"
+    },
+    {
+      "text": "I finally get a bouquet and it's a goodbye present. That's depressing.",
+      "note": "A child's flat reading of a sentimental gesture.",
+      "writer": "Hayao Miyazaki",
+      "work": "Spirited Away",
+      "year": 2001,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "If you completely forget your name, you'll never find your way back home. I've tried everything to remember mine.",
+      "note": "Memory framed as something that persists beneath recall.",
+      "writer": "Hayao Miyazaki",
+      "work": "Spirited Away",
+      "year": 2001,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "speaker": "Haku"
+    },
+    {
+      "text": "Sand is overrated. It's just tiny little rocks.",
+      "note": "Contrarianism as flirtation.",
+      "writer": "Charlie Kaufman",
+      "work": "Eternal Sunshine of the Spotless Mind",
+      "year": 2004,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "I loved you on this day. I love this memory.",
+      "note": "Present tense and past tense in the same thought.",
+      "writer": "Charlie Kaufman",
+      "work": "Eternal Sunshine of the Spotless Mind",
+      "year": 2004,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ]
+    },
+    {
+      "text": "\"Blessed are the forgetful: for they get the better even of their blunders.\"",
+      "note": "A Nietzsche quotation used as the film's thesis.",
+      "writer": "Charlie Kaufman",
+      "work": "Eternal Sunshine of the Spotless Mind",
+      "year": 2004,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "But then the morning comes, and we turn back into pumpkins, right?",
+      "note": "A fairy-tale figure used to name a deadline.",
+      "writer": "Richard Linklater and Kim Krizan",
+      "work": "Before Sunrise",
+      "year": 1995,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "For relaxing times, make it Suntory time.",
+      "note": "A translation that has clearly lost most of its original.",
+      "writer": "Sofia Coppola",
+      "work": "Lost in Translation",
+      "year": 2003,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "The more you know who you are, and what you want, the less you let things upset you.",
+      "note": "Advice given across a thirty-year age gap.",
+      "writer": "Sofia Coppola",
+      "work": "Lost in Translation",
+      "year": 2003,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Bob"
+    },
+    {
+      "text": "You ain't got to love me, but you gonna know that I love you.",
+      "note": "Love stated as a fact the listener does not get to negotiate.",
+      "writer": "Barry Jenkins",
+      "work": "Moonlight",
+      "year": 2016,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "At some point, you gotta decide for yourself who you're going to be. Can't let nobody make that decision for you.",
+      "note": "The film's central instruction, given early and paid off late.",
+      "writer": "Barry Jenkins",
+      "work": "Moonlight",
+      "year": 2016,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Juan"
+    },
+    {
+      "text": "What are you, a family of charlatans?",
+      "note": "An accusation that is entirely accurate.",
+      "writer": "Bong Joon-ho and Han Jin-won",
+      "work": "Parasite",
+      "year": 2019,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "You know what kind of plan never fails? No plan.",
+      "note": "Fatalism disguised as strategy.",
+      "writer": "Bong Joon-ho and Han Jin-won",
+      "work": "Parasite",
+      "year": 2019,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "If Snot Boogie always stole the money, why'd you let him play?",
+      "note": "The question that opens the series and states its whole theme.",
+      "writer": "David Simon",
+      "work": "The Wire",
+      "year": 2002,
+      "category": "TV",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "McNulty",
+      "episode": "The Target"
+    },
+    {
+      "text": "Ayo, lesson here, Bey. You come at the king, you best not miss.",
+      "note": "Street proverb compressed to six words.",
+      "writer": "David Simon",
+      "work": "The Wire",
+      "year": 2002,
+      "category": "TV",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Omar",
+      "episode": "Lessons"
+    },
+    {
+      "text": "Don't make me an optimist, you will ruin my life.",
+      "note": "A refusal of comfort, played as a joke and meant seriously.",
+      "writer": "Phoebe Waller-Bridge",
+      "work": "Fleabag",
+      "year": 2016,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Fleabag",
+      "episode": "Episode 4"
+    },
+    {
+      "text": "I'm Janet. I'm the informational assistant here in the Good Place.",
+      "note": "Exposition delivered by a character who is herself the exposition.",
+      "writer": "Michael Schur",
+      "work": "The Good Place",
+      "year": 2016,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "world-building"
+      ],
+      "speaker": "Janet",
+      "episode": "Chapter 1 – Everything is Fine"
+    },
+    {
+      "text": "I mean, somebody royally forked up. Somebody forked up. Why can't I say \"fork\"?",
+      "note": "A world-building rule turned into a running gag.",
+      "writer": "Michael Schur",
+      "work": "The Good Place",
+      "year": 2016,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Eleanor",
+      "episode": "Chapter 1 – Everything is Fine"
+    },
+    {
+      "text": "It is good to be here, Charlie. Sorry I was late. The traffic...",
+      "note": "A talk-show entrance that establishes the whole character.",
+      "writer": "Raphael Bob-Waksberg",
+      "work": "BoJack Horseman",
+      "year": 2014,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "BoJack",
+      "episode": "BoJack Horseman: The BoJack Horseman Story, Chapter One"
+    },
+    {
+      "text": "There's always money in the banana stand.",
+      "note": "A line whose payoff arrives an entire season later.",
+      "writer": "Mitchell Hurwitz",
+      "work": "Arrested Development",
+      "year": 2003,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "George Sr.",
+      "episode": "Top Banana"
+    },
+    {
+      "text": "You want your belt to buckle, not your chair.",
+      "note": "Advice that reveals everything about who is giving it.",
+      "writer": "Mitchell Hurwitz",
+      "work": "Arrested Development",
+      "year": 2003,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Lucille Bluth",
+      "episode": "Top Banana"
+    },
+    {
+      "text": "It's sourdough starter. I thought that you might like to make something.",
+      "note": "An absurd gift standing in for a family's inability to speak.",
+      "writer": "Jesse Armstrong",
+      "work": "Succession",
+      "year": 2018,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Connor Roy",
+      "episode": "Celebration"
+    }
+  ]
+}

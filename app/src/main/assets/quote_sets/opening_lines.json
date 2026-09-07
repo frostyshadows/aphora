@@ -1,0 +1,639 @@
+{
+  "id": "opening_lines",
+  "title": "Opening Lines",
+  "description": "Fifty first sentences from public-domain novels, with a note on what each one does in its first breath.",
+  "quoteCount": 50,
+  "tags": [
+    "action",
+    "character description",
+    "dialogue",
+    "exposition",
+    "humor",
+    "interiority",
+    "metaphor",
+    "setting"
+  ],
+  "attribution": {
+    "source": "Project Gutenberg",
+    "license": "Public domain in the United States",
+    "licenseUrl": "https://www.gutenberg.org/policy/permission.html",
+    "note": "Every quote in this set was extracted verbatim from the Project Gutenberg source text named by gutenbergId and machine-verified against it."
+  },
+  "quotes": [
+    {
+      "text": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.",
+      "note": "States a social law as fact, then spends the novel undercutting it. Irony loaded into the first breath.",
+      "writer": "Jane Austen",
+      "work": "Pride and Prejudice",
+      "year": 1813,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "humor"
+      ],
+      "gutenbergId": 1342
+    },
+    {
+      "text": "Call me Ishmael.",
+      "note": "Three words. Not 'my name is' — 'call me', which withholds as much as it offers.",
+      "writer": "Herman Melville",
+      "work": "Moby-Dick",
+      "year": 1851,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 2701
+    },
+    {
+      "text": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.",
+      "note": "Antithesis stacked until the pattern itself becomes the meaning.",
+      "writer": "Charles Dickens",
+      "work": "A Tale of Two Cities",
+      "year": 1859,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "metaphor"
+      ],
+      "gutenbergId": 98
+    },
+    {
+      "text": "My father’s family name being Pirrip, and my Christian name Philip, my infant tongue could make of both names nothing longer or more explicit than Pip.",
+      "note": "A name explained is a whole childhood explained.",
+      "writer": "Charles Dickens",
+      "work": "Great Expectations",
+      "year": 1861,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 1400
+    },
+    {
+      "text": "The studio was filled with the rich odour of roses, and when the light summer wind stirred amidst the trees of the garden, there came through the open door the heavy scent of the lilac, or the more delicate perfume of the pink-flowering thorn.",
+      "note": "Opens on scent rather than sight — the whole novel is about the senses.",
+      "writer": "Oscar Wilde",
+      "work": "The Picture of Dorian Gray",
+      "year": 1890,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 174
+    },
+    {
+      "text": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”",
+      "note": "Boredom as the engine. The rule of the book is established before any magic.",
+      "writer": "Lewis Carroll",
+      "work": "Alice's Adventures in Wonderland",
+      "year": 1865,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "humor"
+      ],
+      "gutenbergId": 11
+    },
+    {
+      "text": "1801—I have just returned from a visit to my landlord—the solitary neighbour that I shall be troubled with.",
+      "note": "A narrator who thinks he is the subject. The misdirection is the point.",
+      "writer": "Emily Brontë",
+      "work": "Wuthering Heights",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 768
+    },
+    {
+      "text": "There was no possibility of taking a walk that day.",
+      "note": "Negation as an opening move — the book begins with something that cannot happen.",
+      "writer": "Charlotte Brontë",
+      "work": "Jane Eyre",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "interiority"
+      ],
+      "gutenbergId": 1260
+    },
+    {
+      "text": "Miss Brooke had that kind of beauty which seems to be thrown into relief by poor dress.",
+      "note": "Beauty defined by contrast with what surrounds it, not by itself.",
+      "writer": "George Eliot",
+      "work": "Middlemarch",
+      "year": 1871,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 145
+    },
+    {
+      "text": "Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes.",
+      "note": "Drops you mid-conversation. No throat-clearing, no scene-setting.",
+      "writer": "Leo Tolstoy",
+      "work": "War and Peace",
+      "year": 1869,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 2600
+    },
+    {
+      "text": "Happy families are all alike; every unhappy family is unhappy in its own way.",
+      "note": "An aphorism that promises a thesis, then the novel complicates it for 800 pages.",
+      "writer": "Leo Tolstoy",
+      "work": "Anna Karenina",
+      "year": 1878,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 1399
+    },
+    {
+      "text": "On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.",
+      "note": "Heat, a garret, a young man leaving. Every element is a pressure.",
+      "writer": "Fyodor Dostoyevsky",
+      "work": "Crime and Punishment",
+      "year": 1866,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 2554
+    },
+    {
+      "text": "We were in class when the head-master came in, followed by a “new fellow,” not wearing the school uniform, and a school servant carrying a large desk.",
+      "note": "A 'we' narrator who then vanishes from the book entirely.",
+      "writer": "Gustave Flaubert",
+      "work": "Madame Bovary",
+      "year": 1857,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "exposition"
+      ],
+      "gutenbergId": 2413
+    },
+    {
+      "text": "The Nellie, a cruising yawl, swung to her anchor without a flutter of the sails, and was at rest.",
+      "note": "Stillness first. The whole frame narrative waits on an unmoving boat.",
+      "writer": "Joseph Conrad",
+      "work": "Heart of Darkness",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 219
+    },
+    {
+      "text": "In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.",
+      "note": "Establishes Nick as someone who quotes his father — inherited judgment.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "character description"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.",
+      "note": "The impossible stated in the flat register of a weather report.",
+      "writer": "Franz Kafka",
+      "work": "The Metamorphosis",
+      "year": 1915,
+      "category": "BOOK",
+      "tags": [
+        "action",
+        "exposition"
+      ],
+      "gutenbergId": 5200
+    },
+    {
+      "text": "There was no hope for him this time: it was the third stroke.",
+      "note": "'This time' does the work — implies a history the sentence never gives you.",
+      "writer": "James Joyce",
+      "work": "Dubliners",
+      "year": 1914,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 2814
+    },
+    {
+      "text": "Once upon a time and a very good time it was there was a moocow coming down along the road and this moocow that was coming down along the road met a nicens little boy named baby tuckoo.",
+      "note": "Syntax pitched exactly at the age of the consciousness it renders.",
+      "writer": "James Joyce",
+      "work": "A Portrait of the Artist as a Young Man",
+      "year": 1916,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 4217
+    },
+    {
+      "text": "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.",
+      "note": "Two adjectives before the name, and the mock-ceremony is already running.",
+      "writer": "James Joyce",
+      "work": "Ulysses",
+      "year": 1922,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 4300
+    },
+    {
+      "text": "Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tide-water dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego.",
+      "note": "Establishes the animal viewpoint through a joke about what he cannot do.",
+      "writer": "Jack London",
+      "work": "The Call of the Wild",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "humor"
+      ],
+      "gutenbergId": 215
+    },
+    {
+      "text": "The story had held us, round the fire, sufficiently breathless, but except the obvious remark that it was gruesome, as, on Christmas Eve in an old house, a strange tale should essentially be, I remember no comment uttered till somebody happened to say that it was the only case he had met in which such a visitation had fallen on a child.",
+      "note": "A story about listeners before it is a story about ghosts.",
+      "writer": "Henry James",
+      "work": "The Turn of the Screw",
+      "year": 1898,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 209
+    },
+    {
+      "text": "Selden paused in surprise.",
+      "note": "Four words. The novel enters through someone else's gaze.",
+      "writer": "Edith Wharton",
+      "work": "The House of Mirth",
+      "year": 1905,
+      "category": "BOOK",
+      "tags": [
+        "action"
+      ],
+      "gutenbergId": 284
+    },
+    {
+      "text": "On a January evening of the early seventies, Christine Nilsson was singing in Faust at the Academy of Music in New York.",
+      "note": "Dates the world precisely — this is a novel about a vanished set of rules.",
+      "writer": "Edith Wharton",
+      "work": "The Age of Innocence",
+      "year": 1920,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 541
+    },
+    {
+      "text": "A green and yellow parrot, which hung in a cage outside the door, kept repeating over and over: “Allez vous-en! Allez vous-en!",
+      "note": "A caged bird repeating itself. The metaphor is placed before the character.",
+      "writer": "Kate Chopin",
+      "work": "The Awakening",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "setting"
+      ],
+      "gutenbergId": 160
+    },
+    {
+      "text": "It is very seldom that mere ordinary people like John and myself secure ancestral halls for the summer.",
+      "note": "The chirp of the diary voice, already slightly too bright.",
+      "writer": "Charlotte Perkins Gilman",
+      "work": "The Yellow Wallpaper",
+      "year": 1892,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 1952
+    },
+    {
+      "text": "Squire Trelawney, Dr. Livesey, and the rest of these gentlemen having asked me to write down the whole particulars about Treasure Island, from the beginning to the end, keeping nothing back but the bearings of the island, and that only because there is still treasure not yet lifted, I take up my pen in the year of grace 17—, and go back to the time when my father kept the Admiral Benbow inn and the brown old seaman with the sabre cut first took up his lodging under our roof.",
+      "note": "Frames the whole book as a document written under instruction.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Treasure Island",
+      "year": 1883,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 120
+    },
+    {
+      "text": "Mr. Utterson the lawyer was a man of a rugged countenance that was never lighted by a smile; cold, scanty and embarrassed in discourse; backward in sentiment; lean, long, dusty, dreary and yet somehow lovable.",
+      "note": "A portrait built entirely from negatives, ending on 'lovable'.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Strange Case of Dr Jekyll and Mr Hyde",
+      "year": 1886,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 43
+    },
+    {
+      "text": "The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us.",
+      "note": "Names him by function in a parenthesis — he never gets a real name.",
+      "writer": "H. G. Wells",
+      "work": "The Time Machine",
+      "year": 1895,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 35
+    },
+    {
+      "text": "No one would have believed in the last years of the nineteenth century that this world was being watched keenly and closely by intelligences greater than man’s and yet as mortal as his own; that as men busied themselves about their various concerns they were scrutinised and studied, perhaps almost as narrowly as a man with a microscope might scrutinise the transient creatures that swarm and multiply in a drop of water.",
+      "note": "Retrospective dread: we know it happened, we just don't know what yet.",
+      "writer": "H. G. Wells",
+      "work": "The War of the Worlds",
+      "year": 1898,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 36
+    },
+    {
+      "text": "Dorothy lived in the midst of the great Kansas prairies, with Uncle Henry, who was a farmer, and Aunt Em, who was the farmer’s wife.",
+      "note": "Flat, gray, plain diction — so the color later lands.",
+      "writer": "L. Frank Baum",
+      "work": "The Wonderful Wizard of Oz",
+      "year": 1900,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 55
+    },
+    {
+      "text": "When Mary Lennox was sent to Misselthwaite Manor to live with her uncle everybody said she was the most disagreeable-looking child ever seen.",
+      "note": "Opens by telling you the heroine is unpleasant. A bold wager.",
+      "writer": "Frances Hodgson Burnett",
+      "work": "The Secret Garden",
+      "year": 1911,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 113
+    },
+    {
+      "text": "All children, except one, grow up.",
+      "note": "Universal claim, then a single-word exception that is the entire plot.",
+      "writer": "J. M. Barrie",
+      "work": "Peter Pan",
+      "year": 1911,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 16
+    },
+    {
+      "text": "It was seven o’clock of a very warm evening in the Seeonee hills when Father Wolf woke up from his day’s rest, scratched himself, yawned, and spread out his paws one after the other to get rid of the sleepy feeling in their tips.",
+      "note": "Domestic verbs — woke, scratched, yawned — applied to wolves.",
+      "writer": "Rudyard Kipling",
+      "work": "The Jungle Book",
+      "year": 1894,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "character description"
+      ],
+      "gutenbergId": 236
+    },
+    {
+      "text": "The intense interest aroused in the public by what was known at the time as “The Styles Case” has now somewhat subsided.",
+      "note": "Begins after the case is closed, which is the detective-novel promise.",
+      "writer": "Agatha Christie",
+      "work": "The Mysterious Affair at Styles",
+      "year": 1920,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 863
+    },
+    {
+      "text": "Sir Walter Elliot, of Kellynch Hall, in Somersetshire, was a man who, for his own amusement, never took up any book but the Baronetage; there he found occupation for an idle hour, and consolation in a distressed one; there his faculties were roused into admiration and respect, by contemplating the limited remnant of the earliest patents; there any unwelcome sensations, arising from domestic affairs changed naturally into pity and contempt as he turned over the almost endless creations of the last century; and there, if every other leaf were powerless, he could read his own history with an interest which never failed.",
+      "note": "A man whose favourite book is the one containing his own name.",
+      "writer": "Jane Austen",
+      "work": "Persuasion",
+      "year": 1817,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "humor"
+      ],
+      "gutenbergId": 105
+    },
+    {
+      "text": "Emma Woodhouse, handsome, clever, and rich, with a comfortable home and happy disposition, seemed to unite some of the best blessings of existence; and had lived nearly twenty-one years in the world with very little to distress or vex her.",
+      "note": "Three flattering adjectives, then 'seemed' quietly destabilises all of them.",
+      "writer": "Jane Austen",
+      "work": "Emma",
+      "year": 1815,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 158
+    },
+    {
+      "text": "The family of Dashwood had long been settled in Sussex.",
+      "note": "Property before people — the order tells you what the book is about.",
+      "writer": "Jane Austen",
+      "work": "Sense and Sensibility",
+      "year": 1811,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 161
+    },
+    {
+      "text": "About thirty years ago Miss Maria Ward, of Huntingdon, with only seven thousand pounds, had the good luck to captivate Sir Thomas Bertram, of Mansfield Park, in the county of Northampton, and to be thereby raised to the rank of a baronet’s lady, with all the comforts and consequences of an handsome house and large income.",
+      "note": "A marriage priced to the pound in the first clause.",
+      "writer": "Jane Austen",
+      "work": "Mansfield Park",
+      "year": 1814,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "humor"
+      ],
+      "gutenbergId": 141
+    },
+    {
+      "text": "No one who had ever seen Catherine Morland in her infancy would have supposed her born to be an heroine.",
+      "note": "Defines the heroine by how thoroughly she fails to be one.",
+      "writer": "Jane Austen",
+      "work": "Northanger Abbey",
+      "year": 1817,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "humor"
+      ],
+      "gutenbergId": 121
+    },
+    {
+      "text": "Among other public buildings in a certain town, which for many reasons it will be prudent to refrain from mentioning, and to which I will assign no fictitious name, there is one anciently common to most towns, great or small: to wit, a workhouse; and in this workhouse was born; on a day and date which I need not trouble myself to repeat, inasmuch as it can be of no possible consequence to the reader, in this stage of the business at all events; the item of mortality whose name is prefixed to the head of this chapter.",
+      "note": "Elaborate evasion about naming the town — comedy that turns cold at 'workhouse'.",
+      "writer": "Charles Dickens",
+      "work": "Oliver Twist",
+      "year": 1838,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "humor"
+      ],
+      "gutenbergId": 730
+    },
+    {
+      "text": "Whether I shall turn out to be the hero of my own life, or whether that station will be held by anybody else, these pages must show.",
+      "note": "A first-person narrator openly doubting his own centrality.",
+      "writer": "Charles Dickens",
+      "work": "David Copperfield",
+      "year": 1850,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 766
+    },
+    {
+      "text": "London. Michaelmas term lately over, and the Lord Chancellor sitting in Lincoln’s Inn Hall. Implacable November weather.",
+      "note": "Verbless fragments — weather as a state of the legal system.",
+      "writer": "Charles Dickens",
+      "work": "Bleak House",
+      "year": 1853,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 1023
+    },
+    {
+      "text": "MARLEY was dead: to begin with.",
+      "note": "Establishes the one fact the ghost story depends on, then insists on it.",
+      "writer": "Charles Dickens",
+      "work": "A Christmas Carol",
+      "year": 1843,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 46
+    },
+    {
+      "text": "You don’t know about me without you have read a book by the name of The Adventures of Tom Sawyer; but that ain’t no matter.",
+      "note": "The voice is the whole argument — grammar as characterisation.",
+      "writer": "Mark Twain",
+      "work": "Adventures of Huckleberry Finn",
+      "year": 1884,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "humor"
+      ],
+      "gutenbergId": 76
+    },
+    {
+      "text": "A throng of bearded men, in sad-coloured garments and grey steeple-crowned hats, intermixed with women, some wearing hoods, and others bareheaded, was assembled in front of a wooden edifice, the door of which was heavily timbered with oak, and studded with iron spikes.",
+      "note": "Crowd first, then the door, then the woman. A camera move.",
+      "writer": "Nathaniel Hawthorne",
+      "work": "The Scarlet Letter",
+      "year": 1850,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 33
+    },
+    {
+      "text": "The stranger came early in February, one wintry day, through a biting wind and a driving snow, the last snowfall of the year, over the down, walking from Bramblehurst railway station, and carrying a little black portmanteau in his thickly gloved hand.",
+      "note": "'The stranger' — an entire novel of withheld identity in two words.",
+      "writer": "H. G. Wells",
+      "work": "The Invisible Man",
+      "year": 1897,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 5230
+    },
+    {
+      "text": "You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings.",
+      "note": "An epistolary reassurance that immediately reads as a warning.",
+      "writer": "Mary Wollstonecraft Shelley",
+      "work": "Frankenstein",
+      "year": 1818,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 84
+    },
+    {
+      "text": "I am a sick man.... I am a spiteful man.",
+      "note": "Three flat self-diagnoses in a row, each retracted by the next.",
+      "writer": "Fyodor Dostoyevsky",
+      "work": "Notes from the Underground",
+      "year": 1864,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 600
+    },
+    {
+      "text": "“Christmas won’t be Christmas without any presents,” grumbled Jo, lying on the rug.",
+      "note": "Opens on a complaint, in dialogue, with no attribution needed.",
+      "writer": "Louisa May Alcott",
+      "work": "Little Women",
+      "year": 1868,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 514
+    },
+    {
+      "text": "Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.",
+      "note": "Train times and dinner menus — the banality that makes the horror land.",
+      "writer": "Bram Stoker",
+      "work": "Dracula",
+      "year": 1897,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 345
+    }
+  ]
+}

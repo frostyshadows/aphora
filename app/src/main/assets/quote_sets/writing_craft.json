@@ -1,0 +1,643 @@
+{
+  "id": "writing_craft",
+  "title": "Writing Craft",
+  "description": "Fifty pieces of advice on style, plot, character and revision, from public-domain essays on the art of writing.",
+  "quoteCount": 50,
+  "tags": [
+    "character",
+    "clarity",
+    "discipline",
+    "humor",
+    "metaphor",
+    "plot",
+    "reader",
+    "revision",
+    "style",
+    "voice"
+  ],
+  "attribution": {
+    "source": "Project Gutenberg",
+    "license": "Public domain in the United States",
+    "licenseUrl": "https://www.gutenberg.org/policy/permission.html",
+    "note": "Every quote in this set was extracted verbatim from the Project Gutenberg source text named by gutenbergId and machine-verified against it."
+  },
+  "quotes": [
+    {
+      "text": "Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts. This requires not that the writer make all his sentences short, or that he avoid all detail and treat his subjects only in outline, but that he make every word tell.",
+      "note": "The rule everyone quotes, with the drawing-and-machine analogy that makes it stick.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "style",
+        "clarity",
+        "revision"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "The proper place in the sentence for the word, or group of words, which the writer desires to make most prominent is usually the end.",
+      "note": "Emphasis is positional. Where you put it matters more than how you say it.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "But a writer may err by making his sentences too uniformly compact and periodic, and an occasional loose sentence prevents the style from becoming too formal and gives the reader a certain relief.",
+      "note": "A warning against the over-application of his own rules.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "After the paragraph has been written, examine it to see whether subdivision will not improve it.",
+      "note": "Revision framed as a question you ask the paragraph, not the sentence.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "revision"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "The subject of a sentence and the principal verb should not, as a rule, be separated by a phrase or clause that can be transferred to the beginning.",
+      "note": "Keep the load-bearing words near each other.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "style",
+        "clarity"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "there is only one way to be clever, and that is to be exact.",
+      "note": "Cleverness redefined as accuracy. Worth taping above a desk.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "clarity",
+        "style"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "In prose, the sentence turns upon a pivot, nicely balanced, and fits into itself with an obtrusive neatness like a puzzle.",
+      "note": "Prose described as a mechanism with moving parts.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "Anybody can write a short story—a bad one, I mean—who has industry and paper and time enough; but not every one may hope to write even a bad novel.",
+      "note": "On the gulf between finishing something and finishing something good.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline",
+        "humor"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "It is this nearness of examination necessary for any true and kind writing, that makes the practice of the art a prolonged and noble education for the writer.",
+      "note": "Writing as an education in attention, not in language.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "Hence it comes that it is much easier for men of equal facility to write fairly pleasing verse than reasonably interesting prose; for in prose the pattern itself has to be invented, and the difficulties first created before they can be solved.",
+      "note": "Why prose is harder than verse: you must invent the pattern before you can satisfy it.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "It was to be a story for boys; no need of psychology or fine writing; and I had a boy at hand to be a touchstone.",
+      "note": "Stevenson on writing Treasure Island by deciding what it would not need.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "Some part of the writer or his life will crop out in even a vapid book; and to read a novel that was conceived with any force is to multiply experience and to exercise the sympathies.",
+      "note": "An argument for reading badly written books attentively.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "reader"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "Whenever you feel an impulse to perpetrate a piece of exceptionally fine writing, obey it--whole-heartedly--and delete it before sending your manuscript to press. Murder your darlings.",
+      "note": "The origin of 'murder your darlings' — and the full rule is gentler and more useful than the slogan.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "revision",
+        "style"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "Matter and expression are parts of one; style is a thinking out into language.",
+      "note": "Refuses the split between what you say and how you say it.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "Literature--the written word--is a permanent record of memorable speech; a record, at any rate, intended to be permanent.",
+      "note": "Defines literature by its relation to the speaking voice.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "voice"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "In asking you to practise the written word, I began with such low but necessary things as propriety, perspicuity, accuracy.",
+      "note": "Puts propriety, perspicuity and accuracy first — the unglamorous foundation.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "clarity"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "I do not forget that the printed book--the written word--presupposes a speaking voice, and must ever have at its back some sense in us of the speaking voice.",
+      "note": "Every sentence on the page is still a sentence someone could say.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "voice"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "Try to be one of the people on whom nothing is lost!",
+      "note": "The single best instruction ever given to a writer, and it is about noticing.",
+      "writer": "Henry James",
+      "work": "Partial Portraits",
+      "year": 1888,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline",
+        "reader"
+      ],
+      "gutenbergId": 58471
+    },
+    {
+      "text": "A novel is in its broadest definition a personal, a direct impression of life: that, to begin with, constitutes its value, which is greater or less according to the intensity of the impression.",
+      "note": "Value located in the honesty of the impression, not the correctness of the form.",
+      "writer": "Henry James",
+      "work": "Partial Portraits",
+      "year": 1888,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 58471
+    },
+    {
+      "text": "The only reason for the existence of a novel is that it does attempt to represent life.",
+      "note": "One sentence that settles a century of argument about what novels are for.",
+      "writer": "Henry James",
+      "work": "Partial Portraits",
+      "year": 1888,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 58471
+    },
+    {
+      "text": "Trollope did not write for posterity; he wrote for the day, the moment; but these are just the writers whom posterity is apt to put into its pocket.",
+      "note": "A defence of writing for the present moment.",
+      "writer": "Henry James",
+      "work": "Partial Portraits",
+      "year": 1888,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline"
+      ],
+      "gutenbergId": 58471
+    },
+    {
+      "text": "To give the phrase, the sentence, the structural member, the entire composition, song, or essay, a similar unity with its subject and with itself:--style is in the right way when it tends towards that.",
+      "note": "Unity proposed as the single test of style at every scale at once.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "All the laws of good writing aim at a similar unity or identity of the mind in all the processes by which the word is associated to its import.",
+      "note": "Reduces every rule you have been taught to one principle.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "Possessed of an absolute belief that there exists but one way of expressing one thing, one word to call it by, one adjective to qualify, one verb to animate it, he gave himself to superhuman labour for the discovery, in every phrase, of that word, that verb, that epithet.",
+      "note": "Flaubert's search for the one right word, described by someone watching him do it.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "style",
+        "revision"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "As a quality of style, at all events, soul is a fact, in certain writers--the way they have of absorbing language, of attracting it into the peculiar spirit they are of, with a subtlety which makes the actual result seem like some inexplicable inspiration.",
+      "note": "Voice treated as an observable property rather than a mystique.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "voice"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "And so it happens, to its greater credit, that the better interest even of a narrative to be recounted, a story to be told, will often be in its second reading.",
+      "note": "The test of a narrative is what survives the second reading.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "reader"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "For to the grave reader words too are grave; and the ornamental word, the figure, the accessory form or colour or reference, is rarely content to die to thought precisely at the right moment, but will inevitably linger awhile, stirring a long \"brain-wave\" behind it of perhaps quite alien associations.",
+      "note": "Ornament lingers after its job is done — the argument against the decorative.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "style",
+        "revision"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "There ought not to be in a novel, any more than in a poem, a single sentence carelessly worded, a single phrase which has not been considered.",
+      "note": "Holds prose to the standard of poetry, sentence by sentence.",
+      "writer": "Walter Besant",
+      "work": "The Art of Fiction",
+      "year": 1884,
+      "category": "ARTICLE",
+      "tags": [
+        "revision",
+        "style"
+      ],
+      "gutenbergId": 76460
+    },
+    {
+      "text": "As soon as the actors in the story become real in the mind of the narrator, and not before, the story itself becomes real to him.",
+      "note": "Order of operations: the writer believes it first, then the reader can.",
+      "writer": "Walter Besant",
+      "work": "The Art of Fiction",
+      "year": 1884,
+      "category": "ARTICLE",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 76460
+    },
+    {
+      "text": "I do not think it is generally understood that there are thousands of scenes which belong to the story and never get outside the writer's brain at all.",
+      "note": "The scenes you never write are still doing work in the ones you do.",
+      "writer": "Walter Besant",
+      "work": "The Art of Fiction",
+      "year": 1884,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 76460
+    },
+    {
+      "text": "Any one, they think, can write a novel; therefore, why not sit down and write one?",
+      "note": "On the peculiar disrespect reserved for the novel as a form.",
+      "writer": "Walter Besant",
+      "work": "The Art of Fiction",
+      "year": 1884,
+      "category": "ARTICLE",
+      "tags": [
+        "humor",
+        "discipline"
+      ],
+      "gutenbergId": 76460
+    },
+    {
+      "text": "Granted a given series of events to be set forth, the structure of the plot, the means of character delineation, the use of setting, the entire tone and tenor of the narrative, are all dependent directly on the answer to the question, Who shall tell the story?",
+      "note": "Point of view named as the decision that determines every other decision.",
+      "writer": "Clayton Hamilton",
+      "work": "Materials and Methods of Fiction",
+      "year": 1908,
+      "category": "ARTICLE",
+      "tags": [
+        "voice",
+        "plot"
+      ],
+      "gutenbergId": 30776
+    },
+    {
+      "text": "If the action be visualized with sufficient clearness and if its dominant details be presented to the reader with adequate emphasis, a more vivid impression of character will be conveyed than through any sort of direct statement by the author.",
+      "note": "Show-don't-tell, argued from cause rather than asserted as a slogan.",
+      "writer": "Clayton Hamilton",
+      "work": "Materials and Methods of Fiction",
+      "year": 1908,
+      "category": "ARTICLE",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 30776
+    },
+    {
+      "text": "According to the first method, traits of character are conveyed directly to the reader through some sort of statement by the writer of the story: according to the second method, characteristics are conveyed indirectly to the reader through a necessary inference, on his part, from the narrative itself.",
+      "note": "The clean taxonomy of direct versus inferred characterisation.",
+      "writer": "Clayton Hamilton",
+      "work": "Materials and Methods of Fiction",
+      "year": 1908,
+      "category": "ARTICLE",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 30776
+    },
+    {
+      "text": "In a far more exact and precise use of the word, a short-story has unity as a novel cannot have it.",
+      "note": "Why the short story is not simply a small novel.",
+      "writer": "Clayton Hamilton",
+      "work": "Materials and Methods of Fiction",
+      "year": 1908,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 30776
+    },
+    {
+      "text": "There is no more curious problem in the philosophy of style than that afforded by the stubborn reluctance of writers, the good as well as the bad, to repeat a word or phrase.",
+      "note": "On the superstition that you must never repeat a word.",
+      "writer": "Walter Raleigh",
+      "work": "Style",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "style",
+        "revision"
+      ],
+      "gutenbergId": 1038
+    },
+    {
+      "text": "To one word, then, there are many meanings, according as it falls in the sentence, according as its successive ties and associations are broken or renewed.",
+      "note": "A word's meaning is positional, not fixed. The case for reading your own sentences aloud.",
+      "writer": "Walter Raleigh",
+      "work": "Style",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 1038
+    },
+    {
+      "text": "And as a keen eye for the imagery attendant on a word is essential to all writing, whether prose or poetry, that attempts the heart, so languor of the visual faculty can work disaster even in the calm periods of philosophic expatiation.",
+      "note": "Dead metaphors in abstract words still fire, whether you meant them to or not.",
+      "writer": "Walter Raleigh",
+      "work": "Style",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "style",
+        "metaphor"
+      ],
+      "gutenbergId": 1038
+    },
+    {
+      "text": "Style is the physiognomy of the mind, and a safer index to character than the face.",
+      "note": "Style as involuntary self-disclosure — you cannot fake it for long.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "voice",
+        "style"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "There are, first of all, two kinds of authors: those who write for the subject's sake, and those who write for writing's sake.",
+      "note": "The distinction that explains most bad writing in one line.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "No one writes anything that is worth writing, unless he writes entirely for the sake of his subject.",
+      "note": "An absolute claim, and hard to argue with.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "discipline"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "The truth is that when an author begins to write for the sake of covering paper, he is cheating the reader; because he writes under the pretext that he has something to say.",
+      "note": "Padding reframed as a breach of contract with the reader.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "reader",
+        "revision"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "Every mediocre writer tries to mask his own natural style, because in his heart he knows the truth of what I am saying.",
+      "note": "Affectation diagnosed as a form of self-knowledge.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "voice"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "The humorous story depends for its effect upon the manner of the telling; the comic story and the witty story upon the matter. The humorous story may be spun out to great length, and may wander around as much as it pleases, and arrive nowhere in particular; but the comic and witty stories must be brief and end with a point.",
+      "note": "Manner versus matter — the whole theory of comic timing in one distinction.",
+      "writer": "Mark Twain",
+      "work": "How to Tell a Story",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "humor",
+        "voice"
+      ],
+      "gutenbergId": 3250
+    },
+    {
+      "text": "I only claim to know how a story ought to be told, for I have been almost daily in the company of the most expert story-tellers for many years. There are several kinds of stories, but only one difficult kind--the humorous.",
+      "note": "Authority claimed by proximity rather than theory.",
+      "writer": "Mark Twain",
+      "work": "How to Tell a Story",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "humor"
+      ],
+      "gutenbergId": 3250
+    },
+    {
+      "text": "The Plot, then, is the first principle, and, as it were, the soul of a tragedy: Character holds the second place. A similar fact is seen in painting.",
+      "note": "The oldest surviving argument for plot over character, still contested.",
+      "writer": "Aristotle",
+      "work": "Poetics",
+      "year": -335,
+      "category": "BOOK",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 1974
+    },
+    {
+      "text": "The poet and the historian differ not by writing in verse or in prose. The work of Herodotus might be put into verse, and it would still be a species of history, with metre no less than without it.",
+      "note": "The distinction is between what happened and what could happen.",
+      "writer": "Aristotle",
+      "work": "Poetics",
+      "year": -335,
+      "category": "BOOK",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 1974
+    },
+    {
+      "text": "As in the structure of the plot, so too in the portraiture of character, the poet should always aim either at the necessary or the probable.",
+      "note": "Necessity or probability — the same test applied to character as to plot.",
+      "writer": "Aristotle",
+      "work": "Poetics",
+      "year": -335,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 1974
+    },
+    {
+      "text": "How would Homer, how would Demosthenes, have been affected by what I have written?",
+      "note": "Revision as an act of imagined judgement by writers you admire.",
+      "writer": "Longinus",
+      "work": "On the Sublime",
+      "year": 100,
+      "category": "BOOK",
+      "tags": [
+        "revision"
+      ],
+      "gutenbergId": 17957
+    },
+    {
+      "text": "For all those writers who are ambitious of a lofty style, through dread of being convicted of feebleness and poverty of language, slide by a natural gradation into the opposite extreme.",
+      "note": "Reaching for grandeur is precisely what produces bombast.",
+      "writer": "Longinus",
+      "work": "On the Sublime",
+      "year": 100,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 17957
+    }
+  ]
+}

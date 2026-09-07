@@ -1,0 +1,1204 @@
+{
+  "id": "famous_figures",
+  "title": "Famous Figures",
+  "description": "One hundred sourced quotations from scientists, writers, artists and public figures, drawn from Wikiquote's sourced sections.",
+  "quoteCount": 100,
+  "tags": [
+    "art",
+    "humor",
+    "justice",
+    "life",
+    "literature",
+    "nature",
+    "philosophy",
+    "politics",
+    "science",
+    "wonder"
+  ],
+  "attribution": {
+    "source": "Wikiquote (en.wikiquote.org)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Quote text and attributions come from Wikiquote's sourced sections and are used under CC BY-SA 4.0. Redistribution must preserve this attribution and license."
+  },
+  "quotes": [
+    {
+      "text": "I live in that solitude which is painful in youth, but delicious in the years of maturity.",
+      "note": "Ch. 2 \"Self-Portrait\" (1936)",
+      "writer": "Albert Einstein",
+      "work": "Out of My Later Years",
+      "year": 1950,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "Ch. 2 \"Self-Portrait\" (1936), p. 5"
+    },
+    {
+      "text": "Joy in looking and comprehending is nature's most beautiful gift.",
+      "note": "Ideas and Opinions",
+      "writer": "Albert Einstein",
+      "work": "Essay to Leo Baeck",
+      "year": 1953,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "Ideas and Opinions"
+    },
+    {
+      "text": "Wisdom is not a product of schooling but of the lifelong attempt to acquire it.",
+      "note": "From the same 24 March 1954 letter as above",
+      "writer": "Albert Einstein",
+      "work": "Albert Einstein: The Human Side",
+      "year": 1979,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "From the same 24 March 1954 letter as above, p. 44"
+    },
+    {
+      "text": "In life, there's nothing to be feared, everything is to be understood.",
+      "note": "As quoted in Our Precarious Habitat (2006) by Melvin A. Benarde",
+      "writer": "Marie Curie",
+      "year": 2006,
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "As quoted in Our Precarious Habitat (2006) by Melvin A. Benarde"
+    },
+    {
+      "text": "All my life through, the new sights of Nature made me rejoice like a child.",
+      "note": "Pierre Curie (1923), as translated by Charlotte Kellogg and Vernon Lyman Kellogg",
+      "writer": "Marie Curie",
+      "year": 1923,
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "Pierre Curie (1923), as translated by Charlotte Kellogg and Vernon Lyman Kellogg, p. 162"
+    },
+    {
+      "text": "One never notices what has been done; one can only see what remains to be done.",
+      "note": "Letter to her brother (1894)",
+      "writer": "Marie Curie",
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "life"
+      ],
+      "sourceNote": "Letter to her brother (1894)"
+    },
+    {
+      "text": "To my mind there are no advantages and many disadvantages in lectures compared with reading.",
+      "note": "Naturalist",
+      "writer": "Charles Darwin",
+      "work": "Autobiography",
+      "year": 1958,
+      "category": "BOOK",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "page 47"
+    },
+    {
+      "text": "Science consists in grouping facts so that general laws or conclusions may be drawn from them.",
+      "note": "Naturalist",
+      "writer": "Charles Darwin",
+      "work": "Autobiography",
+      "year": 1958,
+      "category": "BOOK",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "page 70"
+    },
+    {
+      "text": "The \"paradox\" is only a conflict between reality and your feeling of what reality \"ought to be.\"",
+      "note": "volume III; lecture 18, \"Angular Momentum\"; section 18-3, \"The annihilation of positronium\"",
+      "writer": "Richard Feynman",
+      "work": "The Feynman Lectures on Physics",
+      "year": 1964,
+      "category": "BOOK",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "volume III; lecture 18, \"Angular Momentum\"; section 18-3, \"The annihilation of positronium\"; p. 18-9"
+    },
+    {
+      "text": "The first principle is that you must not fool yourself, and you are the easiest person to fool.",
+      "note": "Physicist",
+      "writer": "Richard Feynman",
+      "work": "The Pleasure of Finding Things Out",
+      "year": 1999,
+      "category": "BOOK",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "from lecture \"What is and What Should be the Role of Scientific Culture in Modern Society\", given at the Galileo Symposium in Italy (1964)"
+    },
+    {
+      "text": "Imagination will often carry us to worlds that never were. But without it we go nowhere.",
+      "note": "Astronomer",
+      "writer": "Carl Sagan",
+      "work": "Cosmos",
+      "year": 1980,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "wonder"
+      ],
+      "sourceNote": "p. 4"
+    },
+    {
+      "text": "We are like butterflies who flutter for a day and think it's forever.",
+      "note": "Astronomer",
+      "writer": "Carl Sagan",
+      "work": "Cosmos",
+      "year": 1980,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "wonder"
+      ],
+      "sourceNote": "p. 30"
+    },
+    {
+      "text": "Our family are an alternate stratification of poetry and mathematics.",
+      "note": "Mathematician",
+      "writer": "Ada Lovelace",
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "art"
+      ],
+      "sourceNote": "In a letter to Andrew Crosse, as quoted in Eugen Kölbing's Englische Studien, Volume 19 (1894), Leipzig; O.R. Reisland, \"Byron's Daughter\", p. 156."
+    },
+    {
+      "text": "We may say most aptly that the Analytical Engine weaves algebraical patterns just as the Jacquard-loom weaves flowers and leaves.",
+      "note": "Notes on the Analytical Engine invented by Charles Babbage (1843)",
+      "writer": "Ada Lovelace",
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "art"
+      ],
+      "sourceNote": "Notes on the Analytical Engine invented by Charles Babbage (1843)"
+    },
+    {
+      "text": "We can only see a short distance ahead, but we can see plenty there that needs to be done.",
+      "note": "Mathematician",
+      "writer": "Alan Turing",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "p. 460."
+    },
+    {
+      "text": "Presumably the child-brain is something like a note-book as one buys it from the stationer's. Rather little mechanism, and lots of blank sheets.",
+      "note": "Mathematician",
+      "writer": "Alan Turing",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "p. 456."
+    },
+    {
+      "text": "A man provided with paper, pencil, and rubber, and subject to strict discipline, is in effect a universal machine.",
+      "note": "Mathematician",
+      "writer": "Alan Turing",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "\"Intelligent Machinery: A Report by A. M. Turing,\" (Summer 1948), submitted to the National Physical Laboratory (1948) and published in Key Papers: Cybernetics, ed. C. R. Evans and A. D. J. Robertson "
+    },
+    {
+      "text": "Our virtues and our failings are inseparable, like force and matter. When they separate, man is no more.",
+      "note": "\"The Problem of Increasing Human Energy\", Century Illustrated Magazine (June 1900)",
+      "writer": "Nikola Tesla",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "\"The Problem of Increasing Human Energy\", Century Illustrated Magazine (June 1900)"
+    },
+    {
+      "text": "Let the future tell the truth and evaluate each one according to his work and accomplishments. The present is theirs; the future, for which I really worked, is mine.",
+      "note": "Inventor",
+      "writer": "Nikola Tesla",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "On patent controversies regarding the invention of Radio and other things, as quoted in \"A Visit to Nikola Tesla\" by Dragislav L. Petković in Politika (April 1927); as quoted in Margaret Cheney, Rober"
+    },
+    {
+      "text": "If you could see the earth illuminated when you were in a place as dark as night, it would look to you more splendid than the moon.",
+      "note": "Salviati",
+      "writer": "Galileo Galilei",
+      "work": "Dialogue Concerning the Two Chief World Systems",
+      "year": 1632,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "wonder"
+      ],
+      "sourceNote": "Salviati, p. 88"
+    },
+    {
+      "text": "Names and attributes must be accommodated to the essence of things, and not the essence to the names, since things come first and names afterwards.",
+      "note": "As quoted in Discoveries and Opinions of Galileo (1957) by Stillman Drake",
+      "writer": "Galileo Galilei",
+      "year": 1957,
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "wonder"
+      ],
+      "sourceNote": "As quoted in Discoveries and Opinions of Galileo (1957) by Stillman Drake, p. 92"
+    },
+    {
+      "text": "The sun, with all those planets revolving around it and dependent on it, can still ripen a bunch of grapes as if it had nothing else in the universe to do.",
+      "note": "Astronomer",
+      "writer": "Galileo Galilei",
+      "work": "Dialogue Concerning the Two Chief World Systems",
+      "year": 1632,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "wonder"
+      ],
+      "sourceNote": "Loose paraphrase of Salviati on Day 3: \"For when the sun draws up some vapors here, or warms a plant there, it draws these and warms this as if it had nothing else to do. Even in ripening a bunch of g"
+    },
+    {
+      "text": "The most alarming of all man's assaults upon the environment is the contamination of air, earth, rivers, and sea with dangerous and even lethal materials.",
+      "note": "Chapter 2, Page 6",
+      "writer": "Rachel Carson",
+      "work": "Silent Spring",
+      "year": 1962,
+      "category": "BOOK",
+      "tags": [
+        "science",
+        "nature"
+      ],
+      "sourceNote": "Chapter 2, Page 6"
+    },
+    {
+      "text": "In our modern world nothing may be taken for granted-not even the spring songs that herald the return of the birds.",
+      "note": "\"Vanishing Americans (1959) in Rachel Carson: Silent Spring & Other Writings on the Environment",
+      "writer": "Rachel Carson",
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "nature"
+      ],
+      "sourceNote": "\"Vanishing Americans (1959) in Rachel Carson: Silent Spring & Other Writings on the Environment"
+    },
+    {
+      "text": "I believe that only in that atmosphere of intellectual freedom can we solve the problems before us now.",
+      "note": "\"Man Against Himself\" (1963) in Rachel Carson: Silent Spring & Other Writings on the Environment",
+      "writer": "Rachel Carson",
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "nature"
+      ],
+      "sourceNote": "\"Man Against Himself\" (1963) in Rachel Carson: Silent Spring & Other Writings on the Environment"
+    },
+    {
+      "text": "Every individual matters. Every individual has a role to play. Every individual makes a difference.",
+      "note": "With Love (1999)",
+      "writer": "Jane Goodall",
+      "year": 1999,
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "nature"
+      ],
+      "sourceNote": "With Love (1999)"
+    },
+    {
+      "text": "Only if we understand can we care. Only if we care will we help. Only if we help shall they be saved.",
+      "note": "Reported in Patti Denys, Mary Holmes, Animal Magnetism: At Home With Celebrities & Their Animal Companions (1998)",
+      "writer": "Jane Goodall",
+      "year": 1998,
+      "category": "OTHER",
+      "tags": [
+        "science",
+        "nature"
+      ],
+      "sourceNote": "Reported in Patti Denys, Mary Holmes, Animal Magnetism: At Home With Celebrities & Their Animal Companions (1998), p. 106"
+    },
+    {
+      "text": "From then on, when anything went wrong with a computer, we said it had bugs in it.",
+      "note": "Computer scientist",
+      "writer": "Grace Hopper",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "On the removal of a 2-inch-long moth from the Harvard Mark II experimental computer at Harvard in 1947, as quoted in Time 16 April 1984. Note that the term \"bug\" was in use by people in several techni"
+    },
+    {
+      "text": "I've always been more interested in the future than in the past.",
+      "note": "As quoted in The Reader's Digest (October 1994)",
+      "writer": "Grace Hopper",
+      "category": "OTHER",
+      "tags": [
+        "science"
+      ],
+      "sourceNote": "As quoted in The Reader's Digest (October 1994), p. 185"
+    },
+    {
+      "text": "Truth is generally the best vindication against slander.",
+      "note": "Letter to Edwin Stanton (14 July 1864); published in Abraham Lincoln: A History (1890) by John Hay",
+      "writer": "Abraham Lincoln",
+      "year": 1890,
+      "category": "OTHER",
+      "tags": [
+        "politics"
+      ],
+      "sourceNote": "Letter to Edwin Stanton (14 July 1864); published in Abraham Lincoln: A History (1890) by John Hay"
+    },
+    {
+      "text": "Determine that the thing can and shall be done, and then we shall find the way.",
+      "note": "Speech in the House of Representatives (20 June 1848)",
+      "writer": "Abraham Lincoln",
+      "category": "OTHER",
+      "tags": [
+        "politics"
+      ],
+      "sourceNote": "Speech in the House of Representatives (20 June 1848)"
+    },
+    {
+      "text": "The better part of one's life consists of his friendships.",
+      "note": "Letter to Joseph Gillespie (13 July 1849)",
+      "writer": "Abraham Lincoln",
+      "category": "OTHER",
+      "tags": [
+        "politics"
+      ],
+      "sourceNote": "Letter to Joseph Gillespie (13 July 1849)"
+    },
+    {
+      "text": "I have never regarded any man as my superior, either in my life outside or inside prison.",
+      "note": "Statesman",
+      "writer": "Nelson Mandela",
+      "category": "OTHER",
+      "tags": [
+        "politics",
+        "justice"
+      ],
+      "sourceNote": "Nelson Mandela on equaliy, From a letter to General Du Preez, Commissioner of Prisons, Written on Robben Island, Cape Town, South Africa (12 July 1976). Source: From Nelson Mandela By Himself: The Aut"
+    },
+    {
+      "text": "Real leaders must be ready to sacrifice all for the freedom of their people.",
+      "note": "Statesman",
+      "writer": "Nelson Mandela",
+      "category": "OTHER",
+      "tags": [
+        "politics",
+        "justice"
+      ],
+      "sourceNote": "Nelson Mandela on leadership, Chief Albert Luthuli Centenary celebrations, Kwadukuza, Kwazulu-Natal, South Africa (25 April 1998). Source: From Nelson Mandela By Himself: The Authorised Book of Quotat"
+    },
+    {
+      "text": "The only real, dignified, human doctrine is the greatest good of all, and this can only be achieved by uttermost self-sacrifice.",
+      "note": "Adapted from Hind Swaraj, 1909, Chapter 17: Summary, in The Collected Works of Mahatma Gandhi, Vol. 10, pp. 83–84",
+      "writer": "Mahatma Gandhi",
+      "work": "Hind Swaraj",
+      "year": 1909,
+      "category": "BOOK",
+      "tags": [
+        "politics",
+        "justice"
+      ],
+      "sourceNote": "Adapted from Hind Swaraj, 1909, Chapter 17: Summary, in The Collected Works of Mahatma Gandhi, Vol. 10, pp. 83–84."
+    },
+    {
+      "text": "Victory attained by violence is tantamount to a defeat, for it is momentary.",
+      "note": "Satyagraha Leaflet No. 13 (3 May 1919)",
+      "writer": "Mahatma Gandhi",
+      "category": "OTHER",
+      "tags": [
+        "politics",
+        "justice"
+      ],
+      "sourceNote": "Satyagraha Leaflet No. 13 (3 May 1919)"
+    },
+    {
+      "text": "A man is but the product of his thoughts. What he thinks, he becomes.",
+      "note": "Independence leader",
+      "writer": "Mahatma Gandhi",
+      "category": "OTHER",
+      "tags": [
+        "politics",
+        "justice"
+      ],
+      "sourceNote": "In Ethical Religion, (Madras: S. Ganesan, 1922), p. 62, Scan from Harvard University Library (both only work with an U.S. source IP address)"
+    },
+    {
+      "text": "Nothing in the world is more dangerous than sincere ignorance and conscientious stupidity.",
+      "note": "Ch. 4 : Love in action, Sct. 3",
+      "writer": "Martin Luther King, Jr.",
+      "work": "Strength to Love",
+      "year": 1963,
+      "category": "BOOK",
+      "tags": [
+        "justice",
+        "politics"
+      ],
+      "sourceNote": "Ch. 4 : Love in action, Sct. 3"
+    },
+    {
+      "text": "Human salvation lies in the hands of the creatively maladjusted.",
+      "note": "Ch. 2 : Transformed nonconformist",
+      "writer": "Martin Luther King, Jr.",
+      "work": "Strength to Love",
+      "year": 1963,
+      "category": "BOOK",
+      "tags": [
+        "justice",
+        "politics"
+      ],
+      "sourceNote": "Ch. 2 : Transformed nonconformist"
+    },
+    {
+      "text": "True peace is not merely the absence of tension: it is the presence of justice.",
+      "note": "Civil rights leader",
+      "writer": "Martin Luther King, Jr.",
+      "year": 1982,
+      "category": "OTHER",
+      "tags": [
+        "justice",
+        "politics"
+      ],
+      "sourceNote": "In a 1955 response to an accusation that he was \"disturbing the peace\" by his activism during the Montgomery Bus Boycott in Montgomery, Alabama, as quoted in Let the Trumpet Sound : A Life of Martin L"
+    },
+    {
+      "text": "You have seen how a man was made a slave; you shall see how a slave was made a man.",
+      "note": "Abolitionist",
+      "writer": "Frederick Douglass",
+      "work": "Narrative of the Life of Frederick Douglass, An American Slave",
+      "year": 1845,
+      "category": "BOOK",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "Ch. 10"
+    },
+    {
+      "text": "Where there is seeming contentment with slavery, there is certain treachery to freedom.",
+      "note": "Madison Washington",
+      "writer": "Frederick Douglass",
+      "work": "The Heroic Slave",
+      "year": 1853,
+      "category": "BOOK",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "Madison Washington"
+    },
+    {
+      "text": "You cannot write the bloody laws of slavery on those restless billows. The ocean, if not the land, is free.",
+      "note": "Madison Washington",
+      "writer": "Frederick Douglass",
+      "work": "The Heroic Slave",
+      "year": 1853,
+      "category": "BOOK",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "Madison Washington"
+    },
+    {
+      "text": "The purpose of life...is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience.",
+      "note": "Foreword (January 1960)",
+      "writer": "Eleanor Roosevelt",
+      "work": "You Learn by Living",
+      "year": 1960,
+      "category": "BOOK",
+      "tags": [
+        "life",
+        "politics"
+      ],
+      "sourceNote": "Foreword (January 1960)"
+    },
+    {
+      "text": "Life was meant to be lived, and curiosity must be kept alive. One must never, for whatever reason, turn his back on life.",
+      "note": "Preface (December 1960) to The Autobiography of Eleanor Roosevelt (1961), p. xix",
+      "writer": "Eleanor Roosevelt",
+      "year": 1961,
+      "category": "OTHER",
+      "tags": [
+        "life",
+        "politics"
+      ],
+      "sourceNote": "Preface (December 1960) to The Autobiography of Eleanor Roosevelt (1961), p. xix"
+    },
+    {
+      "text": "Friendship with oneself is all-important, because without it one cannot be friends with anyone else in the world.",
+      "note": "As quoted in The Beacon Book of Quotations by Women (1992) by Rosalie Maggio",
+      "writer": "Eleanor Roosevelt",
+      "year": 1992,
+      "category": "OTHER",
+      "tags": [
+        "life",
+        "politics"
+      ],
+      "sourceNote": "As quoted in The Beacon Book of Quotations by Women (1992) by Rosalie Maggio, p. 130"
+    },
+    {
+      "text": "I did not get on the bus to get arrested. I got on the bus to go home.",
+      "note": "Civil rights activist",
+      "writer": "Rosa Parks",
+      "category": "OTHER",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "Quoted in Rita Dove, \"Rosa Parks: Her simple act of protest galvanized America's civil rights revolution,\" Time (1999-06-14)"
+    },
+    {
+      "text": "I would like to be known as a person who is concerned about freedom and equality and justice and prosperity for all people.",
+      "note": "Civil rights activist",
+      "writer": "Rosa Parks",
+      "category": "OTHER",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "Quoted in \"Women of the Hall: Rosa Parks,\" Women's National Hall of Fame (undated); said upon her 77th birthday (1990-02-04)"
+    },
+    {
+      "text": "I looked at my hands, to see if I was de same person now I was free. Dere was such a glory over everything, de sun came like gold trou de trees, and over de fields, and I felt like I was in heaven.",
+      "note": "On realizing that she had passed out of the slavery states into the northern states",
+      "writer": "Harriet Tubman",
+      "work": "Harriet, The Moses of Her People",
+      "year": 1886,
+      "category": "BOOK",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "On realizing that she had passed out of the slavery states into the northern states"
+    },
+    {
+      "text": "I was the conductor of the Underground Railroad for eight years, and I can say what most conductors can't say — I never ran my train off the track and I never lost a passenger.",
+      "note": "As quoted in Women's Words : The Columbia Book of Quotations by Women (1996) by Mary Biggs",
+      "writer": "Harriet Tubman",
+      "category": "OTHER",
+      "tags": [
+        "justice"
+      ],
+      "sourceNote": "As quoted in Women's Words : The Columbia Book of Quotations by Women (1996) by Mary Biggs, p. 2"
+    },
+    {
+      "text": "Humour is the first of the gifts to perish in a foreign tongue.",
+      "note": "On Not Knowing Greek",
+      "writer": "Virginia Woolf",
+      "work": "The Common Reader",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "On Not Knowing Greek"
+    },
+    {
+      "text": "As long as she thinks of a man, nobody objects to a woman thinking.",
+      "note": "Novelist",
+      "writer": "Virginia Woolf",
+      "work": "Orlando: A Biography",
+      "year": 1928,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "Ch. 6"
+    },
+    {
+      "text": "If you do not tell the truth about yourself you cannot tell it about other people.",
+      "note": "\"The Leaning Tower\", lecture delivered to the Workers' Educational Association, Brighton (May 1940)",
+      "writer": "Virginia Woolf",
+      "work": "The Moment and Other Essays",
+      "year": 1948,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "\"The Leaning Tower\", lecture delivered to the Workers' Educational Association, Brighton (May 1940)"
+    },
+    {
+      "text": "Anyone who has ever struggled with poverty knows how extremely expensive it is to be poor.",
+      "note": "\"Fifth Avenue, Uptown: a Letter from Harlem\" originally in Esquire (July 1960)",
+      "writer": "James Baldwin",
+      "work": "Nobody Knows My Name: More Notes of a Native Son",
+      "year": 1961,
+      "category": "BOOK",
+      "tags": [
+        "justice",
+        "literature"
+      ],
+      "sourceNote": "\"Fifth Avenue, Uptown: a Letter from Harlem\" originally in Esquire (July 1960)"
+    },
+    {
+      "text": "Love does not begin and end the way we seem to think it does. Love is a battle, love is a war; love is a growing up.",
+      "note": "\"In Search of a Majority: An Address\" (Feb 1960)",
+      "writer": "James Baldwin",
+      "work": "Nobody Knows My Name: More Notes of a Native Son",
+      "year": 1961,
+      "category": "BOOK",
+      "tags": [
+        "justice",
+        "literature"
+      ],
+      "sourceNote": "\"In Search of a Majority: An Address\" (Feb 1960)"
+    },
+    {
+      "text": "Not everything that is faced can be changed; but nothing can be changed until it is faced.",
+      "note": "Writer",
+      "writer": "James Baldwin",
+      "category": "OTHER",
+      "tags": [
+        "justice",
+        "literature"
+      ],
+      "sourceNote": "\"As Much Truth As One Can Bear\" in The New York Times Book Review (January 14, 1962); republished in The Cross of Redemption: Uncollected Writings (2011), edited by Randall Kenan"
+    },
+    {
+      "text": "All water has a perfect memory and is forever trying to get back to where it was.",
+      "note": "As quoted in Grace Notes (1989) by Rita Dove",
+      "writer": "Toni Morrison",
+      "year": 1989,
+      "category": "OTHER",
+      "tags": [
+        "literature",
+        "justice"
+      ],
+      "sourceNote": "As quoted in Grace Notes (1989) by Rita Dove"
+    },
+    {
+      "text": "Everywhere, everywhere, children are the scorned people of the earth.",
+      "note": "As quoted in Woman to Woman (1994) by Julia Gilden and Mark Riedman",
+      "writer": "Toni Morrison",
+      "year": 1994,
+      "category": "OTHER",
+      "tags": [
+        "literature",
+        "justice"
+      ],
+      "sourceNote": "As quoted in Woman to Woman (1994) by Julia Gilden and Mark Riedman"
+    },
+    {
+      "text": "You free. Nothing and nobody is obliged to save you but you.",
+      "note": "Home (novella), p. 126 (2012)",
+      "writer": "Toni Morrison",
+      "category": "OTHER",
+      "tags": [
+        "literature",
+        "justice"
+      ],
+      "sourceNote": "Home (novella), p. 126 (2012)"
+    },
+    {
+      "text": "Children's talent to endure stems from their ignorance of alternatives.",
+      "note": "Poet",
+      "writer": "Maya Angelou",
+      "work": "I Know Why the Caged Bird Sings",
+      "year": 1969,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "Ch. 17."
+    },
+    {
+      "text": "We grow despite the horror that we feed upon our own tomorrow. We grow.",
+      "note": "\"Glory Falls\"",
+      "writer": "Maya Angelou",
+      "work": "I Shall Not Be Moved",
+      "year": 1990,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "\"Glory Falls\""
+    },
+    {
+      "text": "At fifteen life had taught me undeniably that surrender, in its place, was as honorable as resistance, especially if one had no choice.",
+      "note": "Poet",
+      "writer": "Maya Angelou",
+      "work": "I Know Why the Caged Bird Sings",
+      "year": 1969,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "life"
+      ],
+      "sourceNote": "p. 212."
+    },
+    {
+      "text": "There is only one way to make money at writing, and that is to marry a publisher's daughter.",
+      "note": "Ch. 4; a record of a remark by Orwell's fellow tramp Boris",
+      "writer": "George Orwell",
+      "work": "Down and Out in Paris and London",
+      "year": 1933,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "politics"
+      ],
+      "sourceNote": "Ch. 4; a record of a remark by Orwell's fellow tramp Boris"
+    },
+    {
+      "text": "When you have no money your life is one long series of snubs.",
+      "note": "Writer",
+      "writer": "George Orwell",
+      "work": "Keep the Aspidistra Flying",
+      "year": 1936,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "politics"
+      ],
+      "sourceNote": "Ch. 4"
+    },
+    {
+      "text": "Why is it that one can't borrow from a rich friend and can from a half-starved relative?",
+      "note": "Writer",
+      "writer": "George Orwell",
+      "work": "Keep the Aspidistra Flying",
+      "year": 1936,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "politics"
+      ],
+      "sourceNote": "Ch. 7"
+    },
+    {
+      "text": "The difference between a Miracle and a Fact is exactly the difference between a mermaid and a seal.",
+      "note": "\"Official Report to the I.I.A.S.\"",
+      "writer": "Mark Twain",
+      "work": "Papers of the Adam Family",
+      "year": 1939,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "\"Official Report to the I.I.A.S.\", p. 126"
+    },
+    {
+      "text": "Whenever you find yourself on the side of the majority, it is time to pause and reflect.",
+      "note": "Mark Twain (2016). “The Wit and Wisdom of Mark Twain”, p.97, Chartwell",
+      "writer": "Mark Twain",
+      "work": "Papers of the Adam Family",
+      "year": 1939,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "Mark Twain (2016). “The Wit and Wisdom of Mark Twain”, p.97, Chartwell"
+    },
+    {
+      "text": "I must have a prodigious quantity of mind; it takes me as much as a week sometimes to make it up.",
+      "note": "Writer",
+      "writer": "Mark Twain",
+      "work": "The Innocents Abroad",
+      "year": 1869,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "Ch. 7"
+    },
+    {
+      "text": "Reforms in Russia are very tragic, but they always end in a farce.",
+      "note": "Baron Raff, Act IV",
+      "writer": "Oscar Wilde",
+      "work": "Vera; or, The Nihilists",
+      "year": 1880,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "Baron Raff, Act IV"
+    },
+    {
+      "text": "Hard work is simply the refuge of people who have nothing whatever to do.",
+      "note": "\"The Remarkable Rocket\"",
+      "writer": "Oscar Wilde",
+      "work": "The Happy Prince and Other Tales",
+      "year": 1888,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "\"The Remarkable Rocket\""
+    },
+    {
+      "text": "The growing influence of women is the one reassuring thing in our political life.",
+      "note": "Kelvil, Act I",
+      "writer": "Oscar Wilde",
+      "work": "A Woman of No Importance",
+      "year": 1893,
+      "category": "BOOK",
+      "tags": [
+        "literature",
+        "humor"
+      ],
+      "sourceNote": "Kelvil, Act I"
+    },
+    {
+      "text": "There is only one good. And that is to act according to the dictates of one's conscience.",
+      "note": "Philosopher",
+      "writer": "Simone de Beauvoir",
+      "work": "All Men are Mortal",
+      "year": 1946,
+      "category": "BOOK",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "p. 181"
+    },
+    {
+      "text": "What has value in their eyes is never what is done for them; it's what they do for themselves.",
+      "note": "Philosopher",
+      "writer": "Simone de Beauvoir",
+      "work": "All Men are Mortal",
+      "year": 1946,
+      "category": "BOOK",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "p. 315"
+    },
+    {
+      "text": "To \"catch\" a husband is an art; to \"hold\" him is a job.",
+      "note": "Bk. 2, part 5, Ch. 1: The Married Woman",
+      "writer": "Simone de Beauvoir",
+      "work": "The Second Sex",
+      "year": 1949,
+      "category": "BOOK",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "Bk. 2, part 5, Ch. 1: The Married Woman, p. 468"
+    },
+    {
+      "text": "Political questions are far too serious to be left to the politicians.",
+      "note": "Men in Dark Times (1968)",
+      "writer": "Hannah Arendt",
+      "year": 1968,
+      "category": "OTHER",
+      "tags": [
+        "philosophy",
+        "politics"
+      ],
+      "sourceNote": "Men in Dark Times (1968)"
+    },
+    {
+      "text": "The emotions I feel are no more meant to be shown in their unadulterated state than the inner organs by which we live.",
+      "note": "Political theorist",
+      "writer": "Hannah Arendt",
+      "work": "The Life of the Mind",
+      "year": 1971,
+      "category": "BOOK",
+      "tags": [
+        "philosophy",
+        "politics"
+      ],
+      "sourceNote": "pp. 31-32"
+    },
+    {
+      "text": "In its flight from death, the craving for permanence clings to the very things sure to be lost in death.",
+      "note": "Political theorist",
+      "writer": "Hannah Arendt",
+      "work": "Love and Saint Augustine",
+      "year": 1929,
+      "category": "BOOK",
+      "tags": [
+        "philosophy",
+        "politics"
+      ],
+      "sourceNote": "p. 17"
+    },
+    {
+      "text": "Thoughts are the shadows of our feelings — always darker, emptier, simpler.",
+      "note": "Sec. 179",
+      "writer": "Friedrich Nietzsche",
+      "work": "The Gay Science",
+      "year": 1882,
+      "category": "BOOK",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "Sec. 179"
+    },
+    {
+      "text": "What is great in man is that he is a bridge and not a goal.",
+      "note": "Prologue, § 4, tr. Thomas Common",
+      "writer": "Friedrich Nietzsche",
+      "work": "Thus Spoke Zarathustra",
+      "year": 1883,
+      "category": "BOOK",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "Prologue, § 4, tr. Thomas Common"
+    },
+    {
+      "text": "There is more wisdom in your body than in your deepest philosophy.",
+      "note": "Part I, Chapter 4",
+      "writer": "Friedrich Nietzsche",
+      "work": "Thus Spoke Zarathustra",
+      "year": 1883,
+      "category": "BOOK",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "Part I, Chapter 4"
+    },
+    {
+      "text": "The lot assigned to every man is suited to him, and suits him to itself.",
+      "note": "Roman emperor",
+      "writer": "Marcus Aurelius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "III, 4"
+    },
+    {
+      "text": "All that happens is as usual and familiar as the rose in spring and the crop in summer.",
+      "note": "Roman emperor",
+      "writer": "Marcus Aurelius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "IV, 44"
+    },
+    {
+      "text": "What is not good for the swarm is not good for the bee.",
+      "note": "Roman emperor",
+      "writer": "Marcus Aurelius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy",
+        "life"
+      ],
+      "sourceNote": "VI, 54"
+    },
+    {
+      "text": "A man's character is formed by the Odes, developed by the Rites and perfected by music.",
+      "note": "Quoted from Will Durant, Our Oriental Heritage",
+      "writer": "Confucius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "Quoted from Will Durant, Our Oriental Heritage."
+    },
+    {
+      "text": "If the people have no faith in their rulers, there is no standing for the state.",
+      "note": "Philosopher",
+      "writer": "Confucius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "VII"
+    },
+    {
+      "text": "The superior man loves his soul; the inferior man loves his property.",
+      "note": "Cited in Oriental Philosophy",
+      "writer": "Confucius",
+      "category": "OTHER",
+      "tags": [
+        "philosophy"
+      ],
+      "sourceNote": "Cited in Oriental Philosophy, p. 46"
+    },
+    {
+      "text": "Whoever in discussion adduces authority uses not intellect but rather memory.",
+      "note": "Variant translations:",
+      "writer": "Leonardo da Vinci",
+      "category": "OTHER",
+      "tags": [
+        "art",
+        "science"
+      ],
+      "sourceNote": "Variant translations:"
+    },
+    {
+      "text": "You can have no dominion greater or less than that over yourself.",
+      "note": "He who thinks little, errs much",
+      "writer": "Leonardo da Vinci",
+      "category": "OTHER",
+      "tags": [
+        "art",
+        "science"
+      ],
+      "sourceNote": "He who thinks little, errs much."
+    },
+    {
+      "text": "I've got nature and art and poetry, and if that isn't enough, what is?",
+      "note": "From a letter to his brother Theo van Gogh, January 1874",
+      "writer": "Vincent van Gogh",
+      "category": "OTHER",
+      "tags": [
+        "art",
+        "life"
+      ],
+      "sourceNote": "From a letter to his brother Theo van Gogh, January 1874"
+    },
+    {
+      "text": "Poetry surrounds us everywhere, but putting it on paper is, alas, not so easy as looking at it.",
+      "note": "Painter",
+      "writer": "Vincent van Gogh",
+      "category": "OTHER",
+      "tags": [
+        "art",
+        "life"
+      ],
+      "sourceNote": "Quote in his letter tot Theo, from The Hague, Sunday, 18 March 1883; as cited in The Complete Letters of Vincent Van Gogh, Vol. 2 (1958) New York Graphic Society, p. 12"
+    },
+    {
+      "text": "The more I think it over, the more I feel that there is nothing more truly artistic than to love people.",
+      "note": "Letter, Tuesday, 18 September 1888; as cited in Van Gogh : The Self-portraits (1969) by Fritz Erpel, p. 17",
+      "writer": "Vincent van Gogh",
+      "year": 1969,
+      "category": "OTHER",
+      "tags": [
+        "art",
+        "life"
+      ],
+      "sourceNote": "Letter, Tuesday, 18 September 1888; as cited in Van Gogh : The Self-portraits (1969) by Fritz Erpel, p. 17."
+    },
+    {
+      "text": "Singing has always seemed to me the most perfect means of expression. Since I cannot sing, I paint.",
+      "note": "\"Austere Stripper\". Time (May 27, 1947), pp. 74",
+      "writer": "Georgia O'Keeffe",
+      "category": "OTHER",
+      "tags": [
+        "art"
+      ],
+      "sourceNote": "\"Austere Stripper\". Time (May 27, 1947), pp. 74."
+    },
+    {
+      "text": "I hate flowers — I paint them because they're cheaper than models and they don't move!",
+      "note": "quote in Portrait of an Artist: A Biography of Georgia O'Keeffe, Laurie Lisle, Viking Press, New York, 1981",
+      "writer": "Georgia O'Keeffe",
+      "category": "OTHER",
+      "tags": [
+        "art"
+      ],
+      "sourceNote": "quote in Portrait of an Artist: A Biography of Georgia O'Keeffe, Laurie Lisle, Viking Press, New York, 1981, p. 180"
+    },
+    {
+      "text": "I do not like the idea of happiness — it is too momentary — I would say that I was always busy and interested in something — interest has more meaning to me than the idea of happiness.",
+      "note": "Painter",
+      "writer": "Georgia O'Keeffe",
+      "category": "OTHER",
+      "tags": [
+        "art"
+      ],
+      "sourceNote": "In notes to Anita Pollitzer, Abiquiu, New Mexico, (after February, 1968); as quoted in The Complete Correspondence of Georgia O’Keeffe & Anita Pollitzer, ed. Clive Giboire, Touchstone Books, Simon & S"
+    },
+    {
+      "text": "Preparation, I have often said, is rightly two-thirds of any venture.",
+      "note": "Aviator",
+      "writer": "Amelia Earhart",
+      "work": "Last Flight",
+      "year": 1937,
+      "category": "BOOK",
+      "tags": [
+        "life"
+      ],
+      "sourceNote": "p. 51"
+    },
+    {
+      "text": "Anticipation, I suppose, sometimes exceeds realization.",
+      "note": "Aviator",
+      "writer": "Amelia Earhart",
+      "work": "Last Flight",
+      "year": 1937,
+      "category": "BOOK",
+      "tags": [
+        "life"
+      ],
+      "sourceNote": "p. 50"
+    },
+    {
+      "text": "Ours is the commencement of a flying age, and I am happy to have popped into existence at a period so interesting.",
+      "note": "20 Hrs., 40 Min. [borrowable] (1928)",
+      "writer": "Amelia Earhart",
+      "category": "OTHER",
+      "tags": [
+        "life"
+      ],
+      "sourceNote": "20 Hrs., 40 Min. [borrowable] (1928), p. 180"
+    },
+    {
+      "text": "The bulk of the world's knowledge is an imaginary construction.",
+      "note": "The World I live in (1910) chapter 8, The Five-sensed World Quoted in:",
+      "writer": "Helen Keller",
+      "year": 1910,
+      "category": "OTHER",
+      "tags": [
+        "life",
+        "literature"
+      ],
+      "sourceNote": "The World I live in (1910) chapter 8, The Five-sensed World Quoted in:"
+    },
+    {
+      "text": "If it is true that the violin is the most perfect of musical instruments, then Greek is the violin of human thought.",
+      "note": "Part II: Letters (1887 - 1901) TO MRS. LAURENCE HUTTON Wrentham, February 20, 1898",
+      "writer": "Helen Keller",
+      "work": "The Story of My Life",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "life",
+        "literature"
+      ],
+      "sourceNote": "Part II: Letters (1887 - 1901) TO MRS. LAURENCE HUTTON Wrentham, February 20, 1898."
+    },
+    {
+      "text": "I do not want the peace that passeth understanding. I want the understanding which bringeth peace.",
+      "note": "Quoted in Henry More: The Rational Theology of a Cambridge Plattonist (1962) by Rabbi Aharon Lichtenstein, page 100",
+      "writer": "Helen Keller",
+      "year": 1962,
+      "category": "OTHER",
+      "tags": [
+        "life",
+        "literature"
+      ],
+      "sourceNote": "Quoted in Henry More: The Rational Theology of a Cambridge Plattonist (1962) by Rabbi Aharon Lichtenstein, page 100"
+    }
+  ]
+}
