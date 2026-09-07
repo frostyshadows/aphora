@@ -19,7 +19,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -42,6 +41,7 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.database.entities.TagEntity
+import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.ScrollableSelectionList
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
@@ -116,9 +116,7 @@ fun FilterBottomSheet(
         filterWorks = filterWorks.filter { it in availableWorkTitles }
     }
 
-    ModalBottomSheet(
-        modifier = modifier,
-        containerColor = MaterialTheme.colorScheme.surface,
+    AphoraBottomSheet(
         onDismissRequest = onDismiss,
     ) {
         Column {
@@ -230,10 +228,11 @@ fun FilterBottomSheet(
                 },
                 updateRating = { filterMinRating = it },
             )
+            VerticalSpacer()
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(Spacing.ScreenMargin)
+                    .padding(horizontal = Spacing.ScreenMargin)
             ) {
                 OutlinedButton(
                     modifier = Modifier.weight(1f),

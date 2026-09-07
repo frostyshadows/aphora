@@ -1,6 +1,5 @@
 package com.sherryyuan.aphora.addEditQuote
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -19,13 +18,11 @@ import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -49,6 +47,7 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
@@ -88,8 +87,7 @@ fun QuoteSourceEditor(
     }
 
     if (showSourceEditorSheet) {
-        ModalBottomSheet(
-            containerColor = MaterialTheme.colorScheme.surface,
+        AphoraBottomSheet(
             onDismissRequest = { showSourceEditorSheet = false },
         ) {
             SourceEditorSheetContent(
@@ -124,8 +122,11 @@ private fun SourceEditorSheetContent(
     val filteredWriters by remember {
         derivedStateOf {
             val query = writerTextFieldState.text
-            if (query.length >= 3) {
-                allWriters.filter { it.contains(query, ignoreCase = true) }
+            if (query.length >= 2) {
+                allWriters.filter {
+                    it.contains(query, ignoreCase = true) &&
+                            !it.equals(query.toString(), ignoreCase = true)
+                }
             } else {
                 emptyList()
             }
@@ -140,9 +141,14 @@ private fun SourceEditorSheetContent(
             val workQuery = workTextFieldState.text
             if (workQuery.length >= 2) {
                 allSources
-                    .filter { it.writer.equals(writerQuery, ignoreCase = true) }
+                    .filter {
+                        writerQuery.isBlank() || it.writer.equals(writerQuery, ignoreCase = true)
+                    }
                     .mapNotNull { it.work }
-                    .filter { it.contains(workQuery, ignoreCase = true) }
+                    .filter {
+                        it.contains(workQuery, ignoreCase = true) &&
+                                !it.equals(workQuery.toString(), ignoreCase = true)
+                    }
                     .distinct()
             } else {
                 emptyList()
@@ -151,14 +157,6 @@ private fun SourceEditorSheetContent(
     }
 
     var showWorkDropdown by remember { mutableStateOf(false) }
-
-    LaunchedEffect(filteredWriters) {
-        showWriterDropdown = filteredWriters.isNotEmpty()
-    }
-
-    LaunchedEffect(filteredWorks) {
-        showWorkDropdown = filteredWorks.isNotEmpty()
-    }
 
     Column(
         modifier
@@ -179,22 +177,24 @@ private fun SourceEditorSheetContent(
         VerticalSpacer()
         Box {
             OutlinedTextField(
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .onFocusChanged { showWriterDropdown = it.isFocused },
                 state = writerTextFieldState,
                 label = { Text(stringResource(R.string.label_writer)) },
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
-                expanded = showWriterDropdown,
-                onDismissRequest = { showWriterDropdown = false },
-                properties = PopupProperties(focusable = false)
+                expanded = showWriterDropdown && filteredWriters.isNotEmpty(),
+                onDismissRequest = { /** dismiss based on text field state */ },
+                properties = PopupProperties(focusable = false),
+                containerColor = MaterialTheme.colorScheme.surface,
             ) {
                 filteredWriters.forEach { writer ->
                     DropdownMenuItem(
                         text = { Text(writer) },
                         onClick = {
                             writerTextFieldState.setTextAndPlaceCursorAtEnd(writer)
-                            showWriterDropdown = false
                         }
                     )
                 }
@@ -203,24 +203,31 @@ private fun SourceEditorSheetContent(
         VerticalSpacer()
         Box {
             OutlinedTextField(
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .onFocusChanged { showWorkDropdown = it.isFocused },
                 state = workTextFieldState,
                 label = { Text(stringResource(R.string.add_edit_quote_source_work)) },
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
-                expanded = showWorkDropdown,
-                onDismissRequest = { showWorkDropdown = false },
-                properties = PopupProperties(focusable = false)
+                expanded = showWorkDropdown && filteredWorks.isNotEmpty(),
+                onDismissRequest = { /** dismiss based on text field state */ },
+                properties = PopupProperties(focusable = false),
+                containerColor = MaterialTheme.colorScheme.surface,
             ) {
                 filteredWorks.forEach { work ->
                     DropdownMenuItem(
                         text = { Text(work) },
                         onClick = {
                             workTextFieldState.setTextAndPlaceCursorAtEnd(work)
-                            showWorkDropdown = false
                         }
                     )
+                }
+                if (category == null) {
+                    category = allSources
+                        .find { it.writer == writerTextFieldState.text && it.work == workTextFieldState.text }
+                        ?.category
                 }
             }
         }
@@ -238,7 +245,7 @@ private fun SourceEditorSheetContent(
                     QuoteUiModel.Source(
                         writer = writerTextFieldState.text.toString(),
                         work = workTextFieldState.text.toString(),
-                        category = category ?: SourceCategory.OTHER
+                        category = category ?: SourceCategory.OTHER,
                     )
                 )
             }
@@ -296,6 +303,7 @@ private fun CategoryDropdownMenu(
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
+                containerColor = MaterialTheme.colorScheme.surface,
             ) {
                 SourceCategory.entries.forEach { category ->
                     DropdownMenuItem(
