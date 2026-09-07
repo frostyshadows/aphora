@@ -1,0 +1,649 @@
+{
+  "id": "beautiful_prose",
+  "title": "Beautiful Prose",
+  "description": "Fifty passages from public-domain fiction and essays, chosen for the sentence rather than the sentiment.",
+  "quoteCount": 50,
+  "tags": [
+    "character description",
+    "dialogue",
+    "exposition",
+    "humor",
+    "interiority",
+    "metaphor",
+    "setting",
+    "world-building"
+  ],
+  "attribution": {
+    "source": "Project Gutenberg",
+    "license": "Public domain in the United States",
+    "licenseUrl": "https://www.gutenberg.org/policy/permission.html",
+    "note": "Every quote in this set was extracted verbatim from the Project Gutenberg source text named by gutenbergId and machine-verified against it."
+  },
+  "quotes": [
+    {
+      "text": "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship.",
+      "note": "A catalogue of small despairs that resolves into a reason to go to sea.",
+      "writer": "Herman Melville",
+      "work": "Moby-Dick",
+      "year": 1851,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "metaphor"
+      ],
+      "gutenbergId": 2701
+    },
+    {
+      "text": "great shroud of the sea rolled on as it rolled five thousand years ago.",
+      "note": "The novel ends by closing over itself. Five thousand pages of hunt, erased in a clause.",
+      "writer": "Herman Melville",
+      "work": "Moby-Dick",
+      "year": 1851,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 2701
+    },
+    {
+      "text": "Gatsby believed in the green light, the orgiastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms further … And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.",
+      "note": "Abstraction made physical, then pulled away again.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "interiority"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "So we beat on, boats against the current, borne back ceaselessly into the past.",
+      "note": "The most famous last line in American fiction, and it is a metaphor about failing to move.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "In his blue gardens men and girls came and went like moths among the whisperings and the champagne and the stars.",
+      "note": "Party as weather — people arrive like a season, not like guests.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "The offing was barred by a black bank of clouds, and the tranquil waterway leading to the uttermost ends of the earth flowed sombre under an overcast sky—seemed to lead into the heart of an immense darkness.",
+      "note": "Landscape delivering the verdict the narrator will not say aloud.",
+      "writer": "Joseph Conrad",
+      "work": "Heart of Darkness",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 219
+    },
+    {
+      "text": "We live, as we dream—alone.",
+      "note": "Six words that carry the entire epistemology of the book.",
+      "writer": "Joseph Conrad",
+      "work": "Heart of Darkness",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 219
+    },
+    {
+      "text": "Fog everywhere. Fog up the river, where it flows among green aits and meadows; fog down the river, where it rolls defiled among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on the yards and hovering in the rigging of great ships; fog drooping on the gunwales of barges and small boats.",
+      "note": "Anaphora used as weather system. The paragraph never quite reaches a main verb.",
+      "writer": "Charles Dickens",
+      "work": "Bleak House",
+      "year": 1853,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 1023
+    },
+    {
+      "text": "A wonderful fact to reflect upon, that every human creature is constituted to be that profound secret and mystery to every other. A solemn consideration, when I enter a great city by night, that every one of those darkly clustered houses encloses its own secret; that every room in every one of them encloses its own secret; that every beating heart in the hundreds of thousands of breasts there, is, in some of its imaginings, a secret to the heart nearest it!",
+      "note": "An essayistic aside that turns out to be the moral engine of the plot.",
+      "writer": "Charles Dickens",
+      "work": "A Tale of Two Cities",
+      "year": 1859,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "exposition"
+      ],
+      "gutenbergId": 98
+    },
+    {
+      "text": "Ours was the marsh country, down by the river, within, as the river wound, twenty miles of the sea. My first most vivid and broad impression of the identity of things seems to me to have been gained on a memorable raw afternoon towards evening.",
+      "note": "Geography introduced through a child's flat confidence about it.",
+      "writer": "Charles Dickens",
+      "work": "Great Expectations",
+      "year": 1861,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 1400
+    },
+    {
+      "text": "That was a memorable day to me, for it made great changes in me. But it is the same with any life.",
+      "note": "Direct address to the reader about the shape of a life.",
+      "writer": "Charles Dickens",
+      "work": "Great Expectations",
+      "year": 1861,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 1400
+    },
+    {
+      "text": "If we had a keen vision and feeling of all ordinary human life, it would be like hearing the grass grow and the squirrel’s heart beat, and we should die of that roar which lies on the other side of silence. As it is, the quickest of us walk about well wadded with stupidity.",
+      "note": "The famous roar on the other side of silence — empathy framed as a physical danger.",
+      "writer": "George Eliot",
+      "work": "Middlemarch",
+      "year": 1871,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "interiority"
+      ],
+      "gutenbergId": 145
+    },
+    {
+      "text": "the growing good of the world is partly dependent on unhistoric acts; and that things are not so ill with you and me as they might have been, is half owing to the number who lived faithfully a hidden life, and rest in unvisited tombs.",
+      "note": "A closing argument for the ordinary life, delivered without sentimentality.",
+      "writer": "George Eliot",
+      "work": "Middlemarch",
+      "year": 1871,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 145
+    },
+    {
+      "text": "I am no bird; and no net ensnares me; I am a free human being with an independent will, which I now exert to leave you.” Another effort set me at liberty, and I stood erect before him.",
+      "note": "Metaphor stated, then immediately refused. The refusal is the character.",
+      "writer": "Charlotte Brontë",
+      "work": "Jane Eyre",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 1260
+    },
+    {
+      "text": "Whatever our souls are made of, his and mine are the same; and Linton’s is as different as a moonbeam from lightning, or frost from fire.",
+      "note": "Love described as a fact of substance rather than of feeling.",
+      "writer": "Emily Brontë",
+      "work": "Wuthering Heights",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 768
+    },
+    {
+      "text": "I lingered round them, under that benign sky: watched the moths fluttering among the heath and harebells, listened to the soft wind breathing through the grass, and wondered how any one could ever imagine unquiet slumbers for the sleepers in that quiet earth. *** END OF THE PROJECT GUTENBERG EBOOK WUTHERING HEIGHTS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!",
+      "note": "A last paragraph that pretends at peace and does not convince anyone.",
+      "writer": "Emily Brontë",
+      "work": "Wuthering Heights",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 768
+    },
+    {
+      "text": "Behind every exquisite thing that existed, there was something tragic.",
+      "note": "Wilde's aphorism engine running at full speed.",
+      "writer": "Oscar Wilde",
+      "work": "The Picture of Dorian Gray",
+      "year": 1890,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 174
+    },
+    {
+      "text": "The voice of the sea is seductive; never ceasing, whispering, clamoring, murmuring, inviting the soul to wander for a spell in abysses of solitude; to lose itself in mazes of inward contemplation. The voice of the sea speaks to the soul.",
+      "note": "The sea addressed as a person, three times, until it becomes one.",
+      "writer": "Kate Chopin",
+      "work": "The Awakening",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 160
+    },
+    {
+      "text": "She was so evidently the victim of the civilization which had produced her, that the links of her bracelet seemed like manacles chaining her to her fate.",
+      "note": "Social critique compressed into a single clause of description.",
+      "writer": "Edith Wharton",
+      "work": "The House of Mirth",
+      "year": 1905,
+      "category": "BOOK",
+      "tags": [
+        "character description"
+      ],
+      "gutenbergId": 284
+    },
+    {
+      "text": "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived.",
+      "note": "Purpose stated in a rhythm that keeps adding clauses, as if arguing with itself.",
+      "writer": "Henry David Thoreau",
+      "work": "Walden",
+      "year": 1854,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 205
+    },
+    {
+      "text": "The mass of men lead lives of quiet desperation.",
+      "note": "Diagnosis delivered as though it were a plain observation.",
+      "writer": "Henry David Thoreau",
+      "work": "Walden",
+      "year": 1854,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 205
+    },
+    {
+      "text": "I celebrate myself, and sing myself, And what I assume you shall assume, For every atom belonging to me as good belongs to you. I loafe and invite my soul, I lean and loafe at my ease observing a spear of summer grass.",
+      "note": "The opening of American poetry's great act of self-authorisation.",
+      "writer": "Walt Whitman",
+      "work": "Leaves of Grass",
+      "year": 1855,
+      "category": "POEM",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 1322
+    },
+    {
+      "text": "Do I contradict myself? Very well then I contradict myself, (I am large, I contain multitudes.) I concentrate toward them that are nigh, I wait on the door-slab.",
+      "note": "A rhetorical question answered by simply refusing the premise.",
+      "writer": "Walt Whitman",
+      "work": "Leaves of Grass",
+      "year": 1855,
+      "category": "POEM",
+      "tags": [
+        "interiority",
+        "humor"
+      ],
+      "gutenbergId": 1322
+    },
+    {
+      "text": "One ever feels his twoness,—an American, a Negro; two souls, two thoughts, two unreconciled strivings; two warring ideals in one dark body, whose dogged strength alone keeps it from being torn asunder.",
+      "note": "Double consciousness named for the first time, in a sentence that itself splits.",
+      "writer": "W. E. B. Du Bois",
+      "work": "The Souls of Black Folk",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "metaphor"
+      ],
+      "gutenbergId": 408
+    },
+    {
+      "text": "the problem of the Twentieth Century is the problem of the color line.",
+      "note": "A thesis sentence that turned out to be exactly right.",
+      "writer": "W. E. B. Du Bois",
+      "work": "The Souls of Black Folk",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 408
+    },
+    {
+      "text": "His soul swooned slowly as he heard the snow falling faintly through the universe and faintly falling, like the descent of their last end, upon all the living and the dead.",
+      "note": "Sound doing the work of meaning — the sentence falls the way snow does.",
+      "writer": "James Joyce",
+      "work": "Dubliners",
+      "year": 1914,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 2814
+    },
+    {
+      "text": "Welcome, O life! I go to encounter for the millionth time the reality of experience and to forge in the smithy of my soul the uncreated conscience of my race.",
+      "note": "An ending pitched as an oath, half absurd and entirely sincere.",
+      "writer": "James Joyce",
+      "work": "A Portrait of the Artist as a Young Man",
+      "year": 1916,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 4217
+    },
+    {
+      "text": "Ineluctable modality of the visible: at least that if no more, thought through my eyes. Signatures of all things I am here to read, seaspawn and seawrack, the nearing tide, that rusty boot.",
+      "note": "Consciousness rendered without any concession to the reader.",
+      "writer": "James Joyce",
+      "work": "Ulysses",
+      "year": 1922,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 4300
+    },
+    {
+      "text": "How was it I did not see that lofty sky before? And how happy I am to have found it at last!",
+      "note": "Revelation arriving through a change of camera angle, not of argument.",
+      "writer": "Leo Tolstoy",
+      "work": "War and Peace",
+      "year": 1869,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "setting"
+      ],
+      "gutenbergId": 2600
+    },
+    {
+      "text": "Where is it I’ve read that someone condemned to death says or thinks, an hour before his death, that if he had to live on some high rock, on such a narrow ledge that he’d only room to stand, and the ocean, everlasting darkness, everlasting solitude, everlasting tempest around him, if he had to remain standing on a square yard of space all his life, a thousand years, eternity, it were better to live so than to die at once! Only to live, to live and live! Life, whatever it may be!",
+      "note": "A thought experiment that turns into the whole moral case of the novel.",
+      "writer": "Fyodor Dostoyevsky",
+      "work": "Crime and Punishment",
+      "year": 1866,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 2554
+    },
+    {
+      "text": "speech is like a cracked tin kettle, on which we hammer out tunes to make bears dance when we long to move the stars.",
+      "note": "The most honest metaphor ever written about the inadequacy of language.",
+      "writer": "Gustave Flaubert",
+      "work": "Madame Bovary",
+      "year": 1857,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ],
+      "gutenbergId": 2413
+    },
+    {
+      "text": "I ought to be thy Adam, but I am rather the fallen angel, whom thou drivest from joy for no misdeed.",
+      "note": "The creature argues in scripture because it is the only frame he was given.",
+      "writer": "Mary Wollstonecraft Shelley",
+      "work": "Frankenstein",
+      "year": 1818,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 84
+    },
+    {
+      "text": "Beware, for I am fearless and therefore powerful.",
+      "note": "A threat built on a logical connective.",
+      "writer": "Mary Wollstonecraft Shelley",
+      "work": "Frankenstein",
+      "year": 1818,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 84
+    },
+    {
+      "text": "Listen to them--the children of the night. What music they make!",
+      "note": "Dialogue that turns an ambient sound into an aesthetic.",
+      "writer": "Bram Stoker",
+      "work": "Dracula",
+      "year": 1897,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "setting"
+      ],
+      "gutenbergId": 345
+    },
+    {
+      "text": "intellects vast and cool and unsympathetic, regarded this earth with envious eyes, and slowly and surely drew their plans against us.",
+      "note": "Three adjectives, and the last one is the frightening one.",
+      "writer": "H. G. Wells",
+      "work": "The War of the Worlds",
+      "year": 1898,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "metaphor"
+      ],
+      "gutenbergId": 36
+    },
+    {
+      "text": "man is not truly one, but truly two.",
+      "note": "The thesis of the book stated outright, late, by the man it destroyed.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Strange Case of Dr Jekyll and Mr Hyde",
+      "year": 1886,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 43
+    },
+    {
+      "text": "On the breast of her gown, in fine red cloth, surrounded with an elaborate embroidery and fantastic flourishes of gold thread, appeared the letter A. It was so artistically done, and with so much fertility and gorgeous luxuriance of fancy, that it had all the effect of a last and fitting decoration to the apparel which she wore, and which was of a splendour in accordance with the taste of the age, but greatly beyond what was allowed by the sumptuary regulations of the colony.",
+      "note": "The object described in full before its meaning is admitted.",
+      "writer": "Nathaniel Hawthorne",
+      "work": "The Scarlet Letter",
+      "year": 1850,
+      "category": "BOOK",
+      "tags": [
+        "character description",
+        "setting"
+      ],
+      "gutenbergId": 33
+    },
+    {
+      "text": "You pierce my soul. I am half agony, half hope.",
+      "note": "Austen's most unguarded sentence, and it is only four clauses long.",
+      "writer": "Jane Austen",
+      "work": "Persuasion",
+      "year": 1817,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ],
+      "gutenbergId": 105
+    },
+    {
+      "text": "My good opinion once lost is lost for ever.",
+      "note": "Character established by a single inflexible rule.",
+      "writer": "Jane Austen",
+      "work": "Pride and Prejudice",
+      "year": 1813,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 1342
+    },
+    {
+      "text": "Seldom, very seldom, does complete truth belong to any human disclosure; seldom can it happen that something is not a little disguised, or a little mistaken; but where, as in this case, though the conduct is mistaken, the feelings are not, it may not be very material.",
+      "note": "A narrator quietly warning you not to trust the scene you just read.",
+      "writer": "Jane Austen",
+      "work": "Emma",
+      "year": 1815,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 158
+    },
+    {
+      "text": "The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.",
+      "note": "Austen breaking frame to defend her own form.",
+      "writer": "Jane Austen",
+      "work": "Northanger Abbey",
+      "year": 1817,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "humor"
+      ],
+      "gutenbergId": 121
+    },
+    {
+      "text": "“We be of one blood, ye and I,” said Mowgli, giving the words the Bear accent which all the Hunting People use.",
+      "note": "A formula that works because it sounds older than the book.",
+      "writer": "Rudyard Kipling",
+      "work": "The Jungle Book",
+      "year": 1894,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 236
+    },
+    {
+      "text": "“Second to the right, and straight on till morning.”",
+      "note": "Directions to a place that cannot be found by following directions.",
+      "writer": "J. M. Barrie",
+      "work": "Peter Pan",
+      "year": 1911,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "world-building"
+      ],
+      "gutenbergId": 16
+    },
+    {
+      "text": "“Curiouser and curiouser!” cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); “now I’m opening out like the largest telescope that ever was! Good-bye, feet!”",
+      "note": "A grammatical error used as an emotional register.",
+      "writer": "Lewis Carroll",
+      "work": "Alice's Adventures in Wonderland",
+      "year": 1865,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "gutenbergId": 11
+    },
+    {
+      "text": "There is an ecstasy that marks the summit of life, and beyond which life cannot rise. And such is the paradox of living, this ecstasy comes when one is most alive, and it comes as a complete forgetfulness that one is alive.",
+      "note": "Abstraction earned by two hundred pages of concrete cold and hunger.",
+      "writer": "Jack London",
+      "work": "The Call of the Wild",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "metaphor"
+      ],
+      "gutenbergId": 215
+    },
+    {
+      "text": "“All right, then, I’ll go to hell”—and tore it up.",
+      "note": "The moral climax of the novel, in six words of plain speech.",
+      "writer": "Mark Twain",
+      "work": "Adventures of Huckleberry Finn",
+      "year": 1884,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ],
+      "gutenbergId": 76
+    },
+    {
+      "text": "Thus, reader, myself am the matter of my book: there’s no reason thou shouldst employ thy leisure about so frivolous and vain a subject.",
+      "note": "The invention of the personal essay, announced in one clause.",
+      "writer": "Michel de Montaigne",
+      "work": "Essays",
+      "year": 1580,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 3600
+    },
+    {
+      "text": "Was he an animal if music could captivate him so?",
+      "note": "A question that restores his humanity at the exact moment it is lost.",
+      "writer": "Franz Kafka",
+      "work": "The Metamorphosis",
+      "year": 1915,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 5200
+    },
+    {
+      "text": "What we call real estate—the solid ground to build a house on—is the broad foundation on which nearly all the guilt of this world rests.",
+      "note": "A pun opened up until it becomes a argument about inheritance.",
+      "writer": "Nathaniel Hawthorne",
+      "work": "The House of the Seven Gables",
+      "year": 1851,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "exposition"
+      ],
+      "gutenbergId": 77
+    },
+    {
+      "text": "It was the old New York way of taking life \"without effusion of blood\": the way of people who dreaded scandal more than disease, who placed decency above courage, and who considered that nothing was more ill-bred than \"scenes,\" except the behaviour of those who gave rise to them.",
+      "note": "Social machinery described as though it were good manners.",
+      "writer": "Edith Wharton",
+      "work": "The Age of Innocence",
+      "year": 1920,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 541
+    }
+  ]
+}
