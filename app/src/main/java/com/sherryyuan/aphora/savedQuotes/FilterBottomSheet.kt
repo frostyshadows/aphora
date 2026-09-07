@@ -541,7 +541,8 @@ private fun RatingsFilter(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onHeaderClick() }
+                        .clickable { onHeaderClick() },
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
                         modifier = Modifier.weight(1f),
@@ -558,7 +559,8 @@ private fun RatingsFilter(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onHeaderClick() }
+                        .clickable { onHeaderClick() },
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(stringResource(R.string.filter_header_rating))
                     Spacer(modifier = Modifier.width(8.dp))

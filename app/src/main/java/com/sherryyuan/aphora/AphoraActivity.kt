@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
+import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
@@ -52,30 +53,7 @@ class AphoraActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        consentInformation = UserMessagingPlatform.getConsentInformation(this)
-        consentInformation.requestConsentInfoUpdate(
-            this,
-            ConsentRequestParameters.Builder().build(),
-            {
-                UserMessagingPlatform.loadAndShowConsentFormIfRequired(this) { formError ->
-                    if (formError != null) {
-                        analytics.logEvent(
-                            name = Analytics.EVENT_CONSENT_FORM_ERROR,
-                            params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to formError.message),
-                        )
-                    }
-                    if (consentInformation.canRequestAds()) {
-                        adsRepository.refreshInterstitial()
-                    }
-                }
-            },
-            { requestConsentError ->
-                analytics.logEvent(
-                    name = Analytics.EVENT_CONSENT_INFO_UPDATE_ERROR,
-                    params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to requestConsentError.message),
-                )
-            },
-        )
+        maybeShowUMPConsentForm()
 
         if (isFirstInstall(this)) {
             lifecycleScope.launch {
@@ -96,6 +74,44 @@ class AphoraActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    private fun maybeShowUMPConsentForm() {
+        // Testing instructions: https://developers.google.com/admob/android/privacy?consent=legacy#testing
+        val debugSettings = ConsentDebugSettings.Builder(this)
+            .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
+            .addTestDeviceHashedId("TEST-DEVICE-HASHED-ID")
+            .build()
+
+        val params = ConsentRequestParameters
+            .Builder()
+            // .setConsentDebugSettings(debugSettings)
+            .build()
+
+        consentInformation = UserMessagingPlatform.getConsentInformation(this)
+        consentInformation.requestConsentInfoUpdate(
+            this,
+            params,
+            {
+                UserMessagingPlatform.loadAndShowConsentFormIfRequired(this) { formError ->
+                    if (formError != null) {
+                        analytics.logEvent(
+                            name = Analytics.EVENT_CONSENT_FORM_ERROR,
+                            params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to formError.message),
+                        )
+                    }
+                    if (consentInformation.canRequestAds()) {
+                        adsRepository.refreshInterstitial()
+                    }
+                }
+            },
+            { requestConsentError ->
+                analytics.logEvent(
+                    name = Analytics.EVENT_CONSENT_INFO_UPDATE_ERROR,
+                    params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to requestConsentError.message),
+                )
+            },
+        )
     }
 
     private suspend fun seedDefaultData() {
