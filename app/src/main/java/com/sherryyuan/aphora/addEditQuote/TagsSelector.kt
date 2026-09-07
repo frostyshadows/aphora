@@ -198,13 +198,12 @@ private fun SelectedTagChip(
     InputChip(
         modifier = modifier,
         selected = true,
-        enabled = false,
         onClick = {},
         label = { Text(text = tag.label) },
         colors = InputChipDefaults.inputChipColors(
             labelColor = MaterialTheme.colorScheme.onSurface,
             trailingIconColor = MaterialTheme.colorScheme.onSurface,
-            disabledSelectedContainerColor = tag.color.forTagBackground(),
+            selectedContainerColor = tag.color.forTagBackground(),
         ),
         trailingIcon = {
             Icon(

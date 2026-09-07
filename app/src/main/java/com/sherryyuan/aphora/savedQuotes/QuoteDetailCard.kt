@@ -43,6 +43,7 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
@@ -207,51 +208,6 @@ fun QuoteDetailCard(
         )
     }
 
-}
-
-@Composable
-private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(end = 24.dp)) {
-        model.writer?.let { writer ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                QuoteSourceIcon(model)
-                Text(
-                    text = writer.uppercase(),
-                    style = Typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            }
-
-        }
-        if (!model.writer.isNullOrBlank() && !model.work.isNullOrBlank()) {
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-        model.work?.let { work ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (model.writer.isNullOrBlank()) {
-                    QuoteSourceIcon(model)
-                }
-                Text(
-                    text = work,
-                    style = Typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun QuoteSourceIcon(model: QuoteUiModel.Source) {
-    model.category?.let { category ->
-        Icon(
-            modifier = Modifier
-                .padding(end = 4.dp)
-                .size(16.dp),
-            painter = painterResource(category.iconRes),
-            contentDescription = stringResource(category.stringRes),
-        )
-    }
 }
 
 @Composable

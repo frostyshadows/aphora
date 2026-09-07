@@ -116,8 +116,8 @@ class AdsRepository @Inject constructor(
         // Configured to return test ads for every request, use it for testing
         private const val AD_ID_INTERSTITIAL_TEST = "ca-app-pub-3940256099942544/1033173712"
 
-        private const val SKIPS_BEFORE_SHOWING_FIRST_INTERSTITIAL = 2 // 10
-        private const val SKIPS_BEFORE_SHOWING_INTERSTITIAL = 1 // 5
+        private const val SKIPS_BEFORE_SHOWING_FIRST_INTERSTITIAL = 10
+        private const val SKIPS_BEFORE_SHOWING_INTERSTITIAL = 5
         private const val PREFS_FIRST_INTERSTITIAL_SEEN_KEY = "interstitial_seen"
         private const val PREFS_INTERSTITIAL_SKIPPED_COUNT_KEY = "interstitial_skipped_count"
     }

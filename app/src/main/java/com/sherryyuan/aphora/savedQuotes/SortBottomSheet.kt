@@ -78,6 +78,7 @@ fun SortBottomSheet(
                     .padding(horizontal = Spacing.ScreenMargin),
                 onClick = { onOptionSelected(currentSelectedOption) },
             ) { Text(stringResource(R.string.label_confirm)) }
+            VerticalSpacer()
         }
     }
 }
