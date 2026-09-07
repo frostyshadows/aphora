@@ -16,7 +16,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @Composable
 fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
@@ -26,7 +25,7 @@ fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
                 QuoteSourceIcon(model)
                 Text(
                     text = writer.uppercase(),
-                    style = Typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
             }
@@ -42,7 +41,7 @@ fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
                 }
                 Text(
                     text = work,
-                    style = Typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
             }

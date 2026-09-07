@@ -367,7 +367,10 @@ private fun WritersFilter(
     var searchQuery by remember { mutableStateOf("") }
     Column(modifier) {
         FilterSectionHeader(
-            title = filterHeaderText(stringResource(R.string.filter_header_writers), selectedWriters.size),
+            title = filterHeaderText(
+                stringResource(R.string.filter_header_writers),
+                selectedWriters.size,
+            ),
             isExpanded = isExpanded,
             onClick = onHeaderClick,
         )
@@ -418,7 +421,10 @@ private fun WorksFilter(
     var searchQuery by remember { mutableStateOf("") }
     Column(modifier) {
         FilterSectionHeader(
-            title = filterHeaderText(stringResource(R.string.filter_header_works), selectedWorks.size),
+            title = filterHeaderText(
+                stringResource(R.string.filter_header_works),
+                selectedWorks.size,
+            ),
             isExpanded = isExpanded,
             onClick = onHeaderClick,
         )
@@ -547,6 +553,7 @@ private fun RatingsFilter(
                     Text(
                         modifier = Modifier.weight(1f),
                         text = stringResource(R.string.filter_header_rating),
+                        style = MaterialTheme.typography.titleSmall,
                     )
                     Icon(
                         modifier = Modifier.size(16.dp),
@@ -562,7 +569,10 @@ private fun RatingsFilter(
                         .clickable { onHeaderClick() },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(stringResource(R.string.filter_header_rating))
+                    Text(
+                        text = stringResource(R.string.filter_header_rating),
+                        style = MaterialTheme.typography.titleSmall,
+                    )
                     Spacer(modifier = Modifier.width(8.dp))
                     RatingDiamondsRow(
                         rating = selectedMinRating,
@@ -573,6 +583,7 @@ private fun RatingsFilter(
                     Text(
                         modifier = Modifier.weight(1f),
                         text = stringResource(R.string.rating_and_up),
+                        style = MaterialTheme.typography.titleSmall,
                     )
                     Icon(
                         modifier = Modifier.size(16.dp),
@@ -624,7 +635,11 @@ private fun FilterSectionHeader(
             .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(modifier = Modifier.weight(1f), text = title)
+        Text(
+            modifier = Modifier.weight(1f),
+            text = title,
+            style = MaterialTheme.typography.titleSmall,
+        )
         Icon(
             modifier = Modifier.size(16.dp),
             painter = painterResource(

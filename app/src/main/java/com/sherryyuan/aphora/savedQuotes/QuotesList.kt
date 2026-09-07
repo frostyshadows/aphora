@@ -47,7 +47,6 @@ import com.sherryyuan.aphora.ui.common.RatingDiamondSingle
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -200,7 +199,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
         Column(modifier = Modifier.padding(20.dp)) {
             Text(
                 text = model.text,
-                style = Typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge,
                 maxLines = 5,
                 overflow = TextOverflow.Ellipsis,
             )
