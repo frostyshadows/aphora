@@ -42,7 +42,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
@@ -138,7 +137,9 @@ fun TagsSelector(
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Done
                     ),
-                    textStyle = TextStyle(color = MaterialTheme.colorScheme.onSurface),
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(
+                        color = MaterialTheme.colorScheme.onSurface,
+                    ),
                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                 )
 
@@ -198,13 +199,12 @@ private fun SelectedTagChip(
     InputChip(
         modifier = modifier,
         selected = true,
-        enabled = false,
         onClick = {},
         label = { Text(text = tag.label) },
         colors = InputChipDefaults.inputChipColors(
             labelColor = MaterialTheme.colorScheme.onSurface,
             trailingIconColor = MaterialTheme.colorScheme.onSurface,
-            disabledSelectedContainerColor = tag.color.forTagBackground(),
+            selectedContainerColor = tag.color.forTagBackground(),
         ),
         trailingIcon = {
             Icon(

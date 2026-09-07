@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -28,6 +29,8 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -44,7 +47,6 @@ import com.sherryyuan.aphora.ui.common.RatingDiamondSingle
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -132,6 +134,16 @@ fun QuotesList(
             }
         },
     ) { innerPadding ->
+        val lazyListState = rememberLazyListState()
+        LaunchedEffect(viewState.quotes) {
+            snapshotFlow { lazyListState.firstVisibleItemIndex }
+                .collect {
+                    // Scroll to top if new item is added, only if user was scrolled to top already.
+                    if (it <= 1) {
+                        lazyListState.scrollToItem(0)
+                    }
+                }
+        }
         if (viewState.showEmptyState) {
             Column(
                 modifier = Modifier
@@ -163,6 +175,7 @@ fun QuotesList(
                     bottom = 80.dp,
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
+                state = lazyListState,
             ) {
                 itemsIndexed(
                     items = viewState.quotes,
@@ -186,7 +199,7 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
         Column(modifier = Modifier.padding(20.dp)) {
             Text(
                 text = model.text,
-                style = Typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge,
                 maxLines = 5,
                 overflow = TextOverflow.Ellipsis,
             )

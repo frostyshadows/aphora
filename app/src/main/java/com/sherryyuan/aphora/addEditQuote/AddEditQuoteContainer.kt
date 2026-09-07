@@ -127,7 +127,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel, onQuoteSaved: () -> 
                         rating = rating,
                         onRatingUpdate = { updatedRating -> rating = updatedRating }
                     )
-                    VerticalSpacer(height = 8.dp)
+                    VerticalSpacer()
                     QuoteSourceEditor(
                         source = source,
                         allWriters = viewState.allWriters,

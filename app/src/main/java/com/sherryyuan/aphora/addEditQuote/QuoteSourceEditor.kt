@@ -49,7 +49,9 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.SourceEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
+import com.sherryyuan.aphora.ui.theme.Spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,53 +65,31 @@ fun QuoteSourceEditor(
     var showSourceEditorSheet by remember {
         mutableStateOf(false)
     }
-    Card(
-        modifier = Modifier
-            .padding(24.dp)
-            .background(MaterialTheme.colorScheme.primaryContainer)
-    ) {
-        Column(modifier) {
-            if (!showSourceEditorSheet) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { showSourceEditorSheet = true },
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(stringResource(R.string.add_edit_quote_source_section_title))
-                    Icon(
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                            .size(16.dp),
-                        painter = painterResource(R.drawable.icon_pencil),
-                        contentDescription = stringResource(R.string.label_edit)
-                    )
-                }
-            } else {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(R.string.add_edit_quote_source_section_title)
-                )
-            }
-            source?.writer?.let {
-                Text(it)
-            }
-            Row {
-                source?.category?.let { category ->
-                    Icon(
-                        modifier = Modifier.size(16.dp),
-                        painter = painterResource(category.iconRes),
-                        contentDescription = stringResource(category.stringRes),
-                    )
-                }
-                source?.work?.let { Text(it) }
-            }
+    Column(modifier) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { showSourceEditorSheet = !showSourceEditorSheet },
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(stringResource(R.string.add_edit_quote_source_section_title))
+            Icon(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(16.dp),
+                painter = painterResource(R.drawable.icon_pencil),
+                contentDescription = stringResource(R.string.label_edit)
+            )
+        }
+        VerticalSpacer(8.dp)
+        source?.let {
+            QuoteSource(it)
         }
     }
 
     if (showSourceEditorSheet) {
         ModalBottomSheet(
-            dragHandle = null,
+            containerColor = MaterialTheme.colorScheme.surface,
             onDismissRequest = { showSourceEditorSheet = false },
         ) {
             SourceEditorSheetContent(
@@ -183,7 +163,7 @@ private fun SourceEditorSheetContent(
     Column(
         modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(horizontal = Spacing.ScreenMargin)
             .pointerInput(Unit) {
                 detectTapGestures(
                     onTap = { focusManager.clearFocus() }

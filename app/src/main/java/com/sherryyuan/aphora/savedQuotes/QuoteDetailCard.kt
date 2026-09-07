@@ -43,12 +43,12 @@ import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
+import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
-import com.sherryyuan.aphora.ui.theme.Typography
 
 @Composable
 fun QuoteDetailCard(
@@ -87,7 +87,7 @@ fun QuoteDetailCard(
                 Text(
                     modifier = Modifier.padding(horizontal = 20.dp),
                     text = model.text,
-                    style = Typography.titleMedium,
+                    style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
 
@@ -134,7 +134,7 @@ fun QuoteDetailCard(
                 Text(
                     modifier = Modifier.padding(horizontal = 20.dp),
                     text = stringResource(R.string.quote_last_updated, model.dateEdited),
-                    style = Typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium,
                     fontStyle = FontStyle.Italic,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -210,51 +210,6 @@ fun QuoteDetailCard(
 }
 
 @Composable
-private fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(end = 24.dp)) {
-        model.writer?.let { writer ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                QuoteSourceIcon(model)
-                Text(
-                    text = writer.uppercase(),
-                    style = Typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            }
-
-        }
-        if (!model.writer.isNullOrBlank() && !model.work.isNullOrBlank()) {
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-        model.work?.let { work ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (model.writer.isNullOrBlank()) {
-                    QuoteSourceIcon(model)
-                }
-                Text(
-                    text = work,
-                    style = Typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun QuoteSourceIcon(model: QuoteUiModel.Source) {
-    model.category?.let { category ->
-        Icon(
-            modifier = Modifier
-                .padding(end = 4.dp)
-                .size(16.dp),
-            painter = painterResource(category.iconRes),
-            contentDescription = stringResource(category.stringRes),
-        )
-    }
-}
-
-@Composable
 private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(
@@ -262,7 +217,7 @@ private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(bottom = 8.dp),
             text = stringResource(R.string.quote_tags_section_title).uppercase(),
-            style = Typography.labelLarge,
+            style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )
         FlowRow(
@@ -276,7 +231,7 @@ private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
                             .background(color = tag.color.forTagBackground(), shape = RoundedCornerShape(50))
                             .padding(horizontal = 8.dp, vertical = 6.dp),
                         text = tag.label,
-                        style = Typography.labelMedium,
+                        style = MaterialTheme.typography.labelMedium,
                     )
                 }
             }
@@ -292,12 +247,12 @@ private fun QuoteNotes(note: String, modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(bottom = 12.dp),
             text = stringResource(R.string.quote_notes_section_title).uppercase(),
-            style = Typography.labelLarge,
+            style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )
         Text(
             text = note,
-            style = Typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onBackground,
         )
     }
