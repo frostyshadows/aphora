@@ -1,8 +1,6 @@
 # Quote sets
 
-Importable quote collections, one JSON file per set. These are data only — nothing here
-is wired into the app yet; an importer still needs to read these and write them through
-`QuoteDao` / `SourceDao` / `TagDao`.
+Importable quote collections, one JSON file per set.
 
 | File | Set | Quotes | Source |
 |---|---|---:|---|
@@ -25,7 +23,7 @@ is wired into the app yet; an importer still needs to read these and write them 
   "quotes": [
     {
       "text": "It is a truth universally acknowledged, …",  // -> QuoteEntity.text
-      "note": "States a social law as fact, then …",        // -> QuoteEntity.userNote
+      "note": "…",                                          // -> QuoteEntity.userNote (see below)
       "writer": "Jane Austen",                              // -> SourceEntity.writer
       "work": "Pride and Prejudice",                        // -> SourceEntity.work
       "category": "BOOK",                                   // -> SourceEntity.category
@@ -38,8 +36,16 @@ is wired into the app yet; an importer still needs to read these and write them 
 ```
 
 `category` is always one of the `SourceCategory` enum names. `QuoteEntity.rating` has no
-counterpart here — imported quotes are unrated, so the importer picks the value (the
-column is `@IntRange(1,5)`, so it cannot simply be left at 0).
+counterpart here — imported quotes are unrated.
+
+**`note` is optional and absent from three sets.** `opening_lines`, `beautiful_prose` and
+`writing_craft` ship without it; `film_and_television` and `famous_figures` carry it.
+Read it with a null check rather than assuming the key exists.
+
+**No writer appears more than twice in any one set.** Enforced by the verifier. For
+`film_and_television` the `writer` field is the full screenwriting credit, so two films
+by the same person under different co-writer credits ("Billy Wilder and Charles
+Brackett" vs "Billy Wilder and I. A. L. Diamond") count as separate writers.
 
 Fields the app does not currently model, kept for provenance and safe to ignore:
 `year`, `gutenbergId`, `sourceNote` (Wikiquote's own citation), `speaker` and `episode`
@@ -47,11 +53,14 @@ Fields the app does not currently model, kept for provenance and safe to ignore:
 
 ## Tags
 
-Three sets stay inside the existing `DEFAULT_TAGS` vocabulary. Two introduce new labels,
-so **the importer must get-or-create tags rather than assuming they exist**:
+`opening_lines`, `beautiful_prose` and `film_and_television` stay inside the existing
+`DEFAULT_TAGS` vocabulary. Two sets introduce new labels, so **the importer must
+get-or-create tags rather than assuming they exist**:
 
-- `writing_craft` adds: character, clarity, discipline, plot, reader, revision, style, voice
-- `famous_figures` adds: art, justice, life, literature, nature, philosophy, politics, science, wonder
+- `writing_craft` adds: plot, reading, style, voice
+- `famous_figures` adds: art, life, literature, nature, philosophy, science
+
+Every quote carries at least one tag; the verifier fails the build otherwise.
 
 ## Provenance and verification
 
@@ -65,7 +74,14 @@ caught several widely-circulated misattributions during the build, which were re
 Looking-Glass*, not *Alice in Wonderland*).
 
 The two Wikiquote sets are drawn only from sourced sections — "Attributed",
-"Misattributed" and "Disputed" sections are excluded by the parser.
+"Misattributed" and "Disputed" sections are excluded by the parser. A quote counts as
+sourced only when a `**` citation line *directly follows* the `*` line it belongs to.
+An earlier version of the parser got this wrong: when a bullet was skipped (for being
+too long), the next citation attached to the preceding quote instead, which could
+promote an unsourced line to "sourced" under someone else's citation. That is how
+"The happiness of your life depends upon the quality of your thoughts" — Marcus
+Aurelius, routinely misattributed to Austen — briefly entered the Austen candidates.
+It is excluded now.
 
 ## Licensing
 

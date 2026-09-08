@@ -4,7 +4,7 @@
   "description": "Fifty lines of dialogue from films and series, sourced from Wikiquote.",
   "quoteCount": 50,
   "tags": [
-    "character description",
+    "character",
     "dialogue",
     "humor",
     "interiority",
@@ -39,31 +39,6 @@
       "tags": [
         "dialogue"
       ]
-    },
-    {
-      "text": "I stick my neck out for nobody.",
-      "note": "A stated rule the whole plot exists to break.",
-      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
-      "work": "Casablanca",
-      "year": 1942,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "character description"
-      ]
-    },
-    {
-      "text": "Round up the usual suspects.",
-      "note": "A line that closes a plot hole by refusing to look at it.",
-      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
-      "work": "Casablanca",
-      "year": 1942,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "humor"
-      ],
-      "speaker": "Renault"
     },
     {
       "text": "I'm gonna make him an offer he can't refuse.",
@@ -119,7 +94,7 @@
       "category": "MOVIE",
       "tags": [
         "dialogue",
-        "character description"
+        "character"
       ],
       "speaker": "Norma Desmond"
     },
@@ -214,7 +189,7 @@
       "category": "MOVIE",
       "tags": [
         "dialogue",
-        "character description"
+        "character"
       ]
     },
     {
@@ -273,7 +248,7 @@
       "category": "MOVIE",
       "tags": [
         "dialogue",
-        "character description"
+        "character"
       ],
       "speaker": "Inigo"
     },
@@ -291,18 +266,6 @@
       "speaker": "Inigo"
     },
     {
-      "text": "I always think everything could be a trap...which is why I'm still alive.",
-      "note": "Paranoia offered as a survival strategy.",
-      "writer": "William Goldman",
-      "work": "The Princess Bride",
-      "year": 1987,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "humor"
-      ]
-    },
-    {
       "text": "What would you do if you were stuck in one place, and every day was exactly the same, and nothing that you did mattered?",
       "note": "The premise stated as an idle question before it becomes literal.",
       "writer": "Danny Rubin and Harold Ramis",
@@ -313,18 +276,6 @@
         "dialogue"
       ],
       "speaker": "Phil"
-    },
-    {
-      "text": "Mind if I sit down? I'm carrying quite a load here.",
-      "note": "A pregnant detective's deadpan. Character in one aside.",
-      "writer": "Joel and Ethan Coen",
-      "work": "Fargo",
-      "year": 1996,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "humor"
-      ]
     },
     {
       "text": "There's more to life than a little money, you know.",
@@ -338,19 +289,6 @@
       ]
     },
     {
-      "text": "Yeah, man, it really tied the room together.",
-      "note": "An absurd grievance treated with total seriousness.",
-      "writer": "Joel and Ethan Coen",
-      "work": "The Big Lebowski",
-      "year": 1998,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "humor"
-      ],
-      "speaker": "The Dude"
-    },
-    {
       "text": "Yeah, well, the Dude abides.",
       "note": "Two words that function as an entire philosophy.",
       "writer": "Joel and Ethan Coen",
@@ -359,7 +297,7 @@
       "category": "MOVIE",
       "tags": [
         "dialogue",
-        "character description"
+        "character"
       ],
       "speaker": "The Dude"
     },
@@ -386,18 +324,6 @@
         "metaphor"
       ],
       "speaker": "Haku"
-    },
-    {
-      "text": "Sand is overrated. It's just tiny little rocks.",
-      "note": "Contrarianism as flirtation.",
-      "writer": "Charlie Kaufman",
-      "work": "Eternal Sunshine of the Spotless Mind",
-      "year": 2004,
-      "category": "MOVIE",
-      "tags": [
-        "dialogue",
-        "humor"
-      ]
     },
     {
       "text": "I loved you on this day. I love this memory.",
@@ -628,6 +554,79 @@
       ],
       "speaker": "Connor Roy",
       "episode": "Celebration"
+    },
+    {
+      "text": "Gentlemen, you can't fight in here! This is the War Room!",
+      "note": "Absurdity stated with total institutional seriousness.",
+      "writer": "Stanley Kubrick and Terry Southern",
+      "work": "Dr. Strangelove",
+      "year": 1964,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "I'll have what she's having.",
+      "note": "The best-known punchline in romantic comedy, from a bystander.",
+      "writer": "Nora Ephron",
+      "work": "When Harry Met Sally...",
+      "year": 1989,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Older Woman Customer"
+    },
+    {
+      "text": "Let me tell you the story of right hand-left hand.",
+      "note": "A parable told with the hands.",
+      "writer": "Spike Lee",
+      "work": "Do the Right Thing",
+      "year": 1989,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "The past is just a story we tell ourselves.",
+      "note": "Memory reframed as authorship.",
+      "writer": "Spike Jonze",
+      "work": "Her",
+      "year": 2013,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ]
+    },
+    {
+      "text": "Don't you think maybe they are the same thing? Love and attention?",
+      "note": "A question that reframes the entire film in six words.",
+      "writer": "Greta Gerwig",
+      "work": "Lady Bird",
+      "year": 2017,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ],
+      "speaker": "Sister Sarah Joan"
+    },
+    {
+      "text": "It’s very hard to keep personal prejudice out of a thing like this. And no matter where you run into it, prejudice obscures the truth.",
+      "note": "The film's thesis, delivered plainly near the end.",
+      "writer": "Reginald Rose",
+      "work": "12 Angry Men",
+      "year": 1957,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
     }
   ]
 }
