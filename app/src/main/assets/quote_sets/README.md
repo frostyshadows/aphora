@@ -6,8 +6,8 @@ Importable quote collections, one JSON file per set.
 |---|---|---:|---|
 | `opening_lines.json` | Opening Lines | 50 | Project Gutenberg |
 | `beautiful_prose.json` | Beautiful Prose | 50 | Project Gutenberg |
-| `writing_craft.json` | Writing Craft | 50 | Project Gutenberg |
-| `film_and_television.json` | Film & Television | 50 | Wikiquote |
+| `writing_craft.json` | Writing Craft | 20 | Project Gutenberg |
+| `film_and_television.json` | Film & Television | 20 | Wikiquote |
 | `famous_figures.json` | Famous Figures | 100 | Wikiquote |
 
 ## Schema
@@ -38,11 +38,9 @@ Importable quote collections, one JSON file per set.
 `category` is always one of the `SourceCategory` enum names. `QuoteEntity.rating` has no
 counterpart here — imported quotes are unrated.
 
-**`note` is optional and absent from three sets.** `opening_lines`, `beautiful_prose` and
-`writing_craft` ship without it; `film_and_television` and `famous_figures` carry it.
-Read it with a null check rather than assuming the key exists.
+**`note` is optional.**
 
-**No writer appears more than twice in any one set.** Enforced by the verifier. For
+**No writer appears more than twice in any one set** (in the 20-quote sets, no writer repeats at all). Enforced by the verifier. For
 `film_and_television` the `writer` field is the full screenwriting credit, so two films
 by the same person under different co-writer credits ("Billy Wilder and Charles
 Brackett" vs "Billy Wilder and I. A. L. Diamond") count as separate writers.
