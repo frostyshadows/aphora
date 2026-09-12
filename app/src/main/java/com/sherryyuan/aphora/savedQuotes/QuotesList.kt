@@ -60,6 +60,7 @@ fun QuotesList(
     onFilterClick: () -> Unit,
     onCloseSearchClick: () -> Unit,
     onSortClick: () -> Unit,
+    onSettingsClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -84,16 +85,6 @@ fun QuotesList(
                                 )
                             }
                             if (viewState.quotes.isNotEmpty()) {
-                                IconButton(onClick = onSortClick) {
-                                    Icon(
-                                        modifier = Modifier.size(24.dp),
-                                        painter = painterResource(R.drawable.icon_sort),
-                                        tint = MaterialTheme.colorScheme.onBackground,
-                                        contentDescription = stringResource(R.string.cd_sort)
-                                    )
-                                }
-                            }
-                            if (viewState.quotes.isNotEmpty()) {
                                 IconButton(onClick = onRandomQuoteClick) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
@@ -103,6 +94,11 @@ fun QuotesList(
                                     )
                                 }
                             }
+                            QuotesListOverflowMenu(
+                                onSortClick = onSortClick,
+                                onSettingsClick = onSettingsClick,
+                                showSortOption = viewState.quotes.isNotEmpty(),
+                            )
                         },
                         colors = TopAppBarDefaults.topAppBarColors(
                             containerColor = MaterialTheme.colorScheme.background,

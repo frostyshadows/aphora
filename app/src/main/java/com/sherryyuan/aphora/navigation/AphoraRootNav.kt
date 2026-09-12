@@ -1,5 +1,6 @@
 package com.sherryyuan.aphora.navigation
 
+import SettingsContainer
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.slideInVertically
@@ -7,10 +8,10 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.metadata
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
@@ -52,6 +53,9 @@ fun AphoraRootNav(navigator: Navigator, onQuoteSaved: () -> Unit) {
                     }
                 )
                 AddEditQuoteContainer(viewModel, onQuoteSaved = onQuoteSaved)
+            }
+            entry<SettingsKey> {
+                SettingsContainer()
             }
         }
     )
