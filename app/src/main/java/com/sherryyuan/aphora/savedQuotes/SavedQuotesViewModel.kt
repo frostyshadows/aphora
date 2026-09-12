@@ -7,6 +7,7 @@ import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.navigation.AddEditQuoteKey
 import com.sherryyuan.aphora.navigation.Navigator
+import com.sherryyuan.aphora.navigation.SettingsKey
 import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.SourcesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
@@ -187,6 +188,10 @@ class SavedQuotesViewModel @Inject constructor(
         if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
             currentQuoteIdFlow.value = quoteId
         }
+    }
+
+    fun settingsClick() {
+        navigator.goTo(SettingsKey)
     }
 
     private fun createSavedQuotesState(): StateFlow<SavedQuotesViewState> {
