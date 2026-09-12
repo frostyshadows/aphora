@@ -21,7 +21,8 @@
     <!-- Quote detail screen -->
     <string name="cd_previous">Previous</string>
     <string name="cd_next">Next</string>
-    <string name="cd_share">Share</string>
+    <string name="cd_copy">Copy</string>
+    <string name="clipboard_copy_label">Snippet</string>
     <string name="quote_tags_section_title">Tags</string>
     <string name="quote_notes_section_title">Your notes</string>
     <string name="quote_last_updated">Last updated %s</string>
