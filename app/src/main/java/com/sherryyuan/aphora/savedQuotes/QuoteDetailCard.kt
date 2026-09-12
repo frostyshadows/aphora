@@ -1,5 +1,6 @@
 package com.sherryyuan.aphora.savedQuotes
 
+import android.content.ClipData
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,18 +28,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.platform.toClipEntry
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sherryyuan.aphora.ui.theme.forTagBackground
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.mockData.createQuoteViewModel
@@ -49,15 +52,20 @@ import com.sherryyuan.aphora.ui.common.SectionDivider
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.AphoraTheme
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
+import com.sherryyuan.aphora.ui.theme.forTagBackground
+import kotlinx.coroutines.launch
 
 @Composable
 fun QuoteDetailCard(
     model: QuoteUiModel,
     onEditQuoteClick: () -> Unit,
     onDeleteQuoteClick: () -> Unit,
-    onShareQuoteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val scope = rememberCoroutineScope()
+    val clipboard = LocalClipboard.current
+    val clipboardLabel = stringResource(R.string.clipboard_copy_label)
+
     var showDeleteDialog by remember {
         mutableStateOf(false)
     }
@@ -163,7 +171,12 @@ fun QuoteDetailCard(
                 modifier = Modifier.align(Alignment.BottomCenter),
                 onEditQuoteClick = onEditQuoteClick,
                 onDeleteQuoteClick = { showDeleteDialog = true },
-                onShareQuoteClick = onShareQuoteClick,
+                onCopyQuoteClick = {
+                    scope.launch {
+                        val clipData = ClipData.newPlainText(clipboardLabel, model.text)
+                        clipboard.setClipEntry(clipData.toClipEntry())
+                    }
+                },
             )
         }
     }
@@ -228,7 +241,10 @@ private fun QuoteTags(tags: List<TagEntity>, modifier: Modifier = Modifier) {
                 key(tag.tagId) {
                     Text(
                         modifier = Modifier
-                            .background(color = tag.color.forTagBackground(), shape = RoundedCornerShape(50))
+                            .background(
+                                color = tag.color.forTagBackground(),
+                                shape = RoundedCornerShape(50)
+                            )
                             .padding(horizontal = 8.dp, vertical = 6.dp),
                         text = tag.label,
                         style = MaterialTheme.typography.labelMedium,
@@ -262,7 +278,7 @@ private fun QuoteNotes(note: String, modifier: Modifier = Modifier) {
 private fun ActionsRow(
     onEditQuoteClick: () -> Unit,
     onDeleteQuoteClick: () -> Unit,
-    onShareQuoteClick: () -> Unit,
+    onCopyQuoteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -288,12 +304,12 @@ private fun ActionsRow(
             )
         }
         Spacer(modifier = Modifier.weight(1f))
-        IconButton(onClick = onShareQuoteClick) {
+        IconButton(onClick = onCopyQuoteClick) {
             Icon(
                 modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.icon_share),
+                painter = painterResource(R.drawable.icon_copy),
                 tint = MaterialTheme.colorScheme.background,
-                contentDescription = stringResource(R.string.cd_share),
+                contentDescription = stringResource(R.string.cd_copy),
             )
         }
     }
@@ -308,7 +324,6 @@ fun QuoteDetailCardPreview() {
                 model = createQuoteViewModel(),
                 onEditQuoteClick = {},
                 onDeleteQuoteClick = {},
-                onShareQuoteClick = {},
             )
         }
     }

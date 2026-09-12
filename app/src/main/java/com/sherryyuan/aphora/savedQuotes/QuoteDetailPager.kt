@@ -117,10 +117,7 @@ fun QuoteDetailPager(
                 QuoteDetailCard(
                     model = quotes[page],
                     onEditQuoteClick = onEditQuoteClick,
-                    onDeleteQuoteClick = {
-                        onDeleteQuoteClick()
-                    },
-                    onShareQuoteClick = { /** TODO **/ },
+                    onDeleteQuoteClick =   onDeleteQuoteClick,
                 )
             }
         }
