@@ -60,6 +60,7 @@ fun SavedQuotesContainer(
                         onFilterClick = { viewModel.filterClick() },
                         onCloseSearchClick = { viewModel.exitSearch() },
                         onSortClick = { viewModel.sortClick() },
+                        onSettingsClick = { viewModel.settingsClick() },
                     )
                     when (val searchState = state.searchState) {
                         is SearchState.SortSheet -> SortBottomSheet(

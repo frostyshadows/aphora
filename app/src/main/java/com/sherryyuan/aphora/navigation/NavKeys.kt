@@ -8,3 +8,6 @@ data object SavedQuotesKey : NavKey
 
 @Serializable
 data class AddEditQuoteKey(val quoteId: Long? = null) : NavKey
+
+@Serializable
+data object SettingsKey : NavKey

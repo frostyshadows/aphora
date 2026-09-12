@@ -9,11 +9,24 @@
     <string name="label_cancel">Cancel</string>
     <string name="label_close">Close</string>
 
+    <!-- Quote source categories -->
+    <string name="category_book">Book</string>
+    <string name="category_movie">Movie</string>
+    <string name="category_poem">Poem</string>
+    <string name="category_tv">TV</string>
+    <string name="category_song">Song</string>
+    <string name="category_story">Story</string>
+    <string name="category_article">Article</string>
+    <string name="category_other">Other</string>
+    <string name="category_all">All</string>
+
     <!-- Saved quotes list screen -->
     <string name="label_search">Search</string>
     <string name="cd_random">Random</string>
+    <string name="cd_more_options">More options</string>
     <string name="cd_sort">Sort</string>
     <string name="cd_add_quote">Add quote</string>
+    <string name="overflow_menu_label_sort">Sort…</string>
     <string name="sort_by_sheet_title">Sort by</string>
     <string name="label_filter">Filter</string>
     <string name="empty_state_instructions">Collect your first shiny writing snippet. \nMake magpie happy.</string>
@@ -21,7 +34,8 @@
     <!-- Quote detail screen -->
     <string name="cd_previous">Previous</string>
     <string name="cd_next">Next</string>
-    <string name="cd_share">Share</string>
+    <string name="cd_copy">Copy</string>
+    <string name="clipboard_copy_label">Snippet</string>
     <string name="quote_tags_section_title">Tags</string>
     <string name="quote_notes_section_title">Your notes</string>
     <string name="quote_last_updated">Last updated %s</string>
@@ -44,16 +58,8 @@
     <string name="delete_quote_dialog_title">Delete gem</string>
     <string name="delete_quote_dialog_message">Are you sure you want to delete this gem? This action cannot be undone.</string>
 
-    <!-- Quote source categories -->
-    <string name="category_book">Book</string>
-    <string name="category_movie">Movie</string>
-    <string name="category_poem">Poem</string>
-    <string name="category_tv">TV</string>
-    <string name="category_song">Song</string>
-    <string name="category_story">Story</string>
-    <string name="category_article">Article</string>
-    <string name="category_other">Other</string>
-    <string name="category_all">All</string>
+    <!-- Settings screen -->
+    <string name="label_settings">Settings</string>
 
     <!-- Sort sheet -->
     <string name="sort_option_most_liked">Most liked</string>
