@@ -11,7 +11,8 @@
     "interiority",
     "metaphor",
     "setting",
-    "world-building"
+    "world-building",
+    "imagery"
   ],
   "attribution": {
     "source": "Project Gutenberg",
@@ -202,15 +203,14 @@
       "gutenbergId": 205
     },
     {
-      "text": "The mass of men lead lives of quiet desperation.",
-      "writer": "Henry David Thoreau",
-      "work": "Walden",
-      "year": 1854,
+      "text": "Edwin is capable of action but prone to inertia.",
+      "writer": "Emily St. John Mandel",
+      "work": "Sea of Tranquility",
+      "year": 2022,
       "category": "BOOK",
       "tags": [
-        "exposition"
-      ],
-      "gutenbergId": 205
+        "character"
+      ]
     },
     {
       "text": "I celebrate myself, and sing myself, And what I assume you shall assume, For every atom belonging to me as good belongs to you. I loafe and invite my soul, I lean and loafe at my ease observing a spear of summer grass.",
@@ -259,16 +259,14 @@
       "gutenbergId": 4217
     },
     {
-      "text": "How was it I did not see that lofty sky before? And how happy I am to have found it at last!",
-      "writer": "Leo Tolstoy",
-      "work": "War and Peace",
-      "year": 1869,
+      "text": "The plague has a knack for narrative closure.",
+      "writer": "Colson Whitehead",
+      "work": "Zone One",
+      "year": 2011,
       "category": "BOOK",
       "tags": [
-        "interiority",
-        "setting"
-      ],
-      "gutenbergId": 2600
+        "exposition"
+      ]
     },
     {
       "text": "Where is it I’ve read that someone condemned to death says or thinks, an hour before his death, that if he had to live on some high rock, on such a narrow ledge that he’d only room to stand, and the ocean, everlasting darkness, everlasting solitude, everlasting tempest around him, if he had to remain standing on a square yard of space all his life, a thousand years, eternity, it were better to live so than to die at once! Only to live, to live and live! Life, whatever it may be!",
@@ -282,7 +280,7 @@
       "gutenbergId": 2554
     },
     {
-      "text": "speech is like a cracked tin kettle, on which we hammer out tunes to make bears dance when we long to move the stars.",
+      "text": "Speech is like a cracked tin kettle, on which we hammer out tunes to make bears dance when we long to move the stars.",
       "writer": "Gustave Flaubert",
       "work": "Madame Bovary",
       "year": 1857,
@@ -306,7 +304,7 @@
     },
     {
       "text": "Beware, for I am fearless and therefore powerful.",
-      "writer": "Mary Wollstonecraft Shelley",
+      "writer": "Mary Shelley",
       "work": "Frankenstein",
       "year": 1818,
       "category": "BOOK",
@@ -328,7 +326,7 @@
       "gutenbergId": 345
     },
     {
-      "text": "intellects vast and cool and unsympathetic, regarded this earth with envious eyes, and slowly and surely drew their plans against us.",
+      "text": "Intellects vast and cool and unsympathetic, regarded this earth with envious eyes, and slowly and surely drew their plans against us.",
       "writer": "H. G. Wells",
       "work": "The War of the Worlds",
       "year": 1898,
@@ -340,27 +338,25 @@
       "gutenbergId": 36
     },
     {
-      "text": "man is not truly one, but truly two.",
-      "writer": "Robert Louis Stevenson",
-      "work": "Strange Case of Dr Jekyll and Mr Hyde",
-      "year": 1886,
+      "text": "Astonishingly, at some point, a sputtering torch was thrust into her hands. Alma did not see who gave it to her. She had never before been entrusted with fire. The torch spit sparks and sent chunks of flaming tar spinning into the air behind her as she bolted across the cosmos-the only body in the heavens who was not held to a strict elliptical path.",
+      "writer": "Elizabeth Gilbert",
+      "work": "The Signature of All Things",
+      "year": 2013,
       "category": "BOOK",
       "tags": [
-        "interiority"
-      ],
-      "gutenbergId": 43
+        "interiority",
+        "character"
+      ]
     },
     {
-      "text": "On the breast of her gown, in fine red cloth, surrounded with an elaborate embroidery and fantastic flourishes of gold thread, appeared the letter A. It was so artistically done, and with so much fertility and gorgeous luxuriance of fancy, that it had all the effect of a last and fitting decoration to the apparel which she wore, and which was of a splendour in accordance with the taste of the age, but greatly beyond what was allowed by the sumptuary regulations of the colony.",
-      "writer": "Nathaniel Hawthorne",
-      "work": "The Scarlet Letter",
-      "year": 1850,
+      "text": "One day we might go swimming, another we might climb trees. We made up games for ourselves, of racing and tumbling. We would like on the warm sand and say, \"Guess what I'm thinking about.\" The falcon we had seen from our window. The boy with the crooked front tooth. Dinner. ",
+      "writer": "Madeline Miller",
+      "work": "The Song of Achilles",
+      "year": 2011,
       "category": "BOOK",
       "tags": [
-        "character",
-        "setting"
-      ],
-      "gutenbergId": 33
+        "exposition"
+      ]
     },
     {
       "text": "You pierce my soul. I am half agony, half hope.",
@@ -386,27 +382,25 @@
       "gutenbergId": 158
     },
     {
-      "text": "“We be of one blood, ye and I,” said Mowgli, giving the words the Bear accent which all the Hunting People use.",
-      "writer": "Rudyard Kipling",
-      "work": "The Jungle Book",
-      "year": 1894,
+      "text": "“I half closed my eyes and imagined this was the spot where everything I'd ever lost since my childhood had washed up, and I was now standing here in front of it, and if I waited long enough, a tiny figure would appear on the horizon across the field and gradually get larger until I'd see it was Tommy, and he'd wave, and maybe even call.",
+      "writer": "Kazuo Ishiguro",
+      "work": "Never Let Me Go",
+      "year": 2005,
       "category": "BOOK",
       "tags": [
-        "dialogue"
-      ],
-      "gutenbergId": 236
+        "metaphor"
+      ]
     },
     {
-      "text": "“Second to the right, and straight on till morning.”",
-      "writer": "J. M. Barrie",
-      "work": "Peter Pan",
-      "year": 1911,
+      "text": "Profound was Gary’s relief the next morning as he bumped and glided, like a storm-battered yacht, into the safe harbor of his work week.",
+      "writer": "Jonathan Franzen",
+      "work": "Freedom",
+      "year": 2010,
       "category": "BOOK",
       "tags": [
-        "dialogue",
-        "world-building"
-      ],
-      "gutenbergId": 16
+        "metaphor",
+        "character"
+      ]
     },
     {
       "text": "“Curiouser and curiouser!” cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); “now I’m opening out like the largest telescope that ever was! Good-bye, feet!”",
@@ -421,39 +415,35 @@
       "gutenbergId": 11
     },
     {
-      "text": "There is an ecstasy that marks the summit of life, and beyond which life cannot rise. And such is the paradox of living, this ecstasy comes when one is most alive, and it comes as a complete forgetfulness that one is alive.",
-      "writer": "Jack London",
-      "work": "The Call of the Wild",
-      "year": 1903,
+      "text": "Around the beginning of this century, the Queen of Thailand was aboard a boat, floating along with her many courtiers, manservants, maids, feet-bathers, and food tasters, when suddenly the stern hit a wave and the queen was thrown overboard into the turquoise waters of the Nippon-Kai, where, despite her pleas for help, she drowned, for not one person on that boat went to her aid.",
+      "writer": "Zadie Smith",
+      "work": "White Teeth",
+      "year": 2000,
       "category": "BOOK",
       "tags": [
-        "interiority",
-        "metaphor"
-      ],
-      "gutenbergId": 215
-    },
-    {
-      "text": "“All right, then, I’ll go to hell”—and tore it up.",
-      "writer": "Mark Twain",
-      "work": "Adventures of Huckleberry Finn",
-      "year": 1884,
-      "category": "BOOK",
-      "tags": [
-        "dialogue",
-        "interiority"
-      ],
-      "gutenbergId": 76
-    },
-    {
-      "text": "Thus, reader, myself am the matter of my book: there’s no reason thou shouldst employ thy leisure about so frivolous and vain a subject.",
-      "writer": "Michel de Montaigne",
-      "work": "Essays",
-      "year": 1580,
-      "category": "BOOK",
-      "tags": [
+        "plot",
         "exposition"
-      ],
-      "gutenbergId": 3600
+      ]
+    },
+    {
+      "text": "Everything was still bathed and saturated with her presence — higher, wider, deeper than life, a shift in optics that had produced a rainbow edge, and I remember thinking that this must be how people felt after visions of saints — not that my mother was a saint, only that her appearance had been as distinct and startling as a flame leaping up in a dark room.",
+      "writer": "Donna Tartt",
+      "work": "The Goldfinch",
+      "year": 2013,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "It seemed the sanest and most logical course: if the world was on fire, you might as well burn bright.",
+      "writer": "Celeste Ng",
+      "work": "Our Missing Hearts",
+      "year": 2022,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
     },
     {
       "text": "Was he an animal if music could captivate him so?",
@@ -501,93 +491,85 @@
       "gutenbergId": 5670
     },
     {
-      "text": "I was entirely happy. Perhaps we feel like that when we die and become a part of something entire, whether it is sun and air, or goodness and knowledge.",
-      "writer": "Willa Cather",
-      "work": "My Ántonia",
-      "year": 1918,
+      "text": "Everything I've ever let go of has claw marks on it.",
+      "writer": "David Foster Wallace",
+      "work": "Infinite Jest",
+      "year": 1996,
       "category": "BOOK",
       "tags": [
-        "interiority",
-        "metaphor"
-      ],
-      "gutenbergId": 242
+        "imagery"
+      ]
     },
     {
-      "text": "But the air! If you stopped to notice, was the air always like this?",
-      "writer": "Katherine Mansfield",
-      "work": "The Garden Party",
-      "year": 1922,
+      "text": "Like so many Americans, she was trying to construct a life that made sense from things she found in gift shops.",
+      "writer": "Kurt Vonnegut Jr",
+      "work": "Slaughterhouse-Five",
+      "year": 1969,
       "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "As he read, I fell in love the way you fall asleep: slowly, and then all at once.",
+      "writer": "John Green",
+      "work": "The Fault in Our Stars",
+      "year": 2012,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Little events, ordinary things, smashed and reconstituted. Suddenly, they become the bleached bones of a story.",
+      "writer": "Arundhati Roy",
+      "work": "The God of Small Things",
+      "year": 1997,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Heaven opened and the water hammered down, reviving the reluctant old well, greenmossing the pigless pigsty, carpet bombing still, tea-colored puddles the way memory bombs still, tea-colored minds.",
+      "writer": "Arundhati Roy",
+      "work": "The God of Small Things",
+      "year": 1997,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "You have but to meet Ed and you are Edified and Educated; the man is a force of nature, true to himself in every particular, forged by Russian Jewish parents, blessed by marriage to a Catholic girl from Idaho who once exploded a pie in a state baking contest, and graced finally by two children, male and female, who only grin when asked to explain their father, and it is this grin that seems to me a wonderfully summery thing, a flash of love in a world of pain, a warm pause in a cold year.",
+      "writer": "Brian Doyle",
+      "work": "Ed",
+      "year": 2002,
+      "category": "SHORT_STORY",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "Here is the house at night, lit up tall and tallowy",
+      "writer": "Christine Schutt",
+      "work": "“The Summer after Barbara Claffey",
+      "year": 1996,
+      "note": "'tall is contained in 'tallowy'",
+      "category": "SHORT_STORY",
+      "tags": [
+        "imagery"
+      ]
+    },
+    {
+      "text": "Everybody wanted everything to be gleaming again, or maybe they just wanted their evening back.",
+      "writer": "Sam Lipsyte",
+      "work": "I'm Slavering",
+      "year": 2000,
+      "category": "SHORT_STORY",
       "tags": [
         "setting"
-      ],
-      "gutenbergId": 1429
-    },
-    {
-      "text": "I would rather have your friendship than the love of any other woman in the world!",
-      "writer": "Anne Brontë",
-      "work": "The Tenant of Wildfell Hall",
-      "year": 1848,
-      "category": "BOOK",
-      "tags": [
-        "dialogue"
-      ],
-      "gutenbergId": 969
-    },
-    {
-      "text": "Hope is the thing with feathers That perches in the soul, And sings the tune without the words, And never stops at all, And sweetest in the gale is heard; And sore must be the storm That could abash the little bird That kept so many warm. I 've heard it in the chillest land, And on the strangest sea; Yet, never, in extremity, It asked a crumb of me.",
-      "writer": "Emily Dickinson",
-      "work": "Poems",
-      "year": 1890,
-      "category": "POEM",
-      "tags": [
-        "metaphor"
-      ],
-      "gutenbergId": 12242
-    },
-    {
-      "text": "For there is no friend like a sister In calm or stormy weather; To cheer one on the tedious way, To fetch one if one goes astray, To lift one if one totters down, To strengthen whilst one stands.' IN THE ROUND TOWER AT JHANSI June 8, 1857 A hundred, a thousand to one; even so; Not a hope in the world remained: The swarming howling wretches below Gained and gained and gained.",
-      "writer": "Christina Rossetti",
-      "work": "Goblin Market",
-      "year": 1862,
-      "category": "POEM",
-      "tags": [
-        "metaphor"
-      ],
-      "gutenbergId": 16950
-    },
-    {
-      "text": "The bird that would soar above the level plain of tradition and prejudice must have strong wings.",
-      "writer": "Kate Chopin",
-      "work": "The Awakening",
-      "year": 1899,
-      "category": "BOOK",
-      "tags": [
-        "metaphor"
-      ],
-      "gutenbergId": 160
-    },
-    {
-      "text": "Because I could not stop for Death, He kindly stopped for me; The carriage held but just ourselves And Immortality. We slowly drove, he knew no haste, And I had put away My labor, and my leisure too, For his civility.",
-      "writer": "Emily Dickinson",
-      "work": "Poems",
-      "year": 1890,
-      "category": "POEM",
-      "tags": [
-        "metaphor"
-      ],
-      "gutenbergId": 12242
-    },
-    {
-      "text": "Reader, I married him.",
-      "writer": "Charlotte Brontë",
-      "work": "Jane Eyre",
-      "year": 1847,
-      "category": "BOOK",
-      "tags": [
-        "interiority"
-      ],
-      "gutenbergId": 1260
+      ]
     }
   ]
 }
