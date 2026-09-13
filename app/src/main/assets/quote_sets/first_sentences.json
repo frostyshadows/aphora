@@ -1,7 +1,7 @@
 {
-  "id": "opening_lines",
-  "title": "Opening Lines",
-  "description": "Fifty first sentences from public-domain novels, with a note on what each one does in its first breath.",
+  "id": "first_sentences",
+  "title": "First Sentences",
+  "description": "50 opening lines from public-domain novels, with a note on what each one does in its first breath.",
   "quoteCount": 50,
   "tags": [
     "action",
