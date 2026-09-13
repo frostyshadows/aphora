@@ -1,0 +1,245 @@
+{
+  "id": "writing_craft",
+  "title": "Writing Craft",
+  "description": "Twenty pieces of advice on style, plot, character and revision, from essays on the art of writing.",
+  "quoteCount": 20,
+  "tags": [
+    "character",
+    "metaphor",
+    "plot",
+    "reading",
+    "style",
+    "voice"
+  ],
+  "attribution": {
+    "source": "Project Gutenberg",
+    "license": "Public domain in the United States",
+    "licenseUrl": "https://www.gutenberg.org/policy/permission.html",
+    "note": "Every quote in this set was extracted verbatim from the Project Gutenberg source text named by gutenbergId and machine-verified against it."
+  },
+  "quotes": [
+    {
+      "text": "One of the chief obligations, in a short story, is to give the reader an immediate sense of security.",
+      "writer": "Edith Wharton",
+      "work": "The Writing of Fiction",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "reading",
+        "plot"
+      ],
+      "gutenbergId": 72446
+    },
+    {
+      "text": "In writing choose the common words; avoid rhapsody and eloquence—yet, it is true, poetry is delicious; the best prose is that which is most full of poetry.",
+      "writer": "Virginia Woolf",
+      "work": "The Common Reader",
+      "year": 1925,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 64457
+    },
+    {
+      "text": "Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts. This requires not that the writer make all his sentences short, or that he avoid all detail and treat his subjects only in outline, but that he make every word tell.",
+      "writer": "William Strunk Jr.",
+      "work": "The Elements of Style",
+      "year": 1918,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 37134
+    },
+    {
+      "text": "there is only one way to be clever, and that is to be exact.",
+      "writer": "Robert Louis Stevenson",
+      "work": "Essays in the Art of Writing",
+      "year": 1905,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 492
+    },
+    {
+      "text": "Whenever you feel an impulse to perpetrate a piece of exceptionally fine writing, obey it--whole-heartedly--and delete it before sending your manuscript to press. Murder your darlings.",
+      "writer": "Arthur Quiller-Couch",
+      "work": "On the Art of Writing",
+      "year": 1916,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 17470
+    },
+    {
+      "text": "Try to be one of the people on whom nothing is lost!",
+      "writer": "Henry James",
+      "work": "Partial Portraits",
+      "year": 1888,
+      "category": "ARTICLE",
+      "tags": [
+        "reading"
+      ],
+      "gutenbergId": 58471
+    },
+    {
+      "text": "Possessed of an absolute belief that there exists but one way of expressing one thing, one word to call it by, one adjective to qualify, one verb to animate it, he gave himself to superhuman labour for the discovery, in every phrase, of that word, that verb, that epithet.",
+      "writer": "Walter Pater",
+      "work": "Appreciations, with an Essay on Style",
+      "year": 1889,
+      "category": "ARTICLE",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 4037
+    },
+    {
+      "text": "As soon as the actors in the story become real in the mind of the narrator, and not before, the story itself becomes real to him.",
+      "writer": "Walter Besant",
+      "work": "The Art of Fiction",
+      "year": 1884,
+      "category": "ARTICLE",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 76460
+    },
+    {
+      "text": "Granted a given series of events to be set forth, the structure of the plot, the means of character delineation, the use of setting, the entire tone and tenor of the narrative, are all dependent directly on the answer to the question, Who shall tell the story?",
+      "writer": "Clayton Hamilton",
+      "work": "Materials and Methods of Fiction",
+      "year": 1908,
+      "category": "ARTICLE",
+      "tags": [
+        "voice",
+        "plot"
+      ],
+      "gutenbergId": 30776
+    },
+    {
+      "text": "Style is the physiognomy of the mind, and a safer index to character than the face.",
+      "writer": "Arthur Schopenhauer",
+      "work": "The Art of Literature",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "voice",
+        "style"
+      ],
+      "gutenbergId": 10714
+    },
+    {
+      "text": "The humorous story depends for its effect upon the manner of the telling; the comic story and the witty story upon the matter. The humorous story may be spun out to great length, and may wander around as much as it pleases, and arrive nowhere in particular; but the comic and witty stories must be brief and end with a point.",
+      "writer": "Mark Twain",
+      "work": "How to Tell a Story",
+      "year": 1897,
+      "category": "ARTICLE",
+      "tags": [
+        "voice"
+      ],
+      "gutenbergId": 3250
+    },
+    {
+      "text": "The Plot, then, is the first principle, and, as it were, the soul of a tragedy: Character holds the second place. A similar fact is seen in painting.",
+      "writer": "Aristotle",
+      "work": "Poetics",
+      "year": -335,
+      "category": "BOOK",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 1974
+    },
+    {
+      "text": "How would Homer, how would Demosthenes, have been affected by what I have written?",
+      "writer": "Longinus",
+      "work": "On the Sublime",
+      "year": 100,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 17957
+    },
+    {
+      "text": "Try to leave out the part that readers tend to skip.",
+      "writer": "Elmore Leonard",
+      "work": "Writers on Writing",
+      "year": 2001,
+      "category": "ARTICLE",
+      "tags": [
+        "plot"
+      ]
+    },
+    {
+      "text": "If it is in a story we say \"and then?\" If it is in a plot we ask \"why?\"",
+      "writer": "E. M. Forster",
+      "work": "Aspects of the Novel",
+      "year": 1927,
+      "category": "BOOK",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 70492
+    },
+    {
+      "text": "Anybody may write, but only the trained writer is able to be sure that what he has written says what he supposes it to say.",
+      "writer": "Arlo Bates",
+      "work": "Talks on Writing English",
+      "year": 1896,
+      "category": "BOOK",
+      "tags": [
+        "style"
+      ],
+      "gutenbergId": 47494
+    },
+    {
+      "text": "Every sentence, every word, through all those pages, should tend to the telling of the story.",
+      "writer": "Anthony Trollope",
+      "work": "An Autobiography",
+      "year": 1883,
+      "category": "BOOK",
+      "tags": [
+        "plot"
+      ],
+      "gutenbergId": 5978
+    },
+    {
+      "text": "The justification of a character in a novel is not that other persons are what they are, but that the author is what he is.",
+      "writer": "Oscar Wilde",
+      "work": "Intentions",
+      "year": 1891,
+      "category": "ARTICLE",
+      "tags": [
+        "character",
+        "voice"
+      ],
+      "gutenbergId": 887
+    },
+    {
+      "text": "Every character should want something, even if it is only a glass of water.",
+      "writer": "Kurt Vonnegut",
+      "work": "Bagombo Snuff Box",
+      "year": 1999,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "Poetry lifts the veil from the hidden beauty of the world, and makes familiar objects be as if they were not familiar; it reproduces all that it represents, and the impersonations clothed in its Elysian light stand thenceforward in the minds of those who have once contemplated them as memorials of that gentle and exalted content which extends itself over all thoughts and actions with which it coexists.",
+      "writer": "Percy Bysshe Shelley",
+      "work": "A Defence of Poetry",
+      "year": 1840,
+      "category": "ARTICLE",
+      "tags": [
+        "metaphor",
+        "style"
+      ],
+      "gutenbergId": 5428
+    }
+  ]
+}

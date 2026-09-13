@@ -19,7 +19,7 @@ data class DefaultQuoteBundle(
 )
 
 val DEFAULT_TAGS = listOf(
-    TagEntity(label = "character description", color = TagPastelRed),
+    TagEntity(label = "character", color = TagPastelRed),
     TagEntity(label = "setting", color = TagPastelOrange),
     TagEntity(label = "dialogue", color = TagPastelYellow),
     TagEntity(label = "action", color = TagPastelGreen),
@@ -28,6 +28,7 @@ val DEFAULT_TAGS = listOf(
     TagEntity(label = "world-building", color = TagPastelPink),
     TagEntity(label = "humor", color = TagPastelRed),
     TagEntity(label = "metaphor", color = TagPastelBlue),
+    TagEntity(label = "imagery", color = TagPastelPurple),
 )
 
 val DEFAULT_QUOTE_BUNDLES = listOf(
