@@ -1,0 +1,250 @@
+{
+  "id": "film_and_television",
+  "title": "Film & Television",
+  "description": "Twenty lines of dialogue from films and series, sourced from Wikiquote.",
+  "quoteCount": 20,
+  "tags": [
+    "character",
+    "dialogue",
+    "humor",
+    "interiority",
+    "metaphor"
+  ],
+  "attribution": {
+    "source": "Wikiquote (en.wikiquote.org)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Quote text and attributions come from Wikiquote's sourced sections and are used under CC BY-SA 4.0. Redistribution must preserve this attribution and license."
+  },
+  "quotes": [
+    {
+      "text": "Of all the gin joints in all the towns in all the world, she walks into mine.",
+      "writer": "Julius J. Epstein, Philip G. Epstein and Howard Koch",
+      "work": "Casablanca",
+      "year": 1942,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I'm gonna make him an offer he can't refuse.",
+      "writer": "Mario Puzo and Francis Ford Coppola",
+      "work": "The Godfather",
+      "year": 1972,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Vito"
+    },
+    {
+      "text": "I am big. It's the pictures that got small.",
+      "writer": "Billy Wilder and Charles Brackett",
+      "work": "Sunset Boulevard",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character"
+      ],
+      "speaker": "Norma Desmond"
+    },
+    {
+      "text": "Well, nobody's perfect!",
+      "writer": "Billy Wilder and I. A. L. Diamond",
+      "work": "Some Like It Hot",
+      "year": 1959,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Osgood"
+    },
+    {
+      "text": "Fasten your seatbelts, it's going to be a bumpy night.",
+      "writer": "Joseph L. Mankiewicz",
+      "work": "All About Eve",
+      "year": 1950,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "I want you to get up right now and go to the window, open it, and stick your head out, and yell: I'M AS MAD AS HELL, AND I'M NOT GOING TO TAKE THIS ANYMORE!",
+      "writer": "Paddy Chayefsky",
+      "work": "Network",
+      "year": 1976,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ]
+    },
+    {
+      "text": "Forget it, Jake. It's Chinatown.",
+      "writer": "Robert Towne",
+      "work": "Chinatown",
+      "year": 1974,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Lawrence Walsh"
+    },
+    {
+      "text": "I love the smell of napalm in the morning.",
+      "writer": "John Milius and Francis Ford Coppola",
+      "work": "Apocalypse Now",
+      "year": 1979,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character"
+      ]
+    },
+    {
+      "text": "I've seen things you people wouldn't believe. Attack ships on fire off shoulder of Orion. I watched c-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost in time, like tears in rain. Time to die.",
+      "writer": "Hampton Fancher and David Peoples",
+      "work": "Blade Runner",
+      "year": 1982,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "I'm sorry, Dave. I'm afraid I can't do that.",
+      "writer": "Stanley Kubrick and Arthur C. Clarke",
+      "work": "2001: A Space Odyssey",
+      "year": 1968,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "HAL"
+    },
+    {
+      "text": "Hello, my name is Inigo Montoya. You killed my father. Prepare to die.",
+      "writer": "William Goldman",
+      "work": "The Princess Bride",
+      "year": 1987,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character"
+      ],
+      "speaker": "Inigo"
+    },
+    {
+      "text": "Yeah, well, the Dude abides.",
+      "writer": "Joel and Ethan Coen",
+      "work": "The Big Lebowski",
+      "year": 1998,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "character"
+      ],
+      "speaker": "The Dude"
+    },
+    {
+      "text": "If you completely forget your name, you'll never find your way back home. I've tried everything to remember mine.",
+      "writer": "Hayao Miyazaki",
+      "work": "Spirited Away",
+      "year": 2001,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "speaker": "Haku"
+    },
+    {
+      "text": "At some point, you gotta decide for yourself who you're going to be. Can't let nobody make that decision for you.",
+      "writer": "Barry Jenkins",
+      "work": "Moonlight",
+      "year": 2016,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Juan"
+    },
+    {
+      "text": "Ayo, lesson here, Bey. You come at the king, you best not miss.",
+      "writer": "David Simon",
+      "work": "The Wire",
+      "year": 2002,
+      "category": "TV",
+      "tags": [
+        "dialogue"
+      ],
+      "speaker": "Omar",
+      "episode": "Lessons"
+    },
+    {
+      "text": "I mean, somebody royally forked up. Somebody forked up. Why can't I say \"fork\"?",
+      "writer": "Michael Schur",
+      "work": "The Good Place",
+      "year": 2016,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Eleanor",
+      "episode": "Chapter 1 – Everything is Fine"
+    },
+    {
+      "text": "There's always money in the banana stand.",
+      "writer": "Mitchell Hurwitz",
+      "work": "Arrested Development",
+      "year": 2003,
+      "category": "TV",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "George Sr.",
+      "episode": "Top Banana"
+    },
+    {
+      "text": "Gentlemen, you can't fight in here! This is the War Room!",
+      "writer": "Stanley Kubrick and Terry Southern",
+      "work": "Dr. Strangelove",
+      "year": 1964,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ]
+    },
+    {
+      "text": "I'll have what she's having.",
+      "writer": "Nora Ephron",
+      "work": "When Harry Met Sally...",
+      "year": 1989,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "speaker": "Older Woman Customer"
+    },
+    {
+      "text": "Don't you think maybe they are the same thing? Love and attention?",
+      "writer": "Greta Gerwig",
+      "work": "Lady Bird",
+      "year": 2017,
+      "category": "MOVIE",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ],
+      "speaker": "Sister Sarah Joan"
+    }
+  ]
+}

@@ -1,0 +1,575 @@
+{
+  "id": "beautiful_prose",
+  "title": "Beautiful Prose",
+  "description": "Fifty passages, mostly from public-domain fiction and essays, chosen for their craft.",
+  "quoteCount": 50,
+  "tags": [
+    "character",
+    "dialogue",
+    "exposition",
+    "humor",
+    "interiority",
+    "metaphor",
+    "setting",
+    "world-building",
+    "imagery"
+  ],
+  "attribution": {
+    "source": "Project Gutenberg",
+    "license": "Public domain in the United States",
+    "licenseUrl": "https://www.gutenberg.org/policy/permission.html",
+    "note": "Every quote in this set was extracted verbatim from the Project Gutenberg source text named by gutenbergId and machine-verified against it."
+  },
+  "quotes": [
+    {
+      "text": "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship.",
+      "writer": "Herman Melville",
+      "work": "Moby-Dick",
+      "year": 1851,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "metaphor"
+      ],
+      "gutenbergId": 2701
+    },
+    {
+      "text": "Gatsby believed in the green light, the orgiastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms further … And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "interiority"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "So we beat on, boats against the current, borne back ceaselessly into the past.",
+      "writer": "F. Scott Fitzgerald",
+      "work": "The Great Gatsby",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ],
+      "gutenbergId": 64317
+    },
+    {
+      "text": "After Dad left, she just folded up into herself like an origami bird thrown into a fire.",
+      "writer": "Neal Stephenson",
+      "work": "Snow Crash",
+      "year": 1992,
+      "category": "BOOK",
+      "tags": [
+        "character",
+        "metaphor"
+      ]
+    },
+    {
+      "text": "The workmates I met later that night in the hotel bar were less thrilled about the weather, none of them having ever been mugged by the full-force humidity of a tropical planet.",
+      "writer": "Viet Thanh Nguyen",
+      "work": "The Sympathizer",
+      "year": 2015,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ]
+    },
+    {
+      "text": "Fog everywhere. Fog up the river, where it flows among green aits and meadows; fog down the river, where it rolls defiled among the tiers of shipping and the waterside pollutions of a great (and dirty) city. Fog on the Essex marshes, fog on the Kentish heights. Fog creeping into the cabooses of collier-brigs; fog lying out on the yards and hovering in the rigging of great ships; fog drooping on the gunwales of barges and small boats.",
+      "writer": "Charles Dickens",
+      "work": "Bleak House",
+      "year": 1853,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 1023
+    },
+    {
+      "text": "But after the bottle was empty sometime that night, I was finally left with nothing but myself and my thoughts, devious cab drivers that took me where I did not want to go.",
+      "writer": "Viet Thanh Nguyen",
+      "work": "The Sympathizer",
+      "year": 2015,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "interiority"
+      ]
+    },
+    {
+      "text": "If we had a keen vision and feeling of all ordinary human life, it would be like hearing the grass grow and the squirrel’s heart beat, and we should die of that roar which lies on the other side of silence. As it is, the quickest of us walk about well wadded with stupidity.",
+      "writer": "George Eliot",
+      "work": "Middlemarch",
+      "year": 1871,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "interiority"
+      ],
+      "gutenbergId": 145
+    },
+    {
+      "text": "the growing good of the world is partly dependent on unhistoric acts; and that things are not so ill with you and me as they might have been, is half owing to the number who lived faithfully a hidden life, and rest in unvisited tombs.",
+      "writer": "George Eliot",
+      "work": "Middlemarch",
+      "year": 1871,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 145
+    },
+    {
+      "text": "I am no bird; and no net ensnares me; I am a free human being with an independent will, which I now exert to leave you.” Another effort set me at liberty, and I stood erect before him.",
+      "writer": "Charlotte Brontë",
+      "work": "Jane Eyre",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 1260
+    },
+    {
+      "text": "Whatever our souls are made of, his and mine are the same; and Linton’s is as different as a moonbeam from lightning, or frost from fire.",
+      "writer": "Emily Brontë",
+      "work": "Wuthering Heights",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 768
+    },
+    {
+      "text": "I lingered round them, under that benign sky: watched the moths fluttering among the heath and harebells, listened to the soft wind breathing through the grass, and wondered how any one could ever imagine unquiet slumbers for the sleepers in that quiet earth. *** END OF THE PROJECT GUTENBERG EBOOK WUTHERING HEIGHTS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!",
+      "writer": "Emily Brontë",
+      "work": "Wuthering Heights",
+      "year": 1847,
+      "category": "BOOK",
+      "tags": [
+        "setting"
+      ],
+      "gutenbergId": 768
+    },
+    {
+      "text": "Behind every exquisite thing that existed, there was something tragic.",
+      "writer": "Oscar Wilde",
+      "work": "The Picture of Dorian Gray",
+      "year": 1890,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 174
+    },
+    {
+      "text": "The voice of the sea is seductive; never ceasing, whispering, clamoring, murmuring, inviting the soul to wander for a spell in abysses of solitude; to lose itself in mazes of inward contemplation. The voice of the sea speaks to the soul.",
+      "writer": "Kate Chopin",
+      "work": "The Awakening",
+      "year": 1899,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 160
+    },
+    {
+      "text": "She was so evidently the victim of the civilization which had produced her, that the links of her bracelet seemed like manacles chaining her to her fate.",
+      "writer": "Edith Wharton",
+      "work": "The House of Mirth",
+      "year": 1905,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ],
+      "gutenbergId": 284
+    },
+    {
+      "text": "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived.",
+      "writer": "Henry David Thoreau",
+      "work": "Walden",
+      "year": 1854,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 205
+    },
+    {
+      "text": "Edwin is capable of action but prone to inertia.",
+      "writer": "Emily St. John Mandel",
+      "work": "Sea of Tranquility",
+      "year": 2022,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "I celebrate myself, and sing myself, And what I assume you shall assume, For every atom belonging to me as good belongs to you. I loafe and invite my soul, I lean and loafe at my ease observing a spear of summer grass.",
+      "writer": "Walt Whitman",
+      "work": "Leaves of Grass",
+      "year": 1855,
+      "category": "POEM",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 1322
+    },
+    {
+      "text": "One ever feels his twoness,—an American, a Negro; two souls, two thoughts, two unreconciled strivings; two warring ideals in one dark body, whose dogged strength alone keeps it from being torn asunder.",
+      "writer": "W. E. B. Du Bois",
+      "work": "The Souls of Black Folk",
+      "year": 1903,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "metaphor"
+      ],
+      "gutenbergId": 408
+    },
+    {
+      "text": "His soul swooned slowly as he heard the snow falling faintly through the universe and faintly falling, like the descent of their last end, upon all the living and the dead.",
+      "writer": "James Joyce",
+      "work": "Dubliners",
+      "year": 1914,
+      "category": "BOOK",
+      "tags": [
+        "setting",
+        "metaphor"
+      ],
+      "gutenbergId": 2814
+    },
+    {
+      "text": "Welcome, O life! I go to encounter for the millionth time the reality of experience and to forge in the smithy of my soul the uncreated conscience of my race.",
+      "writer": "James Joyce",
+      "work": "A Portrait of the Artist as a Young Man",
+      "year": 1916,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 4217
+    },
+    {
+      "text": "The plague has a knack for narrative closure.",
+      "writer": "Colson Whitehead",
+      "work": "Zone One",
+      "year": 2011,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ]
+    },
+    {
+      "text": "Where is it I’ve read that someone condemned to death says or thinks, an hour before his death, that if he had to live on some high rock, on such a narrow ledge that he’d only room to stand, and the ocean, everlasting darkness, everlasting solitude, everlasting tempest around him, if he had to remain standing on a square yard of space all his life, a thousand years, eternity, it were better to live so than to die at once! Only to live, to live and live! Life, whatever it may be!",
+      "writer": "Fyodor Dostoyevsky",
+      "work": "Crime and Punishment",
+      "year": 1866,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 2554
+    },
+    {
+      "text": "Speech is like a cracked tin kettle, on which we hammer out tunes to make bears dance when we long to move the stars.",
+      "writer": "Gustave Flaubert",
+      "work": "Madame Bovary",
+      "year": 1857,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ],
+      "gutenbergId": 2413
+    },
+    {
+      "text": "I ought to be thy Adam, but I am rather the fallen angel, whom thou drivest from joy for no misdeed.",
+      "writer": "Mary Wollstonecraft Shelley",
+      "work": "Frankenstein",
+      "year": 1818,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "metaphor"
+      ],
+      "gutenbergId": 84
+    },
+    {
+      "text": "Beware, for I am fearless and therefore powerful.",
+      "writer": "Mary Shelley",
+      "work": "Frankenstein",
+      "year": 1818,
+      "category": "BOOK",
+      "tags": [
+        "dialogue"
+      ],
+      "gutenbergId": 84
+    },
+    {
+      "text": "Listen to them--the children of the night. What music they make!",
+      "writer": "Bram Stoker",
+      "work": "Dracula",
+      "year": 1897,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "setting"
+      ],
+      "gutenbergId": 345
+    },
+    {
+      "text": "Intellects vast and cool and unsympathetic, regarded this earth with envious eyes, and slowly and surely drew their plans against us.",
+      "writer": "H. G. Wells",
+      "work": "The War of the Worlds",
+      "year": 1898,
+      "category": "BOOK",
+      "tags": [
+        "exposition",
+        "metaphor"
+      ],
+      "gutenbergId": 36
+    },
+    {
+      "text": "Astonishingly, at some point, a sputtering torch was thrust into her hands. Alma did not see who gave it to her. She had never before been entrusted with fire. The torch spit sparks and sent chunks of flaming tar spinning into the air behind her as she bolted across the cosmos-the only body in the heavens who was not held to a strict elliptical path.",
+      "writer": "Elizabeth Gilbert",
+      "work": "The Signature of All Things",
+      "year": 2013,
+      "category": "BOOK",
+      "tags": [
+        "interiority",
+        "character"
+      ]
+    },
+    {
+      "text": "One day we might go swimming, another we might climb trees. We made up games for ourselves, of racing and tumbling. We would like on the warm sand and say, \"Guess what I'm thinking about.\" The falcon we had seen from our window. The boy with the crooked front tooth. Dinner. ",
+      "writer": "Madeline Miller",
+      "work": "The Song of Achilles",
+      "year": 2011,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ]
+    },
+    {
+      "text": "You pierce my soul. I am half agony, half hope.",
+      "writer": "Jane Austen",
+      "work": "Persuasion",
+      "year": 1817,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "interiority"
+      ],
+      "gutenbergId": 105
+    },
+    {
+      "text": "Seldom, very seldom, does complete truth belong to any human disclosure; seldom can it happen that something is not a little disguised, or a little mistaken; but where, as in this case, though the conduct is mistaken, the feelings are not, it may not be very material.",
+      "writer": "Jane Austen",
+      "work": "Emma",
+      "year": 1815,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 158
+    },
+    {
+      "text": "“I half closed my eyes and imagined this was the spot where everything I'd ever lost since my childhood had washed up, and I was now standing here in front of it, and if I waited long enough, a tiny figure would appear on the horizon across the field and gradually get larger until I'd see it was Tommy, and he'd wave, and maybe even call.",
+      "writer": "Kazuo Ishiguro",
+      "work": "Never Let Me Go",
+      "year": 2005,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Profound was Gary’s relief the next morning as he bumped and glided, like a storm-battered yacht, into the safe harbor of his work week.",
+      "writer": "Jonathan Franzen",
+      "work": "Freedom",
+      "year": 2010,
+      "category": "BOOK",
+      "tags": [
+        "metaphor",
+        "character"
+      ]
+    },
+    {
+      "text": "“Curiouser and curiouser!” cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English); “now I’m opening out like the largest telescope that ever was! Good-bye, feet!”",
+      "writer": "Lewis Carroll",
+      "work": "Alice's Adventures in Wonderland",
+      "year": 1865,
+      "category": "BOOK",
+      "tags": [
+        "dialogue",
+        "humor"
+      ],
+      "gutenbergId": 11
+    },
+    {
+      "text": "Around the beginning of this century, the Queen of Thailand was aboard a boat, floating along with her many courtiers, manservants, maids, feet-bathers, and food tasters, when suddenly the stern hit a wave and the queen was thrown overboard into the turquoise waters of the Nippon-Kai, where, despite her pleas for help, she drowned, for not one person on that boat went to her aid.",
+      "writer": "Zadie Smith",
+      "work": "White Teeth",
+      "year": 2000,
+      "category": "BOOK",
+      "tags": [
+        "plot",
+        "exposition"
+      ]
+    },
+    {
+      "text": "Everything was still bathed and saturated with her presence — higher, wider, deeper than life, a shift in optics that had produced a rainbow edge, and I remember thinking that this must be how people felt after visions of saints — not that my mother was a saint, only that her appearance had been as distinct and startling as a flame leaping up in a dark room.",
+      "writer": "Donna Tartt",
+      "work": "The Goldfinch",
+      "year": 2013,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "It seemed the sanest and most logical course: if the world was on fire, you might as well burn bright.",
+      "writer": "Celeste Ng",
+      "work": "Our Missing Hearts",
+      "year": 2022,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Was he an animal if music could captivate him so?",
+      "writer": "Franz Kafka",
+      "work": "The Metamorphosis",
+      "year": 1915,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 5200
+    },
+    {
+      "text": "It was the old New York way of taking life \"without effusion of blood\": the way of people who dreaded scandal more than disease, who placed decency above courage, and who considered that nothing was more ill-bred than \"scenes,\" except the behaviour of those who gave rise to them.",
+      "writer": "Edith Wharton",
+      "work": "The Age of Innocence",
+      "year": 1920,
+      "category": "BOOK",
+      "tags": [
+        "exposition"
+      ],
+      "gutenbergId": 541
+    },
+    {
+      "text": "She had a perpetual sense, as she watched the taxi cabs, of being out, out, far out to sea and alone; she always had the feeling that it was very, very dangerous to live even one day.",
+      "writer": "Virginia Woolf",
+      "work": "Mrs. Dalloway",
+      "year": 1925,
+      "category": "BOOK",
+      "tags": [
+        "interiority"
+      ],
+      "gutenbergId": 71865
+    },
+    {
+      "text": "It is no use trying to sum people up. One must follow hints, not exactly what is said, nor yet entirely what is done--for instance, when the train drew into the station, Mr. Flanders burst open the door, and put the lady's dressing-case out for her, saying, or rather mumbling: \"Let me\" very shyly; indeed he was rather clumsy about it.",
+      "writer": "Virginia Woolf",
+      "work": "Jacob's Room",
+      "year": 1922,
+      "category": "BOOK",
+      "tags": [
+        "character",
+        "interiority"
+      ],
+      "gutenbergId": 5670
+    },
+    {
+      "text": "Everything I've ever let go of has claw marks on it.",
+      "writer": "David Foster Wallace",
+      "work": "Infinite Jest",
+      "year": 1996,
+      "category": "BOOK",
+      "tags": [
+        "imagery"
+      ]
+    },
+    {
+      "text": "Like so many Americans, she was trying to construct a life that made sense from things she found in gift shops.",
+      "writer": "Kurt Vonnegut Jr",
+      "work": "Slaughterhouse-Five",
+      "year": 1969,
+      "category": "BOOK",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "As he read, I fell in love the way you fall asleep: slowly, and then all at once.",
+      "writer": "John Green",
+      "work": "The Fault in Our Stars",
+      "year": 2012,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Little events, ordinary things, smashed and reconstituted. Suddenly, they become the bleached bones of a story.",
+      "writer": "Arundhati Roy",
+      "work": "The God of Small Things",
+      "year": 1997,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "Heaven opened and the water hammered down, reviving the reluctant old well, greenmossing the pigless pigsty, carpet bombing still, tea-colored puddles the way memory bombs still, tea-colored minds.",
+      "writer": "Arundhati Roy",
+      "work": "The God of Small Things",
+      "year": 1997,
+      "category": "BOOK",
+      "tags": [
+        "metaphor"
+      ]
+    },
+    {
+      "text": "You have but to meet Ed and you are Edified and Educated; the man is a force of nature, true to himself in every particular, forged by Russian Jewish parents, blessed by marriage to a Catholic girl from Idaho who once exploded a pie in a state baking contest, and graced finally by two children, male and female, who only grin when asked to explain their father, and it is this grin that seems to me a wonderfully summery thing, a flash of love in a world of pain, a warm pause in a cold year.",
+      "writer": "Brian Doyle",
+      "work": "Ed",
+      "year": 2002,
+      "category": "SHORT_STORY",
+      "tags": [
+        "character"
+      ]
+    },
+    {
+      "text": "Here is the house at night, lit up tall and tallowy",
+      "writer": "Christine Schutt",
+      "work": "“The Summer after Barbara Claffey",
+      "year": 1996,
+      "note": "'tall is contained in 'tallowy'",
+      "category": "SHORT_STORY",
+      "tags": [
+        "imagery"
+      ]
+    },
+    {
+      "text": "Everybody wanted everything to be gleaming again, or maybe they just wanted their evening back.",
+      "writer": "Sam Lipsyte",
+      "work": "I'm Slavering",
+      "year": 2000,
+      "category": "SHORT_STORY",
+      "tags": [
+        "setting"
+      ]
+    }
+  ]
+}
