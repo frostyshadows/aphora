@@ -43,6 +43,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     ksp(libs.dagger.hilt.compiler)
     ksp(libs.androidx.hilt.compiler)
+    ksp(libs.moshi.kotlin.codegen)
 
     implementation(libs.navigation3.runtime)
     implementation(libs.androidx.compose.material.icons.core)
@@ -66,6 +67,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.google.play.ads)
+    implementation(libs.moshi)
     implementation(libs.revenuecat.purchases)
     implementation(libs.revenuecat.purchases.admob)
     implementation(libs.revenuecat.purchases.ui)

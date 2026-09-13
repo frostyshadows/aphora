@@ -1,6 +1,5 @@
 package com.sherryyuan.aphora.navigation
 
-import SettingsContainer
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.slideInVertically
@@ -19,6 +18,12 @@ import androidx.navigation3.ui.NavDisplay
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteContainer
 import com.sherryyuan.aphora.addEditQuote.AddEditQuoteViewModel
 import com.sherryyuan.aphora.savedQuotes.SavedQuotesContainer
+import com.sherryyuan.aphora.settings.ImportCollectionContainer
+import com.sherryyuan.aphora.settings.ImportCollectionViewModel
+import com.sherryyuan.aphora.settings.ImportSnippetsHomeContainer
+import com.sherryyuan.aphora.settings.SettingsContainer
+import com.sherryyuan.aphora.settings.SettingsSourcesContainer
+import com.sherryyuan.aphora.settings.SettingsTagsContainer
 
 @Composable
 fun AphoraRootNav(navigator: Navigator, onQuoteSaved: () -> Unit) {
@@ -56,6 +61,24 @@ fun AphoraRootNav(navigator: Navigator, onQuoteSaved: () -> Unit) {
             }
             entry<SettingsKey> {
                 SettingsContainer()
+            }
+            entry<SettingsSourcesKey> {
+                SettingsSourcesContainer()
+            }
+            entry<SettingsTagsKey> {
+                SettingsTagsContainer()
+            }
+            entry<SettingsImportKey> {
+                ImportSnippetsHomeContainer()
+            }
+            entry<ImportCollectionKey> { navKey ->
+                val viewModel =
+                    hiltViewModel<ImportCollectionViewModel, ImportCollectionViewModel.Factory>(
+                        creationCallback = { factory ->
+                            factory.create(navKey)
+                        }
+                    )
+                ImportCollectionContainer(viewModel)
             }
         }
     )
