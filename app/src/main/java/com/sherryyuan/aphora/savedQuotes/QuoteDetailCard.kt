@@ -205,7 +205,7 @@ fun QuoteDetailCard(
                         )
                         Text(
                             text = stringResource(R.string.label_delete),
-                            color = DestructiveRed
+                            color = DestructiveRed,
                         )
                     }
                 }

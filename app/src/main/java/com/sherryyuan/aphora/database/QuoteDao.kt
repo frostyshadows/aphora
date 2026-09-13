@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.sherryyuan.aphora.database.entities.QuoteDbModel
 import com.sherryyuan.aphora.database.entities.QuoteEntity
 import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
@@ -13,9 +14,14 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface QuoteDao {
 
+    // @Transaction keeps the QuoteEntity query and its @Relation lookups on one consistent
+    // snapshot. Without it Room re-runs the parent query while assembling results, and a row
+    // committed in between has no entry in the relation maps.
+    @Transaction
     @Query(value = "SELECT * FROM QuoteEntity")
     fun getAll(): Flow<List<QuoteDbModel>>
 
+    @Transaction
     @Query(value = "SELECT * FROM QuoteEntity WHERE quoteId = :quoteId")
     suspend fun getQuoteById(quoteId: Long): QuoteDbModel?
 
