@@ -58,8 +58,9 @@ class AddEditQuoteViewModel @AssistedInject constructor(
         navigator.goBack()
     }
 
-    fun addNewTag(tag: TagEntity) = viewModelScope.launch {
-        tagsRepository.saveTag(tag)
+    fun addNewTag(tag: TagEntity, onTagSaved: (TagEntity) -> Unit) = viewModelScope.launch {
+        val tagId = tagsRepository.saveTag(tag)
+        onTagSaved(tag.copy(tagId = tagId))
     }
 
     fun navigateBack() {
