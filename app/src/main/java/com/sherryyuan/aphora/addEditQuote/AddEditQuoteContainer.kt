@@ -146,8 +146,9 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel, onQuoteSaved: () -> 
                         onAddNewTagClicked = { label, color ->
                             if (selectedTags.none { it.label.equals(label, ignoreCase = true) }) {
                                 val tag = TagEntity(label = label, color = color)
-                                viewModel.addNewTag(tag)
-                                selectedTags = selectedTags + tag
+                                viewModel.addNewTag(tag) { savedTag ->
+                                    selectedTags = selectedTags + savedTag
+                                }
                             }
                         },
                         onTagUnselected = { tag ->
