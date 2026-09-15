@@ -67,6 +67,10 @@
     <string name="label_shiny_prose">Shiny prose collection</string>
     <string name="label_first_sentences">First sentences collection</string>
     <string name="label_import_from_csv">Import from CSV</string>
+    <string name="delete_tags_dialog_title">Delete tags</string>
+    <string name="delete_tags_dialog_message">Are you sure? Tags will be removed from their snippets.</string>
+    <string name="sort_option_most_tagged">Most tagged</string>
+    <string name="sort_option_least_tagged">Least tagged</string>
 
     <!-- Import screen -->
     <string name="collection_import_button">Import</string>
