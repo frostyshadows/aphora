@@ -3,7 +3,7 @@ package com.sherryyuan.aphora.repository
 import com.sherryyuan.aphora.database.SourceDao
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.SourceEntity
-import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
@@ -14,12 +14,8 @@ class SourcesRepository @Inject constructor(private val sourceDao: SourceDao) {
         return sourceDao.getAllSources()
     }
 
-    fun getAllWriters(): Flow<List<String>> {
-        return sourceDao.getAllWriters()
-    }
-
     suspend fun saveSource(
-        source: QuoteUiModel.Source,
+        source: SourceUiModel,
     ): Long {
         val allSources = sourceDao.getAllSources().first()
         val existingSource = allSources.firstOrNull { existingSource ->
@@ -37,5 +33,22 @@ class SourcesRepository @Inject constructor(private val sourceDao: SourceDao) {
             )
             sourceDao.insertSource(newSource)
         }
+    }
+
+    suspend fun updateSource(
+        source: SourceUiModel,
+    ) {
+        val existingId = source.existingId ?: return
+        val updatedSource = SourceEntity(
+            sourceId = existingId,
+            writer = source.writer,
+            work = source.work,
+            category = source.category ?: SourceCategory.OTHER,
+        )
+        sourceDao.insertSource(updatedSource)
+    }
+
+    suspend fun deleteSources(sourceIds: List<Long>): Int {
+        return sourceDao.deleteSourcesAndCrossRefs(sourceIds)
     }
 }

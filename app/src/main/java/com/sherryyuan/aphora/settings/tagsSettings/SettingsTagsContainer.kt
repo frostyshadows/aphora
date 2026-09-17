@@ -1,4 +1,4 @@
-package com.sherryyuan.aphora.settings
+package com.sherryyuan.aphora.settings.tagsSettings
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -25,6 +25,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
@@ -49,6 +50,10 @@ fun SettingsTagsContainer(
 
     val selectedTagLabels = remember {
         mutableStateSetOf<String>()
+    }
+
+    LaunchedEffect(viewState.tagsWithCount) {
+        selectedTagLabels.clear()
     }
 
     Scaffold(

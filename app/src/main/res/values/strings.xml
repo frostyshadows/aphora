@@ -50,6 +50,7 @@
     <string name="add_edit_quote_rating_low">Like it</string>
     <string name="add_edit_quote_rating_high">Life-changing</string>
     <string name="add_edit_quote_source_section_title">Source</string>
+    <string name="add_edit_quote_label_unknown_source">UNKNOWN</string>
     <string name="label_writer">Writer</string>
     <string name="add_edit_quote_source_work">Work</string>
     <string name="add_edit_quote_source_category">Category: </string>
@@ -71,6 +72,10 @@
     <string name="delete_tags_dialog_message">Are you sure? Tags will be removed from their snippets.</string>
     <string name="sort_option_most_tagged">Most tagged</string>
     <string name="sort_option_least_tagged">Least tagged</string>
+    <string name="delete_sources_dialog_title">Delete sources</string>
+    <string name="delete_sources_dialog_message">Are you sure? Sources will be removed from their snippets.</string>
+    <string name="sort_option_most_referenced">Most referenced</string>
+    <string name="sort_option_least_referenced">Least referenced</string>
 
     <!-- Import screen -->
     <string name="collection_import_button">Import</string>
