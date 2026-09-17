@@ -8,15 +8,9 @@ data class QuoteUiModel(
     val quoteId: Long,
     val text: String,
     val userNote: String?,
-    val source: Source?,
+    val source: SourceUiModel?,
     val tags: List<TagEntity>,
     @IntRange(1, 5) val rating: Int,
     val dateAdded: String,
     val dateEdited: String,
-) {
-    data class Source(
-        val writer: String?,
-        val work: String?,
-        val category: SourceCategory?,
-    )
-}
+)

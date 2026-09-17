@@ -12,8 +12,6 @@ import com.google.android.ump.UserMessagingPlatform
 import com.sherryyuan.aphora.database.QuoteDao
 import com.sherryyuan.aphora.database.SourceDao
 import com.sherryyuan.aphora.database.TagDao
-import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
-import com.sherryyuan.aphora.database.entities.QuoteTagCrossRef
 import com.sherryyuan.aphora.navigation.AphoraRootNav
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.onboarding.DEFAULT_QUOTE_BUNDLES
@@ -117,14 +115,12 @@ class AphoraActivity : ComponentActivity() {
     private suspend fun seedDefaultData() {
         val tagIdMap = DEFAULT_TAGS.associate { it.label to tagDao.insertEntity(it) }
         DEFAULT_QUOTE_BUNDLES.forEach { bundle ->
-            val quoteId = quoteDao.insertQuote(bundle.quote)
             val sourceId = sourceDao.insertSource(bundle.source)
-            quoteDao.insertQuoteSourceCrossRef(QuoteSourceCrossRef(quoteId, sourceId))
-            bundle.tags
-                .mapNotNull { tagIdMap[it] }
-                .forEach { tagId ->
-                    quoteDao.insertQuoteTagCrossRef(QuoteTagCrossRef(quoteId, tagId))
-                }
+            quoteDao.upsertQuoteWithRelations(
+                quote = bundle.quote,
+                sourceId = sourceId,
+                tagIds = bundle.tags.mapNotNull { tagIdMap[it] },
+            )
         }
     }
 }

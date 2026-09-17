@@ -45,19 +45,27 @@ import androidx.compose.ui.window.PopupProperties
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.SourceEntity
-import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
 
+enum class SourceEditorMode {
+    // Opened from add/edit quote; adds source to specific quote.
+    ADD_FOR_QUOTE,
+
+    // Opened from sources settings; updates source in place, affecting every quote
+    // that references it.
+    EDIT_EXISTING,
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuoteSourceEditor(
-    source: QuoteUiModel.Source?,
+    source: SourceUiModel?,
     allSources: List<SourceEntity>,
-    allWriters: List<String>,
-    onSourceUpdated: (QuoteUiModel.Source) -> Unit,
+    onSourceUpdated: (SourceUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showSourceEditorSheet by remember {
@@ -70,7 +78,10 @@ fun QuoteSourceEditor(
                 .clickable { showSourceEditorSheet = !showSourceEditorSheet },
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(stringResource(R.string.add_edit_quote_source_section_title))
+            Text(
+                text = stringResource(R.string.add_edit_quote_source_section_title),
+                style = MaterialTheme.typography.titleSmall,
+            )
             Icon(
                 modifier = Modifier
                     .padding(start = 8.dp)
@@ -82,7 +93,11 @@ fun QuoteSourceEditor(
         VerticalSpacer(8.dp)
         source?.let {
             QuoteSource(it)
-        }
+        } ?: Text(
+            text = stringResource(R.string.add_edit_quote_label_unknown_source),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
     }
 
     if (showSourceEditorSheet) {
@@ -91,8 +106,8 @@ fun QuoteSourceEditor(
         ) {
             SourceEditorSheetContent(
                 source = source,
-                allWriters = allWriters,
                 allSources = allSources,
+                mode = SourceEditorMode.ADD_FOR_QUOTE,
                 onSaveSource = {
                     onSourceUpdated(it)
                     showSourceEditorSheet = false
@@ -103,11 +118,11 @@ fun QuoteSourceEditor(
 }
 
 @Composable
-private fun SourceEditorSheetContent(
-    source: QuoteUiModel.Source?,
+fun SourceEditorSheetContent(
+    source: SourceUiModel?,
     allSources: List<SourceEntity>,
-    allWriters: List<String>,
-    onSaveSource: (QuoteUiModel.Source) -> Unit,
+    mode: SourceEditorMode,
+    onSaveSource: (SourceUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val focusManager = LocalFocusManager.current
@@ -122,10 +137,11 @@ private fun SourceEditorSheetContent(
         derivedStateOf {
             val query = writerTextFieldState.text
             if (query.length >= 2) {
-                allWriters.filter {
+                allSources.mapNotNull { it.writer }.filter {
                     it.contains(query, ignoreCase = true) &&
                             !it.equals(query.toString(), ignoreCase = true)
                 }
+                    .distinct()
             } else {
                 emptyList()
             }
@@ -134,24 +150,33 @@ private fun SourceEditorSheetContent(
 
     var showWriterDropdown by remember { mutableStateOf(false) }
 
-    val filteredWorks by remember {
+    val filteredSources by remember {
         derivedStateOf {
             val writerQuery = writerTextFieldState.text.toString()
-            val workQuery = workTextFieldState.text
-            if (workQuery.length >= 2) {
-                allSources
-                    .filter {
-                        writerQuery.isBlank() || it.writer.equals(writerQuery, ignoreCase = true)
-                    }
-                    .mapNotNull { it.work }
-                    .filter {
-                        it.contains(workQuery, ignoreCase = true) &&
-                                !it.equals(workQuery.toString(), ignoreCase = true)
-                    }
-                    .distinct()
-            } else {
-                emptyList()
-            }
+            val workQuery = workTextFieldState.text.toString()
+            allSources
+                .filter {
+                    (workQuery.length >= 2 && writerQuery.isBlank()) ||
+                            it.writer.equals(writerQuery, ignoreCase = true)
+                }
+                .filter { source ->
+                    val work = source.work
+                    work != null &&
+                            work.contains(workQuery, ignoreCase = true) &&
+                            !work.equals(workQuery, ignoreCase = true)
+                }
+                .distinctBy { it.work?.lowercase() to it.writer?.lowercase() }
+        }
+    }
+
+    // When multiple sources have the same work by different writers.
+    val repeatedWorkTitles by remember {
+        derivedStateOf {
+            filteredSources
+                .groupingBy { it.work?.lowercase() }
+                .eachCount()
+                .filterValues { it > 1 }
+                .keys
         }
     }
 
@@ -210,23 +235,37 @@ private fun SourceEditorSheetContent(
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
-                expanded = showWorkDropdown && filteredWorks.isNotEmpty(),
+                expanded = showWorkDropdown && filteredSources.isNotEmpty(),
                 onDismissRequest = { /** dismiss based on text field state */ },
                 properties = PopupProperties(focusable = false),
                 containerColor = MaterialTheme.colorScheme.surface,
             ) {
-                filteredWorks.forEach { work ->
+                filteredSources.forEach { source ->
+                    val work = source.work.orEmpty()
+                    val showWriter = work.lowercase() in repeatedWorkTitles &&
+                            !source.writer.isNullOrBlank()
                     DropdownMenuItem(
-                        text = { Text(work) },
+                        text = {
+                            Text(
+                                if (showWriter) {
+                                    "$work - ${source.writer}"
+                                } else {
+                                    work
+                                }
+                            )
+                        },
                         onClick = {
                             workTextFieldState.setTextAndPlaceCursorAtEnd(work)
+                            if (writerTextFieldState.text.isBlank()) {
+                                source.writer?.let {
+                                    writerTextFieldState.setTextAndPlaceCursorAtEnd(it)
+                                }
+                            }
+                            if (category == null) {
+                                category = source.category
+                            }
                         }
                     )
-                }
-                if (category == null) {
-                    category = allSources
-                        .find { it.writer == writerTextFieldState.text && it.work == workTextFieldState.text }
-                        ?.category
                 }
             }
         }
@@ -241,9 +280,14 @@ private fun SourceEditorSheetContent(
             enabled = writerTextFieldState.text.isNotBlank() || workTextFieldState.text.isNotBlank(),
             onClick = {
                 onSaveSource(
-                    QuoteUiModel.Source(
-                        writer = writerTextFieldState.text.toString(),
-                        work = workTextFieldState.text.toString(),
+                    SourceUiModel(
+                        existingId = when (mode) {
+                            SourceEditorMode.ADD_FOR_QUOTE -> null
+                            SourceEditorMode.EDIT_EXISTING -> source?.existingId
+                        },
+                        writer = writerTextFieldState.text.toString()
+                            .trim().takeIf { it.isNotEmpty() },
+                        work = workTextFieldState.text.toString().trim().takeIf { it.isNotEmpty() },
                         category = category ?: SourceCategory.OTHER,
                     )
                 )

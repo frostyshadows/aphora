@@ -15,12 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 
 @Composable
-fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
+fun QuoteSource(model: SourceUiModel, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        model.writer?.let { writer ->
+        model.writer?.takeIf { it.isNotBlank() }?.let { writer ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 QuoteSourceIcon(model)
                 Text(
@@ -34,7 +34,7 @@ fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
         if (!model.writer.isNullOrBlank() && !model.work.isNullOrBlank()) {
             Spacer(modifier = Modifier.height(8.dp))
         }
-        model.work?.let { work ->
+        model.work?.takeIf { it.isNotBlank() }?.let { work ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (model.writer.isNullOrBlank()) {
                     QuoteSourceIcon(model)
@@ -50,7 +50,7 @@ fun QuoteSource(model: QuoteUiModel.Source, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun QuoteSourceIcon(model: QuoteUiModel.Source) {
+private fun QuoteSourceIcon(model: SourceUiModel) {
     model.category?.let { category ->
         Icon(
             modifier = Modifier

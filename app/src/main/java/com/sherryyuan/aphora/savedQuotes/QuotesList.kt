@@ -199,7 +199,11 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                 maxLines = 5,
                 overflow = TextOverflow.Ellipsis,
             )
-
+            if (model.source != null) {
+                VerticalSpacer()
+                SectionDivider()
+            }
+            VerticalSpacer(12.dp)
             Row(
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -218,17 +222,12 @@ private fun QuoteRow(model: QuoteUiModel, modifier: Modifier = Modifier) {
                     } else {
                         source.work ?: source.writer
                     }
-                    Column {
-                        VerticalSpacer()
-                        SectionDivider()
-                        VerticalSpacer(12.dp)
-                        displayedSource?.let {
-                            Text(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = it.uppercase(),
-                                textAlign = TextAlign.End,
-                            )
-                        }
+                    displayedSource?.let {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = it.uppercase(),
+                            textAlign = TextAlign.End,
+                        )
                     }
                 }
             }

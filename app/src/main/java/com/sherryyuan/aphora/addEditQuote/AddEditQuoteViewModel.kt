@@ -9,7 +9,7 @@ import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.SourcesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
-import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import com.sherryyuan.aphora.savedQuotes.toUiModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -38,7 +38,7 @@ class AddEditQuoteViewModel @AssistedInject constructor(
     fun saveQuote(
         quoteText: String,
         rating: Int,
-        source: QuoteUiModel.Source?,
+        source: SourceUiModel?,
         tags: List<TagEntity>,
         noteText: String?,
     ) {
@@ -72,15 +72,13 @@ class AddEditQuoteViewModel @AssistedInject constructor(
             .map { quoteId ->
                 quoteId?.let { quotesRepository.getQuoteById(it) }
             }
-        val writersFlow = sourcesRepository.getAllWriters()
         val tagsFlow = tagsRepository.getTags()
         val sourcesFlow = sourcesRepository.getAllSources()
         return combine(
             quoteFlow,
             tagsFlow,
-            writersFlow,
             sourcesFlow
-        ) { quote, tags, writers, sources ->
+        ) { quote, tags, sources ->
             val topBarTitle = if (quote == null) {
                 R.string.add_edit_quote_aphorism_new_gem_title
             } else {
@@ -90,7 +88,6 @@ class AddEditQuoteViewModel @AssistedInject constructor(
                 topBarTitleRes = topBarTitle,
                 existingQuote = quote?.toUiModel(),
                 allSources = sources,
-                allWriters = writers,
                 allTags = tags,
             )
         }.stateIn(

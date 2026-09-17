@@ -4,8 +4,6 @@ import com.sherryyuan.aphora.database.QuoteDao
 import com.sherryyuan.aphora.database.SortSelectionDao
 import com.sherryyuan.aphora.database.entities.QuoteDbModel
 import com.sherryyuan.aphora.database.entities.QuoteEntity
-import com.sherryyuan.aphora.database.entities.QuoteSourceCrossRef
-import com.sherryyuan.aphora.database.entities.QuoteTagCrossRef
 import com.sherryyuan.aphora.database.entities.SortOption
 import com.sherryyuan.aphora.database.entities.SortSelectionEntity
 import kotlinx.coroutines.flow.Flow
@@ -46,40 +44,25 @@ class QuotesRepository @Inject constructor(
         tagIds: List<Long>,
         noteText: String?,
     ) {
-        val quoteId = if (existingQuoteId != null) {
-            val existingQuote = quoteDao.getQuoteById(existingQuoteId)
-            quoteDao.insertQuote(
-                quote = QuoteEntity(
-                    quoteId = existingQuoteId,
-                    text = quoteText,
-                    rating = rating,
-                    userNote = noteText,
-                    timestampAdded = existingQuote?.quote?.timestampAdded
-                        ?: System.currentTimeMillis(),
-                    timestampLastEdited = System.currentTimeMillis(),
-                )
-            )
-        } else {
-            quoteDao.insertQuote(
-                quote = QuoteEntity(
-                    text = quoteText,
-                    rating = rating,
-                    userNote = noteText,
-                    timestampAdded = System.currentTimeMillis(),
-                    timestampLastEdited = System.currentTimeMillis(),
-                )
-            )
-        }
-        sourceId?.let {
-            quoteDao.insertQuoteSourceCrossRef(QuoteSourceCrossRef(quoteId, it))
-        }
-        tagIds.forEach { tagId ->
-            quoteDao.insertQuoteTagCrossRef(QuoteTagCrossRef(quoteId, tagId))
-        }
+        val existingQuote = existingQuoteId?.let { quoteDao.getQuoteById(it) }
+        quoteDao.upsertQuoteWithRelations(
+            // quoteId 0 lets Room autogenerate one for a new quote.
+            quote = QuoteEntity(
+                quoteId = existingQuoteId ?: 0,
+                text = quoteText,
+                rating = rating,
+                userNote = noteText,
+                timestampAdded = existingQuote?.quote?.timestampAdded
+                    ?: System.currentTimeMillis(),
+                timestampLastEdited = System.currentTimeMillis(),
+            ),
+            sourceId = sourceId,
+            tagIds = tagIds,
+        )
     }
 
     suspend fun deleteQuote(quoteId: Long) {
-        quoteDao.deleteQuote(quoteId)
+        quoteDao.deleteQuoteAndCrossRefs(quoteId)
     }
 
     fun getSortSelection(): Flow<SortOption?> {
