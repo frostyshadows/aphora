@@ -157,7 +157,7 @@ fun SettingsTagsContainer(
                 text = { Text(stringResource(R.string.delete_tags_dialog_message)) },
                 confirmButton = {
                     TextButton(
-                        onClick = { viewModel.deleteSelectedTags(selectedTagLabels) }
+                        onClick = { viewModel.deleteSelectedTags(state.selectedTagLabels) }
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,

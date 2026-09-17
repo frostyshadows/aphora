@@ -17,7 +17,7 @@ data class SettingsSourcesViewState(
             val source: SourceUiModel,
             val allSources: List<SourceEntity>,
             ) : SettingsSourcesModalState
-        data object DeleteDialog : SettingsSourcesModalState
+        data class DeleteDialog(val selectedSourceIds: Set<Long>) : SettingsSourcesModalState
     }
 }
 

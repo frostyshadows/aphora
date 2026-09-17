@@ -11,7 +11,7 @@ data class SettingsTagsViewState(
     sealed interface SettingsTagsModalState {
         data object None: SettingsTagsModalState
         data class SortSheet(val sortOrder: TagSortOrder) : SettingsTagsModalState
-        data object DeleteDialog : SettingsTagsModalState
+        data class DeleteDialog(val selectedTagLabels: Set<String>) : SettingsTagsModalState
     }
 }
 

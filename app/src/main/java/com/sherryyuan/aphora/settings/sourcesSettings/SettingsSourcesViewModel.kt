@@ -3,7 +3,6 @@ package com.sherryyuan.aphora.settings.sourcesSettings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.navigation.Navigator
-import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.SourcesRepository
 import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import com.sherryyuan.aphora.savedQuotes.toUiModel
@@ -21,14 +20,13 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsSourcesViewModel @Inject constructor(
     private val navigator: Navigator,
-    private val quotesRepository: QuotesRepository,
     private val sourcesRepository: SourcesRepository,
 ) : ViewModel() {
 
     private var sortOrderFlow: MutableStateFlow<SourceSortOrder> =
         MutableStateFlow(SourceSortOrder.MOST_REFERENCED)
-    private val modalStateFlow: MutableStateFlow<SettingsSourcesViewState.SettingsSourcesModalState> =
-        MutableStateFlow(SettingsSourcesViewState.SettingsSourcesModalState.None)
+    private val modalStateFlow: MutableStateFlow<SettingsSourcesModalState> =
+        MutableStateFlow(SettingsSourcesModalState.None)
 
     val state: StateFlow<SettingsSourcesViewState> = createSettingsSourcesState()
 
@@ -63,7 +61,8 @@ class SettingsSourcesViewModel @Inject constructor(
         val areSourcesUsed = state.value.sourcesWithCount
             .any { (source, count) -> source.existingId in sourceIds && count > 0 }
         if (areSourcesUsed) {
-            modalStateFlow.value = SettingsSourcesModalState.DeleteDialog
+            // Make copy of selected set.
+            modalStateFlow.value = SettingsSourcesModalState.DeleteDialog(sourceIds.toSet())
         } else {
             deleteSelectedSources(sourceIds)
         }
@@ -92,26 +91,20 @@ class SettingsSourcesViewModel @Inject constructor(
     private fun createSettingsSourcesState(): StateFlow<SettingsSourcesViewState> {
         return combine(
             sourcesRepository.getAllSources(),
-            quotesRepository.getQuotes(),
+            sourcesRepository.getSourceReferenceCounts(),
             sortOrderFlow,
             modalStateFlow,
-        ) { sources, quotes, sortOrder, modalState ->
-            val sourcesCountMap = sources.associateWith { 0 }.toMutableMap()
-            quotes.forEach { quote ->
-                val source = quote.source ?: return@forEach
-                val currentCount = sourcesCountMap[source]
-                sourcesCountMap[source] = currentCount?.plus(1) ?: 1
-            }
-            val sourcesWithCount = when (sortOrder) {
-                SourceSortOrder.MOST_REFERENCED -> sourcesCountMap.toList()
-                    .sortedByDescending { it.second }
-
-                SourceSortOrder.LEAST_REFERENCED -> sourcesCountMap.toList()
-                    .sortedBy { it.second }
+        ) { sources, referenceCounts, sortOrder, modalState ->
+            val sourcesWithCount = sources.map { source ->
+                source.toUiModel() to (referenceCounts[source.sourceId] ?: 0)
             }
             SettingsSourcesViewState(
-                sourcesWithCount = sourcesWithCount.map { (sourceEntity, count) ->
-                    sourceEntity.toUiModel() to count
+                sourcesWithCount = when (sortOrder) {
+                    SourceSortOrder.MOST_REFERENCED -> sourcesWithCount
+                        .sortedByDescending { it.second }
+
+                    SourceSortOrder.LEAST_REFERENCED -> sourcesWithCount
+                        .sortedBy { it.second }
                 },
                 modalState = modalState,
             )

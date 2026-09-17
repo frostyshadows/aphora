@@ -20,7 +20,7 @@ import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 @Composable
 fun QuoteSource(model: SourceUiModel, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        model.writer?.let { writer ->
+        model.writer?.takeIf { it.isNotBlank() }?.let { writer ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 QuoteSourceIcon(model)
                 Text(
@@ -34,7 +34,7 @@ fun QuoteSource(model: SourceUiModel, modifier: Modifier = Modifier) {
         if (!model.writer.isNullOrBlank() && !model.work.isNullOrBlank()) {
             Spacer(modifier = Modifier.height(8.dp))
         }
-        model.work?.let { work ->
+        model.work?.takeIf { it.isNotBlank() }?.let { work ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (model.writer.isNullOrBlank()) {
                     QuoteSourceIcon(model)

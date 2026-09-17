@@ -51,6 +51,15 @@ import com.sherryyuan.aphora.ui.common.QuoteSource
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.Spacing
 
+enum class SourceEditorMode {
+    // Opened from add/edit quote; adds source to specific quote.
+    ADD_FOR_QUOTE,
+
+    // Opened from sources settings; updates source in place, affecting every quote
+    // that references it.
+    EDIT_EXISTING,
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuoteSourceEditor(
@@ -98,6 +107,7 @@ fun QuoteSourceEditor(
             SourceEditorSheetContent(
                 source = source,
                 allSources = allSources,
+                mode = SourceEditorMode.ADD_FOR_QUOTE,
                 onSaveSource = {
                     onSourceUpdated(it)
                     showSourceEditorSheet = false
@@ -111,6 +121,7 @@ fun QuoteSourceEditor(
 fun SourceEditorSheetContent(
     source: SourceUiModel?,
     allSources: List<SourceEntity>,
+    mode: SourceEditorMode,
     onSaveSource: (SourceUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -139,20 +150,33 @@ fun SourceEditorSheetContent(
 
     var showWriterDropdown by remember { mutableStateOf(false) }
 
-    val filteredWorks by remember {
+    val filteredSources by remember {
         derivedStateOf {
             val writerQuery = writerTextFieldState.text.toString()
-            val workQuery = workTextFieldState.text
+            val workQuery = workTextFieldState.text.toString()
             allSources
                 .filter {
-                    writerQuery.isBlank() || it.writer.equals(writerQuery, ignoreCase = true)
+                    (workQuery.length >= 2 && writerQuery.isBlank()) ||
+                            it.writer.equals(writerQuery, ignoreCase = true)
                 }
-                .mapNotNull { it.work }
-                .filter {
-                    it.contains(workQuery, ignoreCase = true) &&
-                            !it.equals(workQuery.toString(), ignoreCase = true)
+                .filter { source ->
+                    val work = source.work
+                    work != null &&
+                            work.contains(workQuery, ignoreCase = true) &&
+                            !work.equals(workQuery, ignoreCase = true)
                 }
-                .distinct()
+                .distinctBy { it.work?.lowercase() to it.writer?.lowercase() }
+        }
+    }
+
+    // When multiple sources have the same work by different writers.
+    val repeatedWorkTitles by remember {
+        derivedStateOf {
+            filteredSources
+                .groupingBy { it.work?.lowercase() }
+                .eachCount()
+                .filterValues { it > 1 }
+                .keys
         }
     }
 
@@ -211,23 +235,37 @@ fun SourceEditorSheetContent(
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             )
             DropdownMenu(
-                expanded = showWorkDropdown && filteredWorks.isNotEmpty(),
+                expanded = showWorkDropdown && filteredSources.isNotEmpty(),
                 onDismissRequest = { /** dismiss based on text field state */ },
                 properties = PopupProperties(focusable = false),
                 containerColor = MaterialTheme.colorScheme.surface,
             ) {
-                filteredWorks.forEach { work ->
+                filteredSources.forEach { source ->
+                    val work = source.work.orEmpty()
+                    val showWriter = work.lowercase() in repeatedWorkTitles &&
+                            !source.writer.isNullOrBlank()
                     DropdownMenuItem(
-                        text = { Text(work) },
+                        text = {
+                            Text(
+                                if (showWriter) {
+                                    "$work - ${source.writer}"
+                                } else {
+                                    work
+                                }
+                            )
+                        },
                         onClick = {
                             workTextFieldState.setTextAndPlaceCursorAtEnd(work)
+                            if (writerTextFieldState.text.isBlank()) {
+                                source.writer?.let {
+                                    writerTextFieldState.setTextAndPlaceCursorAtEnd(it)
+                                }
+                            }
+                            if (category == null) {
+                                category = source.category
+                            }
                         }
                     )
-                }
-                if (category == null) {
-                    category = allSources
-                        .find { it.writer == writerTextFieldState.text && it.work == workTextFieldState.text }
-                        ?.category
                 }
             }
         }
@@ -243,9 +281,13 @@ fun SourceEditorSheetContent(
             onClick = {
                 onSaveSource(
                     SourceUiModel(
-                        existingId = source?.existingId,
-                        writer = writerTextFieldState.text.toString(),
-                        work = workTextFieldState.text.toString(),
+                        existingId = when (mode) {
+                            SourceEditorMode.ADD_FOR_QUOTE -> null
+                            SourceEditorMode.EDIT_EXISTING -> source?.existingId
+                        },
+                        writer = writerTextFieldState.text.toString()
+                            .trim().takeIf { it.isNotEmpty() },
+                        work = workTextFieldState.text.toString().trim().takeIf { it.isNotEmpty() },
                         category = category ?: SourceCategory.OTHER,
                     )
                 )
