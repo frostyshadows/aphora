@@ -14,8 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -52,6 +52,7 @@ import com.sherryyuan.aphora.ui.theme.Spacing
 @Composable
 fun QuotesList(
     viewState: SavedQuotesViewState.QuotesList,
+    lazyListState: LazyListState,
     onRandomQuoteClick: () -> Unit,
     onQuoteRowClick: (Int) -> Unit,
     onAddQuoteClick: () -> Unit,
@@ -130,7 +131,6 @@ fun QuotesList(
             }
         },
     ) { innerPadding ->
-        val lazyListState = rememberLazyListState()
         LaunchedEffect(viewState.quotes) {
             snapshotFlow { lazyListState.firstVisibleItemIndex }
                 .collect {

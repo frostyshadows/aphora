@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -40,6 +41,7 @@ fun QuoteDetailPager(
     quotes: List<QuoteUiModel>,
     currentIndex: Int,
     pagingEnabled: Boolean,
+    quoteDetailAnimation: Float,
     onBackClick: () -> Unit,
     onGoToPreviousClick: () -> Unit,
     onGoToNextClick: () -> Unit,
@@ -115,9 +117,18 @@ fun QuoteDetailPager(
                 contentAlignment = TopCenter,
             ) {
                 QuoteDetailCard(
+                    modifier = if (quoteDetailAnimation < 1f) {
+                        Modifier.graphicsLayer {
+                            scaleX = quoteDetailAnimation
+                            scaleY = quoteDetailAnimation
+                            alpha = quoteDetailAnimation
+                        }
+                    } else {
+                        Modifier
+                    },
                     model = quotes[page],
                     onEditQuoteClick = onEditQuoteClick,
-                    onDeleteQuoteClick =   onDeleteQuoteClick,
+                    onDeleteQuoteClick = onDeleteQuoteClick,
                 )
             }
         }
