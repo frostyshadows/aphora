@@ -27,7 +27,6 @@ import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -45,7 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.TagEntity
-import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import com.sherryyuan.aphora.ui.common.AphoraCard
 import com.sherryyuan.aphora.ui.common.RatingDiamondsRow
 import com.sherryyuan.aphora.ui.common.VerticalSpacer
@@ -63,7 +62,7 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel, onQuoteSaved: () -> 
     var rating: Int by remember(existingQuote) {
         mutableIntStateOf(existingQuote?.rating ?: 3)
     }
-    var source: QuoteUiModel.Source? by remember(existingQuote) {
+    var source: SourceUiModel? by remember(existingQuote) {
         mutableStateOf(existingQuote?.source)
     }
     var selectedTags: List<TagEntity> by remember(existingQuote) {
@@ -130,7 +129,6 @@ fun AddEditQuoteContainer(viewModel: AddEditQuoteViewModel, onQuoteSaved: () -> 
                     VerticalSpacer()
                     QuoteSourceEditor(
                         source = source,
-                        allWriters = viewState.allWriters,
                         allSources = viewState.allSources,
                         onSourceUpdated = { source = it },
                     )

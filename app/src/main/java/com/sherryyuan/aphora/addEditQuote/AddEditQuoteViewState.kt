@@ -9,6 +9,5 @@ data class AddEditQuoteViewState(
     @StringRes val topBarTitleRes: Int? = null,
     val existingQuote: QuoteUiModel? = null,
     val allSources: List<SourceEntity> = emptyList(),
-    val allWriters: List<String> = emptyList(),
     val allTags: List<TagEntity> = emptyList(),
 )

@@ -19,8 +19,9 @@ fun QuoteDbModel.toUiModel(): QuoteUiModel {
     )
 }
 
-fun SourceEntity.toUiModel(): QuoteUiModel.Source {
-    return QuoteUiModel.Source(
+fun SourceEntity.toUiModel(): SourceUiModel {
+    return SourceUiModel(
+        existingId = sourceId,
         writer = writer,
         work = work,
         category = category

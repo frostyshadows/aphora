@@ -1,18 +1,17 @@
-package com.sherryyuan.aphora.settings
+package com.sherryyuan.aphora.settings.sourcesSettings
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,30 +24,42 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateSetOf
+import com.sherryyuan.aphora.settings.sourcesSettings.SettingsSourcesViewState.SettingsSourcesModalState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.addEditQuote.SourceEditorMode
+import com.sherryyuan.aphora.addEditQuote.SourceEditorSheetContent
+import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
 import com.sherryyuan.aphora.ui.theme.Spacing
-import com.sherryyuan.aphora.ui.theme.forTagBackground
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsTagsContainer(
-    viewModel: SettingsTagsViewModel = hiltViewModel<SettingsTagsViewModel>(),
+fun SettingsSourcesContainer(
+    viewModel: SettingsSourcesViewModel = hiltViewModel<SettingsSourcesViewModel>(),
 ) {
     val viewState by viewModel.state.collectAsStateWithLifecycle()
 
-    val selectedTagLabels = remember {
-        mutableStateSetOf<String>()
+    val selectedSourceIds = remember {
+        mutableStateSetOf<Long>()
+    }
+
+    LaunchedEffect(viewState.sourcesWithCount) {
+        selectedSourceIds.clear()
     }
 
     Scaffold(
@@ -65,15 +76,33 @@ fun SettingsTagsContainer(
                     }
                 },
                 title = {
-                    Text(stringResource(R.string.label_tags))
+                    Text(stringResource(R.string.label_sources))
                 },
                 actions = {
                     AnimatedVisibility(
-                        visible = selectedTagLabels.isNotEmpty(),
+                        visible = selectedSourceIds.count() == 1,
                         enter = fadeIn(),
                         exit = fadeOut(),
                     ) {
-                        IconButton(onClick = { viewModel.deleteClick(selectedTagLabels) }) {
+                        IconButton(
+                            onClick = {
+                                selectedSourceIds.singleOrNull()?.let { viewModel.editClick(it) }
+                            }
+                        ) {
+                            Icon(
+                                modifier = Modifier.size(24.dp),
+                                painter = painterResource(R.drawable.icon_pencil),
+                                tint = MaterialTheme.colorScheme.onBackground,
+                                contentDescription = stringResource(R.string.label_edit),
+                            )
+                        }
+                    }
+                    AnimatedVisibility(
+                        visible = selectedSourceIds.isNotEmpty(),
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    ) {
+                        IconButton(onClick = { viewModel.deleteClick(selectedSourceIds) }) {
                             Icon(
                                 modifier = Modifier.size(24.dp),
                                 painter = painterResource(R.drawable.icon_delete),
@@ -82,7 +111,7 @@ fun SettingsTagsContainer(
                             )
                         }
                     }
-                    if (viewState.tagsWithCount.isNotEmpty()) {
+                    if (viewState.sourcesWithCount.isNotEmpty()) {
                         IconButton(onClick = { viewModel.sortClick() }) {
                             Icon(
                                 modifier = Modifier.size(24.dp),
@@ -107,52 +136,60 @@ fun SettingsTagsContainer(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(
-                items = viewState.tagsWithCount,
-                key = { (tag, _) -> tag.tagId },
-            ) { (tag, count) ->
-                val isSelected = tag.label in selectedTagLabels
+                items = viewState.sourcesWithCount,
+                key = { (source, _) -> source.toString() },
+            ) { (source, count) ->
+                if (source.existingId == null) return@items
+                val isSelected = source.existingId in selectedSourceIds
                 Row(modifier = Modifier.animateItem()) {
                     Checkbox(
                         modifier = Modifier.size(32.dp),
                         checked = isSelected,
                         onCheckedChange = {
                             if (!isSelected) {
-                                selectedTagLabels.add(tag.label)
+                                selectedSourceIds.add(source.existingId)
                             } else {
-                                selectedTagLabels.remove(tag.label)
+                                selectedSourceIds.remove(source.existingId)
                             }
                         }
                     )
+                    val displayedSource = buildAnnotatedString {
+                        source.work?.let {
+                            withStyle(style = SpanStyle(fontStyle = FontStyle.Italic)) {
+                                append(it)
+                            }
+                        }
+                        if (!source.work.isNullOrBlank() && !source.writer.isNullOrBlank()) {
+                            append(" - ")
+                        }
+                        source.writer?.let { append(it) }
+                        append(" ($count)")
+                    }
                     Text(
                         modifier = Modifier
-                            .padding(2.dp)
-                            .background(
-                                color = tag.color.forTagBackground(),
-                                shape = RoundedCornerShape(50),
-                            )
-                            .padding(horizontal = 8.dp, vertical = 6.dp),
-                        text = "${tag.label} (${count})",
-                        style = MaterialTheme.typography.bodyMedium,
+                            .fillMaxWidth()
+                            .padding(start = 4.dp),
+                        text = displayedSource,
                     )
                 }
             }
         }
 
         when (val state = viewState.modalState) {
-            is SettingsTagsViewState.SettingsTagsModalState.SortSheet -> TagsSortBottomSheet(
+            is SettingsSourcesModalState.SortSheet -> SourcesSortBottomSheet(
                 selectedSortOrder = state.sortOrder,
                 onSortOrderSelected = { viewModel.selectSortOrder(it) },
                 onDismiss = { viewModel.dismissModal() },
             )
 
-            is SettingsTagsViewState.SettingsTagsModalState.DeleteDialog -> AlertDialog(
+            is SettingsSourcesModalState.DeleteDialog -> AlertDialog(
                 onDismissRequest = { viewModel.dismissModal() },
                 containerColor = MaterialTheme.colorScheme.surface,
-                title = { Text(stringResource(R.string.delete_tags_dialog_title)) },
-                text = { Text(stringResource(R.string.delete_tags_dialog_message)) },
+                title = { Text(stringResource(R.string.delete_sources_dialog_title)) },
+                text = { Text(stringResource(R.string.delete_sources_dialog_message)) },
                 confirmButton = {
                     TextButton(
-                        onClick = { viewModel.deleteSelectedTags(selectedTagLabels) }
+                        onClick = { viewModel.deleteSelectedSources(state.selectedSourceIds) }
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -180,7 +217,21 @@ fun SettingsTagsContainer(
                 }
             )
 
-            SettingsTagsViewState.SettingsTagsModalState.None -> Unit
+            is SettingsSourcesModalState.EditSource -> AphoraBottomSheet(
+                onDismissRequest = { viewModel.dismissModal() },
+            ) {
+                SourceEditorSheetContent(
+                    source = state.source,
+                    allSources = state.allSources,
+                    mode = SourceEditorMode.EDIT_EXISTING,
+                    onSaveSource = {
+                        viewModel.saveSource(it)
+                        selectedSourceIds.clear()
+                    }
+                )
+            }
+
+            SettingsSourcesModalState.None -> Unit
         }
     }
 }
