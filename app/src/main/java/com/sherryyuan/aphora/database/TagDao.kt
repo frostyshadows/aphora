@@ -14,6 +14,16 @@ interface TagDao {
     @Query(value = "SELECT * FROM TagEntity")
     fun getAll(): Flow<List<TagEntity>>
 
+    @Query(
+        """
+        SELECT crossRef.tagId AS tagId, COUNT(*) AS referenceCount
+        FROM QuoteTagCrossRef AS crossRef
+        INNER JOIN QuoteEntity AS quote ON crossRef.quoteId = quote.quoteId
+        GROUP BY crossRef.tagId
+        """
+    )
+    fun getTagReferenceCounts(): Flow<List<TagReferenceCount>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEntity(source: TagEntity): Long
 
@@ -34,3 +44,8 @@ interface TagDao {
     @Query("DELETE FROM TagEntity WHERE label in (:labels)")
     suspend fun deleteTags(labels: List<String>): Int
 }
+
+data class TagReferenceCount(
+    val tagId: Long,
+    val referenceCount: Int,
+)

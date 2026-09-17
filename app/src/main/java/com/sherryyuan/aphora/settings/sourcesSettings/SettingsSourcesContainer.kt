@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sherryyuan.aphora.R
+import com.sherryyuan.aphora.addEditQuote.SourceEditorMode
 import com.sherryyuan.aphora.addEditQuote.SourceEditorSheetContent
 import com.sherryyuan.aphora.ui.common.AphoraBottomSheet
 import com.sherryyuan.aphora.ui.theme.DestructiveRed
@@ -83,7 +84,11 @@ fun SettingsSourcesContainer(
                         enter = fadeIn(),
                         exit = fadeOut(),
                     ) {
-                        IconButton(onClick = { viewModel.editClick(selectedSourceIds.first()) }) {
+                        IconButton(
+                            onClick = {
+                                selectedSourceIds.singleOrNull()?.let { viewModel.editClick(it) }
+                            }
+                        ) {
                             Icon(
                                 modifier = Modifier.size(24.dp),
                                 painter = painterResource(R.drawable.icon_pencil),
@@ -154,7 +159,7 @@ fun SettingsSourcesContainer(
                                 append(it)
                             }
                         }
-                        if (source.work != null && source.writer != null) {
+                        if (!source.work.isNullOrBlank() && !source.writer.isNullOrBlank()) {
                             append(" - ")
                         }
                         source.writer?.let { append(it) }
@@ -180,11 +185,11 @@ fun SettingsSourcesContainer(
             is SettingsSourcesModalState.DeleteDialog -> AlertDialog(
                 onDismissRequest = { viewModel.dismissModal() },
                 containerColor = MaterialTheme.colorScheme.surface,
-                title = { Text(stringResource(R.string.delete_tags_dialog_title)) },
-                text = { Text(stringResource(R.string.delete_tags_dialog_message)) },
+                title = { Text(stringResource(R.string.delete_sources_dialog_title)) },
+                text = { Text(stringResource(R.string.delete_sources_dialog_message)) },
                 confirmButton = {
                     TextButton(
-                        onClick = { viewModel.deleteSelectedSources(selectedSourceIds) }
+                        onClick = { viewModel.deleteSelectedSources(state.selectedSourceIds) }
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -218,6 +223,7 @@ fun SettingsSourcesContainer(
                 SourceEditorSheetContent(
                     source = state.source,
                     allSources = state.allSources,
+                    mode = SourceEditorMode.EDIT_EXISTING,
                     onSaveSource = {
                         viewModel.saveSource(it)
                         selectedSourceIds.clear()

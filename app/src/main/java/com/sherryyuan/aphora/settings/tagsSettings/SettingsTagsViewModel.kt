@@ -3,7 +3,6 @@ package com.sherryyuan.aphora.settings.tagsSettings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.navigation.Navigator
-import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
 import com.sherryyuan.aphora.settings.tagsSettings.SettingsTagsViewState.SettingsTagsModalState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsTagsViewModel @Inject constructor(
     private val navigator: Navigator,
-    private val quotesRepository: QuotesRepository,
     private val tagsRepository: TagsRepository,
 ) : ViewModel() {
 
@@ -38,7 +36,8 @@ class SettingsTagsViewModel @Inject constructor(
         val areTagsUsed = state.value.tagsWithCount
             .any { (tag, count) -> tag.label in tagLabels && count > 0 }
         if (areTagsUsed) {
-            modalStateFlow.value = SettingsTagsModalState.DeleteDialog
+            // Make copy of selected set.
+            modalStateFlow.value = SettingsTagsModalState.DeleteDialog(tagLabels.toSet())
         } else {
             deleteSelectedTags(tagLabels)
         }
@@ -67,26 +66,21 @@ class SettingsTagsViewModel @Inject constructor(
     private fun createSettingsTagsState(): StateFlow<SettingsTagsViewState> {
         return combine(
             tagsRepository.getTags(),
-            quotesRepository.getQuotes(),
+            tagsRepository.getTagReferenceCounts(),
             sortOrderFlow,
             modalStateFlow,
-        ) { tags, quotes, sortOrder, modalState ->
-            val tagsCountMap = tags.associateWith { 0 }.toMutableMap()
-            quotes.forEach { quote ->
-                quote.tags.forEach { tag ->
-                    val currentCount = tagsCountMap[tag]
-                    tagsCountMap[tag] = currentCount?.plus(1) ?: 1
-                }
-            }
-            val tagsWithCount = when (sortOrder) {
-                TagSortOrder.MOST_TAGGED -> tagsCountMap.toList()
-                    .sortedByDescending { it.second }
-
-                TagSortOrder.LEAST_TAGGED -> tagsCountMap.toList()
-                    .sortedBy { it.second }
+        ) { tags, referenceCounts, sortOrder, modalState ->
+            val tagsWithCount = tags.map { tag ->
+                tag to (referenceCounts[tag.tagId] ?: 0)
             }
             SettingsTagsViewState(
-                tagsWithCount = tagsWithCount,
+                tagsWithCount = when (sortOrder) {
+                    TagSortOrder.MOST_TAGGED -> tagsWithCount
+                        .sortedByDescending { it.second }
+
+                    TagSortOrder.LEAST_TAGGED -> tagsWithCount
+                        .sortedBy { it.second }
+                },
                 modalState = modalState,
             )
         }.stateIn(

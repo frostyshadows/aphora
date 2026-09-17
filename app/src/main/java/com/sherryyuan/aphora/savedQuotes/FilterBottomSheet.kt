@@ -446,8 +446,8 @@ private fun WorksFilter(
                         )
                 }
                 ScrollableSelectionList(items = displayedWorks) { option ->
-                    val label = if (includeWriterSuffix) {
-                        val lastNameOrSelf = option.writer?.trim()?.substringAfterLast(' ')
+                    val label = if (includeWriterSuffix && option.writer != null) {
+                        val lastNameOrSelf = option.writer.trim().substringAfterLast(' ')
                         "${option.work} ($lastNameOrSelf)"
                     } else {
                         option.work

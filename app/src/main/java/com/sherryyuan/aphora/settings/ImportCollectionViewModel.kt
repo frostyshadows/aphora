@@ -79,14 +79,18 @@ class ImportCollectionViewModel @AssistedInject constructor(
                 val sourceCategory = SourceCategory.entries.firstOrNull {
                     it.name.equals(quote.category, ignoreCase = true)
                 } ?: SourceCategory.OTHER
-                val sourceId = sourcesRepository.saveSource(
-                    SourceUiModel(
-                        existingId = null,
-                        writer = quote.writer.takeIf { it.isNotBlank() },
-                        work = quote.work.takeIf { it.isNotBlank() },
-                        category = sourceCategory,
+                val sourceId = if (quote.writer.isNotBlank() || quote.work.isNotBlank()) {
+                    sourcesRepository.saveSource(
+                        SourceUiModel(
+                            existingId = null,
+                            writer = quote.writer.takeIf { it.isNotBlank() },
+                            work = quote.work.takeIf { it.isNotBlank() },
+                            category = sourceCategory,
+                        )
                     )
-                )
+                } else {
+                    null
+                }
                 val tagIds = quote.tags.map { label ->
                     tagIdsByLabel.getOrPut(label.lowercase()) {
                         tagsRepository.saveTag(
