@@ -3,6 +3,7 @@ package com.sherryyuan.aphora.mockData
 import com.sherryyuan.aphora.database.entities.SourceCategory
 import com.sherryyuan.aphora.database.entities.TagEntity
 import com.sherryyuan.aphora.savedQuotes.QuoteUiModel
+import com.sherryyuan.aphora.savedQuotes.SourceUiModel
 import com.sherryyuan.aphora.ui.theme.TagPastelBlue
 
 fun createQuoteViewModel(
@@ -20,7 +21,7 @@ fun createQuoteViewModel(
     quoteId = quoteId,
     text = text,
     userNote = note,
-    source = QuoteUiModel.Source(sourceWriter, sourceWork, sourceCategory),
+    source = SourceUiModel(null, sourceWriter, sourceWork, sourceCategory),
     tags = tags.map { TagEntity(label = it, color = TagPastelBlue) },
     rating = rating,
     dateAdded = dateAdded,

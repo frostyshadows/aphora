@@ -48,6 +48,7 @@ import androidx.compose.ui.window.PopupProperties
 import com.sherryyuan.aphora.R
 import com.sherryyuan.aphora.database.entities.DefaultTagColors
 import com.sherryyuan.aphora.database.entities.TagEntity
+import com.sherryyuan.aphora.ui.common.VerticalSpacer
 import com.sherryyuan.aphora.ui.theme.forTagBackground
 
 @Composable
@@ -94,7 +95,9 @@ fun TagsSelector(
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.quote_tags_section_title),
+            style = MaterialTheme.typography.titleSmall,
         )
+        VerticalSpacer(4.dp)
 
         FlowRow(
             modifier = modifier

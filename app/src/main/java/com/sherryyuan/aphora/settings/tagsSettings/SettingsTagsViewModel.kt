@@ -1,11 +1,11 @@
-package com.sherryyuan.aphora.settings
+package com.sherryyuan.aphora.settings.tagsSettings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.navigation.Navigator
 import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
-import com.sherryyuan.aphora.settings.SettingsTagsViewState.SettingsTagsModalState
+import com.sherryyuan.aphora.settings.tagsSettings.SettingsTagsViewState.SettingsTagsModalState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

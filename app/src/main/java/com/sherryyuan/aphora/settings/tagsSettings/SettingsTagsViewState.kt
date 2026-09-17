@@ -1,4 +1,4 @@
-package com.sherryyuan.aphora.settings
+package com.sherryyuan.aphora.settings.tagsSettings
 
 import androidx.annotation.StringRes
 import com.sherryyuan.aphora.R

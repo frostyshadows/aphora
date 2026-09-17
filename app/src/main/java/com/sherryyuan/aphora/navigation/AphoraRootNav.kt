@@ -22,8 +22,8 @@ import com.sherryyuan.aphora.settings.ImportCollectionContainer
 import com.sherryyuan.aphora.settings.ImportCollectionViewModel
 import com.sherryyuan.aphora.settings.ImportSnippetsHomeContainer
 import com.sherryyuan.aphora.settings.SettingsContainer
-import com.sherryyuan.aphora.settings.SettingsSourcesContainer
-import com.sherryyuan.aphora.settings.SettingsTagsContainer
+import com.sherryyuan.aphora.settings.sourcesSettings.SettingsSourcesContainer
+import com.sherryyuan.aphora.settings.tagsSettings.SettingsTagsContainer
 
 @Composable
 fun AphoraRootNav(navigator: Navigator, onQuoteSaved: () -> Unit) {
