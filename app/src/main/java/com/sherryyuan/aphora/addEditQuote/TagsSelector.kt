@@ -60,8 +60,8 @@ fun TagsSelector(
     onTagUnselected: (TagEntity) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var randomNewTagColor = remember {
-        DefaultTagColors[DefaultTagColors.indices.random()]
+    var randomNewTagColor by remember {
+        mutableStateOf(DefaultTagColors[DefaultTagColors.indices.random()])
     }
     val focusRequester = remember {
         FocusRequester()
@@ -105,7 +105,8 @@ fun TagsSelector(
                     width = if (showDropdown) 2.dp else 1.dp,
                     color = if (showDropdown) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
                     shape = RoundedCornerShape(4.dp)
-                ),
+                )
+                .padding(top = 2.dp, start = 6.dp, end = 6.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             selectedTags.forEach { tag ->
@@ -122,9 +123,9 @@ fun TagsSelector(
                 modifier = Modifier
                     .height(54.dp)
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = 6.dp)
                     .weight(1f),
-                contentAlignment = Alignment.CenterStart
+                contentAlignment = Alignment.CenterStart,
             ) {
                 BasicTextField(
                     state = inputTextFieldState,
