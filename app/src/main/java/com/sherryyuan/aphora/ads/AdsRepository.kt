@@ -37,45 +37,11 @@ class AdsRepository @Inject constructor(
                 AD_ID_INTERSTITIAL_AFTER_QUOTE_ADD
             },
             adRequest = AdRequest.Builder().build(),
+            placement = PLACEMENT_AFTER_QUOTE_ADD,
             loadCallback = object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     analytics.logEvent(Analytics.EVENT_AD_LOAD_SUCCESS)
                     currentInterstitialAd = ad
-                    currentInterstitialAd?.fullScreenContentCallback =
-                        object : FullScreenContentCallback() {
-                            override fun onAdDismissedFullScreenContent() {
-                                analytics.logEvent(Analytics.EVENT_AD_DISMISSED)
-                                refreshInterstitial()
-                            }
-
-                            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                                analytics.logEvent(
-                                    name = Analytics.EVENT_AD_FAILED_TO_SHOW,
-                                    params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to adError.message),
-                                )
-                                refreshInterstitial()
-                            }
-
-                            override fun onAdShowedFullScreenContent() {
-                                sharedPrefs.edit {
-                                    putInt(PREFS_INTERSTITIAL_SKIPPED_COUNT_KEY, 0)
-                                }
-                                if (!sharedPrefs.getBoolean(PREFS_FIRST_INTERSTITIAL_SEEN_KEY, false)) {
-                                    sharedPrefs.edit {
-                                        putBoolean(PREFS_FIRST_INTERSTITIAL_SEEN_KEY, true)
-                                    }
-                                }
-                                analytics.logEvent(Analytics.EVENT_AD_SHOWED_FULLSCREEN_CONTENT)
-                            }
-
-                            override fun onAdImpression() {
-                                analytics.logEvent(Analytics.EVENT_AD_IMPRESSION)
-                            }
-
-                            override fun onAdClicked() {
-                                analytics.logEvent(Analytics.EVENT_AD_CLICKED)
-                            }
-                        }
                 }
 
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -84,6 +50,40 @@ class AdsRepository @Inject constructor(
                         params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to adError.message),
                     )
                     currentInterstitialAd = null
+                }
+            },
+            fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    analytics.logEvent(Analytics.EVENT_AD_DISMISSED)
+                    refreshInterstitial()
+                }
+
+                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                    analytics.logEvent(
+                        name = Analytics.EVENT_AD_FAILED_TO_SHOW,
+                        params = mapOf(Analytics.EVENT_KEY_ERROR_MESSAGE to adError.message),
+                    )
+                    refreshInterstitial()
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    sharedPrefs.edit {
+                        putInt(PREFS_INTERSTITIAL_SKIPPED_COUNT_KEY, 0)
+                    }
+                    if (!sharedPrefs.getBoolean(PREFS_FIRST_INTERSTITIAL_SEEN_KEY, false)) {
+                        sharedPrefs.edit {
+                            putBoolean(PREFS_FIRST_INTERSTITIAL_SEEN_KEY, true)
+                        }
+                    }
+                    analytics.logEvent(Analytics.EVENT_AD_SHOWED_FULLSCREEN_CONTENT)
+                }
+
+                override fun onAdImpression() {
+                    analytics.logEvent(Analytics.EVENT_AD_IMPRESSION)
+                }
+
+                override fun onAdClicked() {
+                    analytics.logEvent(Analytics.EVENT_AD_CLICKED)
                 }
             },
         )
@@ -115,6 +115,8 @@ class AdsRepository @Inject constructor(
         private const val AD_ID_INTERSTITIAL_AFTER_QUOTE_ADD = "ca-app-pub-2704548882765332/3427489519"
         // Configured to return test ads for every request, use it for testing
         private const val AD_ID_INTERSTITIAL_TEST = "ca-app-pub-3940256099942544/1033173712"
+
+        private const val PLACEMENT_AFTER_QUOTE_ADD = "after_quote_add"
 
         private const val SKIPS_BEFORE_SHOWING_FIRST_INTERSTITIAL = 10
         private const val SKIPS_BEFORE_SHOWING_INTERSTITIAL = 5
