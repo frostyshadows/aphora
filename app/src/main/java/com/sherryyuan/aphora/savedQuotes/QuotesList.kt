@@ -29,8 +29,6 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -131,15 +129,6 @@ fun QuotesList(
             }
         },
     ) { innerPadding ->
-        LaunchedEffect(viewState.quotes) {
-            snapshotFlow { lazyListState.firstVisibleItemIndex }
-                .collect {
-                    // Scroll to top if new item is added, only if user was scrolled to top already.
-                    if (it <= 1) {
-                        lazyListState.scrollToItem(0)
-                    }
-                }
-        }
         if (viewState.showEmptyState) {
             Column(
                 modifier = Modifier
