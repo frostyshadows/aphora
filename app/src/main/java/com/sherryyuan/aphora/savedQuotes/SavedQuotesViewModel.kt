@@ -1,5 +1,6 @@
 package com.sherryyuan.aphora.savedQuotes
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sherryyuan.aphora.database.entities.SortOption
@@ -12,7 +13,9 @@ import com.sherryyuan.aphora.repository.QuotesRepository
 import com.sherryyuan.aphora.repository.SourcesRepository
 import com.sherryyuan.aphora.repository.TagsRepository
 import com.sherryyuan.aphora.utils.combine
+import com.sherryyuan.aphora.utils.isFirstInstall
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -27,6 +30,7 @@ class SavedQuotesViewModel @Inject constructor(
     private val quotesRepository: QuotesRepository,
     private val sourcesRepository: SourcesRepository,
     private val tagsRepository: TagsRepository,
+    @ApplicationContext val context: Context,
 ) : ViewModel() {
 
     private val savedQuotesFlow = quotesRepository.getQuotes()
@@ -234,7 +238,9 @@ class SavedQuotesViewModel @Inject constructor(
                         quotes = displayedQuotes,
                         searchState = searchState,
                         searchQuery = searchQuery,
-                        showEmptyState = searchState is SavedQuotesViewState.SearchState.NotFocused && displayedQuotes.isEmpty(),
+                        showEmptyState = !isFirstInstall(context) &&
+                                searchState is SavedQuotesViewState.SearchState.NotFocused &&
+                                displayedQuotes.isEmpty(),
                     )
                 }
 
