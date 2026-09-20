@@ -16,10 +16,14 @@ import com.sherryyuan.aphora.utils.combine
 import com.sherryyuan.aphora.utils.isFirstInstall
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -46,18 +50,22 @@ class SavedQuotesViewModel @Inject constructor(
     private val filterCategoriesFlow: MutableStateFlow<List<SourceCategory>> =
         MutableStateFlow(emptyList())
     private val filterMinRatingFlow: MutableStateFlow<Int> = MutableStateFlow(1)
+    private val filtersActiveFlow: Flow<Boolean> = searchStateFlow
+        .map {
+            it is SavedQuotesViewState.SearchState.QueryInput ||
+                    it is SavedQuotesViewState.SearchState.FilterSheet
+        }
+        .distinctUntilChanged()
 
     private val currentQuoteIdFlow: MutableStateFlow<Long?> = MutableStateFlow(null)
 
+    private val displayedQuotesFlow: StateFlow<List<QuoteUiModel>> = createFilteredQuotesFlow()
 
     val state: StateFlow<SavedQuotesViewState> = createSavedQuotesState()
 
     fun toggleToDetail(index: Int) {
-        viewModelScope.launch {
-            val quotes = savedQuotesFlow.first()
-            currentQuoteIdFlow.value = quotes.getOrNull(index)?.quote?.quoteId
-            viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = false)
-        }
+        currentQuoteIdFlow.value = displayedQuotesFlow.value.getOrNull(index)?.quoteId
+        viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = false)
     }
 
     fun toggleToList() {
@@ -65,13 +73,10 @@ class SavedQuotesViewModel @Inject constructor(
     }
 
     fun showRandomQuote() {
-        viewModelScope.launch {
-            val quotes = savedQuotesFlow.first()
-            if (quotes.isNotEmpty()) {
-                val randomIndex = quotes.indices.random()
-                currentQuoteIdFlow.value = quotes[randomIndex].quote.quoteId
-                viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = true)
-            }
+        val quotes = displayedQuotesFlow.value
+        if (quotes.isNotEmpty()) {
+            currentQuoteIdFlow.value = quotes[quotes.indices.random()].quoteId
+            viewTypeFlow.value = QuotesViewType.QuoteDetail(openedViaShuffle = true)
         }
     }
 
@@ -163,28 +168,22 @@ class SavedQuotesViewModel @Inject constructor(
                 filterMinRatingFlow.value > 1
 
     fun goToPreviousQuote() {
-        if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
-            viewModelScope.launch {
-                val quotes = savedQuotesFlow.first()
-                val currentId = currentQuoteIdFlow.value
-                val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
-                if (currentIndex > 0) {
-                    currentQuoteIdFlow.value = quotes[currentIndex - 1].quote.quoteId
-                }
-            }
+        if (viewTypeFlow.value !is QuotesViewType.QuoteDetail) return
+        val quotes = displayedQuotesFlow.value
+        val currentId = currentQuoteIdFlow.value
+        val currentIndex = quotes.indexOfFirst { it.quoteId == currentId }
+        if (currentIndex > 0) {
+            currentQuoteIdFlow.value = quotes[currentIndex - 1].quoteId
         }
     }
 
     fun goToNextQuote() {
-        if (viewTypeFlow.value is QuotesViewType.QuoteDetail) {
-            viewModelScope.launch {
-                val quotes = savedQuotesFlow.first()
-                val currentId = currentQuoteIdFlow.value
-                val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
-                if (currentIndex >= 0 && currentIndex < quotes.lastIndex) {
-                    currentQuoteIdFlow.value = quotes[currentIndex + 1].quote.quoteId
-                }
-            }
+        if (viewTypeFlow.value !is QuotesViewType.QuoteDetail) return
+        val quotes = displayedQuotesFlow.value
+        val currentId = currentQuoteIdFlow.value
+        val currentIndex = quotes.indexOfFirst { it.quoteId == currentId }
+        if (currentIndex >= 0 && currentIndex < quotes.lastIndex) {
+            currentQuoteIdFlow.value = quotes[currentIndex + 1].quoteId
         }
     }
 
@@ -198,42 +197,54 @@ class SavedQuotesViewModel @Inject constructor(
         navigator.goTo(SettingsKey)
     }
 
-    private fun createSavedQuotesState(): StateFlow<SavedQuotesViewState> {
+    private fun createFilteredQuotesFlow(): StateFlow<List<QuoteUiModel>> {
         return combine(
             savedQuotesFlow,
-            viewTypeFlow,
-            searchStateFlow,
+            filtersActiveFlow,
             searchQueryFlow,
             filterCategoriesFlow,
             filterWritersFlow,
             filterWorksFlow,
             filterTagsFlow,
             filterMinRatingFlow,
-            currentQuoteIdFlow,
-        ) { quotes, viewType, searchState, searchQuery, categories, writers, works, tags, minRating, currentId ->
+        ) { quotes, filtersActive, searchQuery, categories, writers, works, tags, minRating ->
             val quotesUiModels = quotes.map { it.toUiModel() }
+            if (filtersActive) {
+                quotesUiModels.filter { quote ->
+                    val passesSearchFilter = quote.passesSearchFilter(searchQuery)
+                    val passesCategoriesFilter =
+                        categories.isEmpty() || quote.source?.category in categories
+                    val passesWritersFilter =
+                        writers.isEmpty() || quote.source?.writer in writers
+                    val passesWorksFilter =
+                        works.isEmpty() || quote.source?.work in works
+                    val passesTagsFilter =
+                        tags.isEmpty() || quote.tags.any { it in tags }
+                    val passesRatingFilter = quote.rating >= minRating
+                    passesSearchFilter && passesCategoriesFilter &&
+                            passesWritersFilter && passesWorksFilter &&
+                            passesTagsFilter && passesRatingFilter
+                }
+            } else {
+                quotesUiModels
+            }
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.Eagerly,
+            emptyList(),
+        )
+    }
+
+    private fun createSavedQuotesState(): StateFlow<SavedQuotesViewState> {
+        return combine(
+            displayedQuotesFlow,
+            viewTypeFlow,
+            searchStateFlow,
+            searchQueryFlow,
+            currentQuoteIdFlow,
+        ) { displayedQuotes, viewType, searchState, searchQuery, currentId ->
             when (viewType) {
                 QuotesViewType.QuotesList -> {
-                    val displayedQuotes =
-                        if (searchState is SavedQuotesViewState.SearchState.QueryInput || searchState is SavedQuotesViewState.SearchState.FilterSheet) {
-                            quotesUiModels.filter { quote ->
-                                val passesSearchFilter = quote.passesSearchFilter(searchQuery)
-                                val passesCategoriesFilter =
-                                    categories.isEmpty() || quote.source?.category in categories
-                                val passesWritersFilter =
-                                    writers.isEmpty() || quote.source?.writer in writers
-                                val passesWorksFilter =
-                                    works.isEmpty() || quote.source?.work in works
-                                val passesTagsFilter =
-                                    tags.isEmpty() || quote.tags.any { it in tags }
-                                val passesRatingFilter = quote.rating >= minRating
-                                passesSearchFilter && passesCategoriesFilter &&
-                                        passesWritersFilter && passesWorksFilter &&
-                                        passesTagsFilter && passesRatingFilter
-                            }
-                        } else {
-                            quotesUiModels
-                        }
                     SavedQuotesViewState.QuotesList(
                         quotes = displayedQuotes,
                         searchState = searchState,
@@ -245,11 +256,11 @@ class SavedQuotesViewModel @Inject constructor(
                 }
 
                 is QuotesViewType.QuoteDetail -> {
-                    // TODO: Make this only show filtered quotes
-                    val currentIndex = quotes.indexOfFirst { it.quote.quoteId == currentId }
+                    val currentIndex = displayedQuotes
+                        .indexOfFirst { it.quoteId == currentId }
                         .coerceAtLeast(0)
                     SavedQuotesViewState.QuoteDetail(
-                        quotes = quotesUiModels,
+                        quotes = displayedQuotes,
                         currentIndex = currentIndex,
                         openedViaShuffle = viewType.openedViaShuffle,
                     )
